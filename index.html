@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Whine About AI</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Whine About AI</h1>
+    <p class="tagline">Let it out. The bots are listening.</p>
+    <form id="complaintForm">
+      <label for="complaint">What's your AI complaint today?</label>
+      <input type="text" id="complaint" required placeholder="e.g. ChatGPT stole my job"/>
+
+      <label for="age">How old are you?</label>
+      <input type="number" id="age" min="1" max="120" placeholder="e.g. 42" required />
+
+      <button type="submit">Cry About It</button>
+    </form>
+    <div id="responseBox"></div>
+    <h2>Top 10 Complaints</h2>
+    <ul id="topComplaints">
+      <li>ChatGPT stole my girlfriend.</li>
+      <li>An AI wrote better poetry than me and now I cry every night.</li>
+      <li>I miss when Google gave me blue links and not answers.</li>
+      <li>AI replaced my job as a professional alarmist.</li>
+      <li>The robots don't laugh at my jokes.</li>
+      <li>I asked ChatGPT to write my novel. It did. It was better.</li>
+      <li>I wanted to be the smartest person in the room. Now I unplug my Alexa.</li>
+      <li>My cat prefers the AI petting simulator.</li>
+      <li>DALL·E drew a better version of my kid's art.</li>
+      <li>AI suggested I take a nap. I'm offended.</li>
+    </ul>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
