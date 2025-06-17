@@ -9,53 +9,16 @@
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    body {
-      font-family: 'Roboto Slab', serif;
-      background-color: #f8f9fa;
-      color: #343a40;
-    }
-    .navbar {
-      background-color: #002855;
-    }
-    .navbar-brand {
-      font-weight: 700;
-      color: #ffffff !important;
-    }
-    .header-text {
-      color: #002855;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-    }
-    .tagline {
-      font-style: italic;
-      color: #6c757d;
-    }
-    .complaint-card {
-      border: 1px solid #ced4da;
-      border-radius: 0.5rem;
-      padding: 1.5rem;
-      background-color: #ffffff;
-      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.05);
-    }
-    .btn-primary {
-      background-color: #0069d9;
-      border-color: #0062cc;
-    }
-    .btn-primary:hover {
-      background-color: #0056b3;
-      border-color: #004085;
-    }
-    footer {
-      margin-top: 4rem;
-      padding: 2rem 0;
-      background-color: #002855;
-      color: #ffffff;
-      text-align: center;
-    }
+    body { font-family:'Roboto Slab', serif; background:#f8f9fa; color:#343a40; }
+    .navbar { background:#002855; }
+    .navbar-brand { color:#fff !important; font-weight:700; }
+    .header-text { color:#002855; margin:2rem 0 1rem; }
+    .tagline { font-style:italic; color:#6c757d; }
+    .complaint-card { border:1px solid #ced4da; border-radius:.5rem; padding:1.5rem; background:#fff; box-shadow:0 .5rem 1rem rgba(0,0,0,.05); }
+    footer { margin-top:4rem; padding:2rem 0; background:#002855; color:#fff; text-align:center; }
   </style>
 </head>
 <body>
-  <!-- Navigation -->
   <nav class="navbar navbar-expand-lg">
     <div class="container">
       <a class="navbar-brand" href="#">WhineAboutAI</a>
@@ -64,47 +27,35 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link text-white" href="#">Home</a></li>
           <li class="nav-item"><a class="nav-link text-white" href="#topComplaints">Top Complaints</a></li>
-          <li class="nav-item"><a class="nav-link text-white" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#">Home</a></li>
         </ul>
       </div>
     </div>
   </nav>
-
-  <!-- Main Content -->
   <div class="container">
     <div class="text-center header-text">
       <h1>Whine About AI</h1>
       <p class="tagline">Let it out. The bots are listening.</p>
     </div>
-
     <div class="complaint-card mx-auto" style="max-width:700px;">
       <form id="complaintForm">
         <div class="mb-3">
           <label for="complaint" class="form-label">What's your AI complaint today?</label>
-          <input type="text" id="complaint" class="form-control" placeholder="e.g. ChatGPT stole my job" required />
+          <input type="text" id="complaint" class="form-control" required placeholder="e.g. AI stole my job" />
         </div>
         <div class="mb-3">
           <label for="age" class="form-label">How old are you?</label>
-          <input type="number" id="age" class="form-control" min="1" max="120" placeholder="e.g. 42" required />
+          <input type="number" id="age" class="form-control" min="1" max="120" required placeholder="e.g. 42" />
         </div>
         <button type="submit" class="btn btn-primary w-100">Cry About It</button>
       </form>
     </div>
-
     <section id="topComplaints" class="mt-5">
       <h2 class="fs-3 mb-3">Top 10 Complaints</h2>
-      <div class="row g-3">
-        <div class="col-md-6">
-          <ul class="list-group">
-            <!-- Complaint items here -->
-          </ul>
-        </div>
-      </div>
+      <ul id="complaintList" class="list-group list-group-flush"></ul>
     </section>
   </div>
-
   <!-- Response Modal -->
   <div class="modal fade" id="responseModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
@@ -113,23 +64,70 @@
           <h5 class="modal-title">Your AI Reality Check</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
-        <div class="modal-body">
-          <p id="modalResponse" class="fs-5"></p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
+        <div class="modal-body"><p id="modalResponse"></p></div>
+        <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div>
       </div>
     </div>
   </div>
-
-  <!-- Footer -->
-  <footer>
-    &copy; 2025 Whine About AI. All rights reserved.
-  </footer>
-
-  <!-- Bootstrap JS -->
+  <footer>&copy; 2025 Whine About AI. All rights reserved.</footer>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
-  <script src="script.js"></script>
+  <script>
+    const fakeComplaints = [
+      "ChatGPT stole my girlfriend.",
+      "An AI wrote better poetry than me and now I cry every night.",
+      "I miss when Google gave me blue links and not answers.",
+      "AI replaced my job as a professional alarmist.",
+      "The robots don't laugh at my jokes.",
+      "I asked ChatGPT to write my novel. It did. It was better.",
+      "I wanted to be the smartest person in the room. Now I unplug my Alexa.",
+      "My cat prefers the AI petting simulator.",
+      "DALL·E drew a better version of my kid's art.",
+      "AI suggested I take a nap. I'm offended."
+    ];
+    const zingers = {
+      young: [
+        "Gen Z? Complain harder. The AI will still out-hustle you.",
+        "Your TikTok algorithm is more dangerous than GPT."      ],
+      adult: [
+        "You grew up on Google. Now you're afraid of search 2.0?",
+        "Still writing think pieces? We’re writing code."      ],
+      boomer: [
+        "Boomer panic detected. Consider unplugging your router.",
+        "Relax. AI isn’t coming for bingo night."      ],
+      default: [
+        "Noted. Now get over it.",
+        "That's adorable. Now grow up.",
+        "We’ll alert the empathy department immediately.",
+        "Your complaint has been rated: Not Even Close to a Problem.",
+        "Wow. Sounds like a you problem.",
+        "Try turning it off and touching grass.",
+        "Complaint received. Reality unchanged.",
+        "We’re feeding this to a bot that will mock you."
+      ]
+    };
+    // Populate Top Complaints
+    document.addEventListener('DOMContentLoaded', () => {
+      const listEl = document.getElementById('complaintList');
+      fakeComplaints.forEach(c => {
+        const li = document.createElement('li');
+        li.className = 'list-group-item';
+        li.textContent = c;
+        listEl.appendChild(li);
+      });
+    });
+    // Handle form submit and age-based zinger selection
+    document.getElementById('complaintForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const age = parseInt(document.getElementById('age').value, 10);
+      let category = 'default';
+      if (age < 25) category = 'young';
+      else if (age < 60) category = 'adult';
+      else category = 'boomer';
+      const pool = zingers[category].concat(zingers.default);
+      const reply = pool[Math.floor(Math.random() * pool.length)];
+      document.getElementById('modalResponse').textContent = reply;
+      new bootstrap.Modal(document.getElementById('responseModal')).show();
+    });
+  </script>
 </body>
 </html>
