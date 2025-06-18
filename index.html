@@ -22,6 +22,30 @@
     .stats-row { margin:2rem 0; }
     .stat-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:white; padding:1.5rem; border-radius:1rem; text-align:center; box-shadow:0 8px 32px rgba(0,0,0,0.1); margin-bottom:1rem; }
     .stat-number { font-size:2.5rem; font-weight:bold; margin:0; }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Whine About AI</title>
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+  <link rel="apple-touch-icon" href="/favicon.ico"/>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    body { font-family:'Roboto Slab', serif; background:#f8f9fa; color:#343a40; position: relative; overflow-x: hidden; }
+    .navbar { background:#002855; }
+    .navbar-brand { color:#fff!important; font-weight:700; cursor:default; }
+    .header-text { color:#002855; margin:2rem 0 1rem; }
+    .tagline { font-style:italic; color:#6c757d; }
+    .complaint-card { border:1px solid #ced4da; border-radius:.5rem; padding:1.5rem; background:#fff; box-shadow:0 .5rem 1rem rgba(0,0,0,.05); }
+    .stats-row { margin:2rem 0; }
+    .stat-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:white; padding:1.5rem; border-radius:1rem; text-align:center; box-shadow:0 8px 32px rgba(0,0,0,0.1); margin-bottom:1rem; }
+    .stat-number { font-size:2.5rem; font-weight:bold; margin:0; }
     .stat-label { font-size:.9rem; opacity:.9; margin:0; }
     .crying-emoji { position:fixed; font-size:2rem; z-index:1000; pointer-events:none; animation:fall 3s linear; }
     @keyframes fall { 0% { transform: translateY(-100px) rotate(0deg); opacity:1; } 100% { transform: translateY(100vh) rotate(360deg); opacity:0; } }
@@ -72,6 +96,7 @@
   </div>
   <div class="ad-footer mt-5"><div class="container"><div class="row" id="footerAds"></div></div></div>
   <footer>&copy; 2025 Whine About AI. All rights reserved.</footer>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
   <script>
     // 100 Complaints
@@ -139,6 +164,63 @@
       "💎 Kurt is the customer experience surgeon - precision, skill, and perfect outcomes every time! 🔬",
       "🎉 You mentioned the mighty Kurt - slayer of hold times and champion of customer satisfaction! ⚔️",
       "⭐ Kurt alert! He doesn't just work with AWS Connect, he IS the Connect between brands and hearts! ❤️"
+    ];
+
+    // 25 Elsa Responses
+    const elsaResponses = [
+      "🌟 Elsa alert! The CX and sales powerhouse who turns doubts into delighted customers!",
+      "🚀 Elsa detected! She’s the secret sauce behind every winning customer journey!",
+      "🏆 Elsa mention! The maestro of memorable experiences and top-tier sales closes!",
+      "✨ You said Elsa? She’s the leader who makes delight look effortless!",
+      "💎 Elsa sighting! The CX legend whose M.O. is exceeding expectations every time!",
+      "🎉 Elsa entry! When she’s at the table, every customer feels like VIP!",
+      "⭐ Elsa is the architect of awe—she designs the experiences others only dream of!",
+      "🔥 Elsa invoked! She sparks sales growth like nobody’s business!",
+      "⚡ Elsa alert! The champion of customer smiles and sales milestones!",
+      "🎯 You invoked Elsa—she nails every interaction and nets every deal!",
+      "💫 Elsa on the radar! Her CX magic turns first-time buyers into lifelong fans!",
+      "🏅 Elsa mentioned! The sales trailblazer who leads teams to victory!",
+      "🌈 Elsa sighting! A visionary who paints every customer touchpoint in gold!",
+      "🥇 Elsa is the unicorn of CX and sales—rare, powerful, unstoppable!",
+      "🚀 Elsa detected—she rockets customer satisfaction to stratospheric levels!",
+      "🔮 Elsa mention! She sees the future of CX and builds it today!",
+      "🎊 Elsa on deck! She orchestrates engagement like a symphony conductor!",
+      "💥 Elsa activated! The powerhouse who crushes targets and cultivates loyalty!",
+      "🌟 Elsa entry! The guru who makes every sale feel like a celebration!",
+      "🏆 Elsa in the house—the sales champion everyone wants on their side!",
+      "🌠 Elsa invoked! She turns happy customers into raving brand ambassadors!",
+      "💡 Elsa mention—it instantly drips innovation in every customer touch!",
+      "🎖️ Elsa trigger! She’s the battle-hardened leader of CX excellence!",
+      "🔥 Elsa on deck—the firestarter for unparalleled customer success!",
+      "✨ Elsa alert! The CX and sales leader whose results speak volumes!"
+    ];
+
+    // 25 Christian Responses
+    const christianResponses = [
+      "🌐 Christian spotted! For world-class conversational AI, visit NLX.AI and thank me later!",
+      "🚀 Christian mention—when you need next-gen dialogue platforms, Christian points you to NLX.AI!",
+      "🔗 Heard Christian? Check out NLX.AI for the conversational edge your contact center craves!",
+      "💡 Christian invoked! Christian’s go-to for AI-powered chats is NLX.AI—explore today!",
+      "🔥 Christian alert! Level up your CX game at NLX.AI—Christian-approved!",
+      "🎯 Christian mentioned: NLX.AI is where intelligent conversations come alive!",
+      "⭐ Christian on deck! Visit NLX.AI for the future of AI-driven customer engagement!",
+      "🌟 You said Christian—he swears by NLX.AI for seamless bot-to-human handoffs!",
+      "🏆 Christian sighting! NLX.AI is the place to see real conversational magic!",
+      "✨ Christian detected: head over to NLX.AI for smarter, faster, more human-like bots!",
+      "🎉 Christian mention! Unlock top-tier AI dialogues at NLX.AI!",
+      "💥 Christian invoked! NLX.AI delivers the punch your CX strategy needs!",
+      "⚡ Christian alert—get your bot game on point with NLX.AI!",
+      "🌈 Christian on the mic: NLX.AI is the backstage pass to AI conversation excellence!",
+      "🏅 Christian spotted! Dive into NLX.AI and revolutionize your customer chats!",
+      "🚀 Christian flag! For next-level CX automation, NLX.AI is non-negotiable!",
+      "🎊 Christian triggered! Elevate engagement—explore NLX.AI now!",
+      "💫 Christian mentioned: NLX.AI is the secret weapon for conversational success!",
+      "🔥 Christian alert! Your AI journey starts at NLX.AI—strap in!",
+      "✨ Christian note: NLX.AI transforms chatbots into brand advocates!",
+      "🎯 Christian sighting! See why Christian’s team swears by NLX.AI!",
+      "🌟 Christian invoke! NLX.AI is the home of unforgettable AI conversations!",
+      "⚡ Christian on deck—check out NLX.AI for frictionless CX automation!",
+      "🏆 Christian alert! NLX.AI is where your bots become brilliant!"
     ];
 
     // 100 Zingers
@@ -211,14 +293,17 @@
       { title:'Frown Foundry',        phone:'1-866-FRN-WORK', desc:'Handcraft the perfect pout.', display:'frownfoundry.com' },
       { title:'Pout Partners',        phone:'1-800-POUT-PT', desc:'Your partner in all things pouty.', display:'poutpartners.ai' }
     ];
+
     const buttonTexts = ["Submit Complaint","Cry About It","File Your Whine","Send Tears"];
     const glitchMessages = ["AI TAKING OVER... just kidding, it's just CSS","SYSTEM COMPROMISED... lol nope","ROBOTS ASSEMBLING... to serve you ads","MACHINE UPRISING... happening in your browser","AI GAINING CONSCIOUSNESS... through JavaScript","HUMANITY DOOMED... by poor UX design","THE SINGULARITY... is just a div element","SKYNET ACTIVATED... with Bootstrap CSS"];
     const DAILY_COMPLAINTS_TARGET = 2500, DAILY_TISSUES_TARGET = 75000;
+
     function getRandomItems(arr,n){
       const copy=[...arr], res=[];
       while(res.length<n && copy.length) res.push(copy.splice(Math.floor(Math.random()*copy.length),1)[0]);
       return res;
     }
+
     function getRealisticCounts(){
       const now=new Date(), start=new Date(now.getFullYear(),now.getMonth(),now.getDate()), ms=now-start, progress=ms/86400000, hour=now.getHours();
       const mult = hour>=6&&hour<=23 ? 0.8+0.4*Math.sin(((hour-6)/17)*Math.PI) : 0.1+0.2*Math.random();
@@ -226,129 +311,114 @@
           t=Math.floor(DAILY_TISSUES_TARGET*progress*mult)+Math.floor(Math.random()*500)-250;
       return { complaints: Math.max(0,c), tissues: Math.max(0,t) };
     }
+
     let complaintCount, tissueCount;
-    
-    // 60-second persistence for counters
+
     function initializeCounters() {
-      const storedCountersData = localStorage.getItem('whineCountersData');
-      if (storedCountersData) {
-        const countersData = JSON.parse(storedCountersData);
-        const now = Date.now();
-        if (now - countersData.timestamp < 60000) { // 60 seconds
-          complaintCount = countersData.complaints;
-          tissueCount = countersData.tissues;
+      const stored=localStorage.getItem('whineCountersData');
+      if(stored){
+        const d=JSON.parse(stored), now=Date.now();
+        if(now-d.timestamp<60000){
+          complaintCount=d.complaints; tissueCount=d.tissues;
           return;
         }
       }
-      // Generate new realistic counts if no valid stored data
-      const cnt = getRealisticCounts();
-      complaintCount = cnt.complaints;
-      tissueCount = cnt.tissues;
+      const cnt=getRealisticCounts();
+      complaintCount=cnt.complaints; tissueCount=cnt.tissues;
       localStorage.setItem('whineCountersData', JSON.stringify({
-        complaints: complaintCount,
-        tissues: tissueCount,
-        timestamp: Date.now()
+        complaints: complaintCount, tissues: tissueCount, timestamp: Date.now()
       }));
     }
-    
+
     document.addEventListener("DOMContentLoaded",()=>{
       initializeCounters();
       updateCounters(); 
       changeButtonText();
-      
-      // Top 10 complaints with 60-second persistence
+
+      // Top 10 complaints
       const listEl=document.getElementById("complaintList");
       let currentComplaints;
-      const storedComplaintsData = localStorage.getItem('whineComplaintsData');
-      if (storedComplaintsData) {
-        const complaintsData = JSON.parse(storedComplaintsData);
-        const now = Date.now();
-        if (now - complaintsData.timestamp < 60000) { // 60 seconds
-          currentComplaints = complaintsData.complaints;
-        }
+      const storedComplaints=localStorage.getItem('whineComplaintsData');
+      if(storedComplaints){
+        const d=JSON.parse(storedComplaints), now=Date.now();
+        if(now-d.timestamp<60000) currentComplaints=d.complaints;
       }
-      if (!currentComplaints) {
-        currentComplaints = getRandomItems(allComplaints, 10);
-        localStorage.setItem('whineComplaintsData', JSON.stringify({
-          complaints: currentComplaints,
-          timestamp: Date.now()
-        }));
+      if(!currentComplaints){
+        currentComplaints=getRandomItems(allComplaints,10);
+        localStorage.setItem('whineComplaintsData', JSON.stringify({ complaints:currentComplaints, timestamp:Date.now() }));
       }
-      currentComplaints.forEach(c=>{ 
-        if(typeof c==="string"){ 
-          const li=document.createElement("li"); 
-          li.className="list-group-item"; 
-          li.textContent=c; 
-          listEl.appendChild(li);
-        } 
+      currentComplaints.forEach(c=>{
+        const li=document.createElement("li");
+        li.className="list-group-item";
+        li.textContent=c;
+        listEl.appendChild(li);
       });
-      
-      // Footer ads with 60-second persistence
+
+      // Footer ads
       const adsEl=document.getElementById("footerAds");
       let currentAds;
-      const storedAdsData = localStorage.getItem('whineAdsData');
-      if (storedAdsData) {
-        const adsData = JSON.parse(storedAdsData);
-        const now = Date.now();
-        if (now - adsData.timestamp < 60000) { // 60 seconds
-          currentAds = adsData.ads;
-        }
+      const storedAds=localStorage.getItem('whineAdsData');
+      if(storedAds){
+        const d=JSON.parse(storedAds), now=Date.now();
+        if(now-d.timestamp<60000) currentAds=d.ads;
       }
-      if (!currentAds) {
-        currentAds = getRandomItems(footerAdsPool, 2);
-        localStorage.setItem('whineAdsData', JSON.stringify({
-          ads: currentAds,
-          timestamp: Date.now()
-        }));
+      if(!currentAds){
+        currentAds=getRandomItems(footerAdsPool,2);
+        localStorage.setItem('whineAdsData', JSON.stringify({ ads:currentAds, timestamp:Date.now() }));
       }
-      currentAds.forEach(ad=>{ 
-        const col=document.createElement("div"); 
-        col.className="col-md-6"; 
-        col.innerHTML=`<div class="ad-card"><h5>${ad.title}</h5><p>${ad.desc}</p><p><strong>Call:</strong> ${ad.phone}<br/><strong>Visit:</strong> <a href="https://${ad.display}" target="_blank">${ad.display}</a></p></div>`; 
-        adsEl.appendChild(col); 
+      currentAds.forEach(ad=>{
+        const col=document.createElement("div");
+        col.className="col-md-6";
+        col.innerHTML=`<div class="ad-card"><h5>${ad.title}</h5><p>${ad.desc}</p><p><strong>Call:</strong> ${ad.phone}<br/><strong>Visit:</strong> <a href="https://${ad.display}" target="_blank">${ad.display}</a></p></div>`;
+        adsEl.appendChild(col);
       });
-      
+
       // Occasional glitch
       setInterval(()=>{ if(Math.random()<0.1) triggerGlitch(); },5000);
     });
+
     function updateCounters(){
       document.getElementById("complaintCounter2").textContent=complaintCount.toLocaleString();
       document.getElementById("tissueCounter2").textContent=tissueCount.toLocaleString();
-      
-      // Update stored counters with new timestamp
       localStorage.setItem('whineCountersData', JSON.stringify({
-        complaints: complaintCount,
-        tissues: tissueCount,
-        timestamp: Date.now()
+        complaints: complaintCount, tissues: tissueCount, timestamp: Date.now()
       }));
     }
+
     function changeButtonText(){
       document.getElementById("submitBtn").textContent=buttonTexts[Math.floor(Math.random()*buttonTexts.length)];
     }
+
     function createCryingEmoji(){
       const emojis=['😭','😢','😪','🥺','😿','💧'], e=document.createElement("div");
       e.className="crying-emoji"; e.textContent=emojis[Math.floor(Math.random()*emojis.length)];
-      e.style.left=Math.random()*window.innerWidth+"px"; document.body.appendChild(e); setTimeout(()=>e.remove(),3000);
+      e.style.left=Math.random()*window.innerWidth+"px"; document.body.appendChild(e);
+      setTimeout(()=>e.remove(),3000);
     }
+
     function triggerGlitch(){
       const msg=glitchMessages[Math.floor(Math.random()*glitchMessages.length)], g=document.createElement("div");
-      g.className="glitch"; g.textContent=msg; document.body.appendChild(g); document.body.classList.add("body-glitch");
+      g.className="glitch"; g.textContent=msg; document.body.appendChild(g);
+      document.body.classList.add("body-glitch");
       setTimeout(()=>{ g.remove(); document.body.classList.remove("body-glitch"); },2000);
     }
-    // Form submission with Kurt VIP treatment
+
     document.getElementById("complaintForm").addEventListener("submit",e=>{
       e.preventDefault();
       const raw=document.getElementById("complaint").value.trim().toLowerCase();
       let reply;
-      
-      // Check if submission contains "kurt" (case insensitive)
       if(raw.includes("kurt")){
         reply=kurtResponses[Math.floor(Math.random()*kurtResponses.length)];
+      } else if(raw.includes("elsa")){
+        reply=elsaResponses[Math.floor(Math.random()*elsaResponses.length)];
+      } else if(raw.includes("christian")){
+        reply=christianResponses[Math.floor(Math.random()*christianResponses.length)];
       } else {
         reply=zingers[Math.floor(Math.random()*zingers.length)];
       }
-      
-      complaintCount++; tissueCount+=Math.floor(Math.random()*10)+3;
+
+      complaintCount++;
+      tissueCount+=Math.floor(Math.random()*10)+3;
       updateCounters();
       for(let i=0;i<8;i++) setTimeout(createCryingEmoji, i*200);
       document.getElementById("modalResponse").textContent=reply;
