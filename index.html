@@ -19,18 +19,9 @@
   </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar">
     <div class="container">
-      <a class="navbar-brand" href="#">WhineAboutAI</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link text-white" href="#topComplaints">Top Complaints</a></li>
-          <li class="nav-item"><a class="nav-link text-white" href="#">Home</a></li>
-        </ul>
-      </div>
+      <span class="navbar-brand mb-0 h1">WhineAboutAI</span>
     </div>
   </nav>
   <div class="container">
@@ -85,46 +76,22 @@
       "AI suggested I take a nap. I'm offended."
     ];
     const zingers = {
-      young: [
-        "Gen Z? Complain harder. The AI will still out-hustle you.",
-        "Your TikTok algorithm is more dangerous than GPT."      ],
-      adult: [
-        "You grew up on Google. Now you're afraid of search 2.0?",
-        "Still writing think pieces? We’re writing code."      ],
-      boomer: [
-        "Boomer panic detected. Consider unplugging your router.",
-        "Relax. AI isn’t coming for bingo night."      ],
-      default: [
-        "Noted. Now get over it.",
-        "That's adorable. Now grow up.",
-        "We’ll alert the empathy department immediately.",
-        "Your complaint has been rated: Not Even Close to a Problem.",
-        "Wow. Sounds like a you problem.",
-        "Try turning it off and touching grass.",
-        "Complaint received. Reality unchanged.",
-        "We’re feeding this to a bot that will mock you."
-      ]
+      young: ["Gen Z? Complain harder. The AI will still out-hustle you.","Your TikTok algorithm is more dangerous than GPT."],
+      adult: ["You grew up on Google. Now you're afraid of search 2.0?","Still writing think pieces? We’re writing code."],
+      boomer: ["Boomer panic detected. Consider unplugging your router.","Relax. AI isn’t coming for bingo night."],
+      default: ["Noted. Now get over it.","That's adorable. Now grow up.","We’ll alert the empathy department immediately.","Your complaint has been rated: Not Even Close to a Problem.","Wow. Sounds like a you problem.","Try turning it off and touching grass.","Complaint received. Reality unchanged.","We’re feeding this to a bot that will mock you."]
     };
-    // Populate Top Complaints
     document.addEventListener('DOMContentLoaded', () => {
       const listEl = document.getElementById('complaintList');
       fakeComplaints.forEach(c => {
-        const li = document.createElement('li');
-        li.className = 'list-group-item';
-        li.textContent = c;
-        listEl.appendChild(li);
+        const li = document.createElement('li'); li.className = 'list-group-item'; li.textContent = c; listEl.appendChild(li);
       });
     });
-    // Handle form submit and age-based zinger selection
     document.getElementById('complaintForm').addEventListener('submit', e => {
-      e.preventDefault();
-      const age = parseInt(document.getElementById('age').value, 10);
-      let category = 'default';
-      if (age < 25) category = 'young';
-      else if (age < 60) category = 'adult';
-      else category = 'boomer';
+      e.preventDefault(); const age = parseInt(document.getElementById('age').value,10);
+      let category = age<25?'young':age<60?'adult':'boomer';
       const pool = zingers[category].concat(zingers.default);
-      const reply = pool[Math.floor(Math.random() * pool.length)];
+      const reply = pool[Math.floor(Math.random()*pool.length)];
       document.getElementById('modalResponse').textContent = reply;
       new bootstrap.Modal(document.getElementById('responseModal')).show();
     });
