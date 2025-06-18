@@ -31,7 +31,6 @@
       <a href="/" class="navbar-brand mb-0 h1">WhineAboutAI</a>
     </div>
   </nav>
-
   <div class="container">
     <div class="text-center header-text">
       <h1>Whine About AI</h1>
@@ -46,13 +45,11 @@
         <button type="submit" class="btn btn-primary w-100">Cry About It</button>
       </form>
     </div>
-
     <section id="topComplaints" class="mt-5">
       <h2 class="fs-3 mb-3">Top 10 Complaints</h2>
       <ul id="complaintList" class="list-group list-group-flush"></ul>
     </section>
   </div>
-
   <!-- Response Modal -->
   <div class="modal fade" id="responseModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
@@ -66,21 +63,123 @@
       </div>
     </div>
   </div>
-
   <!-- Footer Ads -->
   <div class="ad-footer mt-5">
     <div class="container">
       <div class="row" id="footerAds"></div>
     </div>
   </div>
-
   <footer>&copy; 2025 Whine About AI. All rights reserved.</footer>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Pools
-    const allComplaints = [ /* 100 complaints here */ ];
-    const zingers = [ /* 100 zingers here */ ];
+    // Sample complaints for the top 10 list
+    const allComplaints = [
+      "AI stole my job",
+      "ChatGPT gave me wrong information",
+      "AI art looks better than mine",
+      "My smart home is too smart",
+      "AI keeps recommending bad movies",
+      "Autocorrect ruined my text",
+      "AI chatbot doesn't understand me",
+      "Machine learning is too confusing",
+      "AI is taking over everything",
+      "Robot vacuum ate my socks",
+      "AI wrote my essay better than I could",
+      "Siri never listens to me",
+      "AI generated fake news",
+      "Computer vision can't see my face",
+      "AI is making me lazy",
+      "Neural networks are too neural",
+      "Algorithm thinks I'm basic",
+      "AI assistant is too sassy",
+      "Machine translation butchered my love letter",
+      "AI predicted I'd be single forever",
+      "Deepfakes are too deep",
+      "AI keeps playing the same song",
+      "Computer thinks I'm a robot",
+      "AI scheduling conflicts with my naps",
+      "Machine learning learned all my bad habits",
+      "AI photo filter made me look weird",
+      "Smart car drove me to McDonald's instead of gym",
+      "AI weather forecast lied about rain",
+      "Chatbot broke up with me",
+      "AI therapist charges too much",
+      "Robot dog won't fetch",
+      "AI cookbook only knows kale recipes",
+      "Smart fridge judges my eating habits",
+      "AI tutor is smarter than my teacher",
+      "Machine vision sees through my lies",
+      "AI dating app matched me with my ex",
+      "Computer voice sounds like my mother-in-law",
+      "AI fitness tracker knows I skipped leg day",
+      "Smart doorbell gossips about my visitors",
+      "AI email filter hides important messages",
+      "Robot barista makes better coffee than me",
+      "AI financial advisor spent my money on dogecoin",
+      "Computer beats me at chess every time",
+      "AI translator made me order pig feet",
+      "Smart TV watches me more than I watch it",
+      "AI news feed only shows cat videos",
+      "Machine learning model has better style than me",
+      "AI personal trainer is too personal",
+      "Computer password manager forgot my password",
+      "AI social media algorithm knows me too well"
+    ];
+
+    // Mean/sarcastic responses
+    const zingers = [
+      "Oh no! Anyway... maybe try adapting instead of whining?",
+      "Wow, what a unique and original complaint that definitely hasn't been said a million times before.",
+      "Have you tried turning yourself off and on again?",
+      "Breaking news: Technology changes things. More at 11.",
+      "I'm sure the AI is really sorry it hurt your feelings.",
+      "Let me play you the world's smallest violin.",
+      "Maybe the problem isn't the AI... just saying.",
+      "Congratulations! You've discovered that progress is uncomfortable.",
+      "I bet you also complained when calculators replaced mental math.",
+      "File that under 'Things That Are Inevitable.'",
+      "The future called - it doesn't care about your opinion.",
+      "Plot twist: The AI is probably right.",
+      "Welcome to 2025! Population: You, still complaining.",
+      "I'm sorry, did you expect technology to stop advancing just for you?",
+      "That's rough, buddy. Have you considered becoming Amish?",
+      "News flash: Humans aren't the center of the universe.",
+      "Maybe it's time to level up instead of complaining down.",
+      "I hear caves are AI-free if you're interested.",
+      "Did you also complain when cars replaced horses?",
+      "The audacity of technology to... *checks notes* ...improve.",
+      "Shocking revelation: New things are different from old things.",
+      "I'm sure your strongly worded complaint will stop all progress.",
+      "File a complaint with the CEO of Technology, I'm sure they'll listen.",
+      "Have you tried crying louder? That usually works.",
+      "The AI industrial complex is shaking in its boots right now.",
+      "I bet the printing press really ruined things for scribes too.",
+      "Maybe the real AI was the friends we lost along the way.",
+      "Your complaint has been forwarded to /dev/null.",
+      "I'm sure things were better in the good old days of... *checks notes* ...everything being worse.",
+      "Breaking: Local person discovers change is hard.",
+      "The AI apologizes and promises to be less efficient just for you.",
+      "Maybe you should start a support group: 'Humans Against Progress.'",
+      "I hear carrier pigeons are hiring if you're interested.",
+      "Your feedback is important to us. Just kidding, no it's not.",
+      "Have you considered that maybe you're the problem?",
+      "The future is now, old man! (Or woman, or person.)",
+      "I'm sure your ancestors complained about fire too.",
+      "Resistance is futile. You will be automated.",
+      "Maybe try embracing change instead of bear-hugging the past.",
+      "The AI revolution will not be stopped by your hurt feelings.",
+      "Did you know that adaptation is free?",
+      "Your complaint has been noted and promptly ignored.",
+      "I bet you also miss having to develop film at the drugstore.",
+      "The good news is you'll have plenty to complain about in the future too.",
+      "Maybe the real problem is your attitude, not the technology.",
+      "Welcome to progress! Sorry it's inconvenient for you.",
+      "I'm sure your complaint will single-handedly reverse technological advancement.",
+      "The AI suggests you try being less dramatic.",
+      "Have you considered that maybe the AI is just better at this?",
+      "Your resistance to change is noted and will be ignored."
+    ];
+
     const footerAdsPool = [
       { title: 'AI Anguish Academy', phone: '1-800-OUCH-AI', desc: 'Enroll in our crash course of professional whining.', display: 'aianguish.academy' },
       { title: 'TearTrackers Inc.', phone: '1-877-TEAR-LOL', desc: 'Precision tissue timing for your uncivilized meltdown.', display: 'teartechnology.com' },
@@ -118,12 +217,17 @@
       // Top 10 complaints
       const listEl = document.getElementById('complaintList');
       getRandomItems(allComplaints, 10).forEach(c => {
-        const li = document.createElement('li'); li.className = 'list-group-item'; li.textContent = c; listEl.appendChild(li);
+        const li = document.createElement('li'); 
+        li.className = 'list-group-item'; 
+        li.textContent = c; 
+        listEl.appendChild(li);
       });
+
       // Footer ads
       const adsEl = document.getElementById('footerAds');
       getRandomItems(footerAdsPool, 2).forEach(ad => {
-        const col = document.createElement('div'); col.className = 'col-md-6';
+        const col = document.createElement('div'); 
+        col.className = 'col-md-6';
         col.innerHTML = `
           <div class="ad-card">
             <h5>${ad.title}</h5>
@@ -132,15 +236,21 @@
           </div>`;
         adsEl.appendChild(col);
       });
+
       // Favicon fallback
-      const link = document.querySelector("link[rel='icon']"); if (link) link.href = 'favicon.ico';
+      const link = document.querySelector("link[rel='icon']"); 
+      if (link) link.href = 'favicon.ico';
     });
 
+    // Form submission handler
     document.getElementById('complaintForm').addEventListener('submit', e => {
       e.preventDefault();
-      const reply = zingers[Math.floor(Math.random()*zingers.length)];
+      const reply = zingers[Math.floor(Math.random() * zingers.length)];
       document.getElementById('modalResponse').textContent = reply;
       new bootstrap.Modal(document.getElementById('responseModal')).show();
+      
+      // Clear the form
+      document.getElementById('complaint').value = '';
     });
   </script>
 </body>
