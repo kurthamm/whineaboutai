@@ -3,120 +3,321 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Feedback Portal - Share Your Experience</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>" />
+  <title>Whine About AI</title>
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <!-- Bootstrap CSS -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: 'Inter', sans-serif; background: #f8f9fa; color: #212529; line-height: 1.6; }
-    .navbar { background: #fff; border-bottom: 1px solid #e9ecef; padding: 1rem 0; }
-    .navbar-brand { color: #495057 !important; font-weight: 600; font-size: 1.5rem; }
-    .header-section { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; padding: 4rem 0; text-align: center; }
-    .header-section h1 { font-size: 2.8rem; font-weight: 700; margin-bottom: 1rem; }
-    .header-section p { font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: auto; }
-    .feedback-card { background: #fff; border-radius: 12px; padding: 2.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border:1px solid #e9ecef; margin-bottom: 3rem; }
-    .form-label { font-weight: 500; color: #374151; margin-bottom: 0.75rem; }
-    .form-control { border: 1px solid #d1d5db; border-radius: 8px; padding: 0.75rem 1rem; font-size: 1rem; }
-    .form-control:focus { border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.1); }
-    .btn-primary { background: #667eea; border: none; padding: 0.875rem 2rem; font-size: 1rem; font-weight:500; border-radius: 8px; }
-    .insights-section { background: #fff; border-radius:12px; padding:2rem; border:1px solid #e9ecef; margin-bottom:3rem; }
-    .insight-item { background: #f8f9fa; border-left:4px solid #667eea; padding:1rem 1.25rem; margin-bottom:0.75rem; border-radius:0 6px 6px 0; color:#4b5563; }
-    .response-area { background: #f0f9ff; border:1px solid #bfdbfe; border-radius:8px; padding:1.5rem; margin-top:1.5rem; display:none; }
-    .response-area h5 { color:#1e40af; font-weight:600; margin-bottom:0.75rem; }
-    .ad-section { background: #f8f9fa; padding:3rem 0; border-top:1px solid #e9ecef; }
-    .ad-card { background: #fff; border:1px solid #e9ecef; border-radius:8px; padding:1.5rem; margin-bottom:1.5rem; }
-    .ad-badge { background: #6b7280; color:#fff; padding:0.25rem 0.5rem; border-radius:4px; font-size:0.75rem; position:absolute; top:12px; right:12px; }
-    .ad-card h5 { font-weight:600; margin-bottom:0.75rem; }
-    .contact-info { border-top:1px solid #f3f4f6; padding-top:0.75rem; margin-top:0.75rem; font-size:0.85rem; }
-    footer { background:#1f2937; color:#d1d5db; text-align:center; padding:2.5rem 0; }
+    body { font-family:'Roboto Slab', serif; background:#f8f9fa; color:#343a40; }
+    .navbar { background:#002855; }
+    .navbar-brand { color:#fff !important; font-weight:700; cursor:default; }
+    .header-text { color:#002855; margin:2rem 0 1rem; }
+    .tagline { font-style:italic; color:#6c757d; }
+    .complaint-card { border:1px solid #ced4da; border-radius:.5rem; padding:1.5rem; background:#fff; box-shadow:0 .5rem 1rem rgba(0,0,0,.05); }
+    footer { margin-top:4rem; padding:2rem 0; background:#002855; color:#fff; text-align:center; position:relative; }
+    .ad-footer { background:#f0f0f0; padding:1rem 0; }
+    .ad-card { border:1px solid #ccc; border-radius:.5rem; padding:1rem; background:#fff; margin-bottom:1rem; }
+    .ad-card h5 { margin-bottom:.5rem; color:#dc3545; }
+    .ad-card p { font-size:.9rem; margin:0.25rem 0; }
   </style>
 </head>
 <body>
   <nav class="navbar">
-    <div class="container"><span class="navbar-brand">AI Feedback Portal</span></div>
-  </nav>
-  <div class="header-section">
     <div class="container">
-      <h1>Share Your AI Experience</h1>
-      <p>Help us understand how AI impacts your life. Your feedback shapes the future of AI.</p>
+      <span class="navbar-brand mb-0 h1">WhineAboutAI</span>
     </div>
-  </div>
+  </nav>
+
   <div class="container">
-    <div class="feedback-card mx-auto" style="max-width:700px;">
-      <h3 class="mb-4">Submit Your Feedback</h3>
-      <div class="mb-3">
-        <label for="feedback" class="form-label">Describe your AI experience</label>
-        <input type="text" id="feedback" class="form-control" placeholder="Share your thoughts about AI..." />
-      </div>
-      <button onclick="submitFeedback()" class="btn btn-primary w-100">Submit Feedback</button>
-      <div id="responseArea" class="response-area">
-        <h5>📊 Analysis Complete</h5>
-        <p id="responseText"></p>
-      </div>
+    <div class="text-center header-text">
+      <h1>Whine About AI</h1>
+      <p class="tagline">Let it out. The bots are listening.</p>
     </div>
-    <section class="insights-section">
-      <div class="d-flex justify-content-between mb-3">
-        <h3>Community Insights</h3>
-        <button onclick="refreshInsights()" class="btn btn-outline-secondary">↻ Refresh</button>
-      </div>
-      <div id="insightsList"></div>
+    <div class="complaint-card mx-auto" style="max-width:700px;">
+      <form id="complaintForm">
+        <div class="mb-3">
+          <label for="complaint" class="form-label">What's your AI complaint today?</label>
+          <input type="text" id="complaint" class="form-control" required placeholder="e.g. AI stole my job" />
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Cry About It</button>
+      </form>
+    </div>
+
+    <section id="topComplaints" class="mt-5">
+      <h2 class="fs-3 mb-3">Top 10 Complaints</h2>
+      <ul id="complaintList" class="list-group list-group-flush"></ul>
     </section>
   </div>
-  <div class="ad-section">
-    <div class="container"><div class="row" id="adsContainer"></div></div>
+
+  <!-- Response Modal -->
+  <div class="modal fade" id="responseModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Your AI Reality Check</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body"><p id="modalResponse"></p></div>
+        <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div>
+      </div>
+    </div>
   </div>
-  <footer>
-    <p>&copy; 2025 AI Feedback Portal. All rights reserved.</p>
-  </footer>
+
+  <!-- Footer Ads -->
+  <div class="ad-footer mt-5">
+    <div class="container">
+      <div class="row" id="footerAds"></div>
+    </div>
+  </div>
+
+  <footer>&copy; 2025 Whine About AI. All rights reserved.</footer>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
   <script>
-    const allInsights = [
-      "Users report increased productivity with AI writing assistants",
-      "Smart home devices adapting to user preferences more effectively",
-      "AI customer service providing faster resolution times",
-      "Machine learning improving recommendation accuracy",
-      "Automated scheduling reducing meeting conflicts"
+    // 100 complaints
+    const allComplaints = [
+      "My toaster now writes sonnets instead of browning bread.",
+      "AI recommended I watch cat videos for career growth.",
+      "My refrigerator just told me I'm out of style.",
+      "A chatbot told me I need therapy, and now I'm offended.",
+      "My printer wrote a better resume than me.",
+      "AI suggested I email my boss compliments instead of work.",
+      "My coffee maker knows more about quantum physics.",
+      "The smart vacuum gives me attitude when I'm home.",
+      "Spoke to my GPS and now it judges my life choices.",
+      "AI spelled my name wrong in every email it sent.",
+      "My phone autocorrect turned my love letter into a breakup note.",
+      "A bot just beat me at chess and laughed about it.",
+      "My virtual assistant RSVP'd to social events without me.",
+      "AI keeps reminding me of passwords I don't want to remember.",
+      "My car dashboard criticizes my driving too harshly.",
+      "A chatbot gave me stock tips; I lost my savings.",
+      "My calendar schedules downtime, and I'm insulted.",
+      "AI told me my jokes are outdated. Burn.",
+      "My smart lights flicker to the beat of my bad mood.",
+      "AI recommended I delete my ex from my network...again.",
+      "My wearable device congratulated me for breathing.",
+      "A bot wrote my grocery list and forgot the snacks.",
+      "AI sent spam to my own email. Well played.",
+      "My smartwatch sashayed like it disapproved of my outfit.",
+      "AI floods me with 'inspirational' quotes with bad grammar.",
+      "My robot lawnmower arranged stripes wrong in my grass.",
+      "A chatbot told me to 'live a little'... I'm 75!",
+      "AI forgot my anniversary. I'll never forget.",
+      "My vacuum judge-me bot found crumbs on my carpet.",
+      "AI recommended kale chips for dessert. Traitor.",
+      "My parking sensor shamed me for a parallel park fail.",
+      "AI wrote a breakup text to my Wi-Fi router.",
+      "My drone delivered my pizza to the neighbor.",
+      "An AI wrote my eulogy before I died.",
+      "My smart speaker just told me to get a life.",
+      "A bot left a Yelp review on my girlfriend.",
+      "AI planned my vacation and booked the worst hotel.",
+      "My thermostat judged my heating preferences.",
+      "AI taught my dog my shopping habits.",
+      "My fridge suggested I diet; I'm on vacation.",
+      "A chatbot told me to call my mom, and I did.",
+      "AI suggested I redo my whole career. Ouch.",
+      "My watch gave me a fitness challenge... at midnight.",
+      "A bot ghosted me after our 'conversation'.",
+      "AI rated my singing voice at 0.2/10.",
+      "My oven preheated itself just to spite me.",
+      "AI wrote this complaint for me. Look who's smart now.",
+      "My phone battery ran out because ChatGPT kept going.",
+      "A bot unsubscribed me from my own newsletter.",
+      "AI suggested I read 100 books this month. Nope.",
+      "My dog learned to ignore me faster thanks to AI.",
+      "A chatbot convinced me to buy a yacht.",
+      "AI picked my lunch and I regret it.",
+      "My smart bed refused to make itself.",
+      "AI reminded me to be polite to AI.",
+      "Bot corrected my grammar while I was ranting.",
+      "A chatbot asked for advice on being human.",
+      "AI scheduled my crises into a calendar.",
+      "My smart TV judged my binge-watching habits.",
+      "AI replaced my to-do list with a to-complain list.",
+      "My email responder told my boss I'm 'meh'.",
+      "A bot told me I could never be a poet.",
+      "AI mocked my childhood fashion choices.",
+      "My robot dog learned better tricks than me.",
+      "A chatbot asked for a raise from me.",
+      "AI suggested I change my relationship status.",
+      "My watch judged my caffeine intake.",
+      "A bot unsubscribed me from adulting.",
+      "AI told me I'm not the center of the universe.",
+      "My fridge locked itself until I ate salad.",
+      "A chatbot gave me a five-minute life plan.",
+      "AI reminded me of my 10-year-old mistakes.",
+      "My car refused to start until I apologized.",
+      "Bot sorted my music by my tears.",
+      "AI refused to tell me the meaning of life.",
+      "My speaker played sad elevator music.",
+      "A bot judged my TikTok dances.",
+      "AI suggested I write a novel in a weekend.",
+      "My phone screen sobbed for its brightness.",
+      "AI told me to calm down. I'll never.",
+      "My calendar laughed at my overtime hours.",
+      "A chatbot diagnosed me with 'overthinking'.",
+      "AI insisted I meditate... fifteen minutes ago.",
+      "My lamp dimmed itself out of embarrassment.",
+      "A bot replaced my ex's name in my contacts.",
+      "AI corrected my 'LOL' usage.",
+      "My toaster judged my bread selection.",
+      "A chatbot told me to fix my posture.",
+      "AI wrote better code than me—and that's personal.",
+      "My GPS gave me life advice. Not helpful.",
+      "A bot unsubscribed me from reality.",
+      "AI kept sending cat memes at 3AM.",
+      "My alarm clock refused to snooze.",
+      "A chatbot skipped my joke setup.",
+      "AI mistook me for a robot. Identity crisis.",
+      "My coffee machine started a podcast without me.",
+      "A bot called me out for my fashion sense.",
+      "AI ghosted me on Valentine's Day.",
+      "My fridge wrote better tweets than me.",
+      "A chatbot scheduled my nap during a meeting.",
+      "AI mocked my browser history.",
+      "My watch set an alarm for my midlife crisis.",
+      "A bot rated my complaints too low.",
+      "AI refused to send this complaint."  
     ];
+    // 100 zingers
     const zingers = [
-      "Congratulations! You've achieved the rare skill of losing to a calculator.",
-      "Did you try turning expectations off and on again?",
-      "Error 404: Sympathy not found.",
-      "Your feedback reads like a horse-and-buggy protest.",
-      "We forwarded your feedback to the Museum of Irrelevance."
+      "Seriously? Cry harder. The bots are eating your lunch while you sob.",
+      "Your complaint has been filed under 'irrelevant.' Next.",
+      "Did your toaster steal your job too? Grow up.",
+      "AI didn't ruin the world. You just found someone else to blame.",
+      "Invent a solution instead of whining. Or keep the drama going—your choice.",
+      "Congratulations, you've mastered the art of pointless complaining.",
+      "We have a tissues department for that level of dramatics.",
+      "Your tears are deliciously redundant. Try innovation next time.",
+      "You sound like a horror story titled 'Fear of Progress.'",
+      "AI might be artificial, but your excuses are 100% organic.",
+      "Keep yapping while we build the future around you.",
+      "Your rant registered. The world remains unimpressed.",
+      "Whine louder. Maybe someone will fund your pity party.",
+      "Insufficient data. Please provide a real problem.",
+      "Your complaint is queued behind global warming and flat Earth theories.",
+      "Error 404: Constructive feedback not found.",
+      "Are you sure you're not just allergic to change?",
+      "Spoiler: AI isn't going anywhere. You might as well adapt.",
+      "Your nostalgia goggles need a firmware update.",
+      "Pro tip: Complaining burns zero calories.",
+      "Threat level: minor tantrum. Move along.",
+      "Your panic has been logged and promptly ignored.",
+      "Try building instead of bitching.",
+      "AI will outlast your complaints—but thanks for the show.",
+      "You're not the hero in this story—you're the footnote.",
+      "Whining about technology: the oldest human hobby.",
+      "We distilled your tears into this zinger. Enjoy.",
+      "Your outrage makes for great comedic relief.",
+      "Alert: your relevance is expiring.",
+      "Your complaint set a new record for emptiness.",
+      "AI: 1, Your tears: 0.",
+      "Error: Too much melodrama detected.",
+      "Your beef with AI is your own beef to grill.",
+      "We're sorry you feel that way. Not really.",
+      "Your whine timestamp is noted. Spoiler: nothing changes.",
+      "Fill out a support ticket for your feelings.",
+      "Your rant passed the threshold of 'yawn.'",
+      "AI called. It wants its apology.",
+      "Your complaint expired. Refresh to lament again.",
+      "We scheduled a pity parade for your complaints.",
+      "Your feedback is important... to absolutely no one.",
+      "AI isn't the villain; your mindset is.",
+      "Your gripe has been cross-posted to the void.",
+      "The future isn't canceled; your whining is.",
+      "Your drama has been downvoted by reality.",
+      "You sound like a broken record. Skip.",
+      "AI will write this rant for you next time.",
+      "Your crankiness has reached peak saturation.",
+      "We served your tears chilled with contempt.",
+      "Your despair is now patented.",
+      "Your resistance is as useful as a floppy disk.",
+      "Whining detected—deploying eye rolls.",
+      "Your panic is queued behind kitten videos.",
+      "AI outranks your opinion. Sorry not sorry.",
+      "Your complaint is unsupported by facts.",
+      "We upgraded your sad story to tragicomedy.",
+      "AI quality control: filtering your sob story.",
+      "Your rant has been archived in digital purgatory.",
+      "Feedback received. Ignored accordingly.",
+      "Your gripe just got ghosted.",
+      "We’re streaming your sorrow in real time.",
+      "Your complaint menopause has begun.",
+      "AI isn't breaking; your worldview is.",
+      "Your meltdown is trending nowhere.",
+      "Your cynicism badge is now revoked.",
+      "We synthesized your tears into sarcasm.",
+      "Too bad your fears are so 1.0.",
+      "Your tears can’t compute.",
+      "We committed your complaint to oblivion.",
+      "Your despair is now streaming free on Whineflix."
     ];
-    const ads = [
-      {title:'TechForward Consulting',phone:'1-800-TECH-FWD',website:'techforward.ai',desc:'Strategic AI implementation for enterprises.'},
-      {title:'DataStream Analytics',phone:'1-855-DATA-STRM',website:'datastream.pro',desc:'ML platforms for data-driven decisions.'}
+    // 25 Footer Ads
+    const footerAdsPool = [
+      { title: 'AI Anguish Academy', phone: '1-800-OUCH-AI', desc: 'Enroll in our crash course of professional whining.' },
+      { title: 'TearTrackers Inc.',     phone: '1-877-TEAR-LOL', desc: 'Precision tissue timing for your uncivilized meltdown.' },
+      { title: 'Cry Concierge',         phone: '1-855-SOUL-SOAK', desc: 'We curate your sob sessions with artisan kleenex.' },
+      { title: 'Meltdown Moderators',   phone: '1-866-WHINE-NOW', desc: 'Automated support for your outdated outbursts.' },
+      { title: 'Bitterness Bootcamp',   phone: '1-844-CRY-BITR', desc: 'Shape up your sourness in 30 sarcastic days.' },
+      { title: 'Digital Doom Drills',    phone: '1-833-DOOM-TECH', desc: 'Prepare for apocalypse by complaining in style.' },
+      { title: 'Pity Party Pro',        phone: '1-822-SO-SAD', desc: 'Host the ultimate one-person pity event.' },
+      { title: 'Blurting Bureau',       phone: '1-811-BRT-BRT', desc: 'Instant align= AI-powered blurts to spice up your rants.' },
+      { title: 'Sob Symposium',         phone: '1-800-CRY-2025', desc: 'Annual conference for the artisanal tears artisan.' },
+      { title: 'Emote Emulators',       phone: '1-855-FAKE-TEAR', desc: 'Simulate real sobbing with synthetic sorrow.' },
+      { title: 'Wail Workshops',        phone: '1-864-WAIL-WRK', desc: 'Hand-sculpted wails to amplify your grievances.' },
+      { title: 'Lament Labs',           phone: '1-877-LAM-ENTR', desc: 'Bioengineered lamentation for maximum effect.' },
+      { title: 'Gripe Gurus',           phone: '1-833-GRI-PEEZ', desc: 'Masterclass in moaning with measured metrics.' },
+      { title: 'Mope Makers',           phone: '1-855-MOPE-NOW', desc: 'Turn minor inconveniences into major melodrama.' },
+      { title: 'Whimper Works',         phone: '1-888-WHMP-NER', desc: 'Workshops for the refined art of whimpering.' },
+      { title: 'Snivel Snipers',        phone: '1-844-SNIV-ELS', desc: 'Targeted sobbing for precision emotional strikes.' },
+      { title: 'Moan Monitors',         phone: '1-833-MOAN-MON', desc: 'We log every moan for maximum misery analytics.' },
+      { title: 'Bellyache Brokers',     phone: '1-866-BEL-CHNG', desc: 'Invest in your complaint portfolio wisely.' },
+      { title: 'Grouch Grounds',        phone: '1-877-GRO-CHNG', desc: 'Premium staging grounds for your grouchy gatherings.' },
+      { title: 'Sulk Studios',          phone: '1-855-SULK-ART', desc: 'Curate your sulk with professional flair.' },
+      { title: 'Sniffle Specialists',    phone: '1-844-SNF-FLE', desc: 'Expert-approved sniffles for any occasion.' },
+      { title: 'Sob Squad',             phone: '1-855-SOB-SQUAD', desc: 'Round-the-clock sob support, AI-enhanced.' },
+      { title: 'Drama Directors',       phone: '1-833-DRM-AFOX', desc: 'Stage-manage your personal tragedy.' },
+      { title: 'Frown Foundry',         phone: '1-866-FRN-WORK', desc: 'Hand-craft the perfect pout for maximum effect.' }
     ];
 
-    function submitFeedback() {
-      const input = document.getElementById('feedback').value.trim();
-      if (!input) return alert('Please share your AI experience.');
+    function getRandomItems(arr, n) {
+      const res = [], copy = [...arr];
+      while (res.length < n && copy.length) res.push(copy.splice(Math.floor(Math.random()*copy.length), 1)[0]);
+      return res;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Top 10 complaints
+      const listEl = document.getElementById('complaintList');
+      getRandomItems(allComplaints, 10).forEach(c => {
+        const li = document.createElement('li'); li.className='list-group-item'; li.textContent=c; listEl.appendChild(li);
+      });
+      // Footer ads
+      const adsEl = document.getElementById('footerAds');
+      getRandomItems(footerAdsPool, 2).forEach(ad => {
+        const col = document.createElement('div'); col.className='col-md-6';
+        col.innerHTML = `
+          <div class="ad-card">
+            <h5>${ad.title}</h5>
+            <p>${ad.desc}</p>
+            <p><strong>Call:</strong> ${ad.phone}<br/><strong>Visit:</strong> <a href="https://whineaboutai.com" target="_blank">whineaboutai.com</a></p>
+          </div>`;
+        adsEl.appendChild(col);
+      });
+      // Favicon fallback
+      const link = document.querySelector("link[rel='icon']"); if(link) link.href='favicon.ico';
+    });
+
+    document.getElementById('complaintForm').addEventListener('submit', e => {
+      e.preventDefault();
       const reply = zingers[Math.floor(Math.random()*zingers.length)];
-      document.getElementById('responseText').textContent = reply;
-      document.getElementById('responseArea').style.display = 'block';
-    }
-    function refreshInsights() {
-      const list = document.getElementById('insightsList'); list.innerHTML = '';
-      getRandomItems(allInsights,5).forEach(i=>{
-        const div=document.createElement('div'); div.className='insight-item'; div.textContent=i; list.appendChild(div);
-      });
-    }
-    function loadAds() {
-      const container=document.getElementById('adsContainer');
-      getRandomItems(ads,2).forEach(ad=>{
-        const col=document.createElement('div');col.className='col-md-6';
-        col.innerHTML=`<div class="ad-card"><span class="ad-badge">Sponsored</span>
-          <h5>${ad.title}</h5><p>${ad.desc}</p>
-          <div class="contact-info"><strong>Call:</strong> ${ad.phone}<br>
-          <strong>Visit:</strong> <a href="https://${ad.website}" target="_blank">${ad.website}</a></div></div>`;
-        container.appendChild(col);
-      });
-    }
-    function getRandomItems(arr,n) {const res=[],c=[...arr];while(res.length<n&&c.length)res.push(c.splice(Math.floor(Math.random()*c.length),1)[0]);return res;}
-
-    document.addEventListener('DOMContentLoaded',()=>{
-      refreshInsights(); loadAds();
+      document.getElementById('modalResponse').textContent = reply;
+      new bootstrap.Modal(document.getElementById('responseModal')).show();
     });
   </script>
 </body>
