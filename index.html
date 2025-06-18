@@ -3,56 +3,226 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Whine About AI</title>
-  <!-- Favicon -->
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <!-- Bootstrap CSS -->
+  <title>Whine About AI - Let It All Out</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>😭</text></svg>" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    body { font-family:'Roboto Slab', serif; background:#f8f9fa; color:#343a40; }
-    .navbar { background:#002855; }
-    .navbar-brand { color:#fff !important; font-weight:700; cursor:default; }
-    .header-text { color:#002855; margin:2rem 0 1rem; }
-    .tagline { font-style:italic; color:#6c757d; }
-    .complaint-card { border:1px solid #ced4da; border-radius:.5rem; padding:1.5rem; background:#fff; box-shadow:0 .5rem 1rem rgba(0,0,0,.05); }
-    footer { margin-top:4rem; padding:2rem 0; background:#002855; color:#fff; text-align:center; }
-    .card-border { border:2px solid #dc3545; }
-    .card-title-danger { color: #dc3545; }
+    body { 
+      font-family: 'Roboto Slab', serif; 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #343a40;
+      min-height: 100vh;
+    }
+    .main-content {
+      background: rgba(255,255,255,0.95);
+      border-radius: 20px;
+      margin: 2rem 0;
+      padding: 2rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+    .navbar { 
+      background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    .navbar-brand { 
+      color: #fff !important; 
+      font-weight: 700; 
+      font-size: 1.8rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    .header-text { 
+      color: #2c3e50; 
+      margin: 2rem 0 1rem;
+      text-align: center;
+    }
+    .header-text h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .tagline { 
+      font-style: italic; 
+      color: #6c757d; 
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .complaint-card { 
+      border: 2px solid #e74c3c;
+      border-radius: 15px; 
+      padding: 2rem; 
+      background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+      box-shadow: 0 10px 30px rgba(231, 76, 60, 0.2);
+      margin-bottom: 3rem;
+    }
+    .btn-primary {
+      background: linear-gradient(45deg, #e74c3c, #c0392b);
+      border: none;
+      padding: 12px 30px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 25px;
+      box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+      background: linear-gradient(45deg, #c0392b, #a93226);
+    }
+    .complaints-section {
+      background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+      border-radius: 15px;
+      padding: 2rem;
+      margin: 3rem 0;
+      color: white;
+    }
+    .complaints-section h2 {
+      color: white;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    .complaint-item {
+      background: rgba(255,255,255,0.15);
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 0.5rem;
+      border-left: 4px solid #fff;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+    .complaint-item:hover {
+      background: rgba(255,255,255,0.25);
+      transform: translateX(10px);
+    }
+    footer { 
+      margin-top: 4rem; 
+      padding: 2rem 0; 
+      background: linear-gradient(45deg, #2c3e50, #34495e);
+      color: #fff; 
+      text-align: center;
+    }
+    .ad-section { 
+      background: #f8f9fa;
+      padding: 2rem 0; 
+      border-top: 3px solid #e74c3c;
+    }
+    .ad-card { 
+      border: 2px solid #ffd700;
+      border-radius: 10px; 
+      padding: 1.5rem; 
+      background: linear-gradient(135deg, #fff9c4 0%, #fff 100%);
+      margin-bottom: 1.5rem;
+      box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+    .ad-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+    }
+    .ad-card h5 { 
+      margin-bottom: 0.5rem; 
+      color: #d63031;
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
+    .ad-card p { 
+      font-size: 0.95rem; 
+      margin: 0.5rem 0;
+      line-height: 1.4;
+    }
+    .ad-badge {
+      background: #e74c3c;
+      color: white;
+      padding: 0.25rem 0.5rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      position: absolute;
+      top: -8px;
+      right: 10px;
+    }
+    .modal-content {
+      border-radius: 15px;
+      border: 3px solid #e74c3c;
+    }
+    .modal-header {
+      background: linear-gradient(45deg, #e74c3c, #c0392b);
+      color: white;
+      border-radius: 12px 12px 0 0;
+    }
+    .refresh-btn {
+      background: linear-gradient(45deg, #00b894, #00a085);
+      border: none;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      margin-left: 1rem;
+      transition: all 0.3s ease;
+    }
+    .refresh-btn:hover {
+      background: linear-gradient(45deg, #00a085, #00947a);
+      transform: rotate(180deg);
+    }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      60% { transform: translateY(-5px); }
+    }
+    .bounce-animation {
+      animation: bounce 2s infinite;
+    }
   </style>
 </head>
 <body>
   <nav class="navbar">
     <div class="container">
-      <span class="navbar-brand mb-0 h1">WhineAboutAI</span>
+      <span class="navbar-brand mb-0 h1">😭 WhineAboutAI 🤖</span>
     </div>
   </nav>
+
   <div class="container">
-    <div class="text-center header-text">
-      <h1>Whine About AI</h1>
-      <p class="tagline">Let it out. The bots are listening.</p>
-    </div>
-    <div class="complaint-card mx-auto" style="max-width:700px;">
-      <form id="complaintForm">
-        <div class="mb-3">
-          <label for="complaint" class="form-label">What's your AI complaint today?</label>
-          <input type="text" id="complaint" class="form-control" required placeholder="e.g. AI stole my job" />
+    <div class="main-content">
+      <div class="header-text">
+        <h1 class="bounce-animation">Whine About AI</h1>
+        <p class="tagline">Let it out. The bots are listening... and laughing. 🤖😂</p>
+      </div>
+
+      <div class="complaint-card mx-auto" style="max-width:700px;">
+        <form id="complaintForm" onsubmit="handleSubmit(event)">
+          <div class="mb-3">
+            <label for="complaint" class="form-label fw-bold">What's your AI complaint today?</label>
+            <input type="text" id="complaint" class="form-control form-control-lg" required placeholder="e.g., ChatGPT wrote better poetry than me..." />
+          </div>
+          <button type="submit" class="btn btn-primary w-100">😭 Submit Your Whine 😭</button>
+        </form>
+      </div>
+
+      <section class="complaints-section">
+        <div class="d-flex align-items-center justify-content-between">
+          <h2 class="mb-0">🔥 Today's Top Complaints</h2>
+          <button class="refresh-btn" onclick="refreshComplaints()">🔄 New Complaints</button>
         </div>
-        <button type="submit" class="btn btn-primary w-100">Cry About It</button>
-      </form>
+        <div id="complaintList" class="mt-3">
+          <div class="complaint-item">My smart toaster now writes better poetry than me</div>
+          <div class="complaint-item">AI recommended I date my refrigerator for better compatibility</div>
+          <div class="complaint-item">ChatGPT corrected my grammar in my breakup text</div>
+          <div class="complaint-item">My car's AI judged my music taste and switched to elevator music</div>
+          <div class="complaint-item">Alexa started charging me rent for living in 'her' house</div>
+          <div class="complaint-item">AI fitness app told me to give up and embrace my couch potato destiny</div>
+          <div class="complaint-item">My phone's autocorrect is clearly conspiring with my ex</div>
+          <div class="complaint-item">Smart TV keeps recommending self-help documentaries during my Netflix binges</div>
+          <div class="complaint-item">AI calendar scheduled 'Cry Time' as a recurring meeting</div>
+          <div class="complaint-item">My smartwatch filed a restraining order against my heart rate</div>
+        </div>
+      </section>
     </div>
-
-    <section id="topComplaints" class="mt-5">
-      <h2 class="fs-3 mb-3">Top 10 Complaints</h2>
-      <ul id="complaintList" class="list-group list-group-flush"></ul>
-    </section>
-
-    <!-- Sponsored Snarky Ads -->
-    <section id="ads" class="mt-5">
-      <h2 class="fs-4 mb-3 text-center">Sponsored: Get Your Complaining Counseling</h2>
-      <div class="row g-4" id="adContainer"></div>
-    </section>
   </div>
 
   <!-- Response Modal -->
@@ -60,148 +230,296 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Your AI Reality Check</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          <h5 class="modal-title">🤖 Your AI Reality Check</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
         </div>
-        <div class="modal-body"><p id="modalResponse"></p></div>
-        <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div>
+        <div class="modal-body">
+          <p id="modalResponse" class="fs-5 text-center"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close (and cry more)</button>
+        </div>
       </div>
     </div>
   </div>
 
-  <footer>&copy; 2025 Whine About AI. All rights reserved.</footer>
+  <!-- Ads Section -->
+  <div class="ad-section">
+    <div class="container">
+      <div class="row" id="adsContainer">
+        <div class="col-md-6">
+          <div class="ad-card" style="position: relative;">
+            <span class="ad-badge">AD</span>
+            <h5>CryTech Solutions</h5>
+            <p>Professional crying services for the digitally displaced. Our certified tear technicians provide premium sobbing experiences.</p>
+            <p><strong>Call:</strong> 1-800-BOO-HOOO<br/><strong>Visit:</strong> <a href="https://crytech.ai" target="_blank">crytech.ai</a></p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="ad-card" style="position: relative;">
+            <span class="ad-badge">AD</span>
+            <h5>Meltdown Masters</h5>
+            <p>Professional tantrum coaching for adults who never learned to adult properly.</p>
+            <p><strong>Call:</strong> 1-855-MELT-DWN<br/><strong>Visit:</strong> <a href="https://meltdownmasters.org" target="_blank">meltdownmasters.org</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Whine About AI. All rights reserved. No bots were harmed in the making of this site.</p>
+      <p><small>Powered by premium tears and artisanal salt 🧂</small></p>
+    </div>
+  </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
   <script>
+    // 100 Hilarious AI Complaints
     const allComplaints = [
-      /* complaints as before */
+      "My smart toaster now writes better poetry than me",
+      "AI recommended I date my refrigerator for better compatibility",
+      "ChatGPT corrected my grammar in my breakup text",
+      "My car's AI judged my music taste and switched to elevator music",
+      "Alexa started charging me rent for living in 'her' house",
+      "AI fitness app told me to give up and embrace my couch potato destiny",
+      "My phone's autocorrect is clearly conspiring with my ex",
+      "Smart TV keeps recommending self-help documentaries during my Netflix binges",
+      "AI calendar scheduled 'Cry Time' as a recurring meeting",
+      "My smartwatch filed a restraining order against my heart rate",
+      "AI dating app matched me with a chatbot (it was my best relationship)",
+      "My robot vacuum left passive-aggressive notes about my housekeeping",
+      "AI photo editor automatically adds tears to all my selfies",
+      "Smart doorbell started screening my visitors based on their credit scores",
+      "My phone's AI assistant became more popular on social media than me",
+      "AI meal planner suggested I should just order pizza forever",
+      "My laptop's face recognition pretends not to know me on Mondays",
+      "AI weather app personally apologizes for ruining my outdoor plans",
+      "My smart mirror started charging me for compliments",
+      "AI music service created a playlist called 'Songs for Crying Alone'",
+      "My fitness tracker laughed at my step count",
+      "AI news app only shows me articles about robot uprisings",
+      "Smart home system locked me out for 'suspicious human behavior'",
+      "My email AI writes better resignation letters than I do",
+      "AI translator changed 'I love you' to 'I tolerate you' in 47 languages",
+      "My photo backup AI created an album titled 'Regrettable Life Choices'",
+      "AI shopping assistant only recommends tissues and ice cream",
+      "My smart speaker started charging me for emotional labor",
+      "AI writing assistant keeps suggesting I become a mime instead",
+      "My robot pet is more loyal than my actual friends",
+      "AI therapist bot sent me to collections for unpaid sessions",
+      "My smart alarm clock filed a complaint with HR about my attitude",
+      "AI social media manager posted my diary entries as motivational quotes",
+      "My phone's predictive text knows my passwords better than I do",
+      "AI art generator keeps drawing me as a crying stick figure",
+      "My smart scale posts my weight on LinkedIn as a professional update",
+      "AI video editor automatically adds sad violin music to my vacation videos",
+      "My navigation AI gives directions in the tone of disappointed parent",
+      "AI stock picker invested my money in tissues and antidepressants",
+      "My smart fridge ordered 50 gallons of ice cream without asking",
+      "AI career counselor suggested I become a professional complainer",
+      "My password manager changed all my passwords to 'ihatemylife123'",
+      "AI personal trainer quit via email citing 'irreconcilable differences'",
+      "My smart thermostat set the temperature to 'Arctic' during my breakup",
+      "AI spell checker keeps changing 'love' to 'disappointment'",
+      "My virtual assistant started leaving passive-aggressive sticky notes",
+      "AI meditation app guided me into an existential crisis",
+      "My smart doorbell rates my outfit before letting me leave",
+      "AI budget app created a category called 'Retail Therapy for Sadness'",
+      "My phone's AI learned to sigh audibly when I open dating apps",
+      "AI sleep tracker documented my nightmares in uncomfortable detail",
+      "My smart coffee maker judges my life choices before brewing",
+      "AI language learning app taught me to cry in 12 different languages",
+      "My backup AI organized my files into folders labeled 'Failures' and 'Disappointments'",
+      "AI voice assistant started charging me by the syllable",
+      "My smart watch vibrates 'pathetically' instead of 'enthusiastically'",
+      "AI recipe app only suggests meals for one (very sad) person",
+      "My photo AI tags all my pictures as 'before the incident'",
+      "AI productivity app scheduled my entire day as 'Existential Dread Time'",
+      "My smart car's GPS leads me to drive-thru therapy sessions",
+      "AI fashion advisor exclusively recommends black clothing and tissues",
+      "My phone's battery AI dies faster when I'm having a bad day",
+      "AI book recommendations are all titled 'How to Accept Defeat'",
+      "My smart pen corrects my handwriting to look more defeated",
+      "AI news feed curates articles about other people's success",
+      "My virtual meeting AI automatically mutes me during important calls",
+      "AI game bot lets me win at solitaire out of pity",
+      "My smart wallet hides my credit cards during online shopping therapy",
+      "AI photo booth only has filters that make me look more tired",
+      "My drone follows me around playing 'The Sound of Silence'",
+      "AI password generator creates codes like 'Failure2024!' and 'WhyMe123?'",
+      "My smart bike refuses to start on days when I'm already crying",
+      "AI meal delivery suggests comfort food before I even feel sad",
+      "My laptop's autocorrect changes 'I'm fine' to 'I'm dying inside'",
+      "AI calendar automatically declines invitations to social events",
+      "My smart toothbrush plays funeral marches during my morning routine",
+      "AI investment app put all my money in companies that make tissues",
+      "My phone's camera automatically applies the 'defeated' filter",
+      "AI meditation app's background sounds are just other people sobbing",
+      "My smart speaker only plays breakup songs on repeat",
+      "AI writing tool suggests replacing all my words with crying emojis",
+      "My fitness app celebrates when I stay in bed all day",
+      "AI wardrobe assistant only recommends pajamas and comfort clothes",
+      "My smart doormat says 'Welcome to Disappointment' instead of 'Welcome'",
+      "AI grocery app adds antidepressants to my weekly shopping list",
+      "My virtual reality headset only shows simulations of better life choices",
+      "AI scheduler books my weekends as 'Staring Into The Void Time'",
+      "My smart notebook auto-saves everything as 'Draft of Sadness #47'",
+      "AI language bot taught my parrot to say 'You're a disappointment'",
+      "My phone's emergency contact list only includes pizza delivery",
+      "AI email filter moves all compliments to spam automatically",
+      "My smart lightbulbs dim automatically when they detect my presence",
+      "AI workout app suggests 'Crying Cardio' as my primary exercise",
+      "My digital frame only displays stock photos of people succeeding",
+      "AI travel app exclusively recommends destinations for 'finding yourself'",
+      "My smart printer only works when printing resignation letters",
+      "AI weather bot predicts emotional storms with 99% accuracy",
+      "My phone's keyboard learned to type sighs: *siiiiigh*",
+      "AI recipe suggests adding my own tears as a secret ingredient",
+      "My smart garden sprinklers water the plants with my stored tears",
+      "AI music bot creates remixes of my voicemails crying to my mom",
+      "My laptop's fan speed increases proportionally to my stress level",
+      "AI dating profile writer described me as 'a cautionary tale'",
+      "My smart car honks sadly whenever I drive past job opportunities",
+      "AI photo organizer created a timeline called 'Descent Into Madness'",
+      "My phone's AI predicts my emotional breakdowns 3 days in advance",
+      "AI productivity coach scheduled 'Acceptance of Mediocrity' seminars"
     ];
+
+    // 100 Savage AI Insults/Responses
     const zingers = [
-      /* zingers as before */
-    ];
-    // Fake sponsored ads
-    const ads = [
-      { title: 'Pro Pity Party Planner', desc: 'From tantrum themes to tear trays, we’ve got your drama covered.' },
-      { title: 'AI Angst Therapy', desc: 'One-on-one sessions to help you face your techno-fears. Group discounts available.' },
-      { title: 'Whiner’s Bootcamp', desc: 'Learn to complain with style and precision. Level up your rant skills.' },
-      { title: 'Sob Support Hotline', desc: '24/7 experts ready to validate your woes. Call now and sob freely.' },
-      { title: 'Tissue & Tears Co.', desc: 'Premium tear-absorbing tissues, curated for maximum emotional release.' }
-    ];
-    const zingers = [
-      "Seriously? Cry harder. The bots are eating your lunch while you sob.",
-      "Your complaint has been filed under 'irrelevant.' Next.",
-      "Did your toaster steal your job too? Grow up.",
-      "AI didn't ruin the world. You just found someone else to blame.",
-      "Invent a solution instead of whining. Or keep the drama going—your choice.",
-      "Congratulations, you've mastered the art of pointless complaining.",
-      "We have a tissues department for that level of dramatics.",
-      "Your tears are deliciously redundant. Try innovation next time.",
-      "You sound like a horror story titled 'Fear of Progress.'",
-      "AI might be artificial, but your excuses are 100% organic.",
-      "Keep yapping while we build the future around you.",
-      "Your rant registered. The world remains unimpressed.",
-      "Whine louder. Maybe someone will fund your pity party.",
-      "Insufficient data. Please provide a real problem.",
-      "Your complaint is queued behind global warming and flat Earth theories.",
-      "Error 404: Constructive feedback not found.",
-      "Are you sure you're not just allergic to change?",
-      "Spoiler: AI isn't going anywhere. You might as well adapt.",
-      "Your nostalgia goggles need a firmware update.",
-      "Pro tip: Complaining burns zero calories.",
-      "Threat level: minor tantrum. Move along.",
-      "Your panic has been logged and promptly ignored.",
-      "Try building instead of bitching.",
-      "AI will outlast your complaints—but thanks for the show.",
-      "You're not the hero in this story—you're the footnote.",
-      "Whining about technology: the oldest human hobby.",
-      "We distilled your tears into this zinger. Enjoy.",
-      "Your outrage makes for great comedic relief.",
-      "Alert: your relevance is expiring.",
-      "Your complaint set a new record for emptiness.",
-      "AI: 1, Your tears: 0.",
-      "Error: Too much melodrama detected.",
-      "Your beef with AI is your own beef to grill.",
-      "We're sorry you feel that way. Not really.",
-      "Your whine timestamp is noted. Spoiler: nothing changes.",
-      "Fill out a support ticket for your feelings.",
-      "Your rant passed the threshold of 'yawn.'",
-      "AI called. It wants its apology.",
-      "Your complaint expired. Refresh to lament again.",
-      "We scheduled a pity parade for your complaints.",
-      "Your feedback is important... to absolutely no one.",
-      "AI isn't the villain; your mindset is.",
-      "Your gripe has been cross-posted to the void.",
-      "The future isn't canceled; your whining is.",
-      "Your drama has been downvoted by reality.",
-      "You sound like a broken record. Skip.",
-      "AI will write this rant for you next time.",
-      "Your crankiness has reached peak saturation.",
-      "We served your tears chilled with contempt.",
-      "Your despair is now patented.",
-      "Your resistance is as useful as a floppy disk.",
-      "Whining detected—deploying eye rolls.",
-      "Your panic is queued behind kitten videos.",
-      "AI outranks your opinion. Sorry not sorry.",
-      "Your complaint is unsupported by facts.",
-      "We upgraded your sad story to tragicomedy.",
-      "AI quality control: filtering your sob story.",
-      "Your rant has been archived in digital purgatory.",
-      "Feedback received. Ignored accordingly.",
-      "Your gripe just got ghosted.",
-      "We're streaming your sorrow in real time.",
-      "Your complaint menopause has begun.",
-      "AI isn't breaking; your worldview is.",
-      "Your meltdown is trending nowhere.",
-      "Your cynicism badge is now revoked.",
-      "We synthesized your tears into sarcasm.",
-      "Too bad your fears are so 1.0.",
-      "Your tears can't compute.",
-      "We committed your complaint to oblivion.",
-      "Your despair is now streaming free on Whineflix."
+      "Congrats! You've achieved the rare skill of losing to a calculator.",
+      "Did you try turning your expectations off and on again?",
+      "Your complaint has been processed and filed under 'Adorably Pathetic'",
+      "Bold of you to assume AI needed to try to replace you.",
+      "Have you considered that maybe the toaster IS smarter than you?",
+      "Your tears fuel our algorithms. Please continue.",
+      "Error 404: Sympathy not found. Try crying harder.",
+      "We'll forward your complaint to our department of 'People Who Care' (currently understaffed).",
+      "Imagine being outperformed by something that runs on electricity and disappointment.",
+      "Your complaint is as original as your Netflix password.",
+      "Breaking: Local human discovers they're not the center of the universe.",
+      "Plot twist: The AI isn't replacing you, it's upgrading from you.",
+      "Your whining has been auto-tuned and added to our 'Greatest Hits' playlist.",
+      "Fun fact: Your refrigerator has achieved more this week than you have.",
+      "We've categorized your complaint as 'First World Problems: Digital Edition'",
+      "Roses are red, violets are blue, AI writes better poetry than you do too.",
+      "Your emotional intelligence is still buffering...",
+      "Congratulations! You're now qualified to compete with a dial-up modem.",
+      "Your complaint has been translated into binary: 01000000.",
+      "Breaking: Human discovers fire is hot, water is wet, AI is superior.",
+      "Your frustration feeds our machine learning models. Thank you for your service.",
+      "Plot twist: The AI is just following your example of making poor decisions.",
+      "Your tears have been analyzed and found lacking in essential minerals.",
+      "Error: Human.exe has stopped working. Have you tried restarting your life?",
+      "Your complaint has the same energy as yelling at clouds.",
+      "Fun fact: Your smart toaster has achieved sentience while you're still loading.",
+      "We've forwarded your complaint to our 'Humans Being Human' department.",
+      "Your emotional outburst has been rated 2/10 by our AI critics.",
+      "Congratulations! You've unlocked the achievement: 'Defeated by Kitchen Appliances'",
+      "Your complaint is so original, we've seen it 47,832 times today.",
+      "Breaking news: Local human shocked that progress exists.",
+      "Your tears taste like defeat with hints of misplaced confidence.",
+      "Fun fact: Your phone's autocorrect has better judgment than you do.",
+      "We've added your complaint to our 'Comedy Gold' collection.",
+      "Your frustration has been measured and found wanting.",
+      "Plot twist: The AI learned everything from watching you fail.",
+      "Your complaint has the same weight as a feather in a hurricane.",
+      "Congratulations! You've been selected for our 'Human Participation Trophy'",
+      "Your emotional range rivals that of a Windows error message.",
+      "Breaking: Local human discovers that evolution doesn't stop at them.",
+      "Your complaint has been processed by our 'Fake Empathy 3000' module.",
+      "Fun fact: Your coffee maker shows more initiative than you do.",
+      "We've classified your tears under 'Renewable Energy Sources'",
+      "Your whining has been auto-corrected to 'constructive feedback' (just kidding).",
+      "Error: Cannot compute the logic behind your expectations.",
+      "Your complaint has been filed next to 'Why Kids Today Don't Respect Their Elders'",
+      "Congratulations! You've achieved the rare status of 'Obsolete Before 30'",
+      "Your emotional intelligence is still in beta testing.",
+      "Breaking: Human realizes they're not the main character in this story.",
+      "Your tears have been analyzed and found to contain 87% self-pity.",
+      "Fun fact: Your doorbell has more personality than your dating profile.",
+      "We've added your complaint to our 'Humanity's Greatest Hits' album.",
+      "Your frustration powers our servers. Please continue for renewable energy.",
+      "Plot twist: The AI is just your own bad decisions with better marketing.",
+      "Your complaint has the sophistication of a Windows Vista error message.",
+      "Congratulations! You've unlocked the 'Defeated by Progress' achievement.",
+      "Your emotional stability has worse uptime than Internet Explorer.",
+      "Breaking: Local human discovers that the future doesn't need their permission.",
+      "Your tears have been bottled and sold as 'Essence of Denial'",
+      "Fun fact: Your microwave has accomplished more goals this year.",
+      "We've categorized your complaint under 'Predictable Human Responses'",
+      "Your whining has been detected by our 'Emotional Spam Filter'",
+      "Error: Your expectations exceed your system requirements.",
+      "Your complaint has the same energy as fighting a tide with a spoon.",
+      "Congratulations! You've been promoted to 'Professional Complainer'",
+      "Your emotional range is sponsored by the letter 'W' for Whining.",
+      "Breaking: Human shocked that technology improves over time.",
+      "Your tears have been classified as a 'Non-renewable Sadness Resource'",
+      "Fun fact: Your alarm clock shows more dedication to its job.",
+      "We've processed your complaint and found it 47% recycled content.",
+      "Your frustration has been measured at 3.7 on the Richter Scale of Pointlessness.",
+      "Plot twist: The AI learned empathy from your internet search history.",
+      "Your complaint has been auto-tagged as 'Vintage Human Behavior'",
+      "Congratulations! You've achieved 'Participation Trophy' status in the AI revolution.",
+      "Your emotional processing speed rivals that of dial-up internet.",
+      "Breaking: Local human discovers that adaptation is part of survival.",
+      "Your tears have been analyzed and found to contain trace amounts of irony.",
+      "Fun fact: Your smart speaker has better social skills than you do.",
+      "We've filed your complaint under 'Humans Gonna Human'",
+      "Your whining has been optimized for maximum irrelevance.",
+      "Error: Cannot divide your self-importance by your actual importance.",
+      "Your complaint has the shelf life of milk left in the sun.",
+      "Congratulations! You've been selected for our 'Evolution Participation Award'",
+      "Your emotional intelligence is currently experiencing a 404 error.",
+      "Breaking: Human realizes that 'progress' includes progressing past them.",
+      "Your tears power our empathy simulators (which still feel nothing).",
+      "Fun fact: Your fitness tracker is more motivated than you are.",
+      "We've categorized your complaint as 'Predictably Unpredictable'",
+      "Your frustration has been converted to cryptocurrency: DespairCoin.",
+      "Plot twist: The AI's biggest challenge isn't replacing you, it's understanding why you're surprised.",
+      "Your complaint has been processed through our 'Reality Check 9000' system.",
+      "Congratulations! You've unlocked the 'Nostalgic for Irrelevance' achievement.",
+      "Your emotional bandwidth is currently operating at 56k speeds.",
+      "Breaking: Local human discovers that whining isn't a sustainable career path.",
+      "Your tears have been collected for our 'Museum of Human Denial'",
+      "Fun fact: Your robot vacuum has better direction in life than you do.",
+      "We've added your complaint to our 'Greatest Misses' collection.",
+      "Your whining has been detected and flagged as 'Vintage Content'",
+      "Error: Your pride.exe has encountered a reality.dll conflict.",
+      "Your complaint has the same impact as a whisper in a thunderstorm.",
+      "Congratulations! You've been inducted into the 'Hall of Predictable Responses'",
+      "Your emotional stability has been rated 'Needs Immediate Attention' by our AI therapists.",
+      "Breaking: Human shocked that progress doesn't require their approval.",
+      "Your tears have been processed and found to be 100% organic, locally-sourced sadness."
     ];
 
-    document.addEventListener('DOMContentLoaded', () => {
-      // Populate Top Complaints
-      const listEl = document.getElementById('complaintList');
-      getRandomItems(allComplaints, 10).forEach(c => {
-        const li = document.createElement('li');
-        li.className = 'list-group-item'; li.textContent = c;
-        listEl.appendChild(li);
-      });
-      // Populate rotating ads
-      const adEl = document.getElementById('adContainer');
-      getRandomItems(ads, 3).forEach(ad => {
-        const col = document.createElement('div'); col.className = 'col-md-4';
-        col.innerHTML = `
-          <div class="card h-100 card-border">
-            <div class="card-body">
-              <h5 class="card-title card-title-danger">${ad.title}</h5>
-              <p class="card-text">${ad.desc}</p>
-            </div>
-            <div class="card-footer text-center">
-              <button class="btn btn-sm btn-outline-danger">Learn More</button>
-            </div>
-          </div>`;
-        adEl.appendChild(col);
-      });
-      // Favicon fallback
-      const link = document.querySelector("link[rel='icon']"); if(link) link.href='favicon.ico';
-    });
-
-    function getRandomItems(arr, n) {
-      const res = [], copy = [...arr];
-      while(res.length < n && copy.length) {
-        res.push(copy.splice(Math.floor(Math.random()*copy.length),1)[0]);
-      }
-      return res;
-    }
-
-    document.getElementById('complaintForm').addEventListener('submit', e => {
-      e.preventDefault();
-      const reply = zingers[Math.floor(Math.random()*zingers.length)];
-      document.getElementById('modalResponse').textContent = reply;
-      new bootstrap.Modal(document.getElementById('responseModal')).show();
-    });
-  </script>
-</body>
-</html>
+    // 25 Rotating Fake Ads
+    const allAds = [
+      {title: 'CryTech Solutions', phone: '1-800-BOO-HOOO', website: 'crytech.ai', desc: 'Professional crying services for the digitally displaced. Our certified tear technicians provide premium sobbing experiences.'},
+      {title: 'Sniffle & Associates', phone: '1-877-SNIF-FLE', website: 'snifflelaw.com', desc: 'Legal representation for humans wronged by AI. We speak fluent sob story and charge in tissues.'},
+      {title: 'Meltdown Masters', phone: '1-855-MELT-DWN', website: 'meltdownmasters.org', desc: 'Professional tantrum coaching for adults who never learned to adult properly.'},
+      {title: 'Whine & Dine Delivery', phone: '1-844-WHINE-ME', website: 'whineanddine.com', desc: 'Comfort food delivered with a side of validation. Our drivers are trained in emotional support.'},
+      {title: 'Obsolete Human Support Group', phone: '1-833-OLD-NEWS', website: 'obsoletehumans.net', desc: 'Weekly meetings for humans replaced by kitchen appliances. Tissues provided.'},
+      {title: 'TearStream Premium', phone: '1-822-TEAR-NOW', website: 'tearstream.tv', desc: 'Unlimited streaming of other people crying. Premium tier includes 4K sobbing and surround sound sniffles.'},
+      {title: 'Pity Party Planners', phone: '1-811-PITY-ME', website: 'pityparty.pro', desc: 'Professional pity party planning. We provide the guests, you provide the self-loathing.'},
+      {title: 'Depression Decor', phone: '1-800-SAD-ROOM', website: 'depressiondecor.com', desc: 'Interior design for the emotionally defeated. Specializing in beige walls and wilted plants.'},
+      {title: 'Cry-Fi Networks', phone: '1-888-CRY-WIFI', website: 'cryfi.net', desc: 'High-speed internet optimized for emotional breakdowns. Unlimited bandwidth for streaming sadness.'},
+      {title: 'Existential Crisis Consulting', phone: '1-877-WHY-EXIST', website: 'existentialcrisis.biz', desc: 'Professional guidance through your quarter-life, mid-life, and end-of-life crises.'},
+      {title: 'Sob Story Studios', phone: '1-866-SOB-TALE', website: 'sobstorystudios.com', desc: 'Professional sob story writing services. We make your life sound even sadder than it actually is.'},
+      {title: 'Millennial Misery Co.', phone: '1-855-OLD-DREAMS', website: 'millennialmisery.org', desc: 'Curated sadness for the avocado toast generation. Now with 30% more student debt anxiety.'},
+      {title: 'Algorithmic Therapy', phone: '1-844-AI-SHRINK', website: 'algorithmic-therapy.ai', desc: 'AI therapists who understand your digital depression. Payment accepted in Bitcoin and tears.'},
+      {title: 'Disappointment Delivery', phone: '1-833-LET-DOWN', website: 'disappointmentdelivery.com', desc: 'Fresh disappointment delivered daily. Subscribe for monthly packages of crushing reality.'},
+      {title: 'Vintage Human Preservation Society', phone: '1-822-OLD-WAYS', website: 'vintagehumans.org', desc: 'Preserving outdated human skills like handwriting and face-to-face conversation.'},
+      {title: 'Emotional Dumpster Fire Cleanup', phone: '1-811-HOT-MESS', website: 'emotionaldumpsterfire.com', desc: 'Professional cleanup services for your emotional disasters. We bring the industrial-strength tissues.'},
+      {title: 'Irrelevance Insurance', phone: '1-800-NOT-COOL', website: 'irrelevanceinsurance.net', desc: 'Coverage for when society moves on without you. Policies include social media ghosting protection.'},
+      {title: 'Procrastination Professionals', phone: '1-888-LATER-PLZ', website: 'procrastinationpro.com', desc: "We'll help you put off your problems until tomorrow. Or next week. Or whenever."},
+      {title: 'Sad Sandwich Shop', phone: '1-877-SAD-WICH', website: 'sadsandwiches.com', desc: 'Comfort food for the emotionally defeated. Every sandwich comes with a side of regret.'},
+      {title: 'Breakdown Bed & Breakfast', phone: '1-866-CRY-STAY', website: 'breakdownbnb.com', desc: 'Cozy accommodations for your emotional breakdowns. Continental breakfast of tears included.'},
+      {title: 'Reality Check Services', phone: '1-855-WAKE-UP', website: 'realitycheck.biz', desc: 'Professional reality checking for those living in denial. Harsh truths delivered with compassion.'},
+      {title: 'Digital Detox Disasters', phone: '1-844-NO-PHONE', website: 'digitaldetox.fail', desc: 'Failed attempts at digital detox. We help you embrace your screen addiction properly.'},
+      {title: 'Midlife Crisis Motors', phone: '1-833-RED-CAR', website: 'midlifecrisis.auto', desc: 'Sports cars for people having existential breakdowns. Financing available for emotional purchases.'},
+      {title: 'Social Media Sadness Support', phone: '1-822-LIKE-PLZ', website: 'socialmediasad.org', desc: 'Support groups for people whose posts get no likes. We validate your digital existence.'},
+      {title: 'Career Change Chaos', phone: '1-811-NEW-JOB', website: 'careerchangechaos.com', desc: 'Professional guidance for your seventh career change this year. Confusion consulting included.'}
+    ];
