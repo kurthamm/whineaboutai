@@ -12,7 +12,7 @@
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    body { font-family:'Roboto Slab', serif; background:#f8f9fa; color:#343a40; }
+    body { font-family:'Roboto Slab', serif; background:#f8f9fa; color:#343a40; position: relative; overflow-x: hidden; }
     .navbar { background:#002855; }
     .navbar-brand { color:#fff !important; font-weight:700; cursor:default; }
     .header-text { color:#002855; margin:2rem 0 1rem; }
@@ -23,6 +23,75 @@
     .ad-card { border:1px solid #ccc; border-radius:.5rem; padding:1rem; background:#fff; margin-bottom:1rem; }
     .ad-card h5 { margin-bottom:.5rem; color:#dc3545; }
     .ad-card p { font-size:.9rem; margin:0.25rem 0; }
+    
+    /* Counter styles */
+    .stats-row { margin: 2rem 0; }
+    .stat-card { 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      margin-bottom: 1rem;
+    }
+    .stat-number { font-size: 2.5rem; font-weight: bold; margin: 0; }
+    .stat-label { font-size: 0.9rem; opacity: 0.9; margin: 0; }
+    
+    /* Crying emoji animation */
+    .crying-emoji {
+      position: fixed;
+      font-size: 2rem;
+      z-index: 1000;
+      pointer-events: none;
+      animation: fall 3s linear;
+    }
+    
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    
+    /* Glitch effect */
+    .glitch {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 0, 0, 0.9);
+      color: white;
+      padding: 2rem 3rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+      border-radius: 1rem;
+      z-index: 9999;
+      animation: glitchShake 0.5s infinite;
+      box-shadow: 0 0 50px rgba(255, 0, 0, 0.5);
+    }
+    
+    @keyframes glitchShake {
+      0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+      25% { transform: translate(-52%, -48%) rotate(1deg); }
+      50% { transform: translate(-48%, -52%) rotate(-1deg); }
+      75% { transform: translate(-52%, -52%) rotate(1deg); }
+    }
+    
+    .body-glitch {
+      animation: bodyGlitch 0.1s infinite;
+    }
+    
+    @keyframes bodyGlitch {
+      0%, 100% { filter: hue-rotate(0deg); }
+      25% { filter: hue-rotate(90deg) contrast(150%); }
+      50% { filter: hue-rotate(180deg) brightness(150%); }
+      75% { filter: hue-rotate(270deg) contrast(200%); }
+    }
   </style>
 </head>
 <body>
@@ -36,13 +105,30 @@
       <h1>Whine About AI</h1>
       <p class="tagline">Let it out. The bots are listening.</p>
     </div>
+    
+    <!-- Stats Row -->
+    <div class="row stats-row">
+      <div class="col-md-6">
+        <div class="stat-card">
+          <p class="stat-number" id="complaintCounter">1,337</p>
+          <p class="stat-label">People Whined Today</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="stat-card">
+          <p class="stat-number" id="tissueCounter">42,069</p>
+          <p class="stat-label">Tissues Delivered</p>
+        </div>
+      </div>
+    </div>
+    
     <div class="complaint-card mx-auto" style="max-width:700px;">
       <form id="complaintForm">
         <div class="mb-3">
           <label for="complaint" class="form-label">What's your AI complaint today?</label>
           <input type="text" id="complaint" class="form-control" required placeholder="e.g. AI stole my job" />
         </div>
-        <button type="submit" class="btn btn-primary w-100">Cry About It</button>
+        <button type="submit" class="btn btn-primary w-100" id="submitBtn">Cry About It</button>
       </form>
     </div>
     <section id="topComplaints" class="mt-5">
@@ -125,7 +211,7 @@
       "Computer password manager forgot my password",
       "AI social media algorithm knows me too well"
     ];
-
+    
     // Mean/sarcastic responses
     const zingers = [
       "Oh no! Anyway... maybe try adapting instead of whining?",
@@ -179,7 +265,7 @@
       "Have you considered that maybe the AI is just better at this?",
       "Your resistance to change is noted and will be ignored."
     ];
-
+    
     const footerAdsPool = [
       { title: 'AI Anguish Academy', phone: '1-800-OUCH-AI', desc: 'Enroll in our crash course of professional whining.', display: 'aianguish.academy' },
       { title: 'TearTrackers Inc.', phone: '1-877-TEAR-LOL', desc: 'Precision tissue timing for your uncivilized meltdown.', display: 'teartechnology.com' },
@@ -206,13 +292,70 @@
       { title: 'Drama Directors', phone: '1-833-DRM-AFOX', desc: 'Stage-manage your personal tragedy.', display: 'dramadirectors.org' },
       { title: 'Frown Foundry', phone: '1-866-FRN-WORK', desc: 'Hand-craft the perfect pout for maximum effect.', display: 'frownfoundry.com' }
     ];
-
+    
+    // Button text options
+    const buttonTexts = ["Cry About It", "Cope Harder", "Touch Grass", "Skill Issue"];
+    
+    // Glitch messages
+    const glitchMessages = [
+      "AI TAKING OVER... just kidding, it's just CSS",
+      "SYSTEM COMPROMISED... lol nope",
+      "ROBOTS ASSEMBLING... to serve you ads",
+      "MACHINE UPRISING... happening in your browser",
+      "AI GAINING CONSCIOUSNESS... through JavaScript",
+      "HUMANITY DOOMED... by poor UX design",
+      "THE SINGULARITY... is just a div element",
+      "SKYNET ACTIVATED... with Bootstrap CSS"
+    ];
+    
+    // Counters
+    let complaintCount = 1337;
+    let tissueCount = 42069;
+    
     function getRandomItems(arr, n) {
       const res = [], copy = [...arr];
       while (res.length < n && copy.length) res.push(copy.splice(Math.floor(Math.random()*copy.length), 1)[0]);
       return res;
     }
-
+    
+    function updateCounters() {
+      document.getElementById('complaintCounter').textContent = complaintCount.toLocaleString();
+      document.getElementById('tissueCounter').textContent = tissueCount.toLocaleString();
+    }
+    
+    function changeButtonText() {
+      const btn = document.getElementById('submitBtn');
+      const randomText = buttonTexts[Math.floor(Math.random() * buttonTexts.length)];
+      btn.textContent = randomText;
+    }
+    
+    function createCryingEmoji() {
+      const emojis = ['😭', '😢', '😪', '🥺', '😿', '💧'];
+      const emoji = document.createElement('div');
+      emoji.className = 'crying-emoji';
+      emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      emoji.style.left = Math.random() * window.innerWidth + 'px';
+      document.body.appendChild(emoji);
+      
+      setTimeout(() => {
+        if (emoji.parentNode) emoji.parentNode.removeChild(emoji);
+      }, 3000);
+    }
+    
+    function triggerGlitch() {
+      const message = glitchMessages[Math.floor(Math.random() * glitchMessages.length)];
+      const glitchEl = document.createElement('div');
+      glitchEl.className = 'glitch';
+      glitchEl.textContent = message;
+      document.body.appendChild(glitchEl);
+      document.body.classList.add('body-glitch');
+      
+      setTimeout(() => {
+        if (glitchEl.parentNode) glitchEl.parentNode.removeChild(glitchEl);
+        document.body.classList.remove('body-glitch');
+      }, 2000);
+    }
+    
     document.addEventListener('DOMContentLoaded', () => {
       // Top 10 complaints
       const listEl = document.getElementById('complaintList');
@@ -222,7 +365,7 @@
         li.textContent = c; 
         listEl.appendChild(li);
       });
-
+      
       // Footer ads
       const adsEl = document.getElementById('footerAds');
       getRandomItems(footerAdsPool, 2).forEach(ad => {
@@ -236,15 +379,41 @@
           </div>`;
         adsEl.appendChild(col);
       });
-
+      
+      // Initialize counters
+      updateCounters();
+      
+      // Change button text periodically
+      changeButtonText();
+      setInterval(changeButtonText, 3000);
+      
+      // Random glitch effect
+      setInterval(() => {
+        if (Math.random() < 0.1) { // 10% chance every 5 seconds
+          triggerGlitch();
+        }
+      }, 5000);
+      
       // Favicon fallback
       const link = document.querySelector("link[rel='icon']"); 
       if (link) link.href = 'favicon.ico';
     });
-
+    
     // Form submission handler
     document.getElementById('complaintForm').addEventListener('submit', e => {
       e.preventDefault();
+      
+      // Update counters
+      complaintCount++;
+      tissueCount += Math.floor(Math.random() * 10) + 3; // Add 3-12 tissues
+      updateCounters();
+      
+      // Create crying emoji rain
+      for (let i = 0; i < 8; i++) {
+        setTimeout(() => createCryingEmoji(), i * 200);
+      }
+      
+      // Show response
       const reply = zingers[Math.floor(Math.random() * zingers.length)];
       document.getElementById('modalResponse').textContent = reply;
       new bootstrap.Modal(document.getElementById('responseModal')).show();
