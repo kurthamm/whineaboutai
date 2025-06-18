@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Whine About AI</title>
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
   <!-- Bootstrap CSS -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
   <!-- Google Font -->
@@ -63,11 +65,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
   <script>
     // 100 witty fake complaints pool
-    const allComplaints = [
-      // ... (same 100 complaints) ...
-    ];
-
-    // Expanded biting response pool
+    const allComplaints = [ /* 100 complaints as before */ ];
+    // Expanded biting response pool (flat array)
     const zingers = [
       "Seriously? Cry harder. The bots are eating your lunch while you sob.",
       "Your complaint has been filed under 'irrelevant.' Next.",
@@ -173,7 +172,8 @@
       "Your sob story isn’t enterprise-grade.",
       "AI: 11/10. Your rant: 0/10.",
       "Your tears can’t compute.",
-      "We committed your complaint to oblivion."    ];
+      "We committed your complaint to oblivion."
+    ];
 
     function getRandomItems(arr, n) {
       const shuffled = [...arr].sort(() => 0.5 - Math.random());
@@ -190,8 +190,7 @@
 
     document.getElementById('complaintForm').addEventListener('submit', e => {
       e.preventDefault();
-      const replyPool = zingers;
-      const reply = replyPool[Math.floor(Math.random() * replyPool.length)];
+      const reply = zingers[Math.floor(Math.random() * zingers.length)];
       document.getElementById('modalResponse').textContent = reply;
       new bootstrap.Modal(document.getElementById('responseModal')).show();
     });
