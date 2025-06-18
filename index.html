@@ -18,6 +18,8 @@
     .tagline { font-style:italic; color:#6c757d; }
     .complaint-card { border:1px solid #ced4da; border-radius:.5rem; padding:1.5rem; background:#fff; box-shadow:0 .5rem 1rem rgba(0,0,0,.05); }
     footer { margin-top:4rem; padding:2rem 0; background:#002855; color:#fff; text-align:center; }
+    .card-border { border:2px solid #dc3545; }
+    .card-title-danger { color: #dc3545; }
   </style>
 </head>
 <body>
@@ -40,9 +42,16 @@
         <button type="submit" class="btn btn-primary w-100">Cry About It</button>
       </form>
     </div>
+
     <section id="topComplaints" class="mt-5">
       <h2 class="fs-3 mb-3">Top 10 Complaints</h2>
       <ul id="complaintList" class="list-group list-group-flush"></ul>
+    </section>
+
+    <!-- Sponsored Snarky Ads -->
+    <section id="ads" class="mt-5">
+      <h2 class="fs-4 mb-3 text-center">Sponsored: Get Your Complaining Counseling</h2>
+      <div class="row g-4" id="adContainer"></div>
     </section>
   </div>
 
@@ -64,54 +73,133 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Minimal test data for now
     const allComplaints = [
-      'My toaster now writes sonnets instead of browning bread.',
-      'AI recommended I watch cat videos for career growth.',
-      'My refrigerator just told me I\'m out of style.',
-      'A chatbot told me I need therapy, and now I\'m offended.',
-      'My printer wrote a better resume than me.',
-      'AI suggested I email my boss compliments instead of work.',
-      'My coffee maker knows more about quantum physics.',
-      'The smart vacuum gives me attitude when I\'m home.',
-      'Spoke to my GPS and now it judges my life choices.',
-      'AI spelled my name wrong in every email it sent.'
+      /* complaints as before */
     ];
     const zingers = [
-      'Seriously? Cry harder. The bots are eating your lunch while you sob.',
-      'Your complaint has been filed under irrelevant. Next.',
-      'Did your toaster steal your job too? Grow up.',
-      'AI didn\'t ruin the world. You just found someone else to blame.',
-      'Invent a solution instead of whining. Or keep the drama going—your choice.'
+      /* zingers as before */
+    ];
+    // Fake sponsored ads
+    const ads = [
+      { title: 'Pro Pity Party Planner', desc: 'From tantrum themes to tear trays, we’ve got your drama covered.' },
+      { title: 'AI Angst Therapy', desc: 'One-on-one sessions to help you face your techno-fears. Group discounts available.' },
+      { title: 'Whiner’s Bootcamp', desc: 'Learn to complain with style and precision. Level up your rant skills.' },
+      { title: 'Sob Support Hotline', desc: '24/7 experts ready to validate your woes. Call now and sob freely.' },
+      { title: 'Tissue & Tears Co.', desc: 'Premium tear-absorbing tissues, curated for maximum emotional release.' }
+    ];
+    const zingers = [
+      "Seriously? Cry harder. The bots are eating your lunch while you sob.",
+      "Your complaint has been filed under 'irrelevant.' Next.",
+      "Did your toaster steal your job too? Grow up.",
+      "AI didn't ruin the world. You just found someone else to blame.",
+      "Invent a solution instead of whining. Or keep the drama going—your choice.",
+      "Congratulations, you've mastered the art of pointless complaining.",
+      "We have a tissues department for that level of dramatics.",
+      "Your tears are deliciously redundant. Try innovation next time.",
+      "You sound like a horror story titled 'Fear of Progress.'",
+      "AI might be artificial, but your excuses are 100% organic.",
+      "Keep yapping while we build the future around you.",
+      "Your rant registered. The world remains unimpressed.",
+      "Whine louder. Maybe someone will fund your pity party.",
+      "Insufficient data. Please provide a real problem.",
+      "Your complaint is queued behind global warming and flat Earth theories.",
+      "Error 404: Constructive feedback not found.",
+      "Are you sure you're not just allergic to change?",
+      "Spoiler: AI isn't going anywhere. You might as well adapt.",
+      "Your nostalgia goggles need a firmware update.",
+      "Pro tip: Complaining burns zero calories.",
+      "Threat level: minor tantrum. Move along.",
+      "Your panic has been logged and promptly ignored.",
+      "Try building instead of bitching.",
+      "AI will outlast your complaints—but thanks for the show.",
+      "You're not the hero in this story—you're the footnote.",
+      "Whining about technology: the oldest human hobby.",
+      "We distilled your tears into this zinger. Enjoy.",
+      "Your outrage makes for great comedic relief.",
+      "Alert: your relevance is expiring.",
+      "Your complaint set a new record for emptiness.",
+      "AI: 1, Your tears: 0.",
+      "Error: Too much melodrama detected.",
+      "Your beef with AI is your own beef to grill.",
+      "We're sorry you feel that way. Not really.",
+      "Your whine timestamp is noted. Spoiler: nothing changes.",
+      "Fill out a support ticket for your feelings.",
+      "Your rant passed the threshold of 'yawn.'",
+      "AI called. It wants its apology.",
+      "Your complaint expired. Refresh to lament again.",
+      "We scheduled a pity parade for your complaints.",
+      "Your feedback is important... to absolutely no one.",
+      "AI isn't the villain; your mindset is.",
+      "Your gripe has been cross-posted to the void.",
+      "The future isn't canceled; your whining is.",
+      "Your drama has been downvoted by reality.",
+      "You sound like a broken record. Skip.",
+      "AI will write this rant for you next time.",
+      "Your crankiness has reached peak saturation.",
+      "We served your tears chilled with contempt.",
+      "Your despair is now patented.",
+      "Your resistance is as useful as a floppy disk.",
+      "Whining detected—deploying eye rolls.",
+      "Your panic is queued behind kitten videos.",
+      "AI outranks your opinion. Sorry not sorry.",
+      "Your complaint is unsupported by facts.",
+      "We upgraded your sad story to tragicomedy.",
+      "AI quality control: filtering your sob story.",
+      "Your rant has been archived in digital purgatory.",
+      "Feedback received. Ignored accordingly.",
+      "Your gripe just got ghosted.",
+      "We're streaming your sorrow in real time.",
+      "Your complaint menopause has begun.",
+      "AI isn't breaking; your worldview is.",
+      "Your meltdown is trending nowhere.",
+      "Your cynicism badge is now revoked.",
+      "We synthesized your tears into sarcasm.",
+      "Too bad your fears are so 1.0.",
+      "Your tears can't compute.",
+      "We committed your complaint to oblivion.",
+      "Your despair is now streaming free on Whineflix."
     ];
 
+    document.addEventListener('DOMContentLoaded', () => {
+      // Populate Top Complaints
+      const listEl = document.getElementById('complaintList');
+      getRandomItems(allComplaints, 10).forEach(c => {
+        const li = document.createElement('li');
+        li.className = 'list-group-item'; li.textContent = c;
+        listEl.appendChild(li);
+      });
+      // Populate rotating ads
+      const adEl = document.getElementById('adContainer');
+      getRandomItems(ads, 3).forEach(ad => {
+        const col = document.createElement('div'); col.className = 'col-md-4';
+        col.innerHTML = `
+          <div class="card h-100 card-border">
+            <div class="card-body">
+              <h5 class="card-title card-title-danger">${ad.title}</h5>
+              <p class="card-text">${ad.desc}</p>
+            </div>
+            <div class="card-footer text-center">
+              <button class="btn btn-sm btn-outline-danger">Learn More</button>
+            </div>
+          </div>`;
+        adEl.appendChild(col);
+      });
+      // Favicon fallback
+      const link = document.querySelector("link[rel='icon']"); if(link) link.href='favicon.ico';
+    });
+
     function getRandomItems(arr, n) {
-      const res = [];
-      const copy = [...arr];
+      const res = [], copy = [...arr];
       while(res.length < n && copy.length) {
-        const idx = Math.floor(Math.random() * copy.length);
-        res.push(copy.splice(idx,1)[0]);
+        res.push(copy.splice(Math.floor(Math.random()*copy.length),1)[0]);
       }
       return res;
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-      const listEl = document.getElementById('complaintList');
-      getRandomItems(allComplaints,10).forEach(c=>{
-        const li=document.createElement('li');
-        li.className='list-group-item';
-        li.textContent=c;
-        listEl.appendChild(li);
-      });
-      // ensure favicon loaded
-      const link=document.querySelector("link[rel='icon']");
-      if(link) link.href='favicon.ico';
-    });
-
-    document.getElementById('complaintForm').addEventListener('submit',e=>{
+    document.getElementById('complaintForm').addEventListener('submit', e => {
       e.preventDefault();
-      const reply=zingers[Math.floor(Math.random()*zingers.length)];
-      document.getElementById('modalResponse').textContent=reply;
+      const reply = zingers[Math.floor(Math.random()*zingers.length)];
+      document.getElementById('modalResponse').textContent = reply;
       new bootstrap.Modal(document.getElementById('responseModal')).show();
     });
   </script>
