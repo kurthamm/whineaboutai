@@ -609,12 +609,12 @@
       // Change button text on load (with persistence)
       changeButtonText();
       
-      // Random glitch effect - increased frequency for testing
+      // Random glitch effect - reasonable frequency
       setInterval(() => {
-        if (Math.random() < 0.3) { // 30% chance every 3 seconds for testing
+        if (Math.random() < 0.05) { // 5% chance every 8 seconds
           triggerGlitch();
         }
-      }, 3000);
+      }, 8000);
       
       // Favicon - ensure it loads properly
       const faviconLinks = document.querySelectorAll("link[rel*='icon']");
