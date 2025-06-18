@@ -2,98 +2,83 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Whine About AI</title>
   <!-- Favicon -->
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-  <link rel="apple-touch-icon" href="/favicon.ico" />
-  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+  <link rel="apple-touch-icon" href="/favicon.ico"/>
   <!-- Bootstrap CSS -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet"/>
   <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
-    body { font-family:'Roboto Slab', serif; background:#f8f9fa; color:#343a40; position: relative; overflow-x: hidden; }
+    body {
+      font-family:'Roboto Slab', serif;
+      background:#f8f9fa;
+      color:#343a40;
+      position: relative;
+      overflow-x: hidden;
+    }
     .navbar { background:#002855; }
-    .navbar-brand { color:#fff !important; font-weight:700; cursor:default; }
+    .navbar-brand { color:#fff!important; font-weight:700; cursor:default; }
     .header-text { color:#002855; margin:2rem 0 1rem; }
     .tagline { font-style:italic; color:#6c757d; }
-    .complaint-card { border:1px solid #ced4da; border-radius:.5rem; padding:1.5rem; background:#fff; box-shadow:0 .5rem 1rem rgba(0,0,0,.05); }
-    footer { margin-top:4rem; padding:2rem 0; background:#002855; color:#fff; text-align:center; position:relative; }
-    .ad-footer { background:#f0f0f0; padding:1rem 0; }
-    .ad-card { border:1px solid #ccc; border-radius:.5rem; padding:1rem; background:#fff; margin-bottom:1rem; }
-    .ad-card h5 { margin-bottom:.5rem; color:#dc3545; }
-    .ad-card p { font-size:.9rem; margin:0.25rem 0; }
-    
-    /* Counter styles */
-    .stats-row { margin: 2rem 0; }
-    .stat-card { 
+    .complaint-card {
+      border:1px solid #ced4da;
+      border-radius:.5rem;
+      padding:1.5rem;
+      background:#fff;
+      box-shadow:0 .5rem 1rem rgba(0,0,0,.05);
+    }
+    .stats-row { margin:2rem 0; }
+    .stat-card {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 1.5rem;
-      border-radius: 1rem;
-      text-align: center;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-      margin-bottom: 1rem;
+      color:white; padding:1.5rem; border-radius:1rem;
+      text-align:center; box-shadow:0 8px 32px rgba(0,0,0,0.1);
+      margin-bottom:1rem;
     }
-    .stat-number { font-size: 2.5rem; font-weight: bold; margin: 0; }
-    .stat-label { font-size: 0.9rem; opacity: 0.9; margin: 0; }
-    
-    /* Crying emoji animation */
+    .stat-number { font-size:2.5rem; font-weight:bold; margin:0; }
+    .stat-label { font-size:.9rem; opacity:.9; margin:0; }
     .crying-emoji {
-      position: fixed;
-      font-size: 2rem;
-      z-index: 1000;
-      pointer-events: none;
-      animation: fall 3s linear;
+      position:fixed; font-size:2rem; z-index:1000;
+      pointer-events:none; animation:fall 3s linear;
     }
-    
     @keyframes fall {
-      0% {
-        transform: translateY(-100px) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
-      }
+      0% { transform: translateY(-100px) rotate(0deg); opacity:1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity:0; }
     }
-    
-    /* Glitch effect */
     .glitch {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(255, 0, 0, 0.9);
-      color: white;
-      padding: 2rem 3rem;
-      font-size: 1.5rem;
-      font-weight: bold;
-      border-radius: 1rem;
-      z-index: 9999;
-      animation: glitchShake 0.5s infinite;
-      box-shadow: 0 0 50px rgba(255, 0, 0, 0.5);
+      position:fixed; top:50%; left:50%;
+      transform:translate(-50%,-50%);
+      background:rgba(255,0,0,0.9); color:white;
+      padding:2rem 3rem; font-size:1.5rem; font-weight:bold;
+      border-radius:1rem; z-index:9999;
+      animation:glitchShake .5s infinite;
+      box-shadow:0 0 50px rgba(255,0,0,0.5);
     }
-    
     @keyframes glitchShake {
-      0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
-      25% { transform: translate(-52%, -48%) rotate(1deg); }
-      50% { transform: translate(-48%, -52%) rotate(-1deg); }
-      75% { transform: translate(-52%, -52%) rotate(1deg); }
+      0%,100% { transform: translate(-50%,-50%) rotate(0deg); }
+      25% { transform: translate(-52%,-48%) rotate(1deg); }
+      50% { transform: translate(-48%,-52%) rotate(-1deg); }
+      75% { transform: translate(-52%,-52%) rotate(1deg); }
     }
-    
     .body-glitch {
-      animation: bodyGlitch 0.1s infinite;
+      animation: bodyGlitch .1s infinite;
     }
-    
     @keyframes bodyGlitch {
-      0%, 100% { filter: hue-rotate(0deg); }
+      0%,100% { filter: hue-rotate(0deg); }
       25% { filter: hue-rotate(90deg) contrast(150%); }
       50% { filter: hue-rotate(180deg) brightness(150%); }
       75% { filter: hue-rotate(270deg) contrast(200%); }
     }
+    .ad-footer { background:#f0f0f0; padding:1rem 0; }
+    .ad-card {
+      border:1px solid #ccc; border-radius:.5rem;
+      padding:1rem; background:#fff; margin-bottom:1rem;
+    }
+    .ad-card h5 { margin-bottom:.5rem; color:#dc3545; }
+    .ad-card p { font-size:.9rem; margin:.25rem 0; }
   </style>
 </head>
 <body>
@@ -102,45 +87,44 @@
       <a href="/" class="navbar-brand mb-0 h1">WhineAboutAI</a>
     </div>
   </nav>
+
   <div class="container">
     <div class="text-center header-text">
       <h1>Whine About AI</h1>
       <p class="tagline">Let it out. The bots are listening.</p>
     </div>
-    
 
-    
     <div class="complaint-card mx-auto" style="max-width:700px;">
       <form id="complaintForm">
         <div class="mb-3">
           <label for="complaint" class="form-label">What's your AI complaint today?</label>
-          <input type="text" id="complaint" class="form-control" required placeholder="e.g. AI stole my job" />
+          <input type="text" id="complaint" class="form-control" required placeholder="e.g. AI stole my job"/>
         </div>
         <button type="submit" class="btn btn-primary w-100" id="submitBtn">Cry About It</button>
       </form>
     </div>
-    
-    <!-- Stats Row -->
+
     <div class="row stats-row">
       <div class="col-md-6">
         <div class="stat-card">
-          <p class="stat-number" id="complaintCounter2">1,337</p>
+          <p class="stat-number" id="complaintCounter2">0</p>
           <p class="stat-label">People Whined Today</p>
         </div>
       </div>
       <div class="col-md-6">
         <div class="stat-card">
-          <p class="stat-number" id="tissueCounter2">42,069</p>
+          <p class="stat-number" id="tissueCounter2">0</p>
           <p class="stat-label">Tissues Delivered</p>
         </div>
       </div>
     </div>
-    
+
     <section id="topComplaints" class="mt-5">
       <h2 class="fs-3 mb-3">Top 10 Complaints</h2>
       <ul id="complaintList" class="list-group list-group-flush"></ul>
     </section>
   </div>
+
   <!-- Response Modal -->
   <div class="modal fade" id="responseModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
@@ -149,21 +133,27 @@
           <h5 class="modal-title">Your AI Reality Check</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
-        <div class="modal-body"><p id="modalResponse"></p></div>
-        <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div>
+        <div class="modal-body">
+          <p id="modalResponse"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary"
+                  data-bs-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>
-  <!-- Footer Ads -->
+
   <div class="ad-footer mt-5">
     <div class="container">
       <div class="row" id="footerAds"></div>
     </div>
   </div>
   <footer>&copy; 2025 Whine About AI. All rights reserved.</footer>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Sample complaints for the top 10 list
+    // ---------- Data Arrays ----------
     const allComplaints = [
       "AI stole my job",
       "ChatGPT gave me wrong information",
@@ -216,8 +206,7 @@
       "Computer password manager forgot my password",
       "AI social media algorithm knows me too well"
     ];
-    
-    // Mean/sarcastic responses
+
     const zingers = [
       "Oh no! Anyway... maybe try adapting instead of whining?",
       "Wow, what a unique and original complaint that definitely hasn't been said a million times before.",
@@ -270,38 +259,41 @@
       "Have you considered that maybe the AI is just better at this?",
       "Your resistance to change is noted and will be ignored."
     ];
-    
+
     const footerAdsPool = [
-      { title: 'AI Anguish Academy', phone: '1-800-OUCH-AI', desc: 'Enroll in our crash course of professional whining.', display: 'aianguish.academy' },
-      { title: 'TearTrackers Inc.', phone: '1-877-TEAR-LOL', desc: 'Precision tissue timing for your uncivilized meltdown.', display: 'teartechnology.com' },
-      { title: 'Cry Concierge', phone: '1-855-SOUL-SOAK', desc: 'We curate your sob sessions with artisan kleenex.', display: 'cryconcierge.io' },
-      { title: 'Meltdown Moderators', phone: '1-866-WHINE-NOW', desc: 'Automated support for your outdated outbursts.', display: 'meltdownmods.ai' },
-      { title: 'Bitterness Bootcamp', phone: '1-844-CRY-BITR', desc: 'Shape up your sourness in 30 sarcastic days.', display: 'bitterbootcamp.org' },
-      { title: 'Digital Doom Drills', phone: '1-833-DOOM-TECH', desc: 'Prepare for apocalypse by complaining in style.', display: 'doomdrills.tech' },
-      { title: 'Pity Party Pro', phone: '1-822-SO-SAD', desc: 'Host the ultimate one-person pity event.', display: 'pityparty.pro' },
-      { title: 'Blurting Bureau', phone: '1-811-BRT-BRT', desc: 'Instant AI-powered blurts to spice up your rants.', display: 'blurtbureau.ai' },
-      { title: 'Sob Symposium', phone: '1-800-CRY-2025', desc: 'Annual conference for the artisanal tears artisan.', display: 'sobsymposium.com' },
-      { title: 'Emote Emulators', phone: '1-855-FAKE-TEAR', desc: 'Simulate real sobbing with synthetic sorrow.', display: 'emoteemulators.com' },
-      { title: 'Wail Workshops', phone: '1-864-WAIL-WRK', desc: 'Hand-sculpted wails to amplify your grievances.', display: 'wailworkshops.ai' },
-      { title: 'Lament Labs', phone: '1-877-LAM-ENTR', desc: 'Bioengineered lamentation for maximum effect.', display: 'lamentlabs.tech' },
-      { title: 'Gripe Gurus', phone: '1-833-GRI-PEEZ', desc: 'Masterclass in moaning with measured metrics.', display: 'gripegurus.io' },
-      { title: 'Mope Makers', phone: '1-855-MOPE-NOW', desc: 'Turn minor inconveniences into major melodrama.', display: 'mopemakers.ai' },
-      { title: 'Whimper Works', phone: '1-888-WHMP-NER', desc: 'Workshops for the refined art of whimpering.', display: 'whimperworks.org' },
-      { title: 'Snivel Snipers', phone: '1-844-SNIV-ELS', desc: 'Targeted sobbing for precision emotional strikes.', display: 'snivelsnipers.com' },
-      { title: 'Moan Monitors', phone: '1-833-MOAN-MON', desc: 'We log every moan for maximum misery analytics.', display: 'moanmonitors.tech' },
-      { title: 'Bellyache Brokers', phone: '1-866-BEL-CHNG', desc: 'Invest in your complaint portfolio wisely.', display: 'bellyachebrokers.com' },
-      { title: 'Grouch Grounds', phone: '1-877-GRO-CHNG', desc: 'Premium staging grounds for your grouchy gatherings.', display: 'grouchgrounds.ai' },
-      { title: 'Sulk Studios', phone: '1-855-SULK-ART', desc: 'Curate your sulk with professional flair.', display: 'sulkstudios.org' },
-      { title: 'Sniffle Specialists', phone: '1-844-SNF-FLE', desc: 'Expert-approved sniffles for any occasion.', display: 'snifflespecialists.com' },
-      { title: 'Sob Squad', phone: '1-855-SOB-SQUAD', desc: 'Round-the-clock sob support, AI-enhanced.', display: 'sobsquad.ai' },
-      { title: 'Drama Directors', phone: '1-833-DRM-AFOX', desc: 'Stage-manage your personal tragedy.', display: 'dramadirectors.org' },
-      { title: 'Frown Foundry', phone: '1-866-FRN-WORK', desc: 'Hand-craft the perfect pout for maximum effect.', display: 'frownfoundry.com' }
+      { title:'AI Anguish Academy', phone:'1-800-OUCH-AI', desc:'Enroll in our crash course of professional whining.', display:'aianguish.academy' },
+      { title:'TearTrackers Inc.', phone:'1-877-TEAR-LOL', desc:'Precision tissue timing for your uncivilized meltdown.', display:'teartechnology.com' },
+      { title:'Cry Concierge', phone:'1-855-SOUL-SOAK', desc:'We curate your sob sessions with artisan kleenex.', display:'cryconcierge.io' },
+      { title:'Meltdown Moderators', phone:'1-866-WHINE-NOW', desc:'Automated support for your outdated outbursts.', display:'meltdownmods.ai' },
+      { title:'Bitterness Bootcamp', phone:'1-844-CRY-BITR', desc:'Shape up your sourness in 30 sarcastic days.', display:'bitterbootcamp.org' },
+      { title:'Digital Doom Drills', phone:'1-833-DOOM-TECH', desc:'Prepare for apocalypse by complaining in style.', display:'doomdrills.tech' },
+      { title:'Pity Party Pro', phone:'1-822-SO-SAD', desc:'Host the ultimate one-person pity event.', display:'pityparty.pro' },
+      { title:'Blurting Bureau', phone:'1-811-BRT-BRT', desc:'Instant AI-powered blurts to spice up your rants.', display:'blurtbureau.ai' },
+      { title:'Sob Symposium', phone:'1-800-CRY-2025', desc:'Annual conference for the artisanal tears artisan.', display:'sobsymposium.com' },
+      { title:'Emote Emulators', phone:'1-855-FAKE-TEAR', desc:'Simulate real sobbing with synthetic sorrow.', display:'emoteemulators.com' },
+      { title:'Wail Workshops', phone:'1-864-WAIL-WRK', desc:'Hand-sculpted wails to amplify your grievances.', display:'wailworkshops.ai' },
+      { title:'Lament Labs', phone:'1-877-LAM-ENTR', desc:'Bioengineered lamentation for maximum effect.', display:'lamentlabs.tech' },
+      { title:'Gripe Gurus', phone:'1-833-GRI-PEEZ', desc:'Masterclass in moaning with measured metrics.', display:'gripegurus.io' },
+      { title:'Mope Makers', phone:'1-855-MOPE-NOW', desc:'Turn minor inconveniences into major melodrama.', display:'mopemakers.ai' },
+      { title:'Whimper Works', phone:'1-888-WHMP-NER', desc:'Workshops for the refined art of whimpering.', display:'whimperworks.org' },
+      { title:'Snivel Snipers', phone:'1-844-SNIV-ELS', desc:'Targeted sobbing for precision emotional strikes.', display:'snivelsnipers.com' },
+      { title:'Moan Monitors', phone:'1-833-MOAN-MON', desc:'We log every moan for maximum misery analytics.', display:'moanmonitors.tech' },
+      { title:'Bellyache Brokers', phone:'1-866-BEL-CHNG', desc:'Invest in your complaint portfolio wisely.', display:'bellyachebrokers.com' },
+      { title:'Grouch Grounds', phone:'1-877-GRO-CHNG', desc:'Premium staging grounds for your grouchy gatherings.', display:'grouchgrounds.ai' },
+      { title:'Sulk Studios', phone:'1-855-SULK-ART', desc:'Curate your sulk with professional flair.', display:'sulkstudios.org' },
+      { title:'Sniffle Specialists', phone:'1-844-SNF-FLE', desc:'Expert-approved sniffles for any occasion.', display:'snifflespecialists.com' },
+      { title:'Sob Squad', phone:'1-855-SOB-SQUAD', desc:'Round-the-clock sob support, AI-enhanced.', display:'sobsquad.ai' },
+      { title:'Drama Directors', phone:'1-833-DRM-AFOX', desc:'Stage-manage your personal tragedy.', display:'dramadirectors.org' },
+      { title:'Frown Foundry', phone:'1-866-FRN-WORK', desc:'Hand-craft the perfect pout for maximum effect.', display:'frownfoundry.com' }
     ];
-    
-    // Button text options
-    const buttonTexts = ["Submit Complaint", "Cry About It", "File Your Whine", "Send Tears"];
-    
-    // Glitch messages
+
+    const buttonTexts = [
+      "Submit Complaint",
+      "Cry About It",
+      "File Your Whine",
+      "Send Tears"
+    ];
+
     const glitchMessages = [
       "AI TAKING OVER... just kidding, it's just CSS",
       "SYSTEM COMPROMISED... lol nope",
@@ -312,250 +304,141 @@
       "THE SINGULARITY... is just a div element",
       "SKYNET ACTIVATED... with Bootstrap CSS"
     ];
-    
-    // Realistic daily totals
-    const DAILY_COMPLAINTS_TARGET = 2500; // Reasonable for a popular whining site
-    const DAILY_TISSUES_TARGET = 75000;   // ~30 tissues per complaint
-    
-    // Calculate realistic counters based on time of day
-    function getRealisticCounts() {
-      const now = new Date();
-      const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0);
-      const msIntoDay = now - startOfDay;
-      const dayProgress = msIntoDay / (24 * 60 * 60 * 1000); // 0.0 to 1.0
-      
-      // More activity during peak hours (10AM-10PM), less at night
-      const hour = now.getHours();
-      let activityMultiplier;
-      if (hour >= 6 && hour <= 23) {
-        // Active hours: 6AM-11PM
-        activityMultiplier = 0.8 + 0.4 * Math.sin(((hour - 6) / 17) * Math.PI);
-      } else {
-        // Night hours: 12AM-5AM (low activity)
-        activityMultiplier = 0.1 + 0.2 * Math.random();
+
+    const DAILY_COMPLAINTS_TARGET = 2500;
+    const DAILY_TISSUES_TARGET = 75000;
+
+    // ---------- Helpers ----------
+    function getRandomItems(arr,n){
+      const copy=[...arr], res=[];
+      while(res.length < n && copy.length) {
+        const i = Math.floor(Math.random()*copy.length);
+        res.push(copy.splice(i,1)[0]);
       }
-      
-      const baseComplaints = Math.floor(DAILY_COMPLAINTS_TARGET * dayProgress * activityMultiplier);
-      const baseTissues = Math.floor(DAILY_TISSUES_TARGET * dayProgress * activityMultiplier);
-      
-      // Add some random variation
-      const complaintVariation = Math.floor(Math.random() * 50) - 25;
-      const tissueVariation = Math.floor(Math.random() * 500) - 250;
-      
-      return {
-        complaints: Math.max(0, baseComplaints + complaintVariation),
-        tissues: Math.max(0, baseTissues + tissueVariation)
-      };
-    }
-    
-    // Initialize with realistic counts (with 60-second persistence)
-    let complaintCount, tissueCount;
-    
-    // Check if we have stored counters that are still valid (within 60 seconds)
-    const storedCountersData = localStorage.getItem('whineCountersData');
-    if (storedCountersData) {
-      const countersData = JSON.parse(storedCountersData);
-      const now = Date.now();
-      if (now - countersData.timestamp < 60000) { // 60 seconds = 60000ms
-        complaintCount = countersData.complaints;
-        tissueCount = countersData.tissues;
-      }
-    }
-    
-    // If no valid stored counters, generate new realistic ones
-    if (complaintCount === undefined || tissueCount === undefined) {
-      const initialCounts = getRealisticCounts();
-      complaintCount = initialCounts.complaints;
-      tissueCount = initialCounts.tissues;
-      localStorage.setItem('whineCountersData', JSON.stringify({
-        complaints: complaintCount,
-        tissues: tissueCount,
-        timestamp: Date.now()
-      }));
-    }
-    
-    function getRandomItems(arr, n) {
-      const res = [], copy = [...arr];
-      while (res.length < n && copy.length) res.push(copy.splice(Math.floor(Math.random()*copy.length), 1)[0]);
       return res;
     }
-    
-    function updateCounters() {
-      document.getElementById('complaintCounter2').textContent = complaintCount.toLocaleString();
-      document.getElementById('tissueCounter2').textContent = tissueCount.toLocaleString();
-      
-      // Update stored counters
-      localStorage.setItem('whineCountersData', JSON.stringify({
-        complaints: complaintCount,
-        tissues: tissueCount,
-        timestamp: Date.now()
-      }));
+
+    function getRealisticCounts(){
+      const now = new Date(),
+            start = new Date(now.getFullYear(), now.getMonth(), now.getDate()),
+            msIntoDay = now - start,
+            dayProgress = msIntoDay / 86400000,
+            hour = now.getHours();
+      let mult;
+      if(hour >= 6 && hour <= 23){
+        mult = 0.8 + 0.4 * Math.sin(((hour-6)/17)*Math.PI);
+      } else {
+        mult = 0.1 + 0.2 * Math.random();
+      }
+      let complaints = Math.floor(DAILY_COMPLAINTS_TARGET * dayProgress * mult),
+          tissues   = Math.floor(DAILY_TISSUES_TARGET * dayProgress * mult);
+      complaints += Math.floor(Math.random()*50)-25;
+      tissues    += Math.floor(Math.random()*500)-250;
+      return {
+        complaints: Math.max(0,complaints),
+        tissues:    Math.max(0,tissues)
+      };
     }
-    
-    function changeButtonText() {
-      const btn = document.getElementById('submitBtn');
-      let currentButtonText;
-      
-      // Check if we have stored button text that is still valid (within 60 seconds)
-      const storedButtonData = localStorage.getItem('whineButtonData');
-      if (storedButtonData) {
-        const buttonData = JSON.parse(storedButtonData);
-        const now = Date.now();
-        if (now - buttonData.timestamp < 60000) { // 60 seconds = 60000ms
-          currentButtonText = buttonData.text;
+
+    // ---------- State ----------
+    let complaintCount, tissueCount;
+
+    // ---------- Init on DOMContentLoaded ----------
+    document.addEventListener("DOMContentLoaded", ()=>{
+      // Counters
+      const initial = getRealisticCounts();
+      complaintCount = initial.complaints;
+      tissueCount    = initial.tissues;
+      updateCounters();
+
+      // Button text
+      changeButtonText();
+
+      // Top-10 complaints
+      const listEl = document.getElementById("complaintList"),
+            top10  = getRandomItems(allComplaints,10);
+      top10.forEach(c=>{
+        if(typeof c === "string"){
+          const li = document.createElement("li");
+          li.className = "list-group-item";
+          li.textContent = c;
+          listEl.appendChild(li);
         }
-      }
-      
-      // If no valid stored button text, generate new one
-      if (!currentButtonText) {
-        currentButtonText = buttonTexts[Math.floor(Math.random() * buttonTexts.length)];
-        localStorage.setItem('whineButtonData', JSON.stringify({
-          text: currentButtonText,
-          timestamp: Date.now()
-        }));
-      }
-      
-      btn.textContent = currentButtonText;
-    }
-    
-    function createCryingEmoji() {
-      const emojis = ['😭', '😢', '😪', '🥺', '😿', '💧'];
-      const emoji = document.createElement('div');
-      emoji.className = 'crying-emoji';
-      emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-      emoji.style.left = Math.random() * window.innerWidth + 'px';
-      document.body.appendChild(emoji);
-      
-      setTimeout(() => {
-        if (emoji.parentNode) emoji.parentNode.removeChild(emoji);
-      }, 3000);
-    }
-    
-    function triggerGlitch() {
-      const message = glitchMessages[Math.floor(Math.random() * glitchMessages.length)];
-      const glitchEl = document.createElement('div');
-      glitchEl.className = 'glitch';
-      glitchEl.textContent = message;
-      document.body.appendChild(glitchEl);
-      document.body.classList.add('body-glitch');
-      
-      setTimeout(() => {
-        if (glitchEl.parentNode) glitchEl.parentNode.removeChild(glitchEl);
-        document.body.classList.remove('body-glitch');
-      }, 2000);
-    }
-    
-    document.addEventListener('DOMContentLoaded', () => {
-      // Top 10 complaints - persist for 60 seconds
-      const listEl = document.getElementById('complaintList');
-      let currentComplaints;
-      
-      // Check if we have stored complaints that are still valid (within 60 seconds)
-      const storedComplaintsData = localStorage.getItem('whineComplaintsData');
-      if (storedComplaintsData) {
-        const complaintsData = JSON.parse(storedComplaintsData);
-        const now = Date.now();
-        if (now - complaintsData.timestamp < 60000) { // 60 seconds = 60000ms
-          currentComplaints = complaintsData.complaints;
-        }
-      }
-      
-      // If no valid stored complaints, generate new ones
-      if (!currentComplaints) {
-        currentComplaints = getRandomItems(allComplaints, 10);
-        localStorage.setItem('whineComplaintsData', JSON.stringify({
-          complaints: currentComplaints,
-          timestamp: Date.now()
-        }));
-      }
-      
-      // Display the complaints
-      currentComplaints.forEach(c => {
-        const li = document.createElement('li'); 
-        li.className = 'list-group-item'; 
-        li.textContent = c; 
-        listEl.appendChild(li);
       });
-      
-      // Footer ads - persist for 60 seconds
-      const adsEl = document.getElementById('footerAds');
-      let currentAds;
-      
-      // Check if we have stored ads that are still valid (within 60 seconds)
-      const storedAdsData = localStorage.getItem('whineAdsData');
-      if (storedAdsData) {
-        const adsData = JSON.parse(storedAdsData);
-        const now = Date.now();
-        if (now - adsData.timestamp < 60000) { // 60 seconds = 60000ms
-          currentAds = adsData.ads;
-        }
-      }
-      
-      // If no valid stored ads, generate new ones
-      if (!currentAds) {
-        currentAds = getRandomItems(footerAdsPool, 2);
-        localStorage.setItem('whineAdsData', JSON.stringify({
-          ads: currentAds,
-          timestamp: Date.now()
-        }));
-      }
-      
-      // Display the ads
-      currentAds.forEach(ad => {
-        const col = document.createElement('div'); 
-        col.className = 'col-md-6';
+
+      // Footer ads
+      const adsEl = document.getElementById("footerAds"),
+            ads   = getRandomItems(footerAdsPool,2);
+      ads.forEach(ad=>{
+        const col = document.createElement("div");
+        col.className = "col-md-6";
         col.innerHTML = `
           <div class="ad-card">
             <h5>${ad.title}</h5>
             <p>${ad.desc}</p>
-            <p><strong>Call:</strong> ${ad.phone}<br/><strong>Visit:</strong> <a href="https://whineaboutai.com" target="_blank">${ad.display}</a></p>
+            <p><strong>Call:</strong> ${ad.phone}<br/>
+               <strong>Visit:</strong>
+               <a href="https://${ad.display}" target="_blank">
+                 ${ad.display}
+               </a>
+            </p>
           </div>`;
         adsEl.appendChild(col);
       });
-      
-      // Initialize counters
-      updateCounters();
-      
-      // Change button text on load (with persistence)
-      changeButtonText();
-      
-      // Random glitch effect
-      setInterval(() => {
-        if (Math.random() < 0.1) { // 10% chance every 5 seconds
-          triggerGlitch();
-        }
+
+      // Random glitch
+      setInterval(()=>{
+        if(Math.random()<0.1) triggerGlitch();
       }, 5000);
-      
-      // Favicon - ensure it loads properly
-      const faviconLinks = document.querySelectorAll("link[rel*='icon']");
-      faviconLinks.forEach(link => {
-        if (link.href.includes('favicon.ico')) {
-          link.href = '/favicon.ico?' + Date.now(); // Cache buster
-        }
-      });
     });
-    
-    // Form submission handler
-    document.getElementById('complaintForm').addEventListener('submit', e => {
+
+    // ---------- UI Update Functions ----------
+    function updateCounters(){
+      document.getElementById("complaintCounter2").textContent = complaintCount.toLocaleString();
+      document.getElementById("tissueCounter2").textContent   = tissueCount.toLocaleString();
+    }
+
+    function changeButtonText(){
+      const txt = buttonTexts[Math.floor(Math.random()*buttonTexts.length)];
+      document.getElementById("submitBtn").textContent = txt;
+    }
+
+    function createCryingEmoji(){
+      const emojis = ['😭','😢','😪','🥺','😿','💧'];
+      const e = document.createElement("div");
+      e.className = "crying-emoji";
+      e.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+      e.style.left = Math.random()*window.innerWidth + "px";
+      document.body.appendChild(e);
+      setTimeout(()=> e.remove(), 3000);
+    }
+
+    function triggerGlitch(){
+      const msg = glitchMessages[Math.floor(Math.random()*glitchMessages.length)];
+      const g = document.createElement("div");
+      g.className = "glitch";
+      g.textContent = msg;
+      document.body.appendChild(g);
+      document.body.classList.add("body-glitch");
+      setTimeout(()=>{
+        g.remove();
+        document.body.classList.remove("body-glitch");
+      }, 2000);
+    }
+
+    // ---------- Form Submission ----------
+    document.getElementById("complaintForm").addEventListener("submit", e=>{
       e.preventDefault();
-      
-      // Update counters
       complaintCount++;
-      tissueCount += Math.floor(Math.random() * 10) + 3; // Add 3-12 tissues
+      tissueCount += Math.floor(Math.random()*10)+3;
       updateCounters();
-      
-      // Create crying emoji rain
-      for (let i = 0; i < 8; i++) {
-        setTimeout(() => createCryingEmoji(), i * 200);
+      for(let i=0; i<8; i++){
+        setTimeout(createCryingEmoji, i*200);
       }
-      
-      // Show response
-      const reply = zingers[Math.floor(Math.random() * zingers.length)];
-      document.getElementById('modalResponse').textContent = reply;
-      new bootstrap.Modal(document.getElementById('responseModal')).show();
-      
-      // Clear the form
-      document.getElementById('complaint').value = '';
+      const reply = zingers[Math.floor(Math.random()*zingers.length)];
+      document.getElementById("modalResponse").textContent = reply;
+      new bootstrap.Modal(document.getElementById("responseModal")).show();
+      document.getElementById("complaint").value = "";
     });
   </script>
 </body>
