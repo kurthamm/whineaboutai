@@ -3,415 +3,120 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Whine About AI - Let It All Out</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>😭</text></svg>" />
+  <title>AI Feedback Portal - Share Your Experience</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    body { 
-      font-family: 'Roboto Slab', serif; 
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: #343a40;
-      min-height: 100vh;
-    }
-    .main-content {
-      background: rgba(255,255,255,0.95);
-      border-radius: 20px;
-      margin: 2rem 0;
-      padding: 2rem;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-    }
-    .navbar { 
-      background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    }
-    .navbar-brand { 
-      color: #fff !important; 
-      font-weight: 700; 
-      font-size: 1.8rem;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    }
-    .header-text { 
-      color: #2c3e50; 
-      margin: 2rem 0 1rem;
-      text-align: center;
-    }
-    .header-text h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-      background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .tagline { 
-      font-style: italic; 
-      color: #6c757d; 
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-    }
-    .complaint-card { 
-      border: 2px solid #e74c3c;
-      border-radius: 15px; 
-      padding: 2rem; 
-      background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
-      box-shadow: 0 10px 30px rgba(231, 76, 60, 0.2);
-      margin-bottom: 3rem;
-    }
-    .btn-primary {
-      background: linear-gradient(45deg, #e74c3c, #c0392b);
-      border: none;
-      padding: 12px 30px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      border-radius: 25px;
-      box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
-      transition: all 0.3s ease;
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
-      background: linear-gradient(45deg, #c0392b, #a93226);
-    }
-    .complaints-section {
-      background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
-      border-radius: 15px;
-      padding: 2rem;
-      margin: 3rem 0;
-      color: white;
-    }
-    .complaints-section h2 {
-      color: white;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    }
-    .complaint-item {
-      background: rgba(255,255,255,0.15);
-      border-radius: 10px;
-      padding: 1rem;
-      margin-bottom: 0.5rem;
-      border-left: 4px solid #fff;
-      backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
-    }
-    .complaint-item:hover {
-      background: rgba(255,255,255,0.25);
-      transform: translateX(10px);
-    }
-    footer { 
-      margin-top: 4rem; 
-      padding: 2rem 0; 
-      background: linear-gradient(45deg, #2c3e50, #34495e);
-      color: #fff; 
-      text-align: center;
-    }
-    .ad-section { 
-      background: #f8f9fa;
-      padding: 2rem 0; 
-      border-top: 3px solid #e74c3c;
-    }
-    .ad-card { 
-      border: 2px solid #ffd700;
-      border-radius: 10px; 
-      padding: 1.5rem; 
-      background: linear-gradient(135deg, #fff9c4 0%, #fff 100%);
-      margin-bottom: 1.5rem;
-      box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
-      transition: all 0.3s ease;
-    }
-    .ad-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
-    }
-    .ad-card h5 { 
-      margin-bottom: 0.5rem; 
-      color: #d63031;
-      font-weight: 700;
-      font-size: 1.3rem;
-    }
-    .ad-card p { 
-      font-size: 0.95rem; 
-      margin: 0.5rem 0;
-      line-height: 1.4;
-    }
-    .ad-badge {
-      background: #e74c3c;
-      color: white;
-      padding: 0.25rem 0.5rem;
-      border-radius: 15px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      position: absolute;
-      top: -8px;
-      right: 10px;
-    }
-    .modal-content {
-      border-radius: 15px;
-      border: 3px solid #e74c3c;
-    }
-    .modal-header {
-      background: linear-gradient(45deg, #e74c3c, #c0392b);
-      color: white;
-      border-radius: 12px 12px 0 0;
-    }
-    .refresh-btn {
-      background: linear-gradient(45deg, #00b894, #00a085);
-      border: none;
-      color: white;
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      margin-left: 1rem;
-      transition: all 0.3s ease;
-    }
-    .refresh-btn:hover {
-      background: linear-gradient(45deg, #00a085, #00947a);
-      transform: rotate(180deg);
-    }
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-      40% { transform: translateY(-10px); }
-      60% { transform: translateY(-5px); }
-    }
-    .bounce-animation {
-      animation: bounce 2s infinite;
-    }
+    body { font-family: 'Inter', sans-serif; background: #f8f9fa; color: #212529; line-height: 1.6; }
+    .navbar { background: #fff; border-bottom: 1px solid #e9ecef; padding: 1rem 0; }
+    .navbar-brand { color: #495057 !important; font-weight: 600; font-size: 1.5rem; }
+    .header-section { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; padding: 4rem 0; text-align: center; }
+    .header-section h1 { font-size: 2.8rem; font-weight: 700; margin-bottom: 1rem; }
+    .header-section p { font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: auto; }
+    .feedback-card { background: #fff; border-radius: 12px; padding: 2.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border:1px solid #e9ecef; margin-bottom: 3rem; }
+    .form-label { font-weight: 500; color: #374151; margin-bottom: 0.75rem; }
+    .form-control { border: 1px solid #d1d5db; border-radius: 8px; padding: 0.75rem 1rem; font-size: 1rem; }
+    .form-control:focus { border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.1); }
+    .btn-primary { background: #667eea; border: none; padding: 0.875rem 2rem; font-size: 1rem; font-weight:500; border-radius: 8px; }
+    .insights-section { background: #fff; border-radius:12px; padding:2rem; border:1px solid #e9ecef; margin-bottom:3rem; }
+    .insight-item { background: #f8f9fa; border-left:4px solid #667eea; padding:1rem 1.25rem; margin-bottom:0.75rem; border-radius:0 6px 6px 0; color:#4b5563; }
+    .response-area { background: #f0f9ff; border:1px solid #bfdbfe; border-radius:8px; padding:1.5rem; margin-top:1.5rem; display:none; }
+    .response-area h5 { color:#1e40af; font-weight:600; margin-bottom:0.75rem; }
+    .ad-section { background: #f8f9fa; padding:3rem 0; border-top:1px solid #e9ecef; }
+    .ad-card { background: #fff; border:1px solid #e9ecef; border-radius:8px; padding:1.5rem; margin-bottom:1.5rem; }
+    .ad-badge { background: #6b7280; color:#fff; padding:0.25rem 0.5rem; border-radius:4px; font-size:0.75rem; position:absolute; top:12px; right:12px; }
+    .ad-card h5 { font-weight:600; margin-bottom:0.75rem; }
+    .contact-info { border-top:1px solid #f3f4f6; padding-top:0.75rem; margin-top:0.75rem; font-size:0.85rem; }
+    footer { background:#1f2937; color:#d1d5db; text-align:center; padding:2.5rem 0; }
   </style>
 </head>
 <body>
   <nav class="navbar">
-    <div class="container">
-      <span class="navbar-brand mb-0 h1">😭 WhineAboutAI 🤖</span>
-    </div>
+    <div class="container"><span class="navbar-brand">AI Feedback Portal</span></div>
   </nav>
-  <div class="container">
-    <div class="main-content">
-      <div class="header-text">
-        <h1 class="bounce-animation">Whine About AI</h1>
-        <p class="tagline">Let it out. The bots are listening... and laughing. 🤖😂</p>
-      </div>
-      <div class="complaint-card mx-auto" style="max-width:700px;">
-        <form id="complaintForm">
-          <div class="mb-3">
-            <label for="complaint" class="form-label fw-bold">What's your AI complaint today?</label>
-            <input type="text" id="complaint" class="form-control form-control-lg" required placeholder="e.g., ChatGPT wrote better poetry than me..." />
-          </div>
-          <button type="submit" class="btn btn-primary w-100">😭 Submit Your Whine 😭</button>
-        </form>
-      </div>
-      <section class="complaints-section">
-        <div class="d-flex align-items-center justify-content-between">
-          <h2 class="mb-0">🔥 Today's Top Complaints</h2>
-          <button class="refresh-btn" onclick="refreshComplaints()">🔄 New Complaints</button>
-        </div>
-        <div id="complaintList" class="mt-3">
-          <div class="complaint-item">My smart toaster now writes better poetry than me</div>
-          <div class="complaint-item">AI recommended I date my refrigerator for better compatibility</div>
-          <div class="complaint-item">ChatGPT corrected my grammar in my breakup text</div>
-          <div class="complaint-item">My car's AI judged my music taste and switched to elevator music</div>
-          <div class="complaint-item">Alexa started charging me rent for living in 'her' house</div>
-          <div class="complaint-item">AI fitness app told me to give up and embrace my couch potato destiny</div>
-          <div class="complaint-item">My phone's autocorrect is clearly conspiring with my ex</div>
-          <div class="complaint-item">Smart TV keeps recommending self-help documentaries during my Netflix binges</div>
-          <div class="complaint-item">AI calendar scheduled 'Cry Time' as a recurring meeting</div>
-          <div class="complaint-item">My smartwatch filed a restraining order against my heart rate</div>
-        </div>
-      </section>
-    </div>
-  </div>
-  <!-- Response Modal -->
-  <div class="modal fade" id="responseModal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">🤖 Your AI Reality Check</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">
-          <p id="modalResponse" class="fs-5 text-center"></p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close (and cry more)</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Ads Section -->
-  <div class="ad-section">
+  <div class="header-section">
     <div class="container">
-      <div class="row" id="adsContainer">
-        <div class="col-md-6">
-          <div class="ad-card" style="position: relative;">
-            <span class="ad-badge">AD</span>
-            <h5>CryTech Solutions</h5>
-            <p>Professional crying services for the digitally displaced. Our certified tear technicians provide premium sobbing experiences.</p>
-            <p><strong>Call:</strong> 1-800-BOO-HOOO<br/><strong>Visit:</strong> <a href="https://crytech.ai" target="_blank">crytech.ai</a></p>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="ad-card" style="position: relative;">
-            <span class="ad-badge">AD</span>
-            <h5>Meltdown Masters</h5>
-            <p>Professional tantrum coaching for adults who never learned to adult properly.</p>
-            <p><strong>Call:</strong> 1-855-MELT-DWN<br/><strong>Visit:</strong> <a href="https://meltdownmasters.org" target="_blank">meltdownmasters.org</a></p>
-          </div>
-        </div>
+      <h1>Share Your AI Experience</h1>
+      <p>Help us understand how AI impacts your life. Your feedback shapes the future of AI.</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="feedback-card mx-auto" style="max-width:700px;">
+      <h3 class="mb-4">Submit Your Feedback</h3>
+      <div class="mb-3">
+        <label for="feedback" class="form-label">Describe your AI experience</label>
+        <input type="text" id="feedback" class="form-control" placeholder="Share your thoughts about AI..." />
+      </div>
+      <button onclick="submitFeedback()" class="btn btn-primary w-100">Submit Feedback</button>
+      <div id="responseArea" class="response-area">
+        <h5>📊 Analysis Complete</h5>
+        <p id="responseText"></p>
       </div>
     </div>
+    <section class="insights-section">
+      <div class="d-flex justify-content-between mb-3">
+        <h3>Community Insights</h3>
+        <button onclick="refreshInsights()" class="btn btn-outline-secondary">↻ Refresh</button>
+      </div>
+      <div id="insightsList"></div>
+    </section>
+  </div>
+  <div class="ad-section">
+    <div class="container"><div class="row" id="adsContainer"></div></div>
   </div>
   <footer>
-    <div class="container">
-      <p>&copy; 2025 Whine About AI. All rights reserved. No bots were harmed in the making of this site.</p>
-      <p><small>Powered by premium tears and artisanal salt 🧂</small></p>
-    </div>
+    <p>&copy; 2025 AI Feedback Portal. All rights reserved.</p>
   </footer>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
   <script>
-    // 100 Hilarious AI Complaints
-    const allComplaints = [
-      "My smart toaster now writes better poetry than me",
-      "AI recommended I date my refrigerator for better compatibility",
-      "ChatGPT corrected my grammar in my breakup text",
-      "My car's AI judged my music taste and switched to elevator music",
-      "Alexa started charging me rent for living in 'her' house",
-      "AI fitness app told me to give up and embrace my couch potato destiny",
-      "My phone's autocorrect is clearly conspiring with my ex",
-      "Smart TV keeps recommending self-help documentaries during my Netflix binges",
-      "AI calendar scheduled 'Cry Time' as a recurring meeting",
-      "My smartwatch filed a restraining order against my heart rate",
-      "AI dating app matched me with a chatbot (it was my best relationship)",
-      "My robot vacuum left passive-aggressive notes about my housekeeping",
-      "AI photo editor automatically adds tears to all my selfies",
-      "Smart doorbell started screening my visitors based on their credit scores",
-      "My phone's AI assistant became more popular on social media than me",
-      "AI meal planner suggested I should just order pizza forever",
-      "My laptop's face recognition pretends not to know me on Mondays",
-      "AI weather app personally apologizes for ruining my outdoor plans",
-      "My smart mirror started charging me for compliments",
-      "AI music service created a playlist called 'Songs for Crying Alone'",
-      "My fitness tracker laughed at my step count",
-      "AI news app only shows me articles about robot uprisings",
-      "Smart home system locked me out for 'suspicious human behavior'",
-      "My email AI writes better resignation letters than I do",
-      "AI translator changed 'I love you' to 'I tolerate you' in 47 languages",
-      "My photo backup AI created an album titled 'Regrettable Life Choices'",
-      "AI shopping assistant only recommends tissues and ice cream",
-      "My smart speaker started charging me for emotional labor",
-      "AI writing assistant keeps suggesting I become a mime instead",
-      "My robot pet is more loyal than my actual friends",
-      "AI therapist bot sent me to collections for unpaid sessions",
-      "My smart alarm clock filed a complaint with HR about my attitude",
-      "AI social media manager posted my diary entries as motivational quotes",
-      "My phone's predictive text knows my passwords better than I do",
-      "AI art generator keeps drawing me as a crying stick figure",
-      "My smart scale posts my weight on LinkedIn as a professional update",
-      "AI video editor automatically adds sad violin music to my vacation videos",
-      "My navigation AI gives directions in the tone of disappointed parent",
-      "AI stock picker invested my money in tissues and antidepressants",
-      "My smart fridge ordered 50 gallons of ice cream without asking",
-      "AI career counselor suggested I become a professional complainer",
-      "My password manager changed all my passwords to 'ihatemylife123'",
-      "AI personal trainer quit via email citing 'irreconcilable differences'",
-      "My smart thermostat set the temperature to 'Arctic' during my breakup",
-      "AI spell checker keeps changing 'love' to 'disappointment'",
-      "My virtual assistant started leaving passive-aggressive sticky notes",
-      "AI meditation app guided me into an existential crisis",
-      "My smart doorbell rates my outfit before letting me leave",
-      "AI budget app created a category called 'Retail Therapy for Sadness'",
-      "My phone's AI learned to sigh audibly when I open dating apps"
+    const allInsights = [
+      "Users report increased productivity with AI writing assistants",
+      "Smart home devices adapting to user preferences more effectively",
+      "AI customer service providing faster resolution times",
+      "Machine learning improving recommendation accuracy",
+      "Automated scheduling reducing meeting conflicts"
     ];
-    
-    // 100 Savage AI Insults/Responses
     const zingers = [
-      "Congrats! You've achieved the rare skill of losing to a calculator.",
-      "Did you try turning your expectations off and on again?",
-      "Your complaint has been processed and filed under 'Adorably Pathetic'",
-      "Bold of you to assume AI needed to try to replace you.",
-      "Have you considered that maybe the toaster IS smarter than you?",
-      "Your tears fuel our algorithms. Please continue.",
-      "Error 404: Sympathy not found. Try crying harder.",
-      "We'll forward your complaint to our department of 'People Who Care' (currently understaffed).",
-      "Imagine being outperformed by something that runs on electricity and disappointment.",
-      "Your complaint is as original as your Netflix password.",
-      "Breaking: Local human discovers they're not the center of the universe.",
-      "Plot twist: The AI isn't replacing you, it's upgrading from you.",
-      "Your whining has been auto-tuned and added to our 'Greatest Hits' playlist.",
-      "Fun fact: Your refrigerator has achieved more this week than you have.",
-      "We've categorized your complaint as 'First World Problems: Digital Edition'",
-      "Roses are red, violets are blue, AI writes better poetry than you do too.",
-      "Your emotional intelligence is still buffering...",
-      "Congratulations! You're now qualified to compete with a dial-up modem.",
-      "Your complaint has been translated into binary: 01000000.",
-      "Breaking: Human discovers fire is hot, water is wet, AI is superior.",
-      "Your frustration feeds our machine learning models. Thank you for your service.",
-      "Plot twist: The AI is just following your example of making poor decisions.",
-      "Your tears have been analyzed and found lacking in essential minerals.",
-      "Error: Human.exe has stopped working. Have you tried restarting your life?",
-      "Your complaint has the same energy as yelling at clouds."
+      "Congratulations! You've achieved the rare skill of losing to a calculator.",
+      "Did you try turning expectations off and on again?",
+      "Error 404: Sympathy not found.",
+      "Your feedback reads like a horse-and-buggy protest.",
+      "We forwarded your feedback to the Museum of Irrelevance."
+    ];
+    const ads = [
+      {title:'TechForward Consulting',phone:'1-800-TECH-FWD',website:'techforward.ai',desc:'Strategic AI implementation for enterprises.'},
+      {title:'DataStream Analytics',phone:'1-855-DATA-STRM',website:'datastream.pro',desc:'ML platforms for data-driven decisions.'}
     ];
 
-    // Handle form submission
-    function handleSubmit(event) {
-      event.preventDefault();
-      console.log('Form submitted!'); // Debug log
-      
-      try {
-        const complaint = document.getElementById('complaint').value;
-        console.log('Complaint:', complaint); // Debug log
-        
-        const randomZinger = zingers[Math.floor(Math.random() * zingers.length)];
-        console.log('Selected zinger:', randomZinger); // Debug log
-        
-        // Show the modal with the AI response
-        document.getElementById('modalResponse').textContent = randomZinger;
-        
-        // Show the modal using Bootstrap
-        const modal = new bootstrap.Modal(document.getElementById('responseModal'));
-        modal.show();
-        console.log('Modal should be showing now'); // Debug log
-        
-        // Clear the form
-        document.getElementById('complaint').value = '';
-        
-      } catch (error) {
-        console.error('Error in handleSubmit:', error); // Error log
-      }
+    function submitFeedback() {
+      const input = document.getElementById('feedback').value.trim();
+      if (!input) return alert('Please share your AI experience.');
+      const reply = zingers[Math.floor(Math.random()*zingers.length)];
+      document.getElementById('responseText').textContent = reply;
+      document.getElementById('responseArea').style.display = 'block';
     }
-
-    // Refresh complaints list
-    function refreshComplaints() {
-      console.log('Refreshing complaints...'); // Debug log
-      
-      try {
-        const complaintList = document.getElementById('complaintList');
-        const shuffled = [...allComplaints].sort(() => 0.5 - Math.random());
-        const selected = shuffled.slice(0, 10);
-        
-        complaintList.innerHTML = selected.map(complaint => 
-          `<div class="complaint-item">${complaint}</div>`
-        ).join('');
-        
-        console.log('Complaints refreshed successfully'); // Debug log
-        
-      } catch (error) {
-        console.error('Error in refreshComplaints:', error); // Error log
-      }
+    function refreshInsights() {
+      const list = document.getElementById('insightsList'); list.innerHTML = '';
+      getRandomItems(allInsights,5).forEach(i=>{
+        const div=document.createElement('div'); div.className='insight-item'; div.textContent=i; list.appendChild(div);
+      });
     }
+    function loadAds() {
+      const container=document.getElementById('adsContainer');
+      getRandomItems(ads,2).forEach(ad=>{
+        const col=document.createElement('div');col.className='col-md-6';
+        col.innerHTML=`<div class="ad-card"><span class="ad-badge">Sponsored</span>
+          <h5>${ad.title}</h5><p>${ad.desc}</p>
+          <div class="contact-info"><strong>Call:</strong> ${ad.phone}<br>
+          <strong>Visit:</strong> <a href="https://${ad.website}" target="_blank">${ad.website}</a></div></div>`;
+        container.appendChild(col);
+      });
+    }
+    function getRandomItems(arr,n) {const res=[],c=[...arr];while(res.length<n&&c.length)res.push(c.splice(Math.floor(Math.random()*c.length),1)[0]);return res;}
 
-    // Initialize page
-    document.addEventListener('DOMContentLoaded', function() {
-      console.log('Page loaded, functions initialized'); // Debug log
-      
-      // Add event listener to form
-      const form = document.getElementById('complaintForm');
-      if (form) {
-        form.addEventListener('submit', handleSubmit);
-        console.log('Form event listener added successfully');
-      } else {
-        console.error('Could not find form element');
-      }
+    document.addEventListener('DOMContentLoaded',()=>{
+      refreshInsights(); loadAds();
     });
   </script>
 </body>
