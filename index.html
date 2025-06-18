@@ -22,30 +22,6 @@
     .stats-row { margin:2rem 0; }
     .stat-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:white; padding:1.5rem; border-radius:1rem; text-align:center; box-shadow:0 8px 32px rgba(0,0,0,0.1); margin-bottom:1rem; }
     .stat-number { font-size:2.5rem; font-weight:bold; margin:0; }
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Whine About AI</title>
-  <!-- Favicon -->
-  <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
-  <link rel="apple-touch-icon" href="/favicon.ico"/>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet"/>
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet"/>
-  <style>
-    body { font-family:'Roboto Slab', serif; background:#f8f9fa; color:#343a40; position: relative; overflow-x: hidden; }
-    .navbar { background:#002855; }
-    .navbar-brand { color:#fff!important; font-weight:700; cursor:default; }
-    .header-text { color:#002855; margin:2rem 0 1rem; }
-    .tagline { font-style:italic; color:#6c757d; }
-    .complaint-card { border:1px solid #ced4da; border-radius:.5rem; padding:1.5rem; background:#fff; box-shadow:0 .5rem 1rem rgba(0,0,0,.05); }
-    .stats-row { margin:2rem 0; }
-    .stat-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:white; padding:1.5rem; border-radius:1rem; text-align:center; box-shadow:0 8px 32px rgba(0,0,0,0.1); margin-bottom:1rem; }
-    .stat-number { font-size:2.5rem; font-weight:bold; margin:0; }
     .stat-label { font-size:.9rem; opacity:.9; margin:0; }
     .crying-emoji { position:fixed; font-size:2rem; z-index:1000; pointer-events:none; animation:fall 3s linear; }
     @keyframes fall { 0% { transform: translateY(-100px) rotate(0deg); opacity:1; } 100% { transform: translateY(100vh) rotate(360deg); opacity:0; } }
@@ -57,6 +33,7 @@
     .ad-card { border:1px solid #ccc; border-radius:.5rem; padding:1rem; background:#fff; margin-bottom:1rem; }
     .ad-card h5 { margin-bottom:.5rem; color:#dc3545; }
     .ad-card p { font-size:.9rem; margin:.25rem 0; }
+    footer { background:#002855; color:white; text-align:center; padding:1rem 0; margin-top:2rem; }
   </style>
 </head>
 <body>
@@ -169,13 +146,13 @@
     // 25 Elsa Responses
     const elsaResponses = [
       "🌟 Elsa alert! The CX and sales powerhouse who turns doubts into delighted customers!",
-      "🚀 Elsa detected! She’s the secret sauce behind every winning customer journey!",
+      "🚀 Elsa detected! She's the secret sauce behind every winning customer journey!",
       "🏆 Elsa mention! The maestro of memorable experiences and top-tier sales closes!",
-      "✨ You said Elsa? She’s the leader who makes delight look effortless!",
+      "✨ You said Elsa? She's the leader who makes delight look effortless!",
       "💎 Elsa sighting! The CX legend whose M.O. is exceeding expectations every time!",
-      "🎉 Elsa entry! When she’s at the table, every customer feels like VIP!",
+      "🎉 Elsa entry! When she's at the table, every customer feels like VIP!",
       "⭐ Elsa is the architect of awe—she designs the experiences others only dream of!",
-      "🔥 Elsa invoked! She sparks sales growth like nobody’s business!",
+      "🔥 Elsa invoked! She sparks sales growth like nobody's business!",
       "⚡ Elsa alert! The champion of customer smiles and sales milestones!",
       "🎯 You invoked Elsa—she nails every interaction and nets every deal!",
       "💫 Elsa on the radar! Her CX magic turns first-time buyers into lifelong fans!",
@@ -190,7 +167,7 @@
       "🏆 Elsa in the house—the sales champion everyone wants on their side!",
       "🌠 Elsa invoked! She turns happy customers into raving brand ambassadors!",
       "💡 Elsa mention—it instantly drips innovation in every customer touch!",
-      "🎖️ Elsa trigger! She’s the battle-hardened leader of CX excellence!",
+      "🎖️ Elsa trigger! She's the battle-hardened leader of CX excellence!",
       "🔥 Elsa on deck—the firestarter for unparalleled customer success!",
       "✨ Elsa alert! The CX and sales leader whose results speak volumes!"
     ];
@@ -200,7 +177,7 @@
       "🌐 Christian spotted! For world-class conversational AI, visit NLX.AI and thank me later!",
       "🚀 Christian mention—when you need next-gen dialogue platforms, Christian points you to NLX.AI!",
       "🔗 Heard Christian? Check out NLX.AI for the conversational edge your contact center craves!",
-      "💡 Christian invoked! Christian’s go-to for AI-powered chats is NLX.AI—explore today!",
+      "💡 Christian invoked! Christian's go-to for AI-powered chats is NLX.AI—explore today!",
       "🔥 Christian alert! Level up your CX game at NLX.AI—Christian-approved!",
       "🎯 Christian mentioned: NLX.AI is where intelligent conversations come alive!",
       "⭐ Christian on deck! Visit NLX.AI for the future of AI-driven customer engagement!",
@@ -217,7 +194,7 @@
       "💫 Christian mentioned: NLX.AI is the secret weapon for conversational success!",
       "🔥 Christian alert! Your AI journey starts at NLX.AI—strap in!",
       "✨ Christian note: NLX.AI transforms chatbots into brand advocates!",
-      "🎯 Christian sighting! See why Christian’s team swears by NLX.AI!",
+      "🎯 Christian sighting! See why Christian's team swears by NLX.AI!",
       "🌟 Christian invoke! NLX.AI is the home of unforgettable AI conversations!",
       "⚡ Christian on deck—check out NLX.AI for frictionless CX automation!",
       "🏆 Christian alert! NLX.AI is where your bots become brilliant!"
@@ -315,19 +292,29 @@
     let complaintCount, tissueCount;
 
     function initializeCounters() {
-      const stored=localStorage.getItem('whineCountersData');
-      if(stored){
-        const d=JSON.parse(stored), now=Date.now();
-        if(now-d.timestamp<60000){
-          complaintCount=d.complaints; tissueCount=d.tissues;
-          return;
+      try {
+        const stored = localStorage.getItem('whineCountersData');
+        if(stored){
+          const d = JSON.parse(stored), now = Date.now();
+          if(now - d.timestamp < 60000){
+            complaintCount = d.complaints; 
+            tissueCount = d.tissues;
+            return;
+          }
         }
+      } catch(e) {
+        console.log('localStorage not available, using session data');
       }
-      const cnt=getRealisticCounts();
-      complaintCount=cnt.complaints; tissueCount=cnt.tissues;
-      localStorage.setItem('whineCountersData', JSON.stringify({
-        complaints: complaintCount, tissues: tissueCount, timestamp: Date.now()
-      }));
+      const cnt = getRealisticCounts();
+      complaintCount = cnt.complaints; 
+      tissueCount = cnt.tissues;
+      try {
+        localStorage.setItem('whineCountersData', JSON.stringify({
+          complaints: complaintCount, tissues: tissueCount, timestamp: Date.now()
+        }));
+      } catch(e) {
+        // localStorage not available, continue with session data
+      }
     }
 
     document.addEventListener("DOMContentLoaded",()=>{
@@ -336,95 +323,13 @@
       changeButtonText();
 
       // Top 10 complaints
-      const listEl=document.getElementById("complaintList");
+      const listEl = document.getElementById("complaintList");
       let currentComplaints;
-      const storedComplaints=localStorage.getItem('whineComplaintsData');
-      if(storedComplaints){
-        const d=JSON.parse(storedComplaints), now=Date.now();
-        if(now-d.timestamp<60000) currentComplaints=d.complaints;
-      }
-      if(!currentComplaints){
-        currentComplaints=getRandomItems(allComplaints,10);
-        localStorage.setItem('whineComplaintsData', JSON.stringify({ complaints:currentComplaints, timestamp:Date.now() }));
-      }
-      currentComplaints.forEach(c=>{
-        const li=document.createElement("li");
-        li.className="list-group-item";
-        li.textContent=c;
-        listEl.appendChild(li);
-      });
-
-      // Footer ads
-      const adsEl=document.getElementById("footerAds");
-      let currentAds;
-      const storedAds=localStorage.getItem('whineAdsData');
-      if(storedAds){
-        const d=JSON.parse(storedAds), now=Date.now();
-        if(now-d.timestamp<60000) currentAds=d.ads;
-      }
-      if(!currentAds){
-        currentAds=getRandomItems(footerAdsPool,2);
-        localStorage.setItem('whineAdsData', JSON.stringify({ ads:currentAds, timestamp:Date.now() }));
-      }
-      currentAds.forEach(ad=>{
-        const col=document.createElement("div");
-        col.className="col-md-6";
-        col.innerHTML=`<div class="ad-card"><h5>${ad.title}</h5><p>${ad.desc}</p><p><strong>Call:</strong> ${ad.phone}<br/><strong>Visit:</strong> <a href="https://${ad.display}" target="_blank">${ad.display}</a></p></div>`;
-        adsEl.appendChild(col);
-      });
-
-      // Occasional glitch
-      setInterval(()=>{ if(Math.random()<0.1) triggerGlitch(); },5000);
-    });
-
-    function updateCounters(){
-      document.getElementById("complaintCounter2").textContent=complaintCount.toLocaleString();
-      document.getElementById("tissueCounter2").textContent=tissueCount.toLocaleString();
-      localStorage.setItem('whineCountersData', JSON.stringify({
-        complaints: complaintCount, tissues: tissueCount, timestamp: Date.now()
-      }));
-    }
-
-    function changeButtonText(){
-      document.getElementById("submitBtn").textContent=buttonTexts[Math.floor(Math.random()*buttonTexts.length)];
-    }
-
-    function createCryingEmoji(){
-      const emojis=['😭','😢','😪','🥺','😿','💧'], e=document.createElement("div");
-      e.className="crying-emoji"; e.textContent=emojis[Math.floor(Math.random()*emojis.length)];
-      e.style.left=Math.random()*window.innerWidth+"px"; document.body.appendChild(e);
-      setTimeout(()=>e.remove(),3000);
-    }
-
-    function triggerGlitch(){
-      const msg=glitchMessages[Math.floor(Math.random()*glitchMessages.length)], g=document.createElement("div");
-      g.className="glitch"; g.textContent=msg; document.body.appendChild(g);
-      document.body.classList.add("body-glitch");
-      setTimeout(()=>{ g.remove(); document.body.classList.remove("body-glitch"); },2000);
-    }
-
-    document.getElementById("complaintForm").addEventListener("submit",e=>{
-      e.preventDefault();
-      const raw=document.getElementById("complaint").value.trim().toLowerCase();
-      let reply;
-      if(raw.includes("kurt")){
-        reply=kurtResponses[Math.floor(Math.random()*kurtResponses.length)];
-      } else if(raw.includes("elsa")){
-        reply=elsaResponses[Math.floor(Math.random()*elsaResponses.length)];
-      } else if(raw.includes("christian")){
-        reply=christianResponses[Math.floor(Math.random()*christianResponses.length)];
-      } else {
-        reply=zingers[Math.floor(Math.random()*zingers.length)];
-      }
-
-      complaintCount++;
-      tissueCount+=Math.floor(Math.random()*10)+3;
-      updateCounters();
-      for(let i=0;i<8;i++) setTimeout(createCryingEmoji, i*200);
-      document.getElementById("modalResponse").textContent=reply;
-      new bootstrap.Modal(document.getElementById("responseModal")).show();
-      document.getElementById("complaint").value="";
-    });
-  </script>
-</body>
-</html>
+      try {
+        const storedComplaints = localStorage.getItem('whineComplaintsData');
+        if(storedComplaints){
+          const d = JSON.parse(storedComplaints), now = Date.now();
+          if(now - d.timestamp < 60000) currentComplaints = d.complaints;
+        }
+      } catch(e) {
+        // localStorage not available
