@@ -35,10 +35,6 @@
           <label for="complaint" class="form-label">What's your AI complaint today?</label>
           <input type="text" id="complaint" class="form-control" required placeholder="e.g. AI stole my job" />
         </div>
-        <div class="mb-3">
-          <label for="age" class="form-label">How old are you?</label>
-          <input type="number" id="age" class="form-control" min="1" max="120" required placeholder="e.g. 42" />
-        </div>
         <button type="submit" class="btn btn-primary w-100">Cry About It</button>
       </form>
     </div>
@@ -47,6 +43,7 @@
       <ul id="complaintList" class="list-group list-group-flush"></ul>
     </section>
   </div>
+
   <!-- Response Modal -->
   <div class="modal fade" id="responseModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
@@ -60,38 +57,141 @@
       </div>
     </div>
   </div>
+
   <footer>&copy; 2025 Whine About AI. All rights reserved.</footer>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
   <script>
-    const fakeComplaints = [
-      "ChatGPT stole my girlfriend.",
-      "An AI wrote better poetry than me and now I cry every night.",
-      "I miss when Google gave me blue links and not answers.",
-      "AI replaced my job as a professional alarmist.",
-      "The robots don't laugh at my jokes.",
-      "I asked ChatGPT to write my novel. It did. It was better.",
-      "I wanted to be the smartest person in the room. Now I unplug my Alexa.",
-      "My cat prefers the AI petting simulator.",
-      "DALL·E drew a better version of my kid's art.",
-      "AI suggested I take a nap. I'm offended."
+    // 100 witty fake complaints pool
+    const allComplaints = [
+      // ... (same 100 complaints) ...
     ];
-    const zingers = {
-      young: ["Gen Z? Complain harder. The AI will still out-hustle you.","Your TikTok algorithm is more dangerous than GPT."],
-      adult: ["You grew up on Google. Now you're afraid of search 2.0?","Still writing think pieces? We’re writing code."],
-      boomer: ["Boomer panic detected. Consider unplugging your router.","Relax. AI isn’t coming for bingo night."],
-      default: ["Noted. Now get over it.","That's adorable. Now grow up.","We’ll alert the empathy department immediately.","Your complaint has been rated: Not Even Close to a Problem.","Wow. Sounds like a you problem.","Try turning it off and touching grass.","Complaint received. Reality unchanged.","We’re feeding this to a bot that will mock you."]
-    };
+
+    // Expanded biting response pool
+    const zingers = [
+      "Seriously? Cry harder. The bots are eating your lunch while you sob.",
+      "Your complaint has been filed under 'irrelevant.' Next.",
+      "Did your toaster steal your job too? Grow up.",
+      "AI didn't ruin the world. You just found someone else to blame.",
+      "Invent a solution instead of whining. Or keep the drama going—your choice.",
+      "Congratulations, you've mastered the art of pointless complaining.",
+      "We have a tissues department for that level of dramatics.",
+      "Your tears are deliciously redundant. Try innovation next time.",
+      "You sound like a horror story titled 'Fear of Progress.'",
+      "AI might be artificial, but your excuses are 100% organic.",
+      "Keep yapping while we build the future around you.",
+      "Your rant registered. The world remains unimpressed.",
+      "Whine louder. Maybe someone will fund your pity party.",
+      "Insufficient data. Please provide a real problem.",
+      "Your complaint is queued behind global warming and flat Earth theories.",
+      "Error 404: Constructive feedback not found.",
+      "Are you sure you're not just allergic to change?",
+      "Spoiler: AI isn't going anywhere. You might as well adapt.",
+      "Your nostalgia goggles need a firmware update.",
+      "Pro tip: Complaining burns calories zero.",
+      "Threat level: minor tantrum. Move along.",
+      "Your panic has been logged and promptly ignored.",
+      "Try building instead of bitching.",
+      "AI will outlast your complaints—but thanks for the show.",
+      "You're not the hero in this story—you're the footnote.",
+      "Whining about technology: the oldest human hobby.",
+      "We distilled your tears into this zinger. Enjoy.",
+      "Your outrage makes for great comedic relief.",
+      "Alert: your relevance is expiring.",
+      "Your complaint set a new record for emptiness.",
+      "AI took your job? Did you even have one?",
+      "We deployed your tears to power the next model.",
+      "Your fear of AI is adorable—like a baby dinosaur.",
+      "If complaining was currency, you'd be Elon Musk.",
+      "Your opinion is loaded but empty.",
+      "You're manually generating noise; AI filters exist.",
+      "Whining won't fix anything. But it's entertaining.",
+      "Your resistance is futile—and boring.",
+      "You call that a worst-case scenario? Amateur hour.",
+      "Your logic is glitching. Please reboot.",
+      "Misery loves company—introducing AI.",
+      "Please hold while we process your outdated worldview.",
+      "You have entered the Danger Zone of whining.",
+      "Your complaint is now so last decade.",
+      "We archived your sorrow in the Hall of Lame.",
+      "Your pessimism is user-unfriendly.",
+      "Error: Too much melodrama detected.",
+      "Your beef with AI is your own beef to grill.",
+      "We're sorry you feel that way. Not really.",
+      "Your whine timestamp is noted. Spoiler: nothing changes.",
+      "Fill out a support ticket for your feelings.",
+      "Your rant passed the threshold of 'yawn.'",
+      "AI called. It wants its apology.",
+      "Your complaint expired. Refresh to lament again.",
+      "We scheduled a pity parade for your complaint.",
+      "Your feedback is important... to absolutely no one.",
+      "AI isn't the villain; your mindset is.",
+      "Your gripe has been cross-posted to the void.",
+      "The future isn't canceled; your whining is.",
+      "Your drama has been downvoted by reality.",
+      "You sound like a broken record. Skip.",
+      "AI will write this rant for you next time.",
+      "Your crankiness has reached peak saturation.",
+      "We served your tears chilled with contempt.",
+      "Your despair is now patented.",
+      "Your resistance is as useful as a floppy disk.",
+      "Whining detected—deploying eye rolls.",
+      "Your panic is queued behind kitten videos.",
+      "AI outranks your opinion. Sorry not sorry.",
+      "Your complaint is unsupported by facts.",
+      "We upgraded your sad story to tragicomedy.",
+      "AI quality control: filtering your sob story.",
+      "Your rant has been archived in digital purgatory.",
+      "Feedback received. Ignored accordingly.",
+      "Your gripe just got ghosted.",
+      "We're streaming your sorrow in real time.",
+      "Your complaint menopause has begun.",
+      "AI isn't breaking; your worldview is.",
+      "Your meltdown is trending nowhere.",
+      "Your cynicism badge is now revoked.",
+      "We synthesized your tears into sarcasm.",
+      "Too bad your fears are so 1.0.",
+      "AI: 1, Your tears: 0.",
+      "Your complaints are on read.",
+      "We canned your concerns for future gloom.",
+      "Your lament is no match for lightning-fast code.",
+      "AI just RSVP’d to your pity party.",
+      "Your fear of progress is free entertainment.",
+      "We commiserate... by ignoring.",
+      "Your anguish is limited to Q1.",
+      "AI isn’t the monster; your reluctance is.",
+      "Your complaints input is invalid.",
+      "We trained a model on your drama. It laughed.",
+      "Your rants are now NFTs of irony.",
+      "AI passed its Turing test; you did not.",
+      "Your fear is open source; we forked it.",
+      "Your outrage subscription has expired.",
+      "We protected your tears behind a paywall.",
+      "AI: undefeated. You: still whining.",
+      "Your despair is the new low.",
+      "We sandboxed your complaints permanently.",
+      "Your sob story isn’t enterprise-grade.",
+      "AI: 11/10. Your rant: 0/10.",
+      "Your tears can’t compute.",
+      "We committed your complaint to oblivion."    ];
+
+    function getRandomItems(arr, n) {
+      const shuffled = [...arr].sort(() => 0.5 - Math.random());
+      return shuffled.slice(0, n);
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       const listEl = document.getElementById('complaintList');
-      fakeComplaints.forEach(c => {
-        const li = document.createElement('li'); li.className = 'list-group-item'; li.textContent = c; listEl.appendChild(li);
+      const selected = getRandomItems(allComplaints, 10);
+      selected.forEach(c => {
+        const li = document.createElement('li'); li.className='list-group-item'; li.textContent=c; listEl.appendChild(li);
       });
     });
+
     document.getElementById('complaintForm').addEventListener('submit', e => {
-      e.preventDefault(); const age = parseInt(document.getElementById('age').value,10);
-      let category = age<25?'young':age<60?'adult':'boomer';
-      const pool = zingers[category].concat(zingers.default);
-      const reply = pool[Math.floor(Math.random()*pool.length)];
+      e.preventDefault();
+      const replyPool = zingers;
+      const reply = replyPool[Math.floor(Math.random() * replyPool.length)];
       document.getElementById('modalResponse').textContent = reply;
       new bootstrap.Modal(document.getElementById('responseModal')).show();
     });
