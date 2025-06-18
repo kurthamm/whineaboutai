@@ -431,6 +431,96 @@
       }, 3000);
     }
     
+    function playSubmitSound() {
+      // Create audio context for sound effects
+      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      
+      const sounds = [
+        // Boo sound effect
+        () => {
+          const oscillator = audioContext.createOscillator();
+          const gainNode = audioContext.createGain();
+          
+          oscillator.connect(gainNode);
+          gainNode.connect(audioContext.destination);
+          
+          oscillator.frequency.setValueAtTime(200, audioContext.currentTime);
+          oscillator.frequency.exponentialRampToValueAtTime(100, audioContext.currentTime + 0.5);
+          
+          gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+          gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+          
+          oscillator.start(audioContext.currentTime);
+          oscillator.stop(audioContext.currentTime + 0.5);
+        },
+        
+        // Sad trombone effect
+        () => {
+          const frequencies = [220, 196, 174, 147];
+          frequencies.forEach((freq, index) => {
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.setValueAtTime(freq, audioContext.currentTime + index * 0.15);
+            gainNode.gain.setValueAtTime(0.2, audioContext.currentTime + index * 0.15);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + index * 0.15 + 0.3);
+            
+            oscillator.start(audioContext.currentTime + index * 0.15);
+            oscillator.stop(audioContext.currentTime + index * 0.15 + 0.3);
+          });
+        },
+        
+        // Crying sound effect
+        () => {
+          const oscillator = audioContext.createOscillator();
+          const gainNode = audioContext.createGain();
+          
+          oscillator.connect(gainNode);
+          gainNode.connect(audioContext.destination);
+          
+          oscillator.frequency.setValueAtTime(400, audioContext.currentTime);
+          oscillator.frequency.setValueAtTime(600, audioContext.currentTime + 0.1);
+          oscillator.frequency.setValueAtTime(300, audioContext.currentTime + 0.2);
+          oscillator.frequency.setValueAtTime(500, audioContext.currentTime + 0.3);
+          
+          gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+          gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.4);
+          
+          oscillator.start(audioContext.currentTime);
+          oscillator.stop(audioContext.currentTime + 0.4);
+        },
+        
+        // Robot beep dismissal
+        () => {
+          const oscillator = audioContext.createOscillator();
+          const gainNode = audioContext.createGain();
+          
+          oscillator.connect(gainNode);
+          gainNode.connect(audioContext.destination);
+          
+          oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+          oscillator.frequency.setValueAtTime(400, audioContext.currentTime + 0.1);
+          
+          gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+          gainNode.gain.setValueAtTime(0, audioContext.currentTime + 0.2);
+          
+          oscillator.start(audioContext.currentTime);
+          oscillator.stop(audioContext.currentTime + 0.2);
+        }
+      ];
+      
+      // Play random sound
+      const randomSound = sounds[Math.floor(Math.random() * sounds.length)];
+      try {
+        randomSound();
+      } catch (error) {
+        console.log('Audio not supported or blocked');
+      }
+    }
+    
     function triggerGlitch() {
       const message = glitchMessages[Math.floor(Math.random() * glitchMessages.length)];
       const glitchEl = document.createElement('div');
@@ -519,12 +609,12 @@
       // Change button text on load (with persistence)
       changeButtonText();
       
-      // Random glitch effect
+      // Random glitch effect - increased frequency for testing
       setInterval(() => {
-        if (Math.random() < 0.1) { // 10% chance every 5 seconds
+        if (Math.random() < 0.3) { // 30% chance every 3 seconds for testing
           triggerGlitch();
         }
-      }, 5000);
+      }, 3000);
       
       // Favicon - ensure it loads properly
       const faviconLinks = document.querySelectorAll("link[rel*='icon']");
@@ -538,6 +628,9 @@
     // Form submission handler
     document.getElementById('complaintForm').addEventListener('submit', e => {
       e.preventDefault();
+      
+      // Play submit sound effect
+      playSubmitSound();
       
       // Update counters
       complaintCount++;
