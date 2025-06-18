@@ -106,21 +106,7 @@
       <p class="tagline">Let it out. The bots are listening.</p>
     </div>
     
-    <!-- Stats Row -->
-    <div class="row stats-row">
-      <div class="col-md-6">
-        <div class="stat-card">
-          <p class="stat-number" id="complaintCounter">1,337</p>
-          <p class="stat-label">People Whined Today</p>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="stat-card">
-          <p class="stat-number" id="tissueCounter">42,069</p>
-          <p class="stat-label">Tissues Delivered</p>
-        </div>
-      </div>
-    </div>
+
     
     <div class="complaint-card mx-auto" style="max-width:700px;">
       <form id="complaintForm">
@@ -131,6 +117,23 @@
         <button type="submit" class="btn btn-primary w-100" id="submitBtn">Cry About It</button>
       </form>
     </div>
+    
+    <!-- Stats Row -->
+    <div class="row stats-row">
+      <div class="col-md-6">
+        <div class="stat-card">
+          <p class="stat-number" id="complaintCounter2">1,337</p>
+          <p class="stat-label">People Whined Today</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="stat-card">
+          <p class="stat-number" id="tissueCounter2">42,069</p>
+          <p class="stat-label">Tissues Delivered</p>
+        </div>
+      </div>
+    </div>
+    
     <section id="topComplaints" class="mt-5">
       <h2 class="fs-3 mb-3">Top 10 Complaints</h2>
       <ul id="complaintList" class="list-group list-group-flush"></ul>
@@ -319,8 +322,8 @@
     }
     
     function updateCounters() {
-      document.getElementById('complaintCounter').textContent = complaintCount.toLocaleString();
-      document.getElementById('tissueCounter').textContent = tissueCount.toLocaleString();
+      document.getElementById('complaintCounter2').textContent = complaintCount.toLocaleString();
+      document.getElementById('tissueCounter2').textContent = tissueCount.toLocaleString();
     }
     
     function changeButtonText() {
