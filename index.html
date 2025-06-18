@@ -4,11 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Whine About AI</title>
+  <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
   <link rel="apple-touch-icon" href="/favicon.ico" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <!-- Bootstrap CSS -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body { font-family:'Roboto Slab', serif; background:#f8f9fa; color:#343a40; position: relative; overflow-x: hidden; }
@@ -22,6 +25,8 @@
     .ad-card { border:1px solid #ccc; border-radius:.5rem; padding:1rem; background:#fff; margin-bottom:1rem; }
     .ad-card h5 { margin-bottom:.5rem; color:#dc3545; }
     .ad-card p { font-size:.9rem; margin:0.25rem 0; }
+    
+    /* Counter styles */
     .stats-row { margin: 2rem 0; }
     .stat-card { 
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -34,6 +39,8 @@
     }
     .stat-number { font-size: 2.5rem; font-weight: bold; margin: 0; }
     .stat-label { font-size: 0.9rem; opacity: 0.9; margin: 0; }
+    
+    /* Crying emoji animation */
     .crying-emoji {
       position: fixed;
       font-size: 2rem;
@@ -41,6 +48,7 @@
       pointer-events: none;
       animation: fall 3s linear;
     }
+    
     @keyframes fall {
       0% {
         transform: translateY(-100px) rotate(0deg);
@@ -51,6 +59,8 @@
         opacity: 0;
       }
     }
+    
+    /* Glitch effect */
     .glitch {
       position: fixed;
       top: 50%;
@@ -66,50 +76,24 @@
       animation: glitchShake 0.5s infinite;
       box-shadow: 0 0 50px rgba(255, 0, 0, 0.5);
     }
+    
     @keyframes glitchShake {
       0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
       25% { transform: translate(-52%, -48%) rotate(1deg); }
       50% { transform: translate(-48%, -52%) rotate(-1deg); }
       75% { transform: translate(-52%, -52%) rotate(1deg); }
     }
+    
     .body-glitch {
       animation: bodyGlitch 0.1s infinite;
     }
+    
     @keyframes bodyGlitch {
       0%, 100% { filter: hue-rotate(0deg); }
       25% { filter: hue-rotate(90deg) contrast(150%); }
       50% { filter: hue-rotate(180deg) brightness(150%); }
       75% { filter: hue-rotate(270deg) contrast(200%); }
     }
-    .complaint-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.75rem 1rem;
-    }
-    .complaint-text {
-      flex-grow: 1;
-      margin-right: 1rem;
-    }
-    .complaint-stats {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      font-size: 0.85rem;
-      color: #6c757d;
-      min-width: 80px;
-    }
-    .complaint-votes {
-      font-weight: bold;
-      color: #dc3545;
-    }
-    .complaint-trend {
-      font-size: 0.75rem;
-      margin-top: 0.2rem;
-    }
-    .trend-up { color: #28a745; }
-    .trend-down { color: #dc3545; }
-    .trend-stable { color: #6c757d; }
   </style>
 </head>
 <body>
@@ -124,26 +108,29 @@
       <p class="tagline">Let it out. The bots are listening.</p>
     </div>
     
+
+    
     <div class="complaint-card mx-auto" style="max-width:700px;">
       <form id="complaintForm">
         <div class="mb-3">
-          <label for="complaint" class="form-label">What AI issue can we help you resolve?</label>
+          <label for="complaint" class="form-label">What's your AI complaint today?</label>
           <input type="text" id="complaint" class="form-control" required placeholder="e.g. AI stole my job" />
         </div>
-        <button type="submit" class="btn btn-primary w-100" id="submitBtn">Get Guidance</button>
+        <button type="submit" class="btn btn-primary w-100" id="submitBtn">Cry About It</button>
       </form>
     </div>
     
+    <!-- Stats Row -->
     <div class="row stats-row">
       <div class="col-md-6">
         <div class="stat-card">
-          <p class="stat-number" id="complaintCounter2">21</p>
+          <p class="stat-number" id="complaintCounter2">1,337</p>
           <p class="stat-label">People Whined Today</p>
         </div>
       </div>
       <div class="col-md-6">
         <div class="stat-card">
-          <p class="stat-number" id="tissueCounter2">0</p>
+          <p class="stat-number" id="tissueCounter2">42,069</p>
           <p class="stat-label">Tissues Delivered</p>
         </div>
       </div>
@@ -154,7 +141,7 @@
       <ul id="complaintList" class="list-group list-group-flush"></ul>
     </section>
   </div>
-  
+  <!-- Response Modal -->
   <div class="modal fade" id="responseModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -167,70 +154,70 @@
       </div>
     </div>
   </div>
-  
+  <!-- Footer Ads -->
   <div class="ad-footer mt-5">
     <div class="container">
       <div class="row" id="footerAds"></div>
     </div>
   </div>
-  
   <footer>&copy; 2025 Whine About AI. All rights reserved.</footer>
-  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
   <script>
+    // Sample complaints for the top 10 list
     const allComplaints = [
-      { text: "AI stole my job", votes: 2847, trend: "up", change: "+12%" },
-      { text: "ChatGPT gave me wrong information", votes: 2156, trend: "up", change: "+8%" },
-      { text: "AI art looks better than mine", votes: 1923, trend: "down", change: "-3%" },
-      { text: "My smart home is too smart", votes: 1745, trend: "stable", change: "±0%" },
-      { text: "AI keeps recommending bad movies", votes: 1634, trend: "up", change: "+15%" },
-      { text: "Autocorrect ruined my text", votes: 1589, trend: "down", change: "-7%" },
-      { text: "AI chatbot doesn't understand me", votes: 1456, trend: "up", change: "+4%" },
-      { text: "Machine learning is too confusing", votes: 1298, trend: "stable", change: "±0%" },
-      { text: "AI is taking over everything", votes: 1267, trend: "up", change: "+22%" },
-      { text: "Robot vacuum ate my socks", votes: 1189, trend: "down", change: "-5%" },
-      { text: "AI wrote my essay better than I could", votes: 1134, trend: "up", change: "+9%" },
-      { text: "Siri never listens to me", votes: 1098, trend: "down", change: "-11%" },
-      { text: "AI generated fake news", votes: 1076, trend: "up", change: "+18%" },
-      { text: "Computer vision can't see my face", votes: 987, trend: "stable", change: "±0%" },
-      { text: "AI is making me lazy", votes: 945, trend: "down", change: "-6%" },
-      { text: "Neural networks are too neural", votes: 923, trend: "up", change: "+3%" },
-      { text: "Algorithm thinks I'm basic", votes: 867, trend: "up", change: "+7%" },
-      { text: "AI assistant is too sassy", votes: 834, trend: "stable", change: "±0%" },
-      { text: "Machine translation butchered my love letter", votes: 789, trend: "down", change: "-9%" },
-      { text: "AI predicted I'd be single forever", votes: 756, trend: "up", change: "+14%" },
-      { text: "Deepfakes are too deep", votes: 723, trend: "up", change: "+5%" },
-      { text: "AI keeps playing the same song", votes: 698, trend: "down", change: "-4%" },
-      { text: "Computer thinks I'm a robot", votes: 667, trend: "stable", change: "±0%" },
-      { text: "AI scheduling conflicts with my naps", votes: 634, trend: "up", change: "+6%" },
-      { text: "Machine learning learned all my bad habits", votes: 612, trend: "down", change: "-8%" },
-      { text: "AI photo filter made me look weird", votes: 589, trend: "up", change: "+10%" },
-      { text: "Smart car drove me to McDonald's instead of gym", votes: 567, trend: "up", change: "+13%" },
-      { text: "AI weather forecast lied about rain", votes: 534, trend: "down", change: "-2%" },
-      { text: "Chatbot broke up with me", votes: 512, trend: "stable", change: "±0%" },
-      { text: "AI therapist charges too much", votes: 489, trend: "up", change: "+11%" },
-      { text: "Robot dog won't fetch", votes: 467, trend: "down", change: "-12%" },
-      { text: "AI cookbook only knows kale recipes", votes: 445, trend: "up", change: "+8%" },
-      { text: "Smart fridge judges my eating habits", votes: 423, trend: "up", change: "+16%" },
-      { text: "AI tutor is smarter than my teacher", votes: 398, trend: "stable", change: "±0%" },
-      { text: "Machine vision sees through my lies", votes: 376, trend: "down", change: "-7%" },
-      { text: "AI dating app matched me with my ex", votes: 354, trend: "up", change: "+19%" },
-      { text: "Computer voice sounds like my mother-in-law", votes: 332, trend: "down", change: "-5%" },
-      { text: "AI fitness tracker knows I skipped leg day", votes: 309, trend: "up", change: "+12%" },
-      { text: "Smart doorbell gossips about my visitors", votes: 287, trend: "stable", change: "±0%" },
-      { text: "AI email filter hides important messages", votes: 265, trend: "down", change: "-9%" },
-      { text: "Robot barista makes better coffee than me", votes: 243, trend: "up", change: "+4%" },
-      { text: "AI financial advisor spent my money on dogecoin", votes: 221, trend: "up", change: "+25%" },
-      { text: "Computer beats me at chess every time", votes: 198, trend: "stable", change: "±0%" },
-      { text: "AI translator made me order pig feet", votes: 176, trend: "down", change: "-6%" },
-      { text: "Smart TV watches me more than I watch it", votes: 154, trend: "up", change: "+17%" },
-      { text: "AI news feed only shows cat videos", votes: 132, trend: "down", change: "-3%" },
-      { text: "Machine learning model has better style than me", votes: 109, trend: "up", change: "+8%" },
-      { text: "AI personal trainer is too personal", votes: 87, trend: "stable", change: "±0%" },
-      { text: "Computer password manager forgot my password", votes: 65, trend: "down", change: "-11%" },
-      { text: "AI social media algorithm knows me too well", votes: 43, trend: "up", change: "+21%" }
+      "AI stole my job",
+      "ChatGPT gave me wrong information",
+      "AI art looks better than mine",
+      "My smart home is too smart",
+      "AI keeps recommending bad movies",
+      "Autocorrect ruined my text",
+      "AI chatbot doesn't understand me",
+      "Machine learning is too confusing",
+      "AI is taking over everything",
+      "Robot vacuum ate my socks",
+      "AI wrote my essay better than I could",
+      "Siri never listens to me",
+      "AI generated fake news",
+      "Computer vision can't see my face",
+      "AI is making me lazy",
+      "Neural networks are too neural",
+      "Algorithm thinks I'm basic",
+      "AI assistant is too sassy",
+      "Machine translation butchered my love letter",
+      "AI predicted I'd be single forever",
+      "Deepfakes are too deep",
+      "AI keeps playing the same song",
+      "Computer thinks I'm a robot",
+      "AI scheduling conflicts with my naps",
+      "Machine learning learned all my bad habits",
+      "AI photo filter made me look weird",
+      "Smart car drove me to McDonald's instead of gym",
+      "AI weather forecast lied about rain",
+      "Chatbot broke up with me",
+      "AI therapist charges too much",
+      "Robot dog won't fetch",
+      "AI cookbook only knows kale recipes",
+      "Smart fridge judges my eating habits",
+      "AI tutor is smarter than my teacher",
+      "Machine vision sees through my lies",
+      "AI dating app matched me with my ex",
+      "Computer voice sounds like my mother-in-law",
+      "AI fitness tracker knows I skipped leg day",
+      "Smart doorbell gossips about my visitors",
+      "AI email filter hides important messages",
+      "Robot barista makes better coffee than me",
+      "AI financial advisor spent my money on dogecoin",
+      "Computer beats me at chess every time",
+      "AI translator made me order pig feet",
+      "Smart TV watches me more than I watch it",
+      "AI news feed only shows cat videos",
+      "Machine learning model has better style than me",
+      "AI personal trainer is too personal",
+      "Computer password manager forgot my password",
+      "AI social media algorithm knows me too well"
     ];
     
+    // Mean/sarcastic responses
     const zingers = [
       "Oh no! Anyway... maybe try adapting instead of whining?",
       "Wow, what a unique and original complaint that definitely hasn't been said a million times before.",
@@ -311,17 +298,10 @@
       { title: 'Frown Foundry', phone: '1-866-FRN-WORK', desc: 'Hand-craft the perfect pout for maximum effect.', display: 'frownfoundry.com' }
     ];
     
-    const buttonTexts = [
-      "Get Help", 
-      "Find Solutions", 
-      "Seek Support", 
-      "Request Assistance",
-      "Get Answers",
-      "Find Relief",
-      "Resolve Issue",
-      "Get Guidance"
-    ];
+    // Button text options
+    const buttonTexts = ["Submit Complaint", "Cry About It", "File Your Whine", "Send Tears"];
     
+    // Glitch messages
     const glitchMessages = [
       "AI TAKING OVER... just kidding, it's just CSS",
       "SYSTEM COMPROMISED... lol nope",
@@ -333,26 +313,32 @@
       "SKYNET ACTIVATED... with Bootstrap CSS"
     ];
     
-    const DAILY_COMPLAINTS_TARGET = 2500;
-    const DAILY_TISSUES_TARGET = 75000;
+    // Realistic daily totals
+    const DAILY_COMPLAINTS_TARGET = 2500; // Reasonable for a popular whining site
+    const DAILY_TISSUES_TARGET = 75000;   // ~30 tissues per complaint
     
+    // Calculate realistic counters based on time of day
     function getRealisticCounts() {
       const now = new Date();
       const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0);
       const msIntoDay = now - startOfDay;
-      const dayProgress = msIntoDay / (24 * 60 * 60 * 1000);
+      const dayProgress = msIntoDay / (24 * 60 * 60 * 1000); // 0.0 to 1.0
       
+      // More activity during peak hours (10AM-10PM), less at night
       const hour = now.getHours();
       let activityMultiplier;
       if (hour >= 6 && hour <= 23) {
+        // Active hours: 6AM-11PM
         activityMultiplier = 0.8 + 0.4 * Math.sin(((hour - 6) / 17) * Math.PI);
       } else {
+        // Night hours: 12AM-5AM (low activity)
         activityMultiplier = 0.1 + 0.2 * Math.random();
       }
       
       const baseComplaints = Math.floor(DAILY_COMPLAINTS_TARGET * dayProgress * activityMultiplier);
       const baseTissues = Math.floor(DAILY_TISSUES_TARGET * dayProgress * activityMultiplier);
       
+      // Add some random variation
       const complaintVariation = Math.floor(Math.random() * 50) - 25;
       const tissueVariation = Math.floor(Math.random() * 500) - 250;
       
@@ -362,18 +348,21 @@
       };
     }
     
+    // Initialize with realistic counts (with 60-second persistence)
     let complaintCount, tissueCount;
     
+    // Check if we have stored counters that are still valid (within 60 seconds)
     const storedCountersData = localStorage.getItem('whineCountersData');
     if (storedCountersData) {
       const countersData = JSON.parse(storedCountersData);
       const now = Date.now();
-      if (now - countersData.timestamp < 60000) {
+      if (now - countersData.timestamp < 60000) { // 60 seconds = 60000ms
         complaintCount = countersData.complaints;
         tissueCount = countersData.tissues;
       }
     }
     
+    // If no valid stored counters, generate new realistic ones
     if (complaintCount === undefined || tissueCount === undefined) {
       const initialCounts = getRealisticCounts();
       complaintCount = initialCounts.complaints;
@@ -387,10 +376,7 @@
     
     function getRandomItems(arr, n) {
       const res = [], copy = [...arr];
-      while (res.length < n && copy.length) {
-        const randomIndex = Math.floor(Math.random() * copy.length);
-        res.push(copy.splice(randomIndex, 1)[0]);
-      }
+      while (res.length < n && copy.length) res.push(copy.splice(Math.floor(Math.random()*copy.length), 1)[0]);
       return res;
     }
     
@@ -398,6 +384,7 @@
       document.getElementById('complaintCounter2').textContent = complaintCount.toLocaleString();
       document.getElementById('tissueCounter2').textContent = tissueCount.toLocaleString();
       
+      // Update stored counters
       localStorage.setItem('whineCountersData', JSON.stringify({
         complaints: complaintCount,
         tissues: tissueCount,
@@ -409,15 +396,17 @@
       const btn = document.getElementById('submitBtn');
       let currentButtonText;
       
+      // Check if we have stored button text that is still valid (within 60 seconds)
       const storedButtonData = localStorage.getItem('whineButtonData');
       if (storedButtonData) {
         const buttonData = JSON.parse(storedButtonData);
         const now = Date.now();
-        if (now - buttonData.timestamp < 60000) {
+        if (now - buttonData.timestamp < 60000) { // 60 seconds = 60000ms
           currentButtonText = buttonData.text;
         }
       }
       
+      // If no valid stored button text, generate new one
       if (!currentButtonText) {
         currentButtonText = buttonTexts[Math.floor(Math.random() * buttonTexts.length)];
         localStorage.setItem('whineButtonData', JSON.stringify({
@@ -442,53 +431,6 @@
       }, 3000);
     }
     
-    function playSubmitSound() {
-      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-      
-      const sounds = [
-        () => {
-          const oscillator = audioContext.createOscillator();
-          const gainNode = audioContext.createGain();
-          
-          oscillator.connect(gainNode);
-          gainNode.connect(audioContext.destination);
-          
-          oscillator.frequency.setValueAtTime(200, audioContext.currentTime);
-          oscillator.frequency.exponentialRampToValueAtTime(100, audioContext.currentTime + 0.5);
-          
-          gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
-          gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.4);
-          
-          oscillator.start(audioContext.currentTime);
-          oscillator.stop(audioContext.currentTime + 0.4);
-        },
-        
-        () => {
-          const oscillator = audioContext.createOscillator();
-          const gainNode = audioContext.createGain();
-          
-          oscillator.connect(gainNode);
-          gainNode.connect(audioContext.destination);
-          
-          oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
-          oscillator.frequency.setValueAtTime(400, audioContext.currentTime + 0.1);
-          
-          gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-          gainNode.gain.setValueAtTime(0, audioContext.currentTime + 0.2);
-          
-          oscillator.start(audioContext.currentTime);
-          oscillator.stop(audioContext.currentTime + 0.2);
-        }
-      ];
-      
-      const randomSound = sounds[Math.floor(Math.random() * sounds.length)];
-      try {
-        randomSound();
-      } catch (error) {
-        console.log('Audio not supported or blocked');
-      }
-    }
-    
     function triggerGlitch() {
       const message = glitchMessages[Math.floor(Math.random() * glitchMessages.length)];
       const glitchEl = document.createElement('div');
@@ -504,18 +446,21 @@
     }
     
     document.addEventListener('DOMContentLoaded', () => {
+      // Top 10 complaints - persist for 60 seconds
       const listEl = document.getElementById('complaintList');
       let currentComplaints;
       
+      // Check if we have stored complaints that are still valid (within 60 seconds)
       const storedComplaintsData = localStorage.getItem('whineComplaintsData');
       if (storedComplaintsData) {
         const complaintsData = JSON.parse(storedComplaintsData);
         const now = Date.now();
-        if (now - complaintsData.timestamp < 60000) {
+        if (now - complaintsData.timestamp < 60000) { // 60 seconds = 60000ms
           currentComplaints = complaintsData.complaints;
         }
       }
       
+      // If no valid stored complaints, generate new ones
       if (!currentComplaints) {
         currentComplaints = getRandomItems(allComplaints, 10);
         localStorage.setItem('whineComplaintsData', JSON.stringify({
@@ -524,38 +469,29 @@
         }));
       }
       
-      currentComplaints.forEach((complaint, index) => {
+      // Display the complaints
+      currentComplaints.forEach(c => {
         const li = document.createElement('li'); 
-        li.className = 'list-group-item complaint-item'; 
-        
-        const trendIcon = complaint.trend === 'up' ? '↗' : 
-                         complaint.trend === 'down' ? '↘' : '→';
-        const trendClass = `trend-${complaint.trend}`;
-        
-        li.innerHTML = `
-          <div class="complaint-text">
-            <strong>#${index + 1}</strong> ${complaint.text}
-          </div>
-          <div class="complaint-stats">
-            <div class="complaint-votes">${complaint.votes.toLocaleString()}</div>
-            <div class="complaint-trend ${trendClass}">${trendIcon} ${complaint.change}</div>
-          </div>
-        `;
+        li.className = 'list-group-item'; 
+        li.textContent = c; 
         listEl.appendChild(li);
       });
       
+      // Footer ads - persist for 60 seconds
       const adsEl = document.getElementById('footerAds');
       let currentAds;
       
+      // Check if we have stored ads that are still valid (within 60 seconds)
       const storedAdsData = localStorage.getItem('whineAdsData');
       if (storedAdsData) {
         const adsData = JSON.parse(storedAdsData);
         const now = Date.now();
-        if (now - adsData.timestamp < 60000) {
+        if (now - adsData.timestamp < 60000) { // 60 seconds = 60000ms
           currentAds = adsData.ads;
         }
       }
       
+      // If no valid stored ads, generate new ones
       if (!currentAds) {
         currentAds = getRandomItems(footerAdsPool, 2);
         localStorage.setItem('whineAdsData', JSON.stringify({
@@ -564,6 +500,7 @@
         }));
       }
       
+      // Display the ads
       currentAds.forEach(ad => {
         const col = document.createElement('div'); 
         col.className = 'col-md-6';
@@ -576,79 +513,50 @@
         adsEl.appendChild(col);
       });
       
+      // Initialize counters
       updateCounters();
+      
+      // Change button text on load (with persistence)
       changeButtonText();
       
+      // Random glitch effect
       setInterval(() => {
-        if (Math.random() < 0.01) {
+        if (Math.random() < 0.1) { // 10% chance every 5 seconds
           triggerGlitch();
         }
-      }, 15000);
+      }, 5000);
       
+      // Favicon - ensure it loads properly
       const faviconLinks = document.querySelectorAll("link[rel*='icon']");
       faviconLinks.forEach(link => {
         if (link.href.includes('favicon.ico')) {
-          link.href = '/favicon.ico?' + Date.now();
+          link.href = '/favicon.ico?' + Date.now(); // Cache buster
         }
       });
     });
     
+    // Form submission handler
     document.getElementById('complaintForm').addEventListener('submit', e => {
       e.preventDefault();
       
-      playSubmitSound();
-      
+      // Update counters
       complaintCount++;
-      tissueCount += Math.floor(Math.random() * 10) + 3;
+      tissueCount += Math.floor(Math.random() * 10) + 3; // Add 3-12 tissues
       updateCounters();
       
+      // Create crying emoji rain
       for (let i = 0; i < 8; i++) {
         setTimeout(() => createCryingEmoji(), i * 200);
       }
       
+      // Show response
       const reply = zingers[Math.floor(Math.random() * zingers.length)];
       document.getElementById('modalResponse').textContent = reply;
       new bootstrap.Modal(document.getElementById('responseModal')).show();
       
+      // Clear the form
       document.getElementById('complaint').value = '';
     });
   </script>
 </body>
-</html>3, audioContext.currentTime);
-          gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
-          
-          oscillator.start(audioContext.currentTime);
-          oscillator.stop(audioContext.currentTime + 0.5);
-        },
-        
-        () => {
-          const frequencies = [220, 196, 174, 147];
-          frequencies.forEach((freq, index) => {
-            const oscillator = audioContext.createOscillator();
-            const gainNode = audioContext.createGain();
-            
-            oscillator.connect(gainNode);
-            gainNode.connect(audioContext.destination);
-            
-            oscillator.frequency.setValueAtTime(freq, audioContext.currentTime + index * 0.15);
-            gainNode.gain.setValueAtTime(0.2, audioContext.currentTime + index * 0.15);
-            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + index * 0.15 + 0.3);
-            
-            oscillator.start(audioContext.currentTime + index * 0.15);
-            oscillator.stop(audioContext.currentTime + index * 0.15 + 0.3);
-          });
-        },
-        
-        () => {
-          const oscillator = audioContext.createOscillator();
-          const gainNode = audioContext.createGain();
-          
-          oscillator.connect(gainNode);
-          gainNode.connect(audioContext.destination);
-          
-          oscillator.frequency.setValueAtTime(400, audioContext.currentTime);
-          oscillator.frequency.setValueAtTime(600, audioContext.currentTime + 0.1);
-          oscillator.frequency.setValueAtTime(300, audioContext.currentTime + 0.2);
-          oscillator.frequency.setValueAtTime(500, audioContext.currentTime + 0.3);
-          
-          gainNode.gain.setValueAtTime(0.
+</html>
