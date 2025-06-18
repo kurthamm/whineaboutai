@@ -360,9 +360,31 @@
     }
     
     document.addEventListener('DOMContentLoaded', () => {
-      // Top 10 complaints
+      // Top 10 complaints - persist for 60 seconds
       const listEl = document.getElementById('complaintList');
-      getRandomItems(allComplaints, 10).forEach(c => {
+      let currentComplaints;
+      
+      // Check if we have stored complaints that are still valid (within 60 seconds)
+      const storedComplaintsData = localStorage.getItem('whineComplaintsData');
+      if (storedComplaintsData) {
+        const complaintsData = JSON.parse(storedComplaintsData);
+        const now = Date.now();
+        if (now - complaintsData.timestamp < 60000) { // 60 seconds = 60000ms
+          currentComplaints = complaintsData.complaints;
+        }
+      }
+      
+      // If no valid stored complaints, generate new ones
+      if (!currentComplaints) {
+        currentComplaints = getRandomItems(allComplaints, 10);
+        localStorage.setItem('whineComplaintsData', JSON.stringify({
+          complaints: currentComplaints,
+          timestamp: Date.now()
+        }));
+      }
+      
+      // Display the complaints
+      currentComplaints.forEach(c => {
         const li = document.createElement('li'); 
         li.className = 'list-group-item'; 
         li.textContent = c; 
