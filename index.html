@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Whine About AI</title>
   <!-- Favicon -->
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <!-- Bootstrap CSS -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
   <!-- Google Font -->
@@ -346,10 +348,31 @@
       };
     }
     
-    // Initialize with realistic counts
-    const initialCounts = getRealisticCounts();
-    let complaintCount = initialCounts.complaints;
-    let tissueCount = initialCounts.tissues;
+    // Initialize with realistic counts (with 60-second persistence)
+    let complaintCount, tissueCount;
+    
+    // Check if we have stored counters that are still valid (within 60 seconds)
+    const storedCountersData = localStorage.getItem('whineCountersData');
+    if (storedCountersData) {
+      const countersData = JSON.parse(storedCountersData);
+      const now = Date.now();
+      if (now - countersData.timestamp < 60000) { // 60 seconds = 60000ms
+        complaintCount = countersData.complaints;
+        tissueCount = countersData.tissues;
+      }
+    }
+    
+    // If no valid stored counters, generate new realistic ones
+    if (complaintCount === undefined || tissueCount === undefined) {
+      const initialCounts = getRealisticCounts();
+      complaintCount = initialCounts.complaints;
+      tissueCount = initialCounts.tissues;
+      localStorage.setItem('whineCountersData', JSON.stringify({
+        complaints: complaintCount,
+        tissues: tissueCount,
+        timestamp: Date.now()
+      }));
+    }
     
     function getRandomItems(arr, n) {
       const res = [], copy = [...arr];
@@ -360,6 +383,13 @@
     function updateCounters() {
       document.getElementById('complaintCounter2').textContent = complaintCount.toLocaleString();
       document.getElementById('tissueCounter2').textContent = tissueCount.toLocaleString();
+      
+      // Update stored counters
+      localStorage.setItem('whineCountersData', JSON.stringify({
+        complaints: complaintCount,
+        tissues: tissueCount,
+        timestamp: Date.now()
+      }));
     }
     
     function changeButtonText() {
@@ -496,9 +526,13 @@
         }
       }, 5000);
       
-      // Favicon fallback
-      const link = document.querySelector("link[rel='icon']"); 
-      if (link) link.href = 'favicon.ico';
+      // Favicon - ensure it loads properly
+      const faviconLinks = document.querySelectorAll("link[rel*='icon']");
+      faviconLinks.forEach(link => {
+        if (link.href.includes('favicon.ico')) {
+          link.href = '/favicon.ico?' + Date.now(); // Cache buster
+        }
+      });
     });
     
     // Form submission handler
