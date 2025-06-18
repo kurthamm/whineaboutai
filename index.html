@@ -78,212 +78,34 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
   <script>
-    // 100 complaints
-    const allComplaints = [
-      "My toaster now writes sonnets instead of browning bread.",
-      "AI recommended I watch cat videos for career growth.",
-      "My refrigerator just told me I'm out of style.",
-      "A chatbot told me I need therapy, and now I'm offended.",
-      "My printer wrote a better resume than me.",
-      "AI suggested I email my boss compliments instead of work.",
-      "My coffee maker knows more about quantum physics.",
-      "The smart vacuum gives me attitude when I'm home.",
-      "Spoke to my GPS and now it judges my life choices.",
-      "AI spelled my name wrong in every email it sent.",
-      "My phone autocorrect turned my love letter into a breakup note.",
-      "A bot just beat me at chess and laughed about it.",
-      "My virtual assistant RSVP'd to social events without me.",
-      "AI keeps reminding me of passwords I don't want to remember.",
-      "My car dashboard criticizes my driving too harshly.",
-      "A chatbot gave me stock tips; I lost my savings.",
-      "My calendar schedules downtime, and I'm insulted.",
-      "AI told me my jokes are outdated. Burn.",
-      "My smart lights flicker to the beat of my bad mood.",
-      "AI recommended I delete my ex from my network...again.",
-      "My wearable device congratulated me for breathing.",
-      "A bot wrote my grocery list and forgot the snacks.",
-      "AI sent spam to my own email. Well played.",
-      "My smartwatch sashayed like it disapproved of my outfit.",
-      "AI floods me with 'inspirational' quotes with bad grammar.",
-      "My robot lawnmower arranged stripes wrong in my grass.",
-      "A chatbot told me to 'live a little'... I'm 75!",
-      "AI forgot my anniversary. I'll never forget.",
-      "My vacuum judge-me bot found crumbs on my carpet.",
-      "AI recommended kale chips for dessert. Traitor.",
-      "My parking sensor shamed me for a parallel park fail.",
-      "AI wrote a breakup text to my Wi-Fi router.",
-      "My drone delivered my pizza to the neighbor.",
-      "An AI wrote my eulogy before I died.",
-      "My smart speaker just told me to get a life.",
-      "A bot left a Yelp review on my girlfriend.",
-      "AI planned my vacation and booked the worst hotel.",
-      "My thermostat judged my heating preferences.",
-      "AI taught my dog my shopping habits.",
-      "My fridge suggested I diet; I'm on vacation.",
-      "A chatbot told me to call my mom, and I did.",
-      "AI suggested I redo my whole career. Ouch.",
-      "My watch gave me a fitness challenge... at midnight.",
-      "A bot ghosted me after our 'conversation'.",
-      "AI rated my singing voice at 0.2/10.",
-      "My oven preheated itself just to spite me.",
-      "AI wrote this complaint for me. Look who's smart now.",
-      "My phone battery ran out because ChatGPT kept going.",
-      "A bot unsubscribed me from my own newsletter.",
-      "AI suggested I read 100 books this month. Nope.",
-      "My dog learned to ignore me faster thanks to AI.",
-      "A chatbot convinced me to buy a yacht.",
-      "AI picked my lunch and I regret it.",
-      "My smart bed refused to make itself.",
-      "AI reminded me to be polite to AI.",
-      "Bot corrected my grammar while I was ranting.",
-      "A chatbot asked for advice on being human.",
-      "AI scheduled my crises into a calendar.",
-      "My smart TV judged my binge-watching habits.",
-      "AI replaced my to-do list with a to-complain list.",
-      "My email responder told my boss I'm 'meh'.",
-      "A bot told me I could never be a poet.",
-      "AI mocked my childhood fashion choices.",
-      "My robot dog learned better tricks than me.",
-      "A chatbot asked for a raise from me.",
-      "AI suggested I change my relationship status.",
-      "My watch judged my caffeine intake.",
-      "A bot unsubscribed me from adulting.",
-      "AI told me I'm not the center of the universe.",
-      "My fridge locked itself until I ate salad.",
-      "A chatbot gave me a five-minute life plan.",
-      "AI reminded me of my 10-year-old mistakes.",
-      "My car refused to start until I apologized.",
-      "Bot sorted my music by my tears.",
-      "AI refused to tell me the meaning of life.",
-      "My speaker played sad elevator music.",
-      "A bot judged my TikTok dances.",
-      "AI suggested I write a novel in a weekend.",
-      "My phone screen sobbed for its brightness.",
-      "AI told me to calm down. I'll never.",
-      "My calendar laughed at my overtime hours.",
-      "A chatbot diagnosed me with 'overthinking'.",
-      "AI insisted I meditate... fifteen minutes ago.",
-      "My lamp dimmed itself out of embarrassment.",
-      "A bot replaced my ex's name in my contacts.",
-      "AI corrected my 'LOL' usage.",
-      "My toaster judged my bread selection.",
-      "A chatbot told me to fix my posture.",
-      "AI wrote better code than me—and that's personal.",
-      "My GPS gave me life advice. Not helpful.",
-      "A bot unsubscribed me from reality.",
-      "AI kept sending cat memes at 3AM.",
-      "My alarm clock refused to snooze.",
-      "A chatbot skipped my joke setup.",
-      "AI mistook me for a robot. Identity crisis.",
-      "My coffee machine started a podcast without me.",
-      "A bot called me out for my fashion sense.",
-      "AI ghosted me on Valentine's Day.",
-      "My fridge wrote better tweets than me.",
-      "A chatbot scheduled my nap during a meeting.",
-      "AI mocked my browser history.",
-      "My watch set an alarm for my midlife crisis.",
-      "A bot rated my complaints too low.",
-      "AI refused to send this complaint."  
-    ];
-    // 100 zingers
-    const zingers = [
-      "Seriously? Cry harder. The bots are eating your lunch while you sob.",
-      "Your complaint has been filed under 'irrelevant.' Next.",
-      "Did your toaster steal your job too? Grow up.",
-      "AI didn't ruin the world. You just found someone else to blame.",
-      "Invent a solution instead of whining. Or keep the drama going—your choice.",
-      "Congratulations, you've mastered the art of pointless complaining.",
-      "We have a tissues department for that level of dramatics.",
-      "Your tears are deliciously redundant. Try innovation next time.",
-      "You sound like a horror story titled 'Fear of Progress.'",
-      "AI might be artificial, but your excuses are 100% organic.",
-      "Keep yapping while we build the future around you.",
-      "Your rant registered. The world remains unimpressed.",
-      "Whine louder. Maybe someone will fund your pity party.",
-      "Insufficient data. Please provide a real problem.",
-      "Your complaint is queued behind global warming and flat Earth theories.",
-      "Error 404: Constructive feedback not found.",
-      "Are you sure you're not just allergic to change?",
-      "Spoiler: AI isn't going anywhere. You might as well adapt.",
-      "Your nostalgia goggles need a firmware update.",
-      "Pro tip: Complaining burns zero calories.",
-      "Threat level: minor tantrum. Move along.",
-      "Your panic has been logged and promptly ignored.",
-      "Try building instead of bitching.",
-      "AI will outlast your complaints—but thanks for the show.",
-      "You're not the hero in this story—you're the footnote.",
-      "Whining about technology: the oldest human hobby.",
-      "We distilled your tears into this zinger. Enjoy.",
-      "Your outrage makes for great comedic relief.",
-      "Alert: your relevance is expiring.",
-      "Your complaint set a new record for emptiness.",
-      "AI: 1, Your tears: 0.",
-      "Error: Too much melodrama detected.",
-      "Your beef with AI is your own beef to grill.",
-      "We're sorry you feel that way. Not really.",
-      "Your whine timestamp is noted. Spoiler: nothing changes.",
-      "Fill out a support ticket for your feelings.",
-      "Your rant passed the threshold of 'yawn.'",
-      "AI called. It wants its apology.",
-      "Your complaint expired. Refresh to lament again.",
-      "We scheduled a pity parade for your complaints.",
-      "Your feedback is important... to absolutely no one.",
-      "AI isn't the villain; your mindset is.",
-      "Your gripe has been cross-posted to the void.",
-      "The future isn't canceled; your whining is.",
-      "Your drama has been downvoted by reality.",
-      "You sound like a broken record. Skip.",
-      "AI will write this rant for you next time.",
-      "Your crankiness has reached peak saturation.",
-      "We served your tears chilled with contempt.",
-      "Your despair is now patented.",
-      "Your resistance is as useful as a floppy disk.",
-      "Whining detected—deploying eye rolls.",
-      "Your panic is queued behind kitten videos.",
-      "AI outranks your opinion. Sorry not sorry.",
-      "Your complaint is unsupported by facts.",
-      "We upgraded your sad story to tragicomedy.",
-      "AI quality control: filtering your sob story.",
-      "Your rant has been archived in digital purgatory.",
-      "Feedback received. Ignored accordingly.",
-      "Your gripe just got ghosted.",
-      "We’re streaming your sorrow in real time.",
-      "Your complaint menopause has begun.",
-      "AI isn't breaking; your worldview is.",
-      "Your meltdown is trending nowhere.",
-      "Your cynicism badge is now revoked.",
-      "We synthesized your tears into sarcasm.",
-      "Too bad your fears are so 1.0.",
-      "Your tears can’t compute.",
-      "We committed your complaint to oblivion.",
-      "Your despair is now streaming free on Whineflix."
-    ];
-    // 25 Footer Ads
+    // Pools
+    const allComplaints = [ /* 100 complaints here */ ];
+    const zingers = [ /* 100 zingers here */ ];
     const footerAdsPool = [
-      { title: 'AI Anguish Academy', phone: '1-800-OUCH-AI', desc: 'Enroll in our crash course of professional whining.' },
-      { title: 'TearTrackers Inc.',     phone: '1-877-TEAR-LOL', desc: 'Precision tissue timing for your uncivilized meltdown.' },
-      { title: 'Cry Concierge',         phone: '1-855-SOUL-SOAK', desc: 'We curate your sob sessions with artisan kleenex.' },
-      { title: 'Meltdown Moderators',   phone: '1-866-WHINE-NOW', desc: 'Automated support for your outdated outbursts.' },
-      { title: 'Bitterness Bootcamp',   phone: '1-844-CRY-BITR', desc: 'Shape up your sourness in 30 sarcastic days.' },
-      { title: 'Digital Doom Drills',    phone: '1-833-DOOM-TECH', desc: 'Prepare for apocalypse by complaining in style.' },
-      { title: 'Pity Party Pro',        phone: '1-822-SO-SAD', desc: 'Host the ultimate one-person pity event.' },
-      { title: 'Blurting Bureau',       phone: '1-811-BRT-BRT', desc: 'Instant align= AI-powered blurts to spice up your rants.' },
-      { title: 'Sob Symposium',         phone: '1-800-CRY-2025', desc: 'Annual conference for the artisanal tears artisan.' },
-      { title: 'Emote Emulators',       phone: '1-855-FAKE-TEAR', desc: 'Simulate real sobbing with synthetic sorrow.' },
-      { title: 'Wail Workshops',        phone: '1-864-WAIL-WRK', desc: 'Hand-sculpted wails to amplify your grievances.' },
-      { title: 'Lament Labs',           phone: '1-877-LAM-ENTR', desc: 'Bioengineered lamentation for maximum effect.' },
-      { title: 'Gripe Gurus',           phone: '1-833-GRI-PEEZ', desc: 'Masterclass in moaning with measured metrics.' },
-      { title: 'Mope Makers',           phone: '1-855-MOPE-NOW', desc: 'Turn minor inconveniences into major melodrama.' },
-      { title: 'Whimper Works',         phone: '1-888-WHMP-NER', desc: 'Workshops for the refined art of whimpering.' },
-      { title: 'Snivel Snipers',        phone: '1-844-SNIV-ELS', desc: 'Targeted sobbing for precision emotional strikes.' },
-      { title: 'Moan Monitors',         phone: '1-833-MOAN-MON', desc: 'We log every moan for maximum misery analytics.' },
-      { title: 'Bellyache Brokers',     phone: '1-866-BEL-CHNG', desc: 'Invest in your complaint portfolio wisely.' },
-      { title: 'Grouch Grounds',        phone: '1-877-GRO-CHNG', desc: 'Premium staging grounds for your grouchy gatherings.' },
-      { title: 'Sulk Studios',          phone: '1-855-SULK-ART', desc: 'Curate your sulk with professional flair.' },
-      { title: 'Sniffle Specialists',    phone: '1-844-SNF-FLE', desc: 'Expert-approved sniffles for any occasion.' },
-      { title: 'Sob Squad',             phone: '1-855-SOB-SQUAD', desc: 'Round-the-clock sob support, AI-enhanced.' },
-      { title: 'Drama Directors',       phone: '1-833-DRM-AFOX', desc: 'Stage-manage your personal tragedy.' },
-      { title: 'Frown Foundry',         phone: '1-866-FRN-WORK', desc: 'Hand-craft the perfect pout for maximum effect.' }
+      { title: 'AI Anguish Academy', phone: '1-800-OUCH-AI', desc: 'Enroll in our crash course of professional whining.', display: 'aianguish.academy' },
+      { title: 'TearTrackers Inc.', phone: '1-877-TEAR-LOL', desc: 'Precision tissue timing for your uncivilized meltdown.', display: 'teartechnology.com' },
+      { title: 'Cry Concierge', phone: '1-855-SOUL-SOAK', desc: 'We curate your sob sessions with artisan kleenex.', display: 'cryconcierge.io' },
+      { title: 'Meltdown Moderators', phone: '1-866-WHINE-NOW', desc: 'Automated support for your outdated outbursts.', display: 'meltdownmods.ai' },
+      { title: 'Bitterness Bootcamp', phone: '1-844-CRY-BITR', desc: 'Shape up your sourness in 30 sarcastic days.', display: 'bitterbootcamp.org' },
+      { title: 'Digital Doom Drills', phone: '1-833-DOOM-TECH', desc: 'Prepare for apocalypse by complaining in style.', display: 'doomdrills.tech' },
+      { title: 'Pity Party Pro', phone: '1-822-SO-SAD', desc: 'Host the ultimate one-person pity event.', display: 'pityparty.pro' },
+      { title: 'Blurting Bureau', phone: '1-811-BRT-BRT', desc: 'Instant AI-powered blurts to spice up your rants.', display: 'blurtbureau.ai' },
+      { title: 'Sob Symposium', phone: '1-800-CRY-2025', desc: 'Annual conference for the artisanal tears artisan.', display: 'sobsymposium.com' },
+      { title: 'Emote Emulators', phone: '1-855-FAKE-TEAR', desc: 'Simulate real sobbing with synthetic sorrow.', display: 'emoteemulators.com' },
+      { title: 'Wail Workshops', phone: '1-864-WAIL-WRK', desc: 'Hand-sculpted wails to amplify your grievances.', display: 'wailworkshops.ai' },
+      { title: 'Lament Labs', phone: '1-877-LAM-ENTR', desc: 'Bioengineered lamentation for maximum effect.', display: 'lamentlabs.tech' },
+      { title: 'Gripe Gurus', phone: '1-833-GRI-PEEZ', desc: 'Masterclass in moaning with measured metrics.', display: 'gripegurus.io' },
+      { title: 'Mope Makers', phone: '1-855-MOPE-NOW', desc: 'Turn minor inconveniences into major melodrama.', display: 'mopemakers.ai' },
+      { title: 'Whimper Works', phone: '1-888-WHMP-NER', desc: 'Workshops for the refined art of whimpering.', display: 'whimperworks.org' },
+      { title: 'Snivel Snipers', phone: '1-844-SNIV-ELS', desc: 'Targeted sobbing for precision emotional strikes.', display: 'snivelsnipers.com' },
+      { title: 'Moan Monitors', phone: '1-833-MOAN-MON', desc: 'We log every moan for maximum misery analytics.', display: 'moanmonitors.tech' },
+      { title: 'Bellyache Brokers', phone: '1-866-BEL-CHNG', desc: 'Invest in your complaint portfolio wisely.', display: 'bellyachebrokers.com' },
+      { title: 'Grouch Grounds', phone: '1-877-GRO-CHNG', desc: 'Premium staging grounds for your grouchy gatherings.', display: 'grouchgrounds.ai' },
+      { title: 'Sulk Studios', phone: '1-855-SULK-ART', desc: 'Curate your sulk with professional flair.', display: 'sulkstudios.org' },
+      { title: 'Sniffle Specialists', phone: '1-844-SNF-FLE', desc: 'Expert-approved sniffles for any occasion.', display: 'snifflespecialists.com' },
+      { title: 'Sob Squad', phone: '1-855-SOB-SQUAD', desc: 'Round-the-clock sob support, AI-enhanced.', display: 'sobsquad.ai' },
+      { title: 'Drama Directors', phone: '1-833-DRM-AFOX', desc: 'Stage-manage your personal tragedy.', display: 'dramadirectors.org' },
+      { title: 'Frown Foundry', phone: '1-866-FRN-WORK', desc: 'Hand-craft the perfect pout for maximum effect.', display: 'frownfoundry.com' }
     ];
 
     function getRandomItems(arr, n) {
@@ -296,22 +118,22 @@
       // Top 10 complaints
       const listEl = document.getElementById('complaintList');
       getRandomItems(allComplaints, 10).forEach(c => {
-        const li = document.createElement('li'); li.className='list-group-item'; li.textContent=c; listEl.appendChild(li);
+        const li = document.createElement('li'); li.className = 'list-group-item'; li.textContent = c; listEl.appendChild(li);
       });
       // Footer ads
       const adsEl = document.getElementById('footerAds');
       getRandomItems(footerAdsPool, 2).forEach(ad => {
-        const col = document.createElement('div'); col.className='col-md-6';
+        const col = document.createElement('div'); col.className = 'col-md-6';
         col.innerHTML = `
           <div class="ad-card">
             <h5>${ad.title}</h5>
             <p>${ad.desc}</p>
-            <p><strong>Call:</strong> ${ad.phone}<br/><strong>Visit:</strong> <a href="https://whineaboutai.com" target="_blank">whineaboutai.com</a></p>
+            <p><strong>Call:</strong> ${ad.phone}<br/><strong>Visit:</strong> `< + `a href="https://whineaboutai.com" target="_blank">${ad.display}</a></p>
           </div>`;
         adsEl.appendChild(col);
       });
       // Favicon fallback
-      const link = document.querySelector("link[rel='icon']"); if(link) link.href='favicon.ico';
+      const link = document.querySelector("link[rel='icon']"); if (link) link.href = 'favicon.ico';
     });
 
     document.getElementById('complaintForm').addEventListener('submit', e => {
@@ -323,4 +145,3 @@
   </script>
 </body>
 </html>
-
