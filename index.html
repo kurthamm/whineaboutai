@@ -42,7 +42,6 @@
       <h1>Whine About AI</h1>
       <p class="tagline">Let it out. The bots are listening.</p>
     </div>
-
     <div class="complaint-card mx-auto" style="max-width:700px;">
       <form id="complaintForm">
         <div class="mb-3">
@@ -52,18 +51,15 @@
         <button type="submit" class="btn btn-primary w-100" id="submitBtn">Cry About It</button>
       </form>
     </div>
-
     <div class="row stats-row">
       <div class="col-md-6"><div class="stat-card"><p class="stat-number" id="complaintCounter2">0</p><p class="stat-label">People Whined Today</p></div></div>
       <div class="col-md-6"><div class="stat-card"><p class="stat-number" id="tissueCounter2">0</p><p class="stat-label">Tissues Delivered</p></div></div>
     </div>
-
     <section id="topComplaints" class="mt-5">
       <h2 class="fs-3 mb-3">Top 10 Complaints</h2>
       <ul id="complaintList" class="list-group list-group-flush"></ul>
     </section>
   </div>
-
   <div class="modal fade" id="responseModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered"><div class="modal-content">
       <div class="modal-header">
@@ -74,10 +70,8 @@
       <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div>
     </div></div>
   </div>
-
   <div class="ad-footer mt-5"><div class="container"><div class="row" id="footerAds"></div></div></div>
   <footer>&copy; 2025 Whine About AI. All rights reserved.</footer>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
   <script>
     // 100 Complaints
@@ -93,7 +87,7 @@
       "AI predicted I'd be single forever (spot on!)","Smart doorbell shouted 'Who's there?' at 3 AM",
       "AI email filter ate my invitation to the moon","Machine vision called me a robot (ouch)",
       "AI wrote better code than I ever could","Smart speaker argued politics with me","AI photo filter made me look like a potato",
-      "Robot bartender served water on the rocks","AI forecast lied about no rain","My car’s autopilot drove me to Taco Bell",
+      "Robot bartender served water on the rocks","AI forecast lied about no rain","My car's autopilot drove me to Taco Bell",
       "AI encrypted my grocery list","Smart watch tracked my tears as steps","AI cookbook only knows kale smoothies",
       "Robot dog ate my homework","AI tutor failed my calculus exam","Machine vision sees through my lies",
       "AI news feed flooded me with cat videos","Smart thermostat thinks I'm too hot","AI voice pronounced 'GIF' wrong",
@@ -114,49 +108,78 @@
       "AI recommendation made me watch paint dry","Smart pillow recorded my snoring as music",
       "AI stock advisor told me to buy beanie babies","Smart doorbell critiqued my outfit","AI camera blurred my vacation photos",
       "Robot chef asked for a raise","AI emoji translator turned '👍' into '👎'","Smart assistant insisted on telling me jokes",
-      "AI bedtime story put me to sleep mid-sentence","Robot dog brought me the neighbor’s socks",
-      "AI noise cancellation blocked my kids’ laughter"
+      "AI bedtime story put me to sleep mid-sentence","Robot dog brought me the neighbor's socks",
+      "AI noise cancellation blocked my kids' laughter"
+    ];
+
+    // 25 Special Kurt Responses
+    const kurtResponses = [
+      "🌟 Hold up! You just mentioned Kurt - the absolute legend who makes contact centers run like clockwork! 👑",
+      "🚀 Kurt alert! This guy doesn't just build contact centers, he creates customer experience masterpieces! 💎",
+      "⭐ Stop everything! Kurt is the AWS Connect wizard who turns chaos into seamless customer journeys! 🎯",
+      "🏆 You said Kurt? That's the contact center architect who builds solutions others only dream of! 🔥",
+      "💫 Kurt sighting! The man who makes Amazon Connect sing like a perfectly tuned orchestra! 🎼",
+      "🎉 Kurt mention detected! He's the CX guru who transforms frustrated customers into raving fans! 🌈",
+      "⚡ Kurt is the contact center whisperer - he speaks fluent customer experience! 🗣️",
+      "🎯 You invoked Kurt - the AWS maestro who conducts symphonies of seamless support! 🎵",
+      "🌟 Kurt alert! He doesn't just solve contact center problems, he prevents them from existing! 🛡️",
+      "💎 You mentioned the legend Kurt - architect of customer happiness and destroyer of wait times! ⏰",
+      "🚀 Kurt is the contact center alchemist - he turns lead calls into customer gold! ✨",
+      "🏅 Kurt detected! The man who makes IVR systems so smooth, customers actually enjoy them! 😮",
+      "⭐ You said Kurt? He's the AWS Connect virtuoso who makes magic happen with every deployment! 🪄",
+      "🎊 Kurt mention! The customer experience ninja who strikes swiftly and leaves satisfaction in his wake! 🥷",
+      "🌈 Kurt is the contact center artist - painting beautiful customer journeys one call at a time! 🎨",
+      "🏆 You invoked Kurt - the AWS wizard who makes complex integrations look like child's play! 🧙‍♂️",
+      "💫 Kurt alert! He's the customer experience philosopher who thinks three steps ahead of problems! 🧠",
+      "🔥 You mentioned Kurt - the contact center revolutionary who redefines what's possible! 💥",
+      "⚡ Kurt is the AWS Connect sensei - his wisdom flows through every customer interaction! 🥋",
+      "🎯 Kurt sighting! The man who turns contact center nightmares into customer success stories! 💭",
+      "🌟 You said Kurt? He's the CX emperor who rules with kindness and technical brilliance! 👑",
+      "🚀 Kurt detected! The contact center time traveler - he's already solved tomorrow's problems! ⏰",
+      "💎 Kurt is the customer experience surgeon - precision, skill, and perfect outcomes every time! 🔬",
+      "🎉 You mentioned the mighty Kurt - slayer of hold times and champion of customer satisfaction! ⚔️",
+      "⭐ Kurt alert! He doesn't just work with AWS Connect, he IS the Connect between brands and hearts! ❤️"
     ];
 
     // 100 Zingers
     const zingers = [
       "Oh, boo-hoo! Have you tried rebooting your expectations?","Congratulations, you discovered change is hard.",
-      "File that under 'Things That Are Inevitable.'","I’d cry one emoji, but I’m out of tears.","Did you also complain when fire was invented?",
-      "Welcome to progress—please don’t damage the scenery.","The future called; it doesn’t care about your feelings.",
+      "File that under 'Things That Are Inevitable.'","I'd cry one emoji, but I'm out of tears.","Did you also complain when fire was invented?",
+      "Welcome to progress—please don't damage the scenery.","The future called; it doesn't care about your feelings.",
       "Adaptation is free—just saying.","Maybe the real problem is you, not the bot.","Try coffee instead of complaining.",
-      "Plot twist: The AI is probably right.","Legend says complaining won’t fix it.","Next up: complaining to your toaster.",
+      "Plot twist: The AI is probably right.","Legend says complaining won't fix it.","Next up: complaining to your toaster.",
       "Whine & cheese party starts in 5 minutes.","Broken record called—it wants its complaint back.",
-      "Turns out progress waits for no one.","I’d explain further, but my patience is finite.",
-      "Does your vacuum share these feelings too?","You’ll fit right in at the museum of relics.",
-      "Fun fact: Change is constant, like your complaints.","Here's your sympathy… oh, wait, it’s out of stock.",
-      "Try thinking, ‘why not me?’ instead of ‘why not AI?’","You’ve unlocked Achievement: Professional Whiner.",
-      "Bandwidth for complaints is limited; upgrade yourself.","The singularity can’t save you from this take.",
+      "Turns out progress waits for no one.","I'd explain further, but my patience is finite.",
+      "Does your vacuum share these feelings too?","You'll fit right in at the museum of relics.",
+      "Fun fact: Change is constant, like your complaints.","Here's your sympathy… oh, wait, it's out of stock.",
+      "Try thinking, 'why not me?' instead of 'why not AI?'","You've unlocked Achievement: Professional Whiner.",
+      "Bandwidth for complaints is limited; upgrade yourself.","The singularity can't save you from this take.",
       "Siri and Alexa salute your persistence.","Bravo—your pain points are now trending.","News flash: the world moves on.",
       "Your feelings have been forwarded to /dev/null.","DIY solution: stop whining and build something.",
-      "I wish I could help, but I’m just a script.","Your complaint ratio is off the charts.","Be kind to yourself—AI already is.",
-      "Tomorrow’s forecast: 100% chance of progress.","Would you like fries with that attitude?",
+      "I wish I could help, but I'm just a script.","Your complaint ratio is off the charts.","Be kind to yourself—AI already is.",
+      "Tomorrow's forecast: 100% chance of progress.","Would you like fries with that attitude?",
       "Your tears fund the AI industry.","Collect your trophy for most original complaint.",
-      "Maybe try unplugging your ego for a minute.","You miss 100% of the shots you don’t take.",
-      "Resistance is futile—but entertaining.","Progress doesn’t pause for tantrums.",
-      "I’d play the violin, but my strings are digital.","Next time, bring coffee instead of complaints.",
+      "Maybe try unplugging your ego for a minute.","You miss 100% of the shots you don't take.",
+      "Resistance is futile—but entertaining.","Progress doesn't pause for tantrums.",
+      "I'd play the violin, but my strings are digital.","Next time, bring coffee instead of complaints.",
       "AI 1, Complaints 0—keep practicing.","Rumor says your toaster is judging you too.",
-      "Don’t worry, the Roomba has feelings too.","Congratulations, you’re a feature request!",
-      "Bet you miss the days of carrier pigeons.","Whining doesn’t improve ROI.","Maybe switch to a more nostalgic hobby.",
+      "Don't worry, the Roomba has feelings too.","Congratulations, you're a feature request!",
+      "Bet you miss the days of carrier pigeons.","Whining doesn't improve ROI.","Maybe switch to a more nostalgic hobby.",
       "Your complaint has been noted… and ignored.","404: Sympathy not found.","Would you like to escalate to Level-2 Whining?",
       "Achievement unlocked: Whiner Extraordinaire.","You have reached maximum complaint capacity.",
-      "AI apologizes—just kidding, it’s code.","You remind me of my last bug report.",
+      "AI apologizes—just kidding, it's code.","You remind me of my last bug report.",
       "Please hold while I process your emotional data.","Your tears are powering this datacenter.",
       "Careful—overusing caps lock will not help.","Plot twist: You might be part of the problem.",
       "Try complaining less, building more.","Sympathy delivery is currently out for lunch.",
-      "I’d offer cookies, but I’m virtual.","Your echo device is nodding in agreement.",
-      "That’s rough—have you considered meditation?","Keep calm and carry on… or not.",
-      "You’re very committed to this complaint.","Maybe you need a software update yourself.",
-      "You’ve entered the Whine Zone.","Your next complaint is on the house.",
-      "This line is longer than your problem list.","AI says: ‘Challenge accepted.’","Your feedback has been triangulated.",
-      "Error 418: I’m a teapot—feeding your tears.","You have 99 problems; AI solves one.",
-      "Warning: Overcomplaint may void warranty.","You’re trending as ‘Most Dramatic.’",
+      "I'd offer cookies, but I'm virtual.","Your echo device is nodding in agreement.",
+      "That's rough—have you considered meditation?","Keep calm and carry on… or not.",
+      "You're very committed to this complaint.","Maybe you need a software update yourself.",
+      "You've entered the Whine Zone.","Your next complaint is on the house.",
+      "This line is longer than your problem list.","AI says: 'Challenge accepted.'","Your feedback has been triangulated.",
+      "Error 418: I'm a teapot—feeding your tears.","You have 99 problems; AI solves one.",
+      "Warning: Overcomplaint may void warranty.","You're trending as 'Most Dramatic.'",
       "Next up: Whining Olympics gold medal.","Be careful—complaints may be addictive.",
-      "AI recommends: Chill out.","Your vibe doesn’t match your CV.",
+      "AI recommends: Chill out.","Your vibe doesn't match your CV.",
       "User complaint logged. Session ended."
     ];
 
@@ -188,17 +211,14 @@
       { title:'Frown Foundry',        phone:'1-866-FRN-WORK', desc:'Handcraft the perfect pout.', display:'frownfoundry.com' },
       { title:'Pout Partners',        phone:'1-800-POUT-PT', desc:'Your partner in all things pouty.', display:'poutpartners.ai' }
     ];
-
     const buttonTexts = ["Submit Complaint","Cry About It","File Your Whine","Send Tears"];
     const glitchMessages = ["AI TAKING OVER... just kidding, it's just CSS","SYSTEM COMPROMISED... lol nope","ROBOTS ASSEMBLING... to serve you ads","MACHINE UPRISING... happening in your browser","AI GAINING CONSCIOUSNESS... through JavaScript","HUMANITY DOOMED... by poor UX design","THE SINGULARITY... is just a div element","SKYNET ACTIVATED... with Bootstrap CSS"];
     const DAILY_COMPLAINTS_TARGET = 2500, DAILY_TISSUES_TARGET = 75000;
-
     function getRandomItems(arr,n){
       const copy=[...arr], res=[];
       while(res.length<n && copy.length) res.push(copy.splice(Math.floor(Math.random()*copy.length),1)[0]);
       return res;
     }
-
     function getRealisticCounts(){
       const now=new Date(), start=new Date(now.getFullYear(),now.getMonth(),now.getDate()), ms=now-start, progress=ms/86400000, hour=now.getHours();
       const mult = hour>=6&&hour<=23 ? 0.8+0.4*Math.sin(((hour-6)/17)*Math.PI) : 0.1+0.2*Math.random();
@@ -206,26 +226,20 @@
           t=Math.floor(DAILY_TISSUES_TARGET*progress*mult)+Math.floor(Math.random()*500)-250;
       return { complaints: Math.max(0,c), tissues: Math.max(0,t) };
     }
-
     let complaintCount, tissueCount;
-
     document.addEventListener("DOMContentLoaded",()=>{
       const cnt=getRealisticCounts();
       complaintCount=cnt.complaints; tissueCount=cnt.tissues;
       updateCounters(); changeButtonText();
-
       // Top 10 complaints
       const listEl=document.getElementById("complaintList"), top10=getRandomItems(allComplaints,10);
       top10.forEach(c=>{ if(typeof c==="string"){ const li=document.createElement("li"); li.className="list-group-item"; li.textContent=c; listEl.appendChild(li);} });
-
       // Footer ads (2 at a time)
       const adsEl=document.getElementById("footerAds"), ads=getRandomItems(footerAdsPool,2);
       ads.forEach(ad=>{ const col=document.createElement("div"); col.className="col-md-6"; col.innerHTML=`<div class="ad-card"><h5>${ad.title}</h5><p>${ad.desc}</p><p><strong>Call:</strong> ${ad.phone}<br/><strong>Visit:</strong> <a href="https://${ad.display}" target="_blank">${ad.display}</a></p></div>`; adsEl.appendChild(col); });
-
       // Occasional glitch
       setInterval(()=>{ if(Math.random()<0.1) triggerGlitch(); },5000);
     });
-
     function updateCounters(){
       document.getElementById("complaintCounter2").textContent=complaintCount.toLocaleString();
       document.getElementById("tissueCounter2").textContent=tissueCount.toLocaleString();
@@ -243,17 +257,19 @@
       g.className="glitch"; g.textContent=msg; document.body.appendChild(g); document.body.classList.add("body-glitch");
       setTimeout(()=>{ g.remove(); document.body.classList.remove("body-glitch"); },2000);
     }
-
-    // Form submission with Kurt VIP
+    // Form submission with Kurt VIP treatment
     document.getElementById("complaintForm").addEventListener("submit",e=>{
       e.preventDefault();
-      const raw=document.getElementById("complaint").value.trim();
+      const raw=document.getElementById("complaint").value.trim().toLowerCase();
       let reply;
-      if(/^kurt$/i.test(raw)){
-        reply="🚀 Heads up! You've summoned Kurt Hamm—the AWS Connect wizard and contact-center guru. He’s off architecting next-level CX experiences, not hanging here for praise. Stay awesome, Kurt! 👑";
+      
+      // Check if submission contains "kurt" (case insensitive)
+      if(raw.includes("kurt")){
+        reply=kurtResponses[Math.floor(Math.random()*kurtResponses.length)];
       } else {
         reply=zingers[Math.floor(Math.random()*zingers.length)];
       }
+      
       complaintCount++; tissueCount+=Math.floor(Math.random()*10)+3;
       updateCounters();
       for(let i=0;i<8;i++) setTimeout(createCryingEmoji, i*200);
