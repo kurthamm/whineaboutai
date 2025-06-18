@@ -227,22 +227,100 @@
       return { complaints: Math.max(0,c), tissues: Math.max(0,t) };
     }
     let complaintCount, tissueCount;
+    
+    // 60-second persistence for counters
+    function initializeCounters() {
+      const storedCountersData = localStorage.getItem('whineCountersData');
+      if (storedCountersData) {
+        const countersData = JSON.parse(storedCountersData);
+        const now = Date.now();
+        if (now - countersData.timestamp < 60000) { // 60 seconds
+          complaintCount = countersData.complaints;
+          tissueCount = countersData.tissues;
+          return;
+        }
+      }
+      // Generate new realistic counts if no valid stored data
+      const cnt = getRealisticCounts();
+      complaintCount = cnt.complaints;
+      tissueCount = cnt.tissues;
+      localStorage.setItem('whineCountersData', JSON.stringify({
+        complaints: complaintCount,
+        tissues: tissueCount,
+        timestamp: Date.now()
+      }));
+    }
+    
     document.addEventListener("DOMContentLoaded",()=>{
-      const cnt=getRealisticCounts();
-      complaintCount=cnt.complaints; tissueCount=cnt.tissues;
-      updateCounters(); changeButtonText();
-      // Top 10 complaints
-      const listEl=document.getElementById("complaintList"), top10=getRandomItems(allComplaints,10);
-      top10.forEach(c=>{ if(typeof c==="string"){ const li=document.createElement("li"); li.className="list-group-item"; li.textContent=c; listEl.appendChild(li);} });
-      // Footer ads (2 at a time)
-      const adsEl=document.getElementById("footerAds"), ads=getRandomItems(footerAdsPool,2);
-      ads.forEach(ad=>{ const col=document.createElement("div"); col.className="col-md-6"; col.innerHTML=`<div class="ad-card"><h5>${ad.title}</h5><p>${ad.desc}</p><p><strong>Call:</strong> ${ad.phone}<br/><strong>Visit:</strong> <a href="https://${ad.display}" target="_blank">${ad.display}</a></p></div>`; adsEl.appendChild(col); });
+      initializeCounters();
+      updateCounters(); 
+      changeButtonText();
+      
+      // Top 10 complaints with 60-second persistence
+      const listEl=document.getElementById("complaintList");
+      let currentComplaints;
+      const storedComplaintsData = localStorage.getItem('whineComplaintsData');
+      if (storedComplaintsData) {
+        const complaintsData = JSON.parse(storedComplaintsData);
+        const now = Date.now();
+        if (now - complaintsData.timestamp < 60000) { // 60 seconds
+          currentComplaints = complaintsData.complaints;
+        }
+      }
+      if (!currentComplaints) {
+        currentComplaints = getRandomItems(allComplaints, 10);
+        localStorage.setItem('whineComplaintsData', JSON.stringify({
+          complaints: currentComplaints,
+          timestamp: Date.now()
+        }));
+      }
+      currentComplaints.forEach(c=>{ 
+        if(typeof c==="string"){ 
+          const li=document.createElement("li"); 
+          li.className="list-group-item"; 
+          li.textContent=c; 
+          listEl.appendChild(li);
+        } 
+      });
+      
+      // Footer ads with 60-second persistence
+      const adsEl=document.getElementById("footerAds");
+      let currentAds;
+      const storedAdsData = localStorage.getItem('whineAdsData');
+      if (storedAdsData) {
+        const adsData = JSON.parse(storedAdsData);
+        const now = Date.now();
+        if (now - adsData.timestamp < 60000) { // 60 seconds
+          currentAds = adsData.ads;
+        }
+      }
+      if (!currentAds) {
+        currentAds = getRandomItems(footerAdsPool, 2);
+        localStorage.setItem('whineAdsData', JSON.stringify({
+          ads: currentAds,
+          timestamp: Date.now()
+        }));
+      }
+      currentAds.forEach(ad=>{ 
+        const col=document.createElement("div"); 
+        col.className="col-md-6"; 
+        col.innerHTML=`<div class="ad-card"><h5>${ad.title}</h5><p>${ad.desc}</p><p><strong>Call:</strong> ${ad.phone}<br/><strong>Visit:</strong> <a href="https://${ad.display}" target="_blank">${ad.display}</a></p></div>`; 
+        adsEl.appendChild(col); 
+      });
+      
       // Occasional glitch
       setInterval(()=>{ if(Math.random()<0.1) triggerGlitch(); },5000);
     });
     function updateCounters(){
       document.getElementById("complaintCounter2").textContent=complaintCount.toLocaleString();
       document.getElementById("tissueCounter2").textContent=tissueCount.toLocaleString();
+      
+      // Update stored counters with new timestamp
+      localStorage.setItem('whineCountersData', JSON.stringify({
+        complaints: complaintCount,
+        tissues: tissueCount,
+        timestamp: Date.now()
+      }));
     }
     function changeButtonText(){
       document.getElementById("submitBtn").textContent=buttonTexts[Math.floor(Math.random()*buttonTexts.length)];
