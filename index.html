@@ -33,7 +33,6 @@
     .ad-card { border:1px solid #ccc; border-radius:.5rem; padding:1rem; background:#fff; margin-bottom:1rem; }
     .ad-card h5 { margin-bottom:.5rem; color:#dc3545; }
     .ad-card p { font-size:.9rem; margin:.25rem 0; }
-    footer { background:#002855; color:white; text-align:center; padding:1rem 0; margin-top:2rem; }
   </style>
 </head>
 <body>
@@ -114,7 +113,7 @@
       "AI noise cancellation blocked my kids' laughter"
     ];
 
-    // 25 Special Kurt Responses
+    // 25 Kurt Responses
     const kurtResponses = [
       "🌟 Hold up! You just mentioned Kurt - the absolute legend who makes contact centers run like clockwork! 👑",
       "🚀 Kurt alert! This guy doesn't just build contact centers, he creates customer experience masterpieces! 💎",
@@ -146,13 +145,13 @@
     // 25 Elsa Responses
     const elsaResponses = [
       "🌟 Elsa alert! The CX and sales powerhouse who turns doubts into delighted customers!",
-      "🚀 Elsa detected! She's the secret sauce behind every winning customer journey!",
+      "🚀 Elsa detected! She’s the secret sauce behind every winning customer journey!",
       "🏆 Elsa mention! The maestro of memorable experiences and top-tier sales closes!",
-      "✨ You said Elsa? She's the leader who makes delight look effortless!",
+      "✨ You said Elsa? She’s the leader who makes delight look effortless!",
       "💎 Elsa sighting! The CX legend whose M.O. is exceeding expectations every time!",
-      "🎉 Elsa entry! When she's at the table, every customer feels like VIP!",
+      "🎉 Elsa entry! When she’s at the table, every customer feels like VIP!",
       "⭐ Elsa is the architect of awe—she designs the experiences others only dream of!",
-      "🔥 Elsa invoked! She sparks sales growth like nobody's business!",
+      "🔥 Elsa invoked! She sparks sales growth like nobody’s business!",
       "⚡ Elsa alert! The champion of customer smiles and sales milestones!",
       "🎯 You invoked Elsa—she nails every interaction and nets every deal!",
       "💫 Elsa on the radar! Her CX magic turns first-time buyers into lifelong fans!",
@@ -167,7 +166,7 @@
       "🏆 Elsa in the house—the sales champion everyone wants on their side!",
       "🌠 Elsa invoked! She turns happy customers into raving brand ambassadors!",
       "💡 Elsa mention—it instantly drips innovation in every customer touch!",
-      "🎖️ Elsa trigger! She's the battle-hardened leader of CX excellence!",
+      "🎖️ Elsa trigger! She’s the battle-hardened leader of CX excellence!",
       "🔥 Elsa on deck—the firestarter for unparalleled customer success!",
       "✨ Elsa alert! The CX and sales leader whose results speak volumes!"
     ];
@@ -177,7 +176,7 @@
       "🌐 Christian spotted! For world-class conversational AI, visit NLX.AI and thank me later!",
       "🚀 Christian mention—when you need next-gen dialogue platforms, Christian points you to NLX.AI!",
       "🔗 Heard Christian? Check out NLX.AI for the conversational edge your contact center craves!",
-      "💡 Christian invoked! Christian's go-to for AI-powered chats is NLX.AI—explore today!",
+      "💡 Christian invoked! Christian’s go-to for AI-powered chats is NLX.AI—explore today!",
       "🔥 Christian alert! Level up your CX game at NLX.AI—Christian-approved!",
       "🎯 Christian mentioned: NLX.AI is where intelligent conversations come alive!",
       "⭐ Christian on deck! Visit NLX.AI for the future of AI-driven customer engagement!",
@@ -193,8 +192,8 @@
       "🎊 Christian triggered! Elevate engagement—explore NLX.AI now!",
       "💫 Christian mentioned: NLX.AI is the secret weapon for conversational success!",
       "🔥 Christian alert! Your AI journey starts at NLX.AI—strap in!",
-      "✨ Christian note: NLX.AI transforms chatbots into brand advocates!",
-      "🎯 Christian sighting! See why Christian's team swears by NLX.AI!",
+      "✨ Christian note: NLX.AI transforms chatbots into brand ambassadors!",
+      "🎯 Christian sighting! See why Christian’s team swears by NLX.AI!",
       "🌟 Christian invoke! NLX.AI is the home of unforgettable AI conversations!",
       "⚡ Christian on deck—check out NLX.AI for frictionless CX automation!",
       "🏆 Christian alert! NLX.AI is where your bots become brilliant!"
@@ -242,7 +241,7 @@
       "User complaint logged. Session ended."
     ];
 
-    // 25 Ads
+    // Ads pool
     const footerAdsPool = [
       { title:'AI Anguish Academy', phone:'1-800-OUCH-AI', desc:'Master the art of whining with professional flair.', display:'aianguish.academy' },
       { title:'TearTrackers Inc.',    phone:'1-877-TEAR-LOL', desc:'Precision tissue delivery for your meltdown.', display:'teartechnology.com' },
@@ -272,7 +271,16 @@
     ];
 
     const buttonTexts = ["Submit Complaint","Cry About It","File Your Whine","Send Tears"];
-    const glitchMessages = ["AI TAKING OVER... just kidding, it's just CSS","SYSTEM COMPROMISED... lol nope","ROBOTS ASSEMBLING... to serve you ads","MACHINE UPRISING... happening in your browser","AI GAINING CONSCIOUSNESS... through JavaScript","HUMANITY DOOMED... by poor UX design","THE SINGULARITY... is just a div element","SKYNET ACTIVATED... with Bootstrap CSS"];
+    const glitchMessages = [
+      "AI TAKING OVER... just kidding, it's just CSS",
+      "SYSTEM COMPROMISED... lol nope",
+      "ROBOTS ASSEMBLING... to serve you ads",
+      "MACHINE UPRISING... happening in your browser",
+      "AI GAINING CONSCIOUSNESS... through JavaScript",
+      "HUMANITY DOOMED... by poor UX design",
+      "THE SINGULARITY... is just a div element",
+      "SKYNET ACTIVATED... with Bootstrap CSS"
+    ];
     const DAILY_COMPLAINTS_TARGET = 2500, DAILY_TISSUES_TARGET = 75000;
 
     function getRandomItems(arr,n){
@@ -282,54 +290,127 @@
     }
 
     function getRealisticCounts(){
-      const now=new Date(), start=new Date(now.getFullYear(),now.getMonth(),now.getDate()), ms=now-start, progress=ms/86400000, hour=now.getHours();
-      const mult = hour>=6&&hour<=23 ? 0.8+0.4*Math.sin(((hour-6)/17)*Math.PI) : 0.1+0.2*Math.random();
-      let c=Math.floor(DAILY_COMPLAINTS_TARGET*progress*mult)+Math.floor(Math.random()*50)-25,
-          t=Math.floor(DAILY_TISSUES_TARGET*progress*mult)+Math.floor(Math.random()*500)-250;
+      const now=new Date(),
+            start=new Date(now.getFullYear(),now.getMonth(),now.getDate()),
+            ms=now-start,
+            progress=ms/86400000,
+            hour=now.getHours(),
+            mult = hour>=6&&hour<=23 ? 0.8+0.4*Math.sin(((hour-6)/17)*Math.PI) : 0.1+0.2*Math.random(),
+            c=Math.floor(DAILY_COMPLAINTS_TARGET*progress*mult)+Math.floor(Math.random()*50)-25,
+            t=Math.floor(DAILY_TISSUES_TARGET*progress*mult)+Math.floor(Math.random()*500)-250;
       return { complaints: Math.max(0,c), tissues: Math.max(0,t) };
     }
 
     let complaintCount, tissueCount;
-
-    function initializeCounters() {
-      try {
-        const stored = localStorage.getItem('whineCountersData');
-        if(stored){
-          const d = JSON.parse(stored), now = Date.now();
-          if(now - d.timestamp < 60000){
-            complaintCount = d.complaints; 
-            tissueCount = d.tissues;
-            return;
-          }
+    function initializeCounters(){
+      const stored=localStorage.getItem('whineCountersData');
+      if(stored){
+        const d=JSON.parse(stored), now=Date.now();
+        if(now-d.timestamp<60000){
+          complaintCount=d.complaints; tissueCount=d.tissues; return;
         }
-      } catch(e) {
-        console.log('localStorage not available, using session data');
       }
-      const cnt = getRealisticCounts();
-      complaintCount = cnt.complaints; 
-      tissueCount = cnt.tissues;
-      try {
-        localStorage.setItem('whineCountersData', JSON.stringify({
-          complaints: complaintCount, tissues: tissueCount, timestamp: Date.now()
-        }));
-      } catch(e) {
-        // localStorage not available, continue with session data
-      }
+      const cnt=getRealisticCounts();
+      complaintCount=cnt.complaints; tissueCount=cnt.tissues;
+      localStorage.setItem('whineCountersData', JSON.stringify({ complaints:complaintCount, tissues:tissueCount, timestamp:Date.now() }));
     }
 
     document.addEventListener("DOMContentLoaded",()=>{
-      initializeCounters();
-      updateCounters(); 
-      changeButtonText();
+      initializeCounters(); updateCounters(); changeButtonText();
 
-      // Top 10 complaints
-      const listEl = document.getElementById("complaintList");
+      // Top complaints
+      const listEl=document.getElementById("complaintList");
       let currentComplaints;
-      try {
-        const storedComplaints = localStorage.getItem('whineComplaintsData');
-        if(storedComplaints){
-          const d = JSON.parse(storedComplaints), now = Date.now();
-          if(now - d.timestamp < 60000) currentComplaints = d.complaints;
-        }
-      } catch(e) {
-        // localStorage not available
+      const storedComplaints=localStorage.getItem('whineComplaintsData');
+      if(storedComplaints){
+        const d=JSON.parse(storedComplaints), now=Date.now();
+        if(now-d.timestamp<60000) currentComplaints=d.complaints;
+      }
+      if(!currentComplaints){
+        currentComplaints=getRandomItems(allComplaints,10);
+        localStorage.setItem('whineComplaintsData', JSON.stringify({ complaints:currentComplaints, timestamp:Date.now() }));
+      }
+      currentComplaints.forEach(c=>{
+        const li=document.createElement("li");
+        li.className="list-group-item";
+        li.textContent=c;
+        listEl.appendChild(li);
+      });
+
+      // Footer ads (2 at a time)
+      const adsEl=document.getElementById("footerAds");
+      let currentAds;
+      const storedAds=localStorage.getItem('whineAdsData');
+      if(storedAds){
+        const d=JSON.parse(storedAds), now=Date.now();
+        if(now-d.timestamp<60000) currentAds=d.ads;
+      }
+      if(!currentAds){
+        currentAds=getRandomItems(footerAdsPool,2);
+        localStorage.setItem('whineAdsData', JSON.stringify({ ads:currentAds, timestamp:Date.now() }));
+      }
+      currentAds.forEach(ad=>{
+        const col=document.createElement("div");
+        col.className="col-md-6";
+        col.innerHTML=`
+          <div class="ad-card">
+            <h5>${ad.title}</h5>
+            <p>${ad.desc}</p>
+            <p><strong>Call:</strong> ${ad.phone}<br/>
+               <strong>Visit:</strong> <a href="https://whineaboutAI.com" target="_blank">${ad.display}</a>
+            </p>
+          </div>`;
+        adsEl.appendChild(col);
+      });
+
+      // Occasional glitch
+      setInterval(()=>{ if(Math.random()<0.1) triggerGlitch(); },5000);
+    });
+
+    function updateCounters(){
+      document.getElementById("complaintCounter2").textContent=complaintCount.toLocaleString();
+      document.getElementById("tissueCounter2").textContent=tissueCount.toLocaleString();
+      localStorage.setItem('whineCountersData', JSON.stringify({ complaints:complaintCount, tissues:tissueCount, timestamp:Date.now() }));
+    }
+
+    function changeButtonText(){
+      document.getElementById("submitBtn").textContent=buttonTexts[Math.floor(Math.random()*buttonTexts.length)];
+    }
+
+    function createCryingEmoji(){
+      const emojis=['😭','😢','😪','🥺','😿','💧'], e=document.createElement("div");
+      e.className="crying-emoji"; e.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+      e.style.left=Math.random()*window.innerWidth+"px"; document.body.appendChild(e);
+      setTimeout(()=>e.remove(),3000);
+    }
+
+    function triggerGlitch(){
+      const msg=glitchMessages[Math.floor(Math.random()*glitchMessages.length)], g=document.createElement("div");
+      g.className="glitch"; g.textContent=msg; document.body.appendChild(g);
+      document.body.classList.add("body-glitch");
+      setTimeout(()=>{ g.remove(); document.body.classList.remove("body-glitch"); },2000);
+    }
+
+    document.getElementById("complaintForm").addEventListener("submit",e=>{
+      e.preventDefault();
+      const raw=document.getElementById("complaint").value.trim().toLowerCase();
+      let reply;
+      if(raw.includes("kurt")){
+        reply=kurtResponses[Math.floor(Math.random()*kurtResponses.length)];
+      } else if(raw.includes("elsa")){
+        reply=elsaResponses[Math.floor(Math.random()*elsaResponses.length)];
+      } else if(raw.includes("christian")){
+        reply=christianResponses[Math.floor(Math.random()*christianResponses.length)];
+      } else {
+        reply=zingers[Math.floor(Math.random()*zingers.length)];
+      }
+      complaintCount++; tissueCount+=Math.floor(Math.random()*10)+3;
+      updateCounters();
+      for(let i=0;i<8;i++) setTimeout(createCryingEmoji, i*200);
+      document.getElementById("modalResponse").textContent=reply;
+      new bootstrap.Modal(document.getElementById("responseModal")).show();
+      document.getElementById("complaint").value="";
+    });
+  </script>
+</body>
+</html>
