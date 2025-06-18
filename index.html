@@ -369,9 +369,31 @@
         listEl.appendChild(li);
       });
       
-      // Footer ads
+      // Footer ads - persist for 60 seconds
       const adsEl = document.getElementById('footerAds');
-      getRandomItems(footerAdsPool, 2).forEach(ad => {
+      let currentAds;
+      
+      // Check if we have stored ads that are still valid (within 60 seconds)
+      const storedAdsData = localStorage.getItem('whineAdsData');
+      if (storedAdsData) {
+        const adsData = JSON.parse(storedAdsData);
+        const now = Date.now();
+        if (now - adsData.timestamp < 60000) { // 60 seconds = 60000ms
+          currentAds = adsData.ads;
+        }
+      }
+      
+      // If no valid stored ads, generate new ones
+      if (!currentAds) {
+        currentAds = getRandomItems(footerAdsPool, 2);
+        localStorage.setItem('whineAdsData', JSON.stringify({
+          ads: currentAds,
+          timestamp: Date.now()
+        }));
+      }
+      
+      // Display the ads
+      currentAds.forEach(ad => {
         const col = document.createElement('div'); 
         col.className = 'col-md-6';
         col.innerHTML = `
