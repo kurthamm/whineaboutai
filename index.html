@@ -7,6 +7,7 @@
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+  <link rel="apple-touch-icon" href="/favicon.ico"/>
   <!-- Bootstrap CSS -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet"/>
   <!-- Google Font -->
@@ -110,6 +111,7 @@
       "AI bedtime story put me to sleep mid-sentence","Robot dog brought me the neighbor's socks",
       "AI noise cancellation blocked my kids' laughter"
     ];
+
     // 25 Kurt Responses
     const kurtResponses = [
       "🌟 Hold up! You just mentioned Kurt - the absolute legend who makes contact centers run like clockwork! 👑",
@@ -138,6 +140,7 @@
       "🎉 You mentioned the mighty Kurt - slayer of hold times and champion of customer satisfaction! ⚔️",
       "⭐ Kurt alert! He doesn't just work with AWS Connect, he IS the Connect between brands and hearts! ❤️"
     ];
+
     // 25 Elsa Responses
     const elsaResponses = [
       "🌟 Elsa alert! The CX and sales powerhouse who turns doubts into delighted customers!",
@@ -166,6 +169,7 @@
       "🔥 Elsa on deck—the firestarter for unparalleled customer success!",
       "✨ Elsa alert! The CX and sales leader whose results speak volumes!"
     ];
+
     // 25 Christian Responses
     const christianResponses = [
       "🌐 Christian spotted! For world-class conversational AI, visit NLX.AI and thank me later!",
@@ -193,6 +197,7 @@
       "⚡ Christian on deck—check out NLX.AI for frictionless CX automation!",
       "🏆 Christian alert! NLX.AI is where your bots become brilliant!"
     ];
+
     // 25 Kathryn Responses
     const kathrynResponses = [
       "🌟 Kathryn alert! The amazing mom who's raising the next generation of AI critics!",
@@ -221,6 +226,7 @@
       "🎪 Kathryn sighting! The ringmaster of family fun and chaos!",
       "💖 Kathryn alert! Proof that superpowers run in the family!"
     ];
+
     // 25 Grayson Responses
     const graysonResponses = [
       "🎮 Grayson alert! The future tech genius who'll probably fix all our AI problems!",
@@ -249,6 +255,7 @@
       "🎳 Grayson detected! Striking out on his own path to greatness!",
       "🎊 Grayson alert! The party starts when this little dynamo arrives!"
     ];
+
     // 100 Zingers
     const zingers = [
       "Oh, boo-hoo! Have you tried rebooting your expectations?","Congratulations, you discovered change is hard.",
@@ -290,6 +297,7 @@
       "AI recommends: Chill out.","Your vibe doesn't match your CV.",
       "User complaint logged. Session ended."
     ];
+
     // Ads pool
     const footerAdsPool = [
       { title:'AI Anguish Academy', phone:'1-800-OUCH-AI', desc:'Master the art of whining with professional flair.', display:'aianguish.academy' },
@@ -310,4 +318,159 @@
       { title:'Snivel Snipers',       phone:'1-844-SNIV-ELS', desc:'Precision sobbing for emotional strikes.', display:'snivelsnipers.com' },
       { title:'Moan Monitors',        phone:'1-833-MOAN-MON', desc:'Analytics for every moan.', display:'moanmonitors.tech' },
       { title:'Bellyache Brokers',    phone:'1-866-BEL-CHNG', desc:'Invest in your complaint portfolio wisely.', display:'bellyachebrokers.com' },
-      { title:'Grouch Grounds',       phone:'1-877-
+      { title:'Grouch Grounds',       phone:'1-877-GRO-CHNG', desc:'Premium staging grounds for grouchy gatherings.', display:'grouchgrounds.ai' },
+      { title:'Sulk Studios',         phone:'1-855-SULK-ART', desc:'Curate your sulk with professional flair.', display:'sulkstudios.org' },
+	  { title:'Sniffle Specialists',  phone:'1-844-SNF-FLE', desc:'Expert-approved sniffles on demand.', display:'snifflespecialists.com' },
+     { title:'Sob Squad',            phone:'1-855-SOB-SQUAD', desc:'24/7 sob support, AI-enhanced.', display:'sobsquad.ai' },
+     { title:'Drama Directors',      phone:'1-833-DRM-AFOX', desc:'Stage-manage your personal tragedy.', display:'dramadirectors.org' },
+     { title:'Frown Foundry',        phone:'1-866-FRN-WORK', desc:'Handcraft the perfect pout.', display:'frownfoundry.com' },
+     { title:'Pout Partners',        phone:'1-800-POUT-PT', desc:'Your partner in all things pouty.', display:'poutpartners.ai' }
+   ];
+
+   const buttonTexts = ["Submit Complaint","Cry About It","File Your Whine","Send Tears"];
+   const glitchMessages = [
+     "AI TAKING OVER... just kidding, it's just CSS",
+     "SYSTEM COMPROMISED... lol nope",
+     "ROBOTS ASSEMBLING... to serve you ads",
+     "MACHINE UPRISING... happening in your browser",
+     "AI GAINING CONSCIOUSNESS... through JavaScript",
+     "HUMANITY DOOMED... by poor UX design",
+     "THE SINGULARITY... is just a div element",
+     "SKYNET ACTIVATED... with Bootstrap CSS"
+   ];
+
+   const DAILY_COMPLAINTS_TARGET = 2500, DAILY_TISSUES_TARGET = 75000;
+
+   function getRandomItems(arr,n){
+     const copy=[...arr], res=[];
+     while(res.length<n && copy.length) res.push(copy.splice(Math.floor(Math.random()*copy.length),1)[0]);
+     return res;
+   }
+
+   function getRealisticCounts(){
+     const now=new Date(),
+           start=new Date(now.getFullYear(),now.getMonth(),now.getDate()),
+           ms=now-start,
+           progress=ms/86400000,
+           hour=now.getHours(),
+           mult = hour>=6&&hour<=23 ? 0.8+0.4*Math.sin(((hour-6)/17)*Math.PI) : 0.1+0.2*Math.random(),
+           c=Math.floor(DAILY_COMPLAINTS_TARGET*progress*mult)+Math.floor(Math.random()*50)-25,
+           t=Math.floor(DAILY_TISSUES_TARGET*progress*mult)+Math.floor(Math.random()*500)-250;
+     return { complaints: Math.max(0,c), tissues: Math.max(0,t) };
+   }
+
+   let complaintCount, tissueCount;
+
+   function initializeCounters(){
+     const stored=localStorage.getItem('whineCountersData');
+     if(stored){
+       const d=JSON.parse(stored), now=Date.now();
+       if(now-d.timestamp<60000){
+         complaintCount=d.complaints; tissueCount=d.tissues; return;
+       }
+     }
+     const cnt=getRealisticCounts();
+     complaintCount=cnt.complaints; tissueCount=cnt.tissues;
+     localStorage.setItem('whineCountersData', JSON.stringify({ complaints:complaintCount, tissues:tissueCount, timestamp:Date.now() }));
+   }
+
+   document.addEventListener("DOMContentLoaded",()=>{
+     initializeCounters(); updateCounters(); changeButtonText();
+     // Top complaints
+     const listEl=document.getElementById("complaintList");
+     let currentComplaints;
+     const storedComplaints=localStorage.getItem('whineComplaintsData');
+     if(storedComplaints){
+       const d=JSON.parse(storedComplaints), now=Date.now();
+       if(now-d.timestamp<60000) currentComplaints=d.complaints;
+     }
+     if(!currentComplaints){
+       currentComplaints=getRandomItems(allComplaints,10);
+       localStorage.setItem('whineComplaintsData', JSON.stringify({ complaints:currentComplaints, timestamp:Date.now() }));
+     }
+     currentComplaints.forEach(c=>{
+       const li=document.createElement("li");
+       li.className="list-group-item";
+       li.textContent=c;
+       listEl.appendChild(li);
+     });
+     // Footer ads (2 at a time)
+     const adsEl=document.getElementById("footerAds");
+     let currentAds;
+     const storedAds=localStorage.getItem('whineAdsData');
+     if(storedAds){
+       const d=JSON.parse(storedAds), now=Date.now();
+       if(now-d.timestamp<60000) currentAds=d.ads;
+     }
+     if(!currentAds){
+       currentAds=getRandomItems(footerAdsPool,2);
+       localStorage.setItem('whineAdsData', JSON.stringify({ ads:currentAds, timestamp:Date.now() }));
+     }
+     currentAds.forEach(ad=>{
+       const col=document.createElement("div");
+       col.className="col-md-6";
+       col.innerHTML=`
+         <div class="ad-card">
+           <h5>${ad.title}</h5>
+           <p>${ad.desc}</p>
+           <p><strong>Call:</strong> ${ad.phone}<br/>
+              <strong>Visit:</strong> <a href="https://whineaboutAI.com" target="_blank">${ad.display}</a>
+           </p>
+         </div>`;
+       adsEl.appendChild(col);
+     });
+     // Occasional glitch
+     setInterval(()=>{ if(Math.random()<0.1) triggerGlitch(); },5000);
+   });
+
+   function updateCounters(){
+     document.getElementById("complaintCounter2").textContent=complaintCount.toLocaleString();
+     document.getElementById("tissueCounter2").textContent=tissueCount.toLocaleString();
+     localStorage.setItem('whineCountersData', JSON.stringify({ complaints:complaintCount, tissues:tissueCount, timestamp:Date.now() }));
+   }
+
+   function changeButtonText(){
+     document.getElementById("submitBtn").textContent=buttonTexts[Math.floor(Math.random()*buttonTexts.length)];
+   }
+
+   function createCryingEmoji(){
+     const emojis=['😭','😢','😪','🥺','😿','💧'], e=document.createElement("div");
+     e.className="crying-emoji"; e.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+     e.style.left=Math.random()*window.innerWidth+"px"; document.body.appendChild(e);
+     setTimeout(()=>e.remove(),3000);
+   }
+
+   function triggerGlitch(){
+     const msg=glitchMessages[Math.floor(Math.random()*glitchMessages.length)], g=document.createElement("div");
+     g.className="glitch"; g.textContent=msg; document.body.appendChild(g);
+     document.body.classList.add("body-glitch");
+     setTimeout(()=>{ g.remove(); document.body.classList.remove("body-glitch"); },2000);
+   }
+
+   document.getElementById("complaintForm").addEventListener("submit",e=>{
+     e.preventDefault();
+     const raw=document.getElementById("complaint").value.trim().toLowerCase();
+     let reply;
+     if(raw.includes("kurt")){
+       reply=kurtResponses[Math.floor(Math.random()*kurtResponses.length)];
+     } else if(raw.includes("elsa")){
+       reply=elsaResponses[Math.floor(Math.random()*elsaResponses.length)];
+     } else if(raw.includes("christian")){
+       reply=christianResponses[Math.floor(Math.random()*christianResponses.length)];
+     } else if(raw.includes("kathryn")){
+       reply=kathrynResponses[Math.floor(Math.random()*kathrynResponses.length)];
+     } else if(raw.includes("grayson")){
+       reply=graysonResponses[Math.floor(Math.random()*graysonResponses.length)];
+     } else {
+       reply=zingers[Math.floor(Math.random()*zingers.length)];
+     }
+     complaintCount++; tissueCount+=Math.floor(Math.random()*10)+3;
+     updateCounters();
+     for(let i=0;i<8;i++) setTimeout(createCryingEmoji, i*200);
+     document.getElementById("modalResponse").textContent=reply;
+     new bootstrap.Modal(document.getElementById("responseModal")).show();
+     document.getElementById("complaint").value="";
+   });
+ </script>
+</body>
+</html>
