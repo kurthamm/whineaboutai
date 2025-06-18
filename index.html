@@ -64,40 +64,54 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
   <script>
+    // Minimal test data for now
     const allComplaints = [
-      /* 100 complaints as above */
+      'My toaster now writes sonnets instead of browning bread.',
+      'AI recommended I watch cat videos for career growth.',
+      'My refrigerator just told me I\'m out of style.',
+      'A chatbot told me I need therapy, and now I\'m offended.',
+      'My printer wrote a better resume than me.',
+      'AI suggested I email my boss compliments instead of work.',
+      'My coffee maker knows more about quantum physics.',
+      'The smart vacuum gives me attitude when I\'m home.',
+      'Spoke to my GPS and now it judges my life choices.',
+      'AI spelled my name wrong in every email it sent.'
     ];
     const zingers = [
-      /* full zinger array */
+      'Seriously? Cry harder. The bots are eating your lunch while you sob.',
+      'Your complaint has been filed under irrelevant. Next.',
+      'Did your toaster steal your job too? Grow up.',
+      'AI didn\'t ruin the world. You just found someone else to blame.',
+      'Invent a solution instead of whining. Or keep the drama going—your choice.'
     ];
+
     function getRandomItems(arr, n) {
-      const shuffled = arr.slice();
-      for (let i = shuffled.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      const res = [];
+      const copy = [...arr];
+      while(res.length < n && copy.length) {
+        const idx = Math.floor(Math.random() * copy.length);
+        res.push(copy.splice(idx,1)[0]);
       }
-      return shuffled.slice(0, n);
+      return res;
     }
+
     document.addEventListener('DOMContentLoaded', () => {
       const listEl = document.getElementById('complaintList');
-      const selected = getRandomItems(allComplaints, 10);
-      selected.forEach(c => {
-        const li = document.createElement('li');
-        li.className = 'list-group-item';
-        li.textContent = c;
+      getRandomItems(allComplaints,10).forEach(c=>{
+        const li=document.createElement('li');
+        li.className='list-group-item';
+        li.textContent=c;
         listEl.appendChild(li);
       });
-      // Favicon fallback
-      const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
-      link.type = 'image/x-icon';
-      link.rel = 'icon';
-      link.href = 'favicon.ico';
-      document.getElementsByTagName('head')[0].appendChild(link);
+      // ensure favicon loaded
+      const link=document.querySelector("link[rel='icon']");
+      if(link) link.href='favicon.ico';
     });
-    document.getElementById('complaintForm').addEventListener('submit', e => {
+
+    document.getElementById('complaintForm').addEventListener('submit',e=>{
       e.preventDefault();
-      const reply = zingers[Math.floor(Math.random() * zingers.length)];
-      document.getElementById('modalResponse').textContent = reply;
+      const reply=zingers[Math.floor(Math.random()*zingers.length)];
+      document.getElementById('modalResponse').textContent=reply;
       new bootstrap.Modal(document.getElementById('responseModal')).show();
     });
   </script>
