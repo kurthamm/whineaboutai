@@ -1,0 +1,333 @@
+{
+  "media_contacts": [
+    {
+      "outlet": "TechCrunch",
+      "contacts": [
+        {
+          "name": "Kyle Wiggers",
+          "role": "Senior Enterprise Reporter (AI)",
+          "email": "tips@techcrunch.com",
+          "beat": "AI, Enterprise Technology"
+        },
+        {
+          "name": "Ivan Mehta",
+          "role": "Reporter",
+          "email": "tips@techcrunch.com",
+          "beat": "Technology, AI"
+        },
+        {
+          "name": "Marina Temkin",
+          "role": "AI Reporter",
+          "email": "tips@techcrunch.com",
+          "beat": "Artificial Intelligence"
+        },
+        {
+          "name": "Maxwell Zeff",
+          "role": "AI Journalist",
+          "email": "tips@techcrunch.com",
+          "beat": "AI Technology"
+        },
+        {
+          "name": "Zack Whittaker",
+          "role": "Security Editor",
+          "email": "zack.whittaker@techcrunch.com",
+          "beat": "Security, Privacy"
+        },
+        {
+          "name": "Amanda Silberling",
+          "role": "Senior Writer",
+          "email": "amanda@techcrunch.com",
+          "beat": "Technology, Culture"
+        }
+      ]
+    },
+    {
+      "outlet": "The Verge",
+      "contacts": [
+        {
+          "name": "Nilay Patel",
+          "role": "Editor-in-Chief",
+          "email": "tips@theverge.com",
+          "beat": "Technology Leadership"
+        },
+        {
+          "name": "Alex Heath",
+          "role": "Deputy Editor",
+          "email": "tips@theverge.com",
+          "beat": "AI, OpenAI Coverage"
+        },
+        {
+          "name": "Jay Peters",
+          "role": "News Editor",
+          "email": "tips@theverge.com",
+          "beat": "Technology News"
+        },
+        {
+          "name": "Emma Roth",
+          "role": "News Writer",
+          "email": "tips@theverge.com",
+          "beat": "Tech, Crypto"
+        },
+        {
+          "name": "James Vincent",
+          "role": "AI Writer",
+          "email": "tips@theverge.com",
+          "beat": "Generative AI"
+        }
+      ]
+    },
+    {
+      "outlet": "Wired",
+      "contacts": [
+        {
+          "name": "Will Knight",
+          "role": "Senior AI Writer",
+          "email": "tips@wired.com",
+          "beat": "AI Technology"
+        },
+        {
+          "name": "Caroline Haskins",
+          "role": "Business Reporter",
+          "email": "tips@wired.com",
+          "beat": "AI Ethics"
+        }
+      ]
+    },
+    {
+      "outlet": "Ars Technica",
+      "contacts": [
+        {
+          "name": "Benj Edwards",
+          "role": "Senior Technology Reporter",
+          "email": "tips@arstechnica.com",
+          "beat": "AI Technology"
+        },
+        {
+          "name": "Samuel Axon",
+          "role": "Technology Writer",
+          "email": "tips@arstechnica.com",
+          "beat": "AI Development Tools"
+        }
+      ]
+    },
+    {
+      "outlet": "VentureBeat",
+      "contacts": [
+        {
+          "name": "Michael Nuñez",
+          "role": "AI Reporter",
+          "email": "tips@venturebeat.com",
+          "beat": "AI Industry"
+        },
+        {
+          "name": "Sharon Goldman",
+          "role": "Senior Writer",
+          "email": "tips@venturebeat.com",
+          "beat": "AI Technology"
+        },
+        {
+          "name": "Emilia David",
+          "role": "AI Policy Reporter",
+          "email": "tips@venturebeat.com",
+          "beat": "AI Policy, Ethics"
+        }
+      ]
+    },
+    {
+      "outlet": "Axios",
+      "contacts": [
+        {
+          "name": "Ina Fried",
+          "role": "Chief Technology Correspondent",
+          "email": "ina@axios.com",
+          "beat": "Technology"
+        },
+        {
+          "name": "Maria Curi",
+          "role": "Tech Policy Reporter",
+          "email": "maria.curi@axios.com",
+          "beat": "Tech Policy"
+        },
+        {
+          "name": "Megan Morrone",
+          "role": "Editor of Technology",
+          "email": "megan.morrone@axios.com",
+          "beat": "Technology"
+        },
+        {
+          "name": "Ashley Gold",
+          "role": "Tech and Policy Reporter",
+          "email": "ashley.gold@axios.com",
+          "beat": "Tech Policy"
+        },
+        {
+          "name": "Scott Rosenberg",
+          "role": "Managing Editor of Technology",
+          "email": "scott.rosenberg@axios.com",
+          "beat": "Technology"
+        }
+      ]
+    },
+    {
+      "outlet": "Mashable",
+      "contacts": [
+        {
+          "name": "Cecily Mauran",
+          "role": "Tech Reporter",
+          "email": "tips@mashable.com",
+          "beat": "AI Technology"
+        }
+      ]
+    },
+    {
+      "outlet": "Gizmodo",
+      "contacts": [
+        {
+          "name": "James Whitbrook",
+          "role": "Deputy Editor",
+          "email": "tips@gizmodo.com",
+          "beat": "Technology"
+        }
+      ]
+    },
+    {
+      "outlet": "Engadget",
+      "contacts": [
+        {
+          "name": "Jessica Conditt",
+          "role": "Senior Editor",
+          "email": "tips@engadget.com",
+          "beat": "Technology"
+        },
+        {
+          "name": "Kris Holt",
+          "role": "Contributing Reporter",
+          "email": "tips@engadget.com",
+          "beat": "Technology"
+        },
+        {
+          "name": "Mariella Moon",
+          "role": "Senior Editor",
+          "email": "tips@engadget.com",
+          "beat": "Technology"
+        }
+      ]
+    },
+    {
+      "outlet": "MIT Technology Review",
+      "contacts": [
+        {
+          "name": "Karen Hao",
+          "role": "Freelance AI Journalist",
+          "email": "customer-service@technologyreview.com",
+          "beat": "AI Technology"
+        }
+      ]
+    },
+    {
+      "outlet": "Platformer",
+      "contacts": [
+        {
+          "name": "Casey Newton",
+          "role": "Founder and Editor",
+          "email": "casey@platformer.news",
+          "beat": "Tech Culture"
+        }
+      ]
+    },
+    {
+      "outlet": "The Information",
+      "contacts": [
+        {
+          "name": "Stephanie Palazzolo",
+          "role": "AI Reporter",
+          "email": "answers@theinformation.com",
+          "beat": "AI Industry"
+        },
+        {
+          "name": "Arielle Pardes",
+          "role": "Tech Culture Writer",
+          "email": "answers@theinformation.com",
+          "beat": "Tech Culture"
+        }
+      ]
+    },
+    {
+      "outlet": "CNN",
+      "contacts": [
+        {
+          "name": "Tech Team",
+          "role": "Technology Reporters",
+          "email": "tips@cnn.com",
+          "beat": "Technology, AI"
+        }
+      ]
+    },
+    {
+      "outlet": "New York Times",
+      "contacts": [
+        {
+          "name": "Technology Desk",
+          "role": "Technology Reporters",
+          "email": "nytech@nytimes.com",
+          "beat": "Technology, AI"
+        }
+      ]
+    },
+    {
+      "outlet": "Wall Street Journal",
+      "contacts": [
+        {
+          "name": "Tech Bureau",
+          "role": "Technology Reporters",
+          "email": "tips@wsj.com",
+          "beat": "Technology, Business"
+        }
+      ]
+    },
+    {
+      "outlet": "Washington Post",
+      "contacts": [
+        {
+          "name": "Technology Team",
+          "role": "Technology Reporters",
+          "email": "tech@washpost.com",
+          "beat": "Technology, AI"
+        }
+      ]
+    },
+    {
+      "outlet": "Reuters",
+      "contacts": [
+        {
+          "name": "Technology Desk",
+          "role": "Technology Reporters",
+          "email": "tips@reuters.com",
+          "beat": "Technology News"
+        }
+      ]
+    },
+    {
+      "outlet": "AP News",
+      "contacts": [
+        {
+          "name": "Technology Team",
+          "role": "Technology Reporters",
+          "email": "tips@ap.org",
+          "beat": "Technology"
+        }
+      ]
+    },
+    {
+      "outlet": "NPR",
+      "contacts": [
+        {
+          "name": "Digital Culture Team",
+          "role": "Technology/Culture Reporters",
+          "email": "tips@npr.org",
+          "beat": "Digital Culture, Technology"
+        }
+      ]
+    }
+  ]
+}

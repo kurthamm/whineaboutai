@@ -1,0 +1,6 @@
+requests
+google-analytics-data
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
+urllib3
