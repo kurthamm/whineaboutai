@@ -282,6 +282,34 @@
     .ad-card { border:1px solid #ccc; border-radius:.5rem; padding:1rem; background:#fff; margin-bottom:1rem; }
     .ad-card h5 { margin-bottom:.5rem; color:#dc3545; }
     .ad-card p { font-size:.9rem; margin:.25rem 0; }
+    
+    /* Enhanced Features Styles */
+    .complaint-generator { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); border-radius: 15px; padding: 2rem; margin: 2rem 0; text-align: center; }
+    .generate-btn { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 1rem 2rem; border-radius: 25px; font-weight: bold; transition: transform 0.2s; }
+    .generate-btn:hover { transform: scale(1.05); }
+    .leaderboard { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 15px; padding: 2rem; margin: 2rem 0; }
+    .leaderboard-item { background: rgba(255,255,255,0.1); border-radius: 10px; padding: 1rem; margin: 0.5rem 0; display: flex; justify-content: space-between; align-items: center; }
+    .leaderboard-rank { font-size: 1.5rem; font-weight: bold; width: 40px; }
+    .bingo-card { background: #fff; border: 2px solid #007bff; border-radius: 15px; padding: 1.5rem; margin: 2rem 0; }
+    .bingo-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; margin: 1rem 0; }
+    .bingo-cell { aspect-ratio: 1; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; text-align: center; cursor: pointer; transition: all 0.2s; }
+    .bingo-cell:hover { background: #e9ecef; }
+    .bingo-cell.marked { background: #007bff; color: white; }
+    .bingo-cell.center { background: #28a745; color: white; font-weight: bold; }
+    .meme-generator { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); border-radius: 15px; padding: 2rem; margin: 2rem 0; text-align: center; }
+    .meme-canvas { border: 3px solid #fff; border-radius: 10px; max-width: 100%; }
+    .tweet-generator { background: linear-gradient(135deg, #1da1f2 0%, #0d8bf2 100%); color: white; border-radius: 15px; padding: 2rem; margin: 2rem 0; }
+    .tweet-preview { background: rgba(255,255,255,0.1); border-radius: 10px; padding: 1rem; margin: 1rem 0; font-family: 'Helvetica Neue', sans-serif; }
+    .category-filter { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
+    .category-btn { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 20px; padding: 0.4rem 1rem; font-size: 0.9rem; cursor: pointer; transition: all 0.2s; }
+    .category-btn:hover, .category-btn.active { background: #007bff; color: white; border-color: #007bff; }
+    .rage-meter { position: relative; height: 20px; background: #e9ecef; border-radius: 10px; overflow: hidden; margin: 0.5rem 0; }
+    .rage-fill { height: 100%; border-radius: 10px; transition: width 0.3s ease; }
+    .rage-low { background: linear-gradient(90deg, #28a745, #20c997); }
+    .rage-medium { background: linear-gradient(90deg, #ffc107, #fd7e14); }
+    .rage-high { background: linear-gradient(90deg, #dc3545, #e74c3c); }
+    .rage-extreme { background: linear-gradient(90deg, #6f42c1, #e83e8c); animation: ragePulse 1s infinite; }
+    @keyframes ragePulse { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(1.1); } }
   </style>
 </head>
 <body>
@@ -313,6 +341,17 @@
           <button type="button" class="btn btn-outline-primary btn-sm" id="sortRelatable">😭 Most Relatable</button>
         </div>
       </div>
+      
+      <div class="category-filter">
+        <button class="category-btn active" data-category="all" onclick="filterByCategory('all')">All Disasters</button>
+        <button class="category-btn" data-category="Smart Home" onclick="filterByCategory('Smart Home')">🏠 Smart Home</button>
+        <button class="category-btn" data-category="Chatbots" onclick="filterByCategory('Chatbots')">🤖 Chatbots</button>
+        <button class="category-btn" data-category="Autocorrect" onclick="filterByCategory('Autocorrect')">📱 Autocorrect</button>
+        <button class="category-btn" data-category="Navigation" onclick="filterByCategory('Navigation')">🗺️ Navigation</button>
+        <button class="category-btn" data-category="Work AI" onclick="filterByCategory('Work AI')">💼 Work AI</button>
+        <button class="category-btn" data-category="General AI" onclick="filterByCategory('General AI')">🧠 General AI</button>
+      </div>
+      
       <div id="complaintList" class="complaint-feed"></div>
     </section>
     
@@ -330,6 +369,101 @@
               📤 Share This Disaster
             </button>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI-Powered Complaint Generator -->
+    <section class="mt-5">
+      <div class="complaint-generator">
+        <h3>🤖 AI Complaint Generator</h3>
+        <p class="mb-3">Let AI create the perfect complaint for you! (Ironic, isn't it?)</p>
+        <div class="mb-3">
+          <select id="complaintType" class="form-select mb-2">
+            <option value="chatbot">Chatbot Failures</option>
+            <option value="smart-home">Smart Home Disasters</option>
+            <option value="autocorrect">Autocorrect Nightmares</option>
+            <option value="work">AI at Work Fails</option>
+            <option value="general">General AI Chaos</option>
+          </select>
+          <select id="angerLevel" class="form-select">
+            <option value="mild">Mildly Annoyed</option>
+            <option value="frustrated">Frustrated</option>
+            <option value="furious">Furious</option>
+            <option value="existential">Existential Crisis</option>
+          </select>
+        </div>
+        <button class="generate-btn" onclick="generateAIComplaint()">🎨 Generate My Perfect Complaint</button>
+        <div id="generatedComplaint" class="mt-3" style="display: none;">
+          <div class="alert alert-light">
+            <strong>Your AI-Generated Complaint:</strong>
+            <p id="generatedText" class="mb-2"></p>
+            <button class="btn btn-sm btn-primary" onclick="useGeneratedComplaint()">✅ Use This Complaint</button>
+            <button class="btn btn-sm btn-outline-primary" onclick="generateAIComplaint()">🔄 Generate Another</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Complaint Leaderboard -->
+    <section class="mt-5">
+      <div class="leaderboard">
+        <h3>🏆 Hall of AI Suffering</h3>
+        <p class="mb-3">The most legendary AI disasters of all time</p>
+        <div id="leaderboardList"></div>
+      </div>
+    </section>
+
+    <!-- AI Complaint Bingo -->
+    <section class="mt-5">
+      <div class="bingo-card">
+        <h3 class="text-center">🎲 AI Complaint Bingo</h3>
+        <p class="text-center text-muted">Mark off AI disasters as they happen to you!</p>
+        <div class="bingo-grid" id="bingoGrid"></div>
+        <div class="text-center mt-3">
+          <button class="btn btn-primary" onclick="resetBingo()">🔄 New Card</button>
+          <button class="btn btn-success" onclick="checkBingo()">✓ Check Bingo!</button>
+        </div>
+        <div id="bingoResult" class="text-center mt-2"></div>
+      </div>
+    </section>
+
+    <!-- Meme Generator -->
+    <section class="mt-5">
+      <div class="meme-generator">
+        <h3>🖼️ AI Complaint Meme Generator</h3>
+        <p>Turn your suffering into shareable content!</p>
+        <div class="row">
+          <div class="col-md-6">
+            <canvas id="memeCanvas" class="meme-canvas" width="400" height="400"></canvas>
+          </div>
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label class="form-label">Top Text:</label>
+              <input type="text" id="memeTopText" class="form-control" placeholder="When AI says..." oninput="updateMeme()">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Bottom Text:</label>
+              <input type="text" id="memeBottomText" class="form-control" placeholder="But actually does..." oninput="updateMeme()">
+            </div>
+            <button class="btn btn-primary" onclick="generateMeme()">🎨 Generate Random</button>
+            <button class="btn btn-success" onclick="downloadMeme()">💾 Download</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tweet Generator -->
+    <section class="mt-5">
+      <div class="tweet-generator">
+        <h3>🐦 Perfect Tweet Generator</h3>
+        <p>Craft the ideal AI complaint tweet!</p>
+        <div class="tweet-preview" id="tweetPreview">
+          Just had another AI fail... 🤖💔 Why does my smart toaster have more personality than my smart assistant? At least the toast comes out consistently burnt! #AIFails #SmartHomeStruggles #WhineAboutAI
+        </div>
+        <div class="text-center mt-3">
+          <button class="btn btn-light" onclick="generateTweet()">🔄 Generate New Tweet</button>
+          <button class="btn btn-light" onclick="tweetNow()">📤 Tweet This!</button>
         </div>
       </div>
     </section>
@@ -1176,6 +1310,280 @@
        sendMessage();
      }
    });
+  // Enhanced Features JavaScript (without API key for security)
+  
+  // AI Complaint Generator (using intelligent fallbacks)
+  function generateAIComplaint() {
+    const complaintType = document.getElementById('complaintType').value;
+    const angerLevel = document.getElementById('angerLevel').value;
+    const button = event.target;
+    button.textContent = '🤖 AI is thinking...';
+    button.disabled = true;
+    
+    setTimeout(() => {
+      const fallbackComplaints = {
+        'chatbot': ['My chatbot scheduled a meeting with itself', 'AI customer service put me on hold indefinitely', 'Chatbot asked ME for help with its problems'],
+        'smart-home': ['My smart bulb became sentient and judges my taste', 'Smart doorbell rings for ghosts at 3 AM', 'AI thermostat thinks I\'m a houseplant'],
+        'autocorrect': ['Autocorrect changed "help" to "kelp"', 'My phone thinks I only speak in typos', 'Autocorrect ruined my job interview text'],
+        'work': ['AI wrote my performance review in crayon', 'Email AI replied "unsubscribe" to my boss', 'AI calendar scheduled my existential crisis'],
+        'general': ['AI predicted I\'d be replaced by AI', 'Robot barista spelled my name as "Human #47"', 'AI news feed only shows cat videos now']
+      };
+      
+      const complaints = fallbackComplaints[complaintType] || fallbackComplaints['general'];
+      const randomComplaint = complaints[Math.floor(Math.random() * complaints.length)];
+      
+      // Add anger level modifier
+      let modifiedComplaint = randomComplaint;
+      if (angerLevel === 'furious') {
+        modifiedComplaint += ' AND I AM FURIOUS!!!';
+      } else if (angerLevel === 'existential') {
+        modifiedComplaint += ' (questioning my life choices now)';
+      }
+      
+      document.getElementById('generatedText').textContent = modifiedComplaint;
+      document.getElementById('generatedComplaint').style.display = 'block';
+      
+      // Add celebration
+      for (let i = 0; i < 5; i++) {
+        setTimeout(() => createCryingEmoji(), i * 200);
+      }
+      
+      button.textContent = '🎨 Generate My Perfect Complaint';
+      button.disabled = false;
+    }, 1500);
+  }
+  
+  function useGeneratedComplaint() {
+    const generatedText = document.getElementById('generatedText').textContent;
+    document.getElementById('complaint').value = generatedText;
+    document.getElementById('generatedComplaint').style.display = 'none';
+    document.getElementById('complaint').scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('complaint').focus();
+  }
+
+  // Tweet Generator
+  function generateTweet() {
+    const fallbackTweets = [
+      "Just asked my AI assistant for help and it suggested I try being less human. Thanks for the existential crisis, bot! 🤖💔 #AIFails #TechStruggles",
+      "My smart home is so smart it locked me out for my own safety. Apparently my pizza ordering habits are 'concerning.' 🍕🤖 #SmartHomeFails",
+      "AI wrote my grocery list: '3 sadness, 1 despair, bulk tissues.' Even my shopping list is having an existential crisis now. 😭 #AIFails",
+      "Autocorrect changed 'meeting' to 'meltdown' and honestly, it's more accurate than I'd like to admit. 📱💀 #AutocorrectFails",
+      "My smart watch thinks I'm dead because I haven't moved in 30 minutes. I'm just working from home, thanks! 💀⌚ #SmartWatchFails",
+      "AI chatbot told me to 'try turning myself off and on again.' Jokes on you, I'm already dead inside! 🤖😵 #AISupport"
+    ];
+    
+    const randomTweet = fallbackTweets[Math.floor(Math.random() * fallbackTweets.length)];
+    document.getElementById('tweetPreview').textContent = randomTweet;
+  }
+  
+  function tweetNow() {
+    const tweetText = document.getElementById('tweetPreview').textContent;
+    const encodedText = encodeURIComponent(tweetText);
+    window.open(`https://twitter.com/intent/tweet?text=${encodedText}`, '_blank');
+  }
+
+  // Category filtering
+  let currentCategory = 'all';
+  
+  function filterByCategory(category) {
+    currentCategory = category;
+    document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelector(`[data-category="${category}"]`).classList.add('active');
+    renderComplaints();
+  }
+
+  // Bingo Game
+  const bingoItems = [
+    "Autocorrect fails", "Siri can't understand", "Smart home rebellion", "AI scheduling chaos",
+    "ChatGPT hallucination", "Robot vacuum stuck", "Smart TV spying", "AI writes nonsense",
+    "Voice assistant eavesdropping", "Alexa orders random stuff", "Navigation mishap", "AI bias detected",
+    "FREE SPACE", "Machine learning fails", "AI customer service loop", "Smart device offline",
+    "Algorithm broken", "AI translation fail", "Virtual assistant sass", "Smart doorbell glitch",
+    "AI autocomplete", "Machine vision error", "Smart thermostat rebellion", "AI writes bad code", "Chatbot loop"
+  ];
+  
+  let bingoCard = [], markedCells = new Set();
+  
+  function resetBingo() {
+    const shuffled = [...bingoItems];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    bingoCard = shuffled.slice(0, 25);
+    bingoCard[12] = "FREE SPACE";
+    markedCells.clear();
+    markedCells.add(12);
+    renderBingo();
+  }
+  
+  function renderBingo() {
+    const grid = document.getElementById('bingoGrid');
+    grid.innerHTML = '';
+    bingoCard.forEach((item, index) => {
+      const cell = document.createElement('div');
+      cell.className = 'bingo-cell';
+      cell.textContent = item;
+      cell.onclick = () => toggleBingoCell(index);
+      if (markedCells.has(index)) cell.classList.add('marked');
+      if (index === 12) cell.classList.add('center');
+      grid.appendChild(cell);
+    });
+  }
+  
+  function toggleBingoCell(index) {
+    if (index === 12) return;
+    if (markedCells.has(index)) {
+      markedCells.delete(index);
+    } else {
+      markedCells.add(index);
+    }
+    renderBingo();
+  }
+  
+  function checkBingo() {
+    const winPatterns = [
+      [0,1,2,3,4], [5,6,7,8,9], [10,11,12,13,14], [15,16,17,18,19], [20,21,22,23,24],
+      [0,5,10,15,20], [1,6,11,16,21], [2,7,12,17,22], [3,8,13,18,23], [4,9,14,19,24],
+      [0,6,12,18,24], [4,8,12,16,20]
+    ];
+    
+    const hasBingo = winPatterns.some(pattern => pattern.every(index => markedCells.has(index)));
+    const resultDiv = document.getElementById('bingoResult');
+    if (hasBingo) {
+      resultDiv.innerHTML = '<div class="alert alert-success">🎉 BINGO! Peak AI suffering achieved! 🏆</div>';
+      for (let i = 0; i < 10; i++) setTimeout(() => createCryingEmoji(), i * 100);
+    } else {
+      resultDiv.innerHTML = '<div class="alert alert-info">Keep suffering! Not quite BINGO yet. 😢</div>';
+    }
+  }
+
+  // Meme Generator
+  function updateMeme() {
+    const canvas = document.getElementById('memeCanvas');
+    const ctx = canvas.getContext('2d');
+    const topText = document.getElementById('memeTopText').value || 'TOP TEXT';
+    const bottomText = document.getElementById('memeBottomText').value || 'BOTTOM TEXT';
+    
+    ctx.clearRect(0, 0, 400, 400);
+    ctx.fillStyle = '#f0f0f0';
+    ctx.fillRect(0, 0, 400, 400);
+    
+    ctx.fillStyle = 'white';
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 2;
+    ctx.font = 'bold 24px Impact, Arial';
+    ctx.textAlign = 'center';
+    
+    ctx.strokeText(topText.toUpperCase(), 200, 50);
+    ctx.fillText(topText.toUpperCase(), 200, 50);
+    
+    ctx.strokeText(bottomText.toUpperCase(), 200, 370);
+    ctx.fillText(bottomText.toUpperCase(), 200, 370);
+    
+    ctx.fillStyle = '#333';
+    ctx.font = '100px Arial';
+    ctx.fillText('🤖', 200, 220);
+  }
+  
+  function generateMeme() {
+    const topTexts = ['WHEN AI SAYS IT WILL HELP', 'AI IN MARKETING', 'SMART HOME PROMISES', 'AI CUSTOMER SERVICE'];
+    const bottomTexts = ['BUT MAKES EVERYTHING WORSE', 'AI IN REALITY', 'SMART HOME REALITY', 'ACTUAL AI EXPERIENCE'];
+    
+    document.getElementById('memeTopText').value = topTexts[Math.floor(Math.random() * topTexts.length)];
+    document.getElementById('memeBottomText').value = bottomTexts[Math.floor(Math.random() * bottomTexts.length)];
+    updateMeme();
+  }
+  
+  function downloadMeme() {
+    const canvas = document.getElementById('memeCanvas');
+    const link = document.createElement('a');
+    link.download = 'ai-complaint-meme.png';
+    link.href = canvas.toDataURL();
+    link.click();
+  }
+
+  // Leaderboard
+  function initializeLeaderboard() {
+    const leaderboard = [
+      { rank: 1, complaint: "My AI girlfriend left me for Alexa", votes: 2847, trophy: "🥇" },
+      { rank: 2, complaint: "Smart toilet locked me out during emergency", votes: 2156, trophy: "🥈" },
+      { rank: 3, complaint: "ChatGPT wrote my wedding vows in Klingon", votes: 1923, trophy: "🥉" },
+      { rank: 4, complaint: "AI recruiter hired my cat instead of me", votes: 1678, trophy: "🏅" },
+      { rank: 5, complaint: "Smart car drove me to my ex's house", votes: 1534, trophy: "🎖️" }
+    ];
+    
+    const container = document.getElementById('leaderboardList');
+    container.innerHTML = leaderboard.map(item => `
+      <div class="leaderboard-item">
+        <div class="d-flex align-items-center">
+          <div class="leaderboard-rank">${item.rank}</div>
+          <div class="leaderboard-trophy">${item.trophy}</div>
+          <div class="flex-grow-1 ms-3">${item.complaint}</div>
+        </div>
+        <div class="badge bg-light text-dark">${item.votes.toLocaleString()} votes</div>
+      </div>
+    `).join('');
+  }
+
+  // Enhanced complaint rendering with rage meter
+  function renderComplaints() {
+    const container = document.getElementById('complaintList');
+    container.innerHTML = '';
+    
+    let sortedComplaints = [...complaintData];
+    switch (currentSort) {
+      case 'popular': sortedComplaints.sort((a, b) => b.totalVotes - a.totalVotes); break;
+      case 'recent': sortedComplaints.sort((a, b) => b.timestamp - a.timestamp); break;
+      case 'relatable': sortedComplaints.sort((a, b) => b.votes.relatable - a.votes.relatable); break;
+    }
+    
+    if (currentCategory !== 'all') {
+      sortedComplaints = sortedComplaints.filter(c => c.category === currentCategory);
+    }
+    
+    sortedComplaints.slice(0, 10).forEach((complaint) => {
+      const rageLevel = getRageLevel(complaint.totalVotes);
+      const complaintDiv = document.createElement('div');
+      complaintDiv.className = 'complaint-item';
+      complaintDiv.innerHTML = `
+        <div class="complaint-text">${complaint.text}</div>
+        <div class="rage-meter">
+          <div class="rage-fill rage-${rageLevel.level}" style="width: ${Math.min(100, (complaint.totalVotes / 100) * 100)}%"></div>
+        </div>
+        <small class="text-muted">Rage Level: ${rageLevel.label}</small>
+        <div class="complaint-actions">
+          <div class="reaction-buttons">
+            <button class="reaction-btn ${complaint.userVote === 'relatable' ? 'active' : ''}" 
+                    onclick="voteComplaint('${complaint.id}', 'relatable')">😭 ${complaint.votes.relatable}</button>
+            <button class="reaction-btn ${complaint.userVote === 'hilarious' ? 'active' : ''}" 
+                    onclick="voteComplaint('${complaint.id}', 'hilarious')">😂 ${complaint.votes.hilarious}</button>
+            <button class="reaction-btn ${complaint.userVote === 'tragic' ? 'active' : ''}" 
+                    onclick="voteComplaint('${complaint.id}', 'tragic')">💀 ${complaint.votes.tragic}</button>
+          </div>
+          <div class="complaint-meta">
+            <span class="badge bg-secondary me-2">${complaint.category}</span>
+            <button class="share-btn" onclick="shareComplaint('${complaint.id}')">📤 Share</button>
+          </div>
+        </div>
+      `;
+      container.appendChild(complaintDiv);
+    });
+  }
+  
+  function getRageLevel(votes) {
+    if (votes < 10) return { level: 'low', label: 'Mild Annoyance' };
+    if (votes < 30) return { level: 'medium', label: 'Frustrated' };
+    if (votes < 60) return { level: 'high', label: 'Furious' };
+    return { level: 'extreme', label: 'Existential Crisis' };
+  }
+
+  // Initialize new features
+  document.addEventListener('DOMContentLoaded', function() {
+    initializeLeaderboard();
+    resetBingo();
+    updateMeme();
+  });
  </script>
 </body>
 </html>
