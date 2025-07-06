@@ -62,6 +62,77 @@
     .stat-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:white; padding:1.5rem; border-radius:1rem; text-align:center; box-shadow:0 8px 32px rgba(0,0,0,0.1); margin-bottom:1rem; }
     .stat-number { font-size:2.5rem; font-weight:bold; margin:0; }
     .stat-label { font-size:.9rem; opacity:.9; margin:0; }
+    
+    .complaint-item { 
+      background: white; 
+      border: 1px solid #e0e0e0; 
+      border-radius: 12px; 
+      padding: 1.5rem; 
+      margin-bottom: 1rem; 
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .complaint-item:hover { 
+      transform: translateY(-2px); 
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15); 
+    }
+    .complaint-text { 
+      font-size: 1.1rem; 
+      line-height: 1.5; 
+      color: #2c3e50; 
+      margin-bottom: 1rem;
+    }
+    .complaint-actions { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid #f0f0f0;
+    }
+    .reaction-buttons { 
+      display: flex; 
+      gap: 0.5rem; 
+    }
+    .reaction-btn { 
+      background: #f8f9fa; 
+      border: 1px solid #e9ecef; 
+      border-radius: 20px; 
+      padding: 0.4rem 0.8rem; 
+      font-size: 0.9rem; 
+      cursor: pointer; 
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .reaction-btn:hover { 
+      background: #e9ecef; 
+      transform: scale(1.05); 
+    }
+    .reaction-btn.active { 
+      background: #007bff; 
+      color: white; 
+      border-color: #007bff; 
+    }
+    .complaint-meta { 
+      color: #6c757d; 
+      font-size: 0.85rem; 
+    }
+    .share-btn {
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .share-btn:hover {
+      background: #218838;
+      transform: scale(1.05);
+    }
     .crying-emoji { position:fixed; font-size:2rem; z-index:1000; pointer-events:none; animation:fall 3s linear; }
     @keyframes fall { 0% { transform: translateY(-100px) rotate(0deg); opacity:1; } 100% { transform: translateY(100vh) rotate(360deg); opacity:0; } }
     .glitch { position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:rgba(255,0,0,0.9); color:white; padding:2rem 3rem; font-size:1.5rem; font-weight:bold; border-radius:1rem; z-index:9999; animation:glitchShake .5s infinite; box-shadow:0 0 50px rgba(255,0,0,0.5);}
@@ -95,14 +166,39 @@
       <div class="col-md-6"><div class="stat-card"><p class="stat-number" id="tissueCounter2">0</p><p class="stat-label">Tissues Delivered</p></div></div>
     </div>
     <section id="topComplaints" class="mt-5">
-      <h2 class="fs-3 mb-3">Top 10 AI Complaints Today</h2>
-      <ul id="complaintList" class="list-group list-group-flush"></ul>
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="fs-3 mb-0">Top AI Disasters</h2>
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-outline-primary btn-sm active" id="sortPopular">🔥 Most Popular</button>
+          <button type="button" class="btn btn-outline-primary btn-sm" id="sortRecent">⏰ Recent</button>
+          <button type="button" class="btn btn-outline-primary btn-sm" id="sortRelatable">😭 Most Relatable</button>
+        </div>
+      </div>
+      <div id="complaintList" class="complaint-feed"></div>
     </section>
     
-    <!-- Share Your Complaint Section -->
+    <!-- Daily Featured Complaint -->
+    <section class="mt-5">
+      <div class="text-center">
+        <h3 class="fs-4 mb-3">🌟 AI Disaster of the Day</h3>
+        <div id="featuredComplaint" class="complaint-item mx-auto" style="max-width: 600px;">
+          <div class="complaint-text" id="featuredText">Loading today's featured AI disaster...</div>
+          <div class="text-center mt-3">
+            <button class="btn btn-outline-primary me-2" onclick="getRandomComplaint()">
+              🎲 Random Complaint
+            </button>
+            <button class="btn btn-outline-success" onclick="shareOnTwitter()">
+              📤 Share This Disaster
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Actions -->
     <section class="mt-5 text-center">
-      <h3 class="fs-4 mb-3">Share Your AI Nightmare</h3>
-      <p class="text-muted mb-4">Help others avoid AI disasters by sharing your complaint on social media</p>
+      <h3 class="fs-4 mb-3">Spread the AI Misery</h3>
+      <p class="text-muted mb-4">Help others suffer together by sharing the pain</p>
       <div class="d-flex gap-3 justify-content-center flex-wrap">
         <button class="btn btn-outline-primary" onclick="shareOnTwitter()">
           🐦 Share on Twitter
@@ -112,6 +208,9 @@
         </button>
         <button class="btn btn-outline-success" onclick="copyComplaintLink()">
           🔗 Copy Link
+        </button>
+        <button class="btn btn-outline-warning" onclick="getRandomComplaint()">
+          🎯 Surprise Me
         </button>
       </div>
     </section>
@@ -439,26 +538,182 @@
      localStorage.setItem('whineCountersData', JSON.stringify({ complaints:complaintCount, tissues:tissueCount, timestamp:Date.now() }));
    }
 
+   // Enhanced complaint system with voting
+   let complaintData = [];
+   let currentSort = 'popular';
+   
+   function initializeComplaintData() {
+     const stored = localStorage.getItem('whineComplaintData');
+     if (stored) {
+       const data = JSON.parse(stored);
+       if (Date.now() - data.timestamp < 3600000) { // 1 hour cache
+         complaintData = data.complaints;
+         return;
+       }
+     }
+     
+     // Create complaint objects with voting data
+     complaintData = getRandomItems(allComplaints, 15).map((text, index) => ({
+       id: 'complaint_' + Date.now() + '_' + index,
+       text: text,
+       votes: {
+         relatable: Math.floor(Math.random() * 50) + 5,
+         hilarious: Math.floor(Math.random() * 30) + 2,
+         tragic: Math.floor(Math.random() * 25) + 1
+       },
+       totalVotes: 0,
+       userVote: null,
+       timestamp: Date.now() - Math.floor(Math.random() * 86400000), // Random time in last 24h
+       category: getComplaintCategory(text)
+     }));
+     
+     // Calculate total votes
+     complaintData.forEach(complaint => {
+       complaint.totalVotes = complaint.votes.relatable + complaint.votes.hilarious + complaint.votes.tragic;
+     });
+     
+     localStorage.setItem('whineComplaintData', JSON.stringify({
+       complaints: complaintData,
+       timestamp: Date.now()
+     }));
+   }
+   
+   function getComplaintCategory(text) {
+     const categories = {
+       'Smart Home': ['smart', 'alexa', 'siri', 'fridge', 'thermostat', 'lights', 'doorbell'],
+       'Chatbots': ['chatbot', 'chat', 'bot', 'customer service', 'support'],
+       'Autocorrect': ['autocorrect', 'ducking', 'text', 'phone', 'typing'],
+       'Navigation': ['gps', 'maps', 'directions', 'navigate', 'traffic'],
+       'Work AI': ['email', 'meeting', 'zoom', 'work', 'office', 'calendar'],
+       'General AI': ['ai', 'robot', 'machine', 'algorithm']
+     };
+     
+     for (const [category, keywords] of Object.entries(categories)) {
+       if (keywords.some(keyword => text.toLowerCase().includes(keyword))) {
+         return category;
+       }
+     }
+     return 'General AI';
+   }
+   
+   function renderComplaints() {
+     const container = document.getElementById('complaintList');
+     container.innerHTML = '';
+     
+     // Sort complaints based on current sort mode
+     let sortedComplaints = [...complaintData];
+     switch (currentSort) {
+       case 'popular':
+         sortedComplaints.sort((a, b) => b.totalVotes - a.totalVotes);
+         break;
+       case 'recent':
+         sortedComplaints.sort((a, b) => b.timestamp - a.timestamp);
+         break;
+       case 'relatable':
+         sortedComplaints.sort((a, b) => b.votes.relatable - a.votes.relatable);
+         break;
+     }
+     
+     sortedComplaints.slice(0, 10).forEach((complaint, index) => {
+       const complaintDiv = document.createElement('div');
+       complaintDiv.className = 'complaint-item';
+       complaintDiv.innerHTML = `
+         <div class="complaint-text">${complaint.text}</div>
+         <div class="complaint-actions">
+           <div class="reaction-buttons">
+             <button class="reaction-btn ${complaint.userVote === 'relatable' ? 'active' : ''}" 
+                     onclick="voteComplaint('${complaint.id}', 'relatable')">
+               😭 ${complaint.votes.relatable}
+             </button>
+             <button class="reaction-btn ${complaint.userVote === 'hilarious' ? 'active' : ''}" 
+                     onclick="voteComplaint('${complaint.id}', 'hilarious')">
+               😂 ${complaint.votes.hilarious}
+             </button>
+             <button class="reaction-btn ${complaint.userVote === 'tragic' ? 'active' : ''}" 
+                     onclick="voteComplaint('${complaint.id}', 'tragic')">
+               💀 ${complaint.votes.tragic}
+             </button>
+           </div>
+           <div class="complaint-meta">
+             <span class="badge bg-secondary me-2">${complaint.category}</span>
+             <button class="share-btn" onclick="shareComplaint('${complaint.id}')">
+               📤 Share
+             </button>
+           </div>
+         </div>
+       `;
+       container.appendChild(complaintDiv);
+     });
+   }
+   
+   function voteComplaint(complaintId, voteType) {
+     const complaint = complaintData.find(c => c.id === complaintId);
+     if (!complaint) return;
+     
+     // Remove previous vote if exists
+     if (complaint.userVote) {
+       complaint.votes[complaint.userVote]--;
+     }
+     
+     // Add new vote if different from previous
+     if (complaint.userVote !== voteType) {
+       complaint.votes[voteType]++;
+       complaint.userVote = voteType;
+     } else {
+       complaint.userVote = null; // Remove vote if clicking same button
+     }
+     
+     // Recalculate total
+     complaint.totalVotes = complaint.votes.relatable + complaint.votes.hilarious + complaint.votes.tragic;
+     
+     // Save to localStorage
+     localStorage.setItem('whineComplaintData', JSON.stringify({
+       complaints: complaintData,
+       timestamp: Date.now()
+     }));
+     
+     // Re-render
+     renderComplaints();
+     
+     // Add some celebratory emojis
+     createCryingEmoji();
+   }
+   
+   function shareComplaint(complaintId) {
+     const complaint = complaintData.find(c => c.id === complaintId);
+     if (!complaint) return;
+     
+     const text = encodeURIComponent(`"${complaint.text}" - shared from WhineAboutAI.com! 🤖😭 #AIFails`);
+     const url = encodeURIComponent('https://whineaboutai.com');
+     window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+   }
+   
+   function setSortMode(mode) {
+     currentSort = mode;
+     
+     // Update button states
+     document.querySelectorAll('#topComplaints .btn-group button').forEach(btn => {
+       btn.classList.remove('active');
+     });
+     if (mode === 'popular') document.getElementById('sortPopular').classList.add('active');
+     if (mode === 'recent') document.getElementById('sortRecent').classList.add('active');  
+     if (mode === 'relatable') document.getElementById('sortRelatable').classList.add('active');
+     
+     renderComplaints();
+   }
+
    document.addEventListener("DOMContentLoaded",()=>{
      initializeCounters(); updateCounters(); changeButtonText();
-     // Top complaints
-     const listEl=document.getElementById("complaintList");
-     let currentComplaints;
-     const storedComplaints=localStorage.getItem('whineComplaintsData');
-     if(storedComplaints){
-       const d=JSON.parse(storedComplaints), now=Date.now();
-       if(now-d.timestamp<60000) currentComplaints=d.complaints;
-     }
-     if(!currentComplaints){
-       currentComplaints=getRandomItems(allComplaints,10);
-       localStorage.setItem('whineComplaintsData', JSON.stringify({ complaints:currentComplaints, timestamp:Date.now() }));
-     }
-     currentComplaints.forEach(c=>{
-       const li=document.createElement("li");
-       li.className="list-group-item";
-       li.textContent=c;
-       listEl.appendChild(li);
-     });
+     
+     // Initialize enhanced complaint system
+     initializeComplaintData();
+     renderComplaints();
+     getFeaturedComplaint();
+     
+     // Add sort button listeners
+     document.getElementById('sortPopular').addEventListener('click', () => setSortMode('popular'));
+     document.getElementById('sortRecent').addEventListener('click', () => setSortMode('recent'));
+     document.getElementById('sortRelatable').addEventListener('click', () => setSortMode('relatable'));
      // Footer ads (2 at a time)
      const adsEl=document.getElementById("footerAds");
      let currentAds;
@@ -555,6 +810,59 @@
      }).catch(() => {
        alert("Link: https://whineaboutai.com");
      });
+   }
+   
+   let currentFeaturedComplaint = '';
+   
+   function getFeaturedComplaint() {
+     // Get daily featured complaint based on date
+     const today = new Date().toDateString();
+     const stored = localStorage.getItem('dailyFeatured');
+     
+     if (stored) {
+       const data = JSON.parse(stored);
+       if (data.date === today) {
+         currentFeaturedComplaint = data.complaint;
+         document.getElementById('featuredText').textContent = currentFeaturedComplaint;
+         return;
+       }
+     }
+     
+     // Generate new daily featured complaint
+     const seed = new Date().getDate(); // Use day of month as seed
+     const featured = allComplaints[seed % allComplaints.length];
+     currentFeaturedComplaint = featured;
+     
+     localStorage.setItem('dailyFeatured', JSON.stringify({
+       date: today,
+       complaint: featured
+     }));
+     
+     document.getElementById('featuredText').textContent = featured;
+   }
+   
+   function getRandomComplaint() {
+     const randomComplaint = allComplaints[Math.floor(Math.random() * allComplaints.length)];
+     currentFeaturedComplaint = randomComplaint;
+     document.getElementById('featuredText').textContent = randomComplaint;
+     
+     // Add some visual feedback
+     const element = document.getElementById('featuredComplaint');
+     element.style.transform = 'scale(0.95)';
+     setTimeout(() => {
+       element.style.transform = 'scale(1)';
+     }, 150);
+     
+     // Celebratory emojis
+     for (let i = 0; i < 3; i++) {
+       setTimeout(() => createCryingEmoji(), i * 200);
+     }
+   }
+   
+   function shareCurrentComplaint() {
+     const text = encodeURIComponent(`"${currentFeaturedComplaint}" - Found this AI disaster on WhineAboutAI.com! 🤖😭 #AIFails #TechFails`);
+     const url = encodeURIComponent('https://whineaboutai.com');
+     window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
    }
  </script>
 </body>
