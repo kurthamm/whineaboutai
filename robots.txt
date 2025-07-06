@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+
+# Sitemap
+Sitemap: https://whineaboutai.com/sitemap.xml
+
+# Crawl-delay for bots
+Crawl-delay: 1

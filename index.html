@@ -3,7 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Whine About AI</title>
+  <title>Whine About AI - Vent Your AI Frustrations | Share Your Bot Complaints</title>
+  <meta name="description" content="Tired of AI mistakes? Share your chatbot fails, smart device disasters, and robot malfunctions. Join thousands venting about AI gone wrong. Let it out - the bots are listening!">
+  <meta name="keywords" content="AI complaints, chatbot fails, smart device problems, artificial intelligence frustrations, robot malfunctions, tech support, AI gone wrong">
+  <meta name="author" content="WhineAboutAI">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://whineaboutai.com/">
+  <meta property="og:title" content="Whine About AI - Vent Your AI Frustrations">
+  <meta property="og:description" content="Tired of AI mistakes? Share your chatbot fails, smart device disasters, and robot malfunctions. Join thousands venting about AI gone wrong!">
+  <meta property="og:image" content="https://whineaboutai.com/whine-about-ai-share.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Whine About AI">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://whineaboutai.com/">
+  <meta property="twitter:title" content="Whine About AI - Vent Your AI Frustrations">
+  <meta property="twitter:description" content="Tired of AI mistakes? Share your chatbot fails, smart device disasters, and robot malfunctions. Join thousands venting!">
+  <meta property="twitter:image" content="https://whineaboutai.com/whine-about-ai-share.jpg">
+  <meta property="twitter:creator" content="@WhineAboutAI">
+  
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#002855">
+  <link rel="canonical" href="https://whineaboutai.com/">
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-48GGY3RC9G"></script>
 <script>
@@ -13,6 +39,10 @@
 
   gtag('config', 'G-48GGY3RC9G');
 </script>
+  
+  <!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5497961962190935"
+     crossorigin="anonymous"></script>
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
@@ -65,8 +95,25 @@
       <div class="col-md-6"><div class="stat-card"><p class="stat-number" id="tissueCounter2">0</p><p class="stat-label">Tissues Delivered</p></div></div>
     </div>
     <section id="topComplaints" class="mt-5">
-      <h2 class="fs-3 mb-3">Top 10 Complaints</h2>
+      <h2 class="fs-3 mb-3">Top 10 AI Complaints Today</h2>
       <ul id="complaintList" class="list-group list-group-flush"></ul>
+    </section>
+    
+    <!-- Share Your Complaint Section -->
+    <section class="mt-5 text-center">
+      <h3 class="fs-4 mb-3">Share Your AI Nightmare</h3>
+      <p class="text-muted mb-4">Help others avoid AI disasters by sharing your complaint on social media</p>
+      <div class="d-flex gap-3 justify-content-center flex-wrap">
+        <button class="btn btn-outline-primary" onclick="shareOnTwitter()">
+          🐦 Share on Twitter
+        </button>
+        <button class="btn btn-outline-info" onclick="shareOnFacebook()">
+          📘 Share on Facebook
+        </button>
+        <button class="btn btn-outline-success" onclick="copyComplaintLink()">
+          🔗 Copy Link
+        </button>
+      </div>
     </section>
   </div>
   <div class="modal fade" id="responseModal" tabindex="-1">
@@ -80,7 +127,16 @@
     </div></div>
   </div>
   <div class="ad-footer mt-5"><div class="container"><div class="row" id="footerAds"></div></div></div>
-  <footer>&copy; 2025 Whine About AI. All rights reserved.</footer>
+  <footer class="mt-5 py-4 bg-light text-center">
+    <div class="container">
+      <p class="mb-2">&copy; 2025 Whine About AI. All rights reserved.</p>
+      <p class="text-muted small mb-0">
+        <a href="#" class="text-decoration-none me-3">Privacy Policy</a>
+        <a href="#" class="text-decoration-none me-3">Terms of Service</a>
+        <a href="#" class="text-decoration-none">Contact Us</a>
+      </p>
+    </div>
+  </footer>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
   <script>
     // 100 Complaints
@@ -480,6 +536,26 @@
      new bootstrap.Modal(document.getElementById("responseModal")).show();
      document.getElementById("complaint").value="";
    });
+   
+   // Social sharing functions
+   function shareOnTwitter() {
+     const text = encodeURIComponent("Just shared my AI complaint on WhineAboutAI.com! 🤖😭 Anyone else tired of AI fails? #AIFails #TechComplaint");
+     const url = encodeURIComponent("https://whineaboutai.com");
+     window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+   }
+   
+   function shareOnFacebook() {
+     const url = encodeURIComponent("https://whineaboutai.com");
+     window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+   }
+   
+   function copyComplaintLink() {
+     navigator.clipboard.writeText("https://whineaboutai.com").then(() => {
+       alert("Link copied! Share your AI frustrations with friends 🤖");
+     }).catch(() => {
+       alert("Link: https://whineaboutai.com");
+     });
+   }
  </script>
 </body>
 </html>
