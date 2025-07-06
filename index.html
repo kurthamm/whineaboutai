@@ -1107,7 +1107,7 @@
    async function getBotResponse(userMessage) {
      // Try to get response from LLM backend first
      try {
-       const response = await fetch('/chat', {
+       const response = await fetch('/api/chat', {
          method: 'POST',
          headers: {
            'Content-Type': 'application/json',
