@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Whine About AI - Vent Your AI Frustrations | Share Your Bot Complaints</title>
+  <meta name="description" content="Tired of AI mistakes? Share your chatbot fails, smart device disasters, and robot malfunctions. Join thousands venting about AI gone wrong. Let it out - the bots are listening!">
+  <meta name="keywords" content="AI complaints, chatbot fails, smart device problems, artificial intelligence frustrations, robot malfunctions, tech support, AI gone wrong">
+  <meta name="author" content="WhineAboutAI">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://whineaboutai.com/">
+  <meta property="og:title" content="Whine About AI - Vent Your AI Frustrations">
+  <meta property="og:description" content="Tired of AI mistakes? Share your chatbot fails, smart device disasters, and robot malfunctions. Join thousands venting about AI gone wrong!">
+  <meta property="og:image" content="https://whineaboutai.com/whine-about-ai-share.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Whine About AI">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://whineaboutai.com/">
+  <meta property="twitter:title" content="Whine About AI - Vent Your AI Frustrations">
+  <meta property="twitter:description" content="Tired of AI mistakes? Share your chatbot fails, smart device disasters, and robot malfunctions. Join thousands venting!">
+  <meta property="twitter:image" content="https://whineaboutai.com/whine-about-ai-share.jpg">
+  <meta property="twitter:creator" content="@WhineAboutAI">
+  
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#002855">
+  <link rel="canonical" href="https://whineaboutai.com/">
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-48GGY3RC9G"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-48GGY3RC9G');
+</script>
+  
+  <!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5497961962190935"
+     crossorigin="anonymous"></script>
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+  <link rel="apple-touch-icon" href="/favicon.ico"/>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    body { font-family:'Roboto Slab', serif; background:#f8f9fa; color:#343a40; position: relative; overflow-x: hidden; }
+    .navbar { background:#002855; }
+    .navbar-brand { color:#fff!important; font-weight:700; cursor:default; }
+    .header-text { color:#002855; margin:2rem 0 1rem; }
+    .tagline { font-style:italic; color:#6c757d; }
+    .complaint-card { border:1px solid #ced4da; border-radius:.5rem; padding:1.5rem; background:#fff; box-shadow:0 .5rem 1rem rgba(0,0,0,.05); }
+    .stats-row { margin:2rem 0; }
+    .stat-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:white; padding:1.5rem; border-radius:1rem; text-align:center; box-shadow:0 8px 32px rgba(0,0,0,0.1); margin-bottom:1rem; }
+    .stat-number { font-size:2.5rem; font-weight:bold; margin:0; }
+    .stat-label { font-size:.9rem; opacity:.9; margin:0; }
+    
+    .complaint-item { 
+      background: white; 
+      border: 1px solid #e0e0e0; 
+      border-radius: 12px; 
+      padding: 1.5rem; 
+      margin-bottom: 1rem; 
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .complaint-item:hover { 
+      transform: translateY(-2px); 
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15); 
+    }
+    .complaint-text { 
+      font-size: 1.1rem; 
+      line-height: 1.5; 
+      color: #2c3e50; 
+      margin-bottom: 1rem;
+    }
+    .complaint-actions { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid #f0f0f0;
+    }
+    .reaction-buttons { 
+      display: flex; 
+      gap: 0.5rem; 
+    }
+    .reaction-btn { 
+      background: #f8f9fa; 
+      border: 1px solid #e9ecef; 
+      border-radius: 20px; 
+      padding: 0.4rem 0.8rem; 
+      font-size: 0.9rem; 
+      cursor: pointer; 
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .reaction-btn:hover { 
+      background: #e9ecef; 
+      transform: scale(1.05); 
+    }
+    .reaction-btn.active { 
+      background: #007bff; 
+      color: white; 
+      border-color: #007bff; 
+    }
+    .complaint-meta { 
+      color: #6c757d; 
+      font-size: 0.85rem; 
+    }
+    .share-btn {
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .share-btn:hover {
+      background: #218838;
+      transform: scale(1.05);
+    }
+    
+    /* Chatbot Styles */
+    .chat-widget {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      font-family: 'Roboto Slab', serif;
+    }
+    .chat-button {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .chat-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    }
+    .chat-window {
+      position: absolute;
+      bottom: 80px;
+      right: 0;
+      width: 350px;
+      height: 450px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .chat-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .chat-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      opacity: 0.8;
+    }
+    .chat-close:hover {
+      opacity: 1;
+    }
+    .chat-messages {
+      flex: 1;
+      padding: 1rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .chat-message {
+      max-width: 80%;
+      padding: 0.75rem;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+    .chat-message.user {
+      background: #e3f2fd;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+    .chat-message.bot {
+      background: #f5f5f5;
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+      border-left: 3px solid #667eea;
+    }
+    .chat-input-area {
+      padding: 1rem;
+      border-top: 1px solid #eee;
+      display: flex;
+      gap: 0.5rem;
+    }
+    .chat-input {
+      flex: 1;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      padding: 0.5rem 1rem;
+      outline: none;
+      font-size: 0.9rem;
+    }
+    .chat-send {
+      background: #667eea;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .chat-send:hover {
+      background: #5a67d8;
+    }
+    .typing-indicator {
+      display: none;
+      align-items: center;
+      gap: 0.5rem;
+      font-style: italic;
+      color: #666;
+      padding: 0.5rem;
+    }
+    .typing-dots {
+      display: flex;
+      gap: 2px;
+    }
+    .typing-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #666;
+      animation: typingBounce 1.4s infinite ease-in-out;
+    }
+    .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+    .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+    @keyframes typingBounce {
+      0%, 80%, 100% { transform: scale(0); }
+      40% { transform: scale(1); }
+    }
+    .crying-emoji { position:fixed; font-size:2rem; z-index:1000; pointer-events:none; animation:fall 3s linear; }
+    @keyframes fall { 0% { transform: translateY(-100px) rotate(0deg); opacity:1; } 100% { transform: translateY(100vh) rotate(360deg); opacity:0; } }
+    .glitch { position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:rgba(255,0,0,0.9); color:white; padding:2rem 3rem; font-size:1.5rem; font-weight:bold; border-radius:1rem; z-index:9999; animation:glitchShake .5s infinite; box-shadow:0 0 50px rgba(255,0,0,0.5);}
+    @keyframes glitchShake { 0%,100% { transform: translate(-50%,-50%) rotate(0deg); } 25% { transform: translate(-52%,-48%) rotate(1deg); } 50% { transform: translate(-48%,-52%) rotate(-1deg); } 75% { transform: translate(-52%,-52%) rotate(1deg); } }
+    .body-glitch { animation: bodyGlitch .1s infinite; }
+    @keyframes bodyGlitch { 0%,100% { filter: hue-rotate(0deg); } 25% { filter: hue-rotate(90deg) contrast(150%); } 50% { filter: hue-rotate(180deg) brightness(150%); } 75% { filter: hue-rotate(270deg) contrast(200%); } }
+    .ad-footer { background:#f0f0f0; padding:1rem 0; }
+    .ad-card { border:1px solid #ccc; border-radius:.5rem; padding:1rem; background:#fff; margin-bottom:1rem; }
+    .ad-card h5 { margin-bottom:.5rem; color:#dc3545; }
+    .ad-card p { font-size:.9rem; margin:.25rem 0; }
+    
+    /* Enhanced Features Styles */
+    .complaint-generator { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); border-radius: 15px; padding: 2rem; margin: 2rem 0; text-align: center; }
+    .generate-btn { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 1rem 2rem; border-radius: 25px; font-weight: bold; transition: transform 0.2s; }
+    .generate-btn:hover { transform: scale(1.05); }
+    .leaderboard { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 15px; padding: 2rem; margin: 2rem 0; }
+    .leaderboard-item { background: rgba(255,255,255,0.1); border-radius: 10px; padding: 1rem; margin: 0.5rem 0; display: flex; justify-content: space-between; align-items: center; }
+    .leaderboard-rank { font-size: 1.5rem; font-weight: bold; width: 40px; }
+    .bingo-card { background: #fff; border: 2px solid #007bff; border-radius: 15px; padding: 1.5rem; margin: 2rem 0; }
+    .bingo-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; margin: 1rem 0; }
+    .bingo-cell { aspect-ratio: 1; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; text-align: center; cursor: pointer; transition: all 0.2s; }
+    .bingo-cell:hover { background: #e9ecef; }
+    .bingo-cell.marked { background: #007bff; color: white; }
+    .bingo-cell.center { background: #28a745; color: white; font-weight: bold; }
+    .meme-generator { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); border-radius: 15px; padding: 2rem; margin: 2rem 0; text-align: center; }
+    .meme-canvas { border: 3px solid #fff; border-radius: 10px; max-width: 100%; }
+    .tweet-generator { background: linear-gradient(135deg, #1da1f2 0%, #0d8bf2 100%); color: white; border-radius: 15px; padding: 2rem; margin: 2rem 0; }
+    .tweet-preview { background: rgba(255,255,255,0.1); border-radius: 10px; padding: 1rem; margin: 1rem 0; font-family: 'Helvetica Neue', sans-serif; }
+    .category-filter { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
+    .category-btn { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 20px; padding: 0.4rem 1rem; font-size: 0.9rem; cursor: pointer; transition: all 0.2s; }
+    .category-btn:hover, .category-btn.active { background: #007bff; color: white; border-color: #007bff; }
+    .rage-meter { position: relative; height: 20px; background: #e9ecef; border-radius: 10px; overflow: hidden; margin: 0.5rem 0; }
+    .rage-fill { height: 100%; border-radius: 10px; transition: width 0.3s ease; }
+    .rage-low { background: linear-gradient(90deg, #28a745, #20c997); }
+    .rage-medium { background: linear-gradient(90deg, #ffc107, #fd7e14); }
+    .rage-high { background: linear-gradient(90deg, #dc3545, #e74c3c); }
+    .rage-extreme { background: linear-gradient(90deg, #6f42c1, #e83e8c); animation: ragePulse 1s infinite; }
+    @keyframes ragePulse { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(1.1); } }
+  </style>
+</head>
+<body>
+  <!-- REST OF THE HTML CONTENT FROM LIVE SITE WOULD GO HERE -->
+  <!-- This is a truncated backup version for reference -->
+</body>
+</html>
