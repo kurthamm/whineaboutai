@@ -1,43 +1,39 @@
 {
-  "functions": {
-    "api/chat.py": {
-      "runtime": "python3.9"
+  "version": 2,
+  "builds": [
+    {
+      "src": "*.html",
+      "use": "@vercel/static"
     },
-    "api/contact.py": {
-      "runtime": "python3.9"
-    },
-    "api/enhance-complaint.py": {
-      "runtime": "python3.9"
-    },
-    "api/predict-fail.py": {
-      "runtime": "python3.9"
-    },
-    "api/generate-comeback.py": {
-      "runtime": "python3.9"
-    },
-    "api/create-meme.py": {
-      "runtime": "python3.9"
-    },
-    "api/battle-commentary.py": {
-      "runtime": "python3.9"
+    {
+      "src": "api/*.py",
+      "use": "@vercel/python"
     }
-  },
-  "rewrites": [
+  ],
+  "routes": [
     {
-      "source": "/privacy-policy",
-      "destination": "/privacy-policy.html"
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
     },
     {
-      "source": "/terms-of-service", 
-      "destination": "/terms-of-service.html"
+      "src": "/privacy-policy",
+      "dest": "/privacy-policy.html"
     },
     {
-      "source": "/contact",
-      "destination": "/contact.html"
+      "src": "/terms-of-service", 
+      "dest": "/terms-of-service.html"
     },
     {
-      "source": "/ai-tools",
-      "destination": "/ai-tools.html"
+      "src": "/contact",
+      "dest": "/contact.html"
+    },
+    {
+      "src": "/ai-tools",
+      "dest": "/ai-tools.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
     }
   ]
 }
