@@ -476,6 +476,51 @@
       0%, 80%, 100% { transform: scale(0); }
       40% { transform: scale(1); }
     }
+    
+    /* Modal Styles */
+    .modal-backdrop {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+    .complaint-modal .modal-dialog {
+      max-width: 600px;
+    }
+    .complaint-modal .modal-content {
+      border-radius: 1rem;
+      border: 2px solid #667eea;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    }
+    .complaint-modal .modal-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-radius: calc(1rem - 2px) calc(1rem - 2px) 0 0;
+      border-bottom: none;
+    }
+    .complaint-modal .modal-body {
+      padding: 2rem;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #343a40;
+    }
+    .response-loading {
+      text-align: center;
+      padding: 2rem;
+    }
+    .response-loading .spinner-border {
+      width: 3rem;
+      height: 3rem;
+      border-width: 0.3rem;
+    }
+    .response-text {
+      font-family: 'Roboto Slab', serif;
+      font-size: 1.2rem;
+      line-height: 1.7;
+      color: #002855;
+    }
+    .complaint-success-icon {
+      font-size: 3rem;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
   </style>
 </head>
 <body>
@@ -947,7 +992,7 @@
       document.getElementById('angerText').textContent = angerTexts[level];
     }
 
-    function submitComplaint(e) {
+    async function submitComplaint(e) {
       e.preventDefault();
       const complaint = document.getElementById('complaint').value.trim();
       const category = document.getElementById('category').value;
@@ -958,21 +1003,67 @@
         return;
       }
       
-      const newComplaint = {
-        text: complaint,
-        category: category,
-        angerLevel: parseInt(angerLevel),
-        reactions: { relatable: 0, hilarious: 0, tragic: 0 },
-        timestamp: new Date().toLocaleDateString()
-      };
+      // Show modal with loading state
+      const modal = new bootstrap.Modal(document.getElementById('complaintModal'));
+      const modalBody = document.getElementById('modalBody');
       
-      complaints.unshift(newComplaint);
-      loadComplaints();
-      document.getElementById('complaintForm').reset();
-      updateAngerLevel();
+      // Reset modal to loading state
+      modalBody.innerHTML = `
+        <div class="response-loading">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Processing your complaint...</span>
+          </div>
+          <p class="mt-3">Processing your AI disaster report...</p>
+        </div>
+      `;
       
-      // Show success message
-      alert('Your complaint has been submitted! The AI overlords have been notified of your suffering.');
+      modal.show();
+      
+      try {
+        // Call the API for a witty response
+        const response = await fetch('/api/submit-complaint', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            complaint: complaint,
+            category: category,
+            angerLevel: angerLevel
+          })
+        });
+        
+        const data = await response.json();
+        
+        // Update modal with response
+        modalBody.innerHTML = `
+          <div class="complaint-success-icon">✅</div>
+          <div class="response-text">
+            ${data.response || "Your complaint has been filed in our infinite database of AI disasters!"}
+          </div>
+        `;
+        
+        // Add complaint to list
+        const newComplaint = {
+          text: complaint,
+          category: category,
+          angerLevel: parseInt(angerLevel),
+          reactions: { relatable: 0, hilarious: 0, tragic: 0 },
+          timestamp: new Date().toLocaleDateString()
+        };
+        
+        complaints.unshift(newComplaint);
+        loadComplaints();
+        document.getElementById('complaintForm').reset();
+        updateAngerLevel();
+        
+      } catch (error) {
+        // Fallback response on error
+        modalBody.innerHTML = `
+          <div class="complaint-success-icon">🤖</div>
+          <div class="response-text">
+            Even our complaint system is complaining! Your AI disaster has been noted in our backup system (a Post-it note on a confused intern's monitor).
+          </div>
+        `;
+      }
     }
 
     function loadComplaints() {
@@ -1505,5 +1596,30 @@
     // Highlight chat button every 45 seconds (subtle reminder)
     setInterval(autoHighlightChat, 45000);
   </script>
+
+  <!-- Complaint Response Modal -->
+  <div class="modal fade complaint-modal" id="complaintModal" tabindex="-1" aria-labelledby="complaintModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="complaintModalLabel">🤖 AI Complaint Processing System</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="modalBody">
+          <div class="response-loading">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Processing your complaint...</span>
+            </div>
+            <p class="mt-3">Processing your AI disaster report...</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="location.reload()">Submit Another</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
