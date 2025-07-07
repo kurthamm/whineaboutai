@@ -1,1 +1,1 @@
-Deployment trigger file - created to force Vercel redeploy
+Deployment trigger file - updated to force GitHub Pages redeploy with new features
