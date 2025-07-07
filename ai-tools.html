@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI-Powered Complaint Tools - Whine About AI</title>
+  <meta name="description" content="Transform your AI complaints with our powerful tools: enhance complaints, predict failures, generate comebacks, create memes, and battle arena.">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://whineaboutai.com/ai-tools">
+  <meta property="og:title" content="AI-Powered Complaint Tools - Whine About AI">
+  <meta property="og:description" content="Transform your AI complaints with our powerful tools and features.">
+  <meta property="og:image" content="https://whineaboutai.com/whine-about-ai-share.jpg">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet"/>
+  
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet"/>
+  
+  <style>
+    body { 
+      font-family:'Roboto Slab', serif; 
+      background:#f8f9fa; 
+      color:#343a40; 
+      position: relative; 
+      overflow-x: hidden; 
+    }
+    .navbar { 
+      background:#002855; 
+    }
+    .navbar-brand { 
+      color:#fff!important; 
+      font-weight:700; 
+    }
+    .header-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 3rem 0;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+    .header-section h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .header-section p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+    
+    /* Enhanced Features Styles */
+    .ai-feature { 
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); 
+      border-radius: 15px; 
+      padding: 2rem; 
+      margin: 2rem 0; 
+      text-align: center; 
+    }
+    .feature-btn { 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+      color: white; 
+      border: none; 
+      padding: 1rem 2rem; 
+      border-radius: 25px; 
+      font-weight: bold; 
+      transition: transform 0.2s; 
+      margin: 0.5rem;
+    }
+    .feature-btn:hover { 
+      transform: scale(1.05); 
+    }
+    .results-area {
+      background: white;
+      border: 1px solid #dee2e6;
+      border-radius: 10px;
+      padding: 1rem;
+      margin-top: 1rem;
+      min-height: 60px;
+      white-space: pre-wrap;
+    }
+    
+    .back-to-home {
+      text-align: center;
+      margin: 3rem 0;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="/" class="navbar-brand mb-0 h1">WhineAboutAI</a>
+    </div>
+  </nav>
+  
+  <div class="header-section">
+    <div class="container">
+      <h1>🤖 AI-Powered Complaint Tools</h1>
+      <p>Transform your digital suffering into art with our cutting-edge AI features!</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- AI-Powered Features Section -->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="ai-feature">
+          <h3>🎭 AI Complaint Enhancer</h3>
+          <p>Transform your boring complaints into viral content!</p>
+          <textarea id="enhanceInput" class="form-control mb-3" placeholder="Enter your AI complaint here..." rows="3"></textarea>
+          <select id="enhanceStyle" class="form-select mb-3">
+            <option value="sarcastic">Sarcastic</option>
+            <option value="dramatic">Dramatic</option>
+            <option value="absurd">Absurd</option>
+            <option value="professional">Professional</option>
+          </select>
+          <button class="feature-btn" onclick="enhanceComplaint()">Enhance My Suffering</button>
+          <div id="enhanceResult" class="results-area"></div>
+        </div>
+      </div>
+      
+      <div class="col-md-6">
+        <div class="ai-feature">
+          <h3>🔮 AI Fail Predictor</h3>
+          <p>Predict what AI will mess up next!</p>
+          <textarea id="predictInput" class="form-control mb-3" placeholder="Describe a scenario..." rows="3"></textarea>
+          <button class="feature-btn" onclick="predictFail()">Predict Disaster</button>
+          <div id="predictResult" class="results-area"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="ai-feature">
+          <h3>💬 Perfect Comeback Generator</h3>
+          <p>Get the perfect response to AI failures!</p>
+          <textarea id="comebackInput" class="form-control mb-3" placeholder="What did AI mess up?" rows="3"></textarea>
+          <button class="feature-btn" onclick="generateComeback()">Generate Comeback</button>
+          <div id="comebackResult" class="results-area"></div>
+        </div>
+      </div>
+      
+      <div class="col-md-6">
+        <div class="ai-feature">
+          <h3>🎨 Instant Meme Factory</h3>
+          <p>Turn your AI disasters into shareable memes!</p>
+          <textarea id="memeInput" class="form-control mb-3" placeholder="Describe your AI disaster..." rows="3"></textarea>
+          <button class="feature-btn" onclick="createMeme()">Make Meme</button>
+          <div id="memeResult" class="results-area"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ai-feature">
+      <h3>⚔️ Complaint Battle Arena</h3>
+      <p>Watch your complaints battle it out with sports commentary!</p>
+      <div class="row">
+        <div class="col-md-6">
+          <textarea id="battleInput1" class="form-control mb-3" placeholder="First complaint..." rows="2"></textarea>
+        </div>
+        <div class="col-md-6">
+          <textarea id="battleInput2" class="form-control mb-3" placeholder="Second complaint..." rows="2"></textarea>
+        </div>
+      </div>
+      <button class="feature-btn" onclick="startBattle()">Start Battle!</button>
+      <div id="battleResult" class="results-area"></div>
+    </div>
+
+    <div class="back-to-home">
+      <a href="/" class="btn btn-primary btn-lg">Back to Home</a>
+      <p class="mt-2 text-muted">Ready to submit a complaint? Head back to share your AI horror story!</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white mt-5 py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <h5>WhineAboutAI</h5>
+          <p class="mb-0">Where AI Failures Become Features™</p>
+          <p class="small text-muted">Making AI disappointment a shared experience since 2024</p>
+        </div>
+        <div class="col-md-4 text-md-end">
+          <div class="footer-links">
+            <a href="/privacy-policy" class="text-white-50 me-3">Privacy Policy</a>
+            <a href="/terms-of-service" class="text-white-50 me-3">Terms of Service</a>
+            <a href="/contact" class="text-white-50">Contact Us</a>
+          </div>
+          <div class="mt-2">
+            <small class="text-muted">© 2024 WhineAboutAI. All complaints reserved.</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    // AI Feature Functions
+    async function enhanceComplaint() {
+      const text = document.getElementById('enhanceInput').value.trim();
+      const style = document.getElementById('enhanceStyle').value;
+      const resultDiv = document.getElementById('enhanceResult');
+      
+      if (!text) {
+        resultDiv.textContent = 'Please enter a complaint to enhance!';
+        return;
+      }
+      
+      resultDiv.textContent = 'Enhancing your suffering...';
+      
+      try {
+        const response = await fetch('/api/enhance-complaint', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text: text, style: style })
+        });
+        
+        const data = await response.json();
+        resultDiv.textContent = data.enhanced || data.error || 'Enhancement failed!';
+      } catch (error) {
+        resultDiv.textContent = 'AI enhancement is broken too. How ironic! 🤖💥';
+      }
+    }
+
+    async function predictFail() {
+      const scenario = document.getElementById('predictInput').value.trim();
+      const resultDiv = document.getElementById('predictResult');
+      
+      if (!scenario) {
+        resultDiv.textContent = 'Please describe a scenario!';
+        return;
+      }
+      
+      resultDiv.textContent = 'Consulting the AI disaster crystal ball...';
+      
+      try {
+        const response = await fetch('/api/predict-fail', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ scenario: scenario })
+        });
+        
+        const data = await response.json();
+        resultDiv.textContent = `Prediction (${data.confidence}% confidence): ${data.prediction}`;
+      } catch (error) {
+        resultDiv.textContent = 'Prediction failed! Wait, that was predictable. 🔮💀';
+      }
+    }
+
+    async function generateComeback() {
+      const complaint = document.getElementById('comebackInput').value.trim();
+      const resultDiv = document.getElementById('comebackResult');
+      
+      if (!complaint) {
+        resultDiv.textContent = 'Please describe what AI messed up!';
+        return;
+      }
+      
+      resultDiv.textContent = 'Generating the perfect comeback...';
+      
+      try {
+        const response = await fetch('/api/generate-comeback', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ complaint: complaint })
+        });
+        
+        const data = await response.json();
+        resultDiv.textContent = data.comeback || 'Comeback generator is speechless!';
+      } catch (error) {
+        resultDiv.textContent = 'My comeback generator just had a comeback failure. Meta! 🗣️💥';
+      }
+    }
+
+    async function createMeme() {
+      const complaint = document.getElementById('memeInput').value.trim();
+      const resultDiv = document.getElementById('memeResult');
+      
+      if (!complaint) {
+        resultDiv.textContent = 'Please describe your AI disaster!';
+        return;
+      }
+      
+      resultDiv.textContent = 'Creating meme magic...';
+      
+      try {
+        const response = await fetch('/api/create-meme', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ complaint: complaint })
+        });
+        
+        const data = await response.json();
+        resultDiv.innerHTML = `
+          <strong>Meme Format: ${data.meme_type}</strong><br>
+          <strong>Top Text:</strong> ${data.top_text}<br>
+          <strong>Bottom Text:</strong> ${data.bottom_text}
+        `;
+      } catch (error) {
+        resultDiv.textContent = 'Meme generator crashed! That\\'s ironically meme-worthy. 🎨💀';
+      }
+    }
+
+    async function startBattle() {
+      const complaint1 = document.getElementById('battleInput1').value.trim();
+      const complaint2 = document.getElementById('battleInput2').value.trim();
+      const resultDiv = document.getElementById('battleResult');
+      
+      if (!complaint1 || !complaint2) {
+        resultDiv.textContent = 'Please enter two complaints for the battle!';
+        return;
+      }
+      
+      resultDiv.textContent = 'Ladies and gentlemen, let the battle begin!';
+      
+      try {
+        const response = await fetch('/api/battle-commentary', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ complaint1: complaint1, complaint2: complaint2 })
+        });
+        
+        const data = await response.json();
+        resultDiv.textContent = data.commentary || 'The battle was too epic for words!';
+      } catch (error) {
+        resultDiv.textContent = 'The battle commentator AI just rage quit! 🥊💥';
+      }
+    }
+  </script>
+</body>
+</html>

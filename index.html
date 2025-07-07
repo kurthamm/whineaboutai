@@ -179,6 +179,66 @@
       transform: scale(1.05);
     }
     
+    /* AI Tools Teaser Styles */
+    .ai-tools-teaser {
+      background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+      border-radius: 15px;
+      padding: 2rem;
+      margin: 2rem 0;
+      text-align: center;
+      border: 2px solid #e0e0e0;
+    }
+    
+    /* Fake Ads Styles */
+    .fake-ads-section {
+      margin: 3rem 0;
+      padding: 2rem;
+      background: #f8f9fa;
+      border-radius: 10px;
+    }
+    .fake-ad {
+      background: white;
+      border: 2px dashed #007bff;
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .fake-ad:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0,123,255,0.2);
+    }
+    .fake-ad h4 {
+      color: #007bff;
+      margin-bottom: 1rem;
+      font-weight: bold;
+    }
+    .fake-ad p {
+      color: #666;
+      margin-bottom: 1rem;
+      line-height: 1.4;
+    }
+    .fake-ad .ad-label {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      background: #ffc107;
+      color: #000;
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-size: 0.7rem;
+      font-weight: bold;
+    }
+    .fake-ad {
+      position: relative;
+    }
+    
     /* Enhanced Features Styles */
     .ai-feature { 
       background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); 
@@ -387,70 +447,31 @@
       </div>
     </div>
 
-    <!-- AI-Powered Features Section -->
-    <div class="row">
-      <div class="col-md-6">
-        <div class="ai-feature">
-          <h3>🎭 AI Complaint Enhancer</h3>
-          <p>Transform your boring complaints into viral content!</p>
-          <textarea id="enhanceInput" class="form-control mb-3" placeholder="Enter your AI complaint here..." rows="3"></textarea>
-          <select id="enhanceStyle" class="form-select mb-3">
-            <option value="sarcastic">Sarcastic</option>
-            <option value="dramatic">Dramatic</option>
-            <option value="absurd">Absurd</option>
-            <option value="professional">Professional</option>
-          </select>
-          <button class="feature-btn" onclick="enhanceComplaint()">Enhance My Suffering</button>
-          <div id="enhanceResult" class="results-area"></div>
-        </div>
-      </div>
-      
-      <div class="col-md-6">
-        <div class="ai-feature">
-          <h3>🔮 AI Fail Predictor</h3>
-          <p>Predict what AI will mess up next!</p>
-          <textarea id="predictInput" class="form-control mb-3" placeholder="Describe a scenario..." rows="3"></textarea>
-          <button class="feature-btn" onclick="predictFail()">Predict Disaster</button>
-          <div id="predictResult" class="results-area"></div>
-        </div>
+    <!-- AI Tools Teaser -->
+    <div class="ai-tools-teaser">
+      <h2 class="text-center mb-4">🤖 AI-Powered Complaint Tools</h2>
+      <p class="text-center lead mb-4">Transform your suffering into digital art with our cutting-edge AI features!</p>
+      <div class="text-center">
+        <a href="/ai-tools.html" class="btn btn-primary btn-lg me-3">Try Our AI Tools</a>
+        <small class="text-muted">Enhance complaints • Predict failures • Generate comebacks • Create memes • Battle arena</small>
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-md-6">
-        <div class="ai-feature">
-          <h3>💬 Perfect Comeback Generator</h3>
-          <p>Get the perfect response to AI failures!</p>
-          <textarea id="comebackInput" class="form-control mb-3" placeholder="What did AI mess up?" rows="3"></textarea>
-          <button class="feature-btn" onclick="generateComeback()">Generate Comeback</button>
-          <div id="comebackResult" class="results-area"></div>
-        </div>
-      </div>
-      
-      <div class="col-md-6">
-        <div class="ai-feature">
-          <h3>🎨 Instant Meme Factory</h3>
-          <p>Turn your AI disasters into shareable memes!</p>
-          <textarea id="memeInput" class="form-control mb-3" placeholder="Describe your AI disaster..." rows="3"></textarea>
-          <button class="feature-btn" onclick="createMeme()">Make Meme</button>
-          <div id="memeResult" class="results-area"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="ai-feature">
-      <h3>⚔️ Complaint Battle Arena</h3>
-      <p>Watch your complaints battle it out with sports commentary!</p>
+    <!-- Rotating Fake Ads Section -->
+    <div class="fake-ads-section">
+      <h3 class="text-center mb-4">🎯 Sponsored Content That Actually Makes Sense</h3>
       <div class="row">
         <div class="col-md-6">
-          <textarea id="battleInput1" class="form-control mb-3" placeholder="First complaint..." rows="2"></textarea>
+          <div id="fakeAd1" class="fake-ad">
+            <!-- Rotating ads will appear here -->
+          </div>
         </div>
         <div class="col-md-6">
-          <textarea id="battleInput2" class="form-control mb-3" placeholder="Second complaint..." rows="2"></textarea>
+          <div id="fakeAd2" class="fake-ad">
+            <!-- Rotating ads will appear here -->
+          </div>
         </div>
       </div>
-      <button class="feature-btn" onclick="startBattle()">Start Battle!</button>
-      <div id="battleResult" class="results-area"></div>
     </div>
 
     <!-- Complaint Form -->
@@ -582,6 +603,7 @@
       loadComplaints();
       setupEventListeners();
       updateAngerLevel();
+      initializeFakeAds();
     });
 
     function setupEventListeners() {
@@ -898,6 +920,93 @@
     // Initialize stats and update every 30 seconds
     calculateDynamicStats();
     setInterval(calculateDynamicStats, 30000);
+
+    // Fake Ads System
+    const fakeAds = [
+      {
+        title: "AI Anxiety Support Group",
+        text: "Join thousands who've been personally victimized by autocorrect. Meetings every Tuesday at the library (if GPS can find it).",
+        cta: "Find Your People"
+      },
+      {
+        title: "\"I'm Not A Robot\" Certification Course",
+        text: "Prove your humanity with our 47-step verification process. Includes advanced captcha training and existential crisis counseling.",
+        cta: "Become Verified Human"
+      },
+      {
+        title: "Smart Home Divorce Lawyer",
+        text: "When your Alexa files for separation and your thermostat won't speak to you. We specialize in IoT custody battles.",
+        cta: "Free Consultation"
+      },
+      {
+        title: "AI Complaint Insurance",
+        text: "Protect yourself against future AI disappointments. Coverage includes chatbot therapy and smart device replacement.",
+        cta: "Get Protected"
+      },
+      {
+        title: "Vintage Flip Phone Revival",
+        text: "Remember when phones just made calls? Rediscover the joy of technology that actually works. Snake game included!",
+        cta: "Go Retro"
+      },
+      {
+        title: "Professional Rage Translator",
+        text: "Turn your incoherent AI-induced screaming into eloquent complaint letters. Now available in 17 languages of fury.",
+        cta: "Translate My Rage"
+      },
+      {
+        title: "Digital Detox Retreat",
+        text: "Escape to our completely offline sanctuary. No wifi, no AI, just you and your thoughts (which might be scarier).",
+        cta: "Book Escape"
+      },
+      {
+        title: "ChatGPT Anonymous",
+        text: "A 12-step program for those who can't stop asking AI for life advice. Step 1: Admit you have a prompt addiction.",
+        cta: "Find Recovery"
+      },
+      {
+        title: "Emergency Tech Support",
+        text: "24/7 hotline for AI emergencies. \"Help, my smart fridge ordered 500 eggs!\" We've heard it all.",
+        cta: "Call Now: 1-800-AI-HELP"
+      },
+      {
+        title: "Anti-AI Bunker Kit",
+        text: "Complete survival package for the robot uprising. Includes tinfoil hats, analog clocks, and a landline phone.",
+        cta: "Prepare for War"
+      }
+    ];
+
+    function displayRandomAd(containerId) {
+      const container = document.getElementById(containerId);
+      const ad = fakeAds[Math.floor(Math.random() * fakeAds.length)];
+      
+      container.innerHTML = `
+        <div class="ad-label">AD</div>
+        <h4>${ad.title}</h4>
+        <p>${ad.text}</p>
+        <button class="btn btn-outline-primary btn-sm">${ad.cta}</button>
+      `;
+      
+      // Add click handler for fake ads
+      container.onclick = () => {
+        alert(`Thanks for clicking! This is a fake ad for "${ad.title}". If this were real, you'd probably be disappointed by now. 😄`);
+      };
+    }
+
+    function initializeFakeAds() {
+      displayRandomAd('fakeAd1');
+      displayRandomAd('fakeAd2');
+      
+      // Rotate ads every 8 seconds (staggered)
+      setInterval(() => {
+        displayRandomAd('fakeAd1');
+      }, 8000);
+      
+      setTimeout(() => {
+        setInterval(() => {
+          displayRandomAd('fakeAd2');
+        }, 8000);
+      }, 4000); // Start second ad 4 seconds later
+    }
   </script>
 </body>
 </html>
