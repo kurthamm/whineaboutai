@@ -74,6 +74,7 @@
       overflow-x: hidden;
       min-height: 100vh;
       position: relative;
+      padding-top: 80px; /* Ensure all content clears the fixed navbar */
     }
     
     /* Animated Background */
@@ -176,7 +177,7 @@
     
     /* Hero Section */
     .hero {
-      min-height: 100vh;
+      min-height: calc(100vh - 80px); /* Account for body padding */
       display: flex;
       align-items: center;
       justify-content: center;
