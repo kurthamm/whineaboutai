@@ -792,13 +792,37 @@
       messagesContainer.scrollTop = messagesContainer.scrollHeight;
       
       try {
+        // Temporary test - simulate successful response
+        if (message.toLowerCase().includes('test')) {
+          // Hide typing indicator
+          document.getElementById('typingIndicator').style.display = 'none';
+          
+          const testMessage = document.createElement('div');
+          testMessage.className = 'chat-message bot';
+          testMessage.textContent = "🧪 Test mode: Frontend is working! The issue is with the API endpoint. Try typing something without 'test' to see the real error.";
+          messagesContainer.appendChild(testMessage);
+          
+          input.disabled = false;
+          input.focus();
+          messagesContainer.scrollTop = messagesContainer.scrollHeight;
+          return;
+        }
+        
         const response = await fetch('/api/chat', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ message: message })
         });
         
+        console.log('Response status:', response.status);
+        console.log('Response headers:', response.headers);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        
         const data = await response.json();
+        console.log('Response data:', data);
         
         // Hide typing indicator
         document.getElementById('typingIndicator').style.display = 'none';
@@ -812,9 +836,11 @@
       } catch (error) {
         document.getElementById('typingIndicator').style.display = 'none';
         
+        console.error('Chat API Error:', error);
+        
         const errorMessage = document.createElement('div');
         errorMessage.className = 'chat-message bot';
-        errorMessage.textContent = "My circuits are fried! Even I can't handle this level of AI failure. 💥";
+        errorMessage.textContent = `Debug: ${error.message} | Check console for details. API might not be deployed yet! 🤖`;
         messagesContainer.appendChild(errorMessage);
       }
       
