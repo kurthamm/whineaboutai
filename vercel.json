@@ -1,22 +1,23 @@
 {
-  "functions": {
-    "api/chat.py": {
-      "runtime": "@vercel/python"
+  "version": 2,
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
     },
-    "api/enhance-complaint.py": {
-      "runtime": "@vercel/python"
-    },
-    "api/predict-fail.py": {
-      "runtime": "@vercel/python"
-    },
-    "api/generate-comeback.py": {
-      "runtime": "@vercel/python"
-    },
-    "api/create-meme.py": {
-      "runtime": "@vercel/python"
-    },
-    "api/battle-commentary.py": {
-      "runtime": "@vercel/python"
+    {
+      "src": "api/*.py",
+      "use": "@vercel/python"
     }
-  }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
 }
