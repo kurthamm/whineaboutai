@@ -129,7 +129,7 @@
             <option value="absurd">Absurd</option>
             <option value="professional">Professional</option>
           </select>
-          <button class="feature-btn" onclick="enhanceComplaint()">Enhance My Suffering</button>
+          <button class="feature-btn" onclick="enhanceComplaint(); console.log('Button clicked!');">Enhance My Suffering</button>
           <div id="enhanceResult" class="results-area"></div>
         </div>
       </div>
@@ -217,9 +217,12 @@
   <script>
     // AI Feature Functions
     async function enhanceComplaint() {
+      console.log('enhanceComplaint called');
       const text = document.getElementById('enhanceInput').value.trim();
       const style = document.getElementById('enhanceStyle').value;
       const resultDiv = document.getElementById('enhanceResult');
+      
+      console.log('Text:', text, 'Style:', style);
       
       if (!text) {
         resultDiv.textContent = 'Please enter a complaint to enhance!';
@@ -235,9 +238,12 @@
           body: JSON.stringify({ text: text, style: style })
         });
         
+        console.log('Response status:', response.status);
         const data = await response.json();
+        console.log('Response data:', data);
         resultDiv.textContent = data.enhanced || data.error || 'Enhancement failed!';
       } catch (error) {
+        console.error('Error:', error);
         resultDiv.textContent = 'AI enhancement is broken too. How ironic! 🤖💥';
       }
     }
