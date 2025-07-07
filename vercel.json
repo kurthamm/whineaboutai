@@ -1,39 +1,20 @@
 {
-  "version": 2,
-  "builds": [
+  "rewrites": [
     {
-      "src": "*.html",
-      "use": "@vercel/static"
+      "source": "/privacy-policy",
+      "destination": "/privacy-policy.html"
     },
     {
-      "src": "api/*.py",
-      "use": "@vercel/python"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
+      "source": "/terms-of-service", 
+      "destination": "/terms-of-service.html"
     },
     {
-      "src": "/privacy-policy",
-      "dest": "/privacy-policy.html"
+      "source": "/contact",
+      "destination": "/contact.html"
     },
     {
-      "src": "/terms-of-service", 
-      "dest": "/terms-of-service.html"
-    },
-    {
-      "src": "/contact",
-      "dest": "/contact.html"
-    },
-    {
-      "src": "/ai-tools",
-      "dest": "/ai-tools.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "source": "/ai-tools",
+      "destination": "/ai-tools.html"
     }
   ]
 }
