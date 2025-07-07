@@ -1,7 +1,22 @@
 {
   "functions": {
     "api/chat.py": {
-      "runtime": "python3.9"
+      "runtime": "@vercel/python"
+    },
+    "api/enhance-complaint.py": {
+      "runtime": "@vercel/python"
+    },
+    "api/predict-fail.py": {
+      "runtime": "@vercel/python"
+    },
+    "api/generate-comeback.py": {
+      "runtime": "@vercel/python"
+    },
+    "api/create-meme.py": {
+      "runtime": "@vercel/python"
+    },
+    "api/battle-commentary.py": {
+      "runtime": "@vercel/python"
     }
   }
 }
