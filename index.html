@@ -341,6 +341,30 @@
       40% { transform: translateY(-10px) scale(1.2); }
       60% { transform: translateY(-5px) scale(1.1); }
     }
+    
+    /* Footer adjustments for chat widget */
+    .footer-right {
+      padding-right: 100px; /* Space for chat widget */
+    }
+    .footer-links {
+      white-space: nowrap; /* Prevent link wrapping */
+    }
+    
+    /* Mobile responsive adjustments */
+    @media (max-width: 768px) {
+      .footer-right {
+        padding-right: 0;
+        text-align: center !important;
+        margin-top: 1rem;
+      }
+      .footer-links {
+        white-space: normal;
+      }
+      .footer-links a {
+        display: inline-block;
+        margin: 0.25rem 0.5rem;
+      }
+    }
     .chat-window {
       position: absolute;
       bottom: 80px;
@@ -590,7 +614,7 @@
           <p class="mb-0">Where AI Failures Become Features™</p>
           <p class="small text-muted">Making AI disappointment a shared experience since 2024</p>
         </div>
-        <div class="col-md-4 text-md-end">
+        <div class="col-md-4 text-md-end footer-right">
           <div class="footer-links">
             <a href="/privacy-policy" class="text-white-50 me-3">Privacy Policy</a>
             <a href="/terms-of-service" class="text-white-50 me-3">Terms of Service</a>
