@@ -493,6 +493,41 @@
       <p class="lead">Tired of AI mistakes? You're not alone. Share your chatbot fails, smart device disasters, and robot malfunctions. Let it out - the bots are listening! 🤖</p>
     </div>
 
+    <!-- Complaint Form - Main Purpose! -->
+    <div class="complaint-card mt-4">
+      <h2 class="text-center mb-4">Share Your AI Horror Story</h2>
+      <form id="complaintForm">
+        <div class="mb-3">
+          <label for="complaint" class="form-label fw-bold">What did AI mess up this time?</label>
+          <textarea class="form-control" id="complaint" rows="4" placeholder="Tell us about your AI disaster. Did Siri order 50 pizzas? Did your smart car try to drive to Mars? We want to hear it all!"></textarea>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label for="category" class="form-label fw-bold">Category of Catastrophe</label>
+            <select class="form-select" id="category">
+              <option>Smart Home Fails</option>
+              <option>Chatbot Chaos</option>
+              <option>Autocorrect Anarchy</option>
+              <option>Navigation Nightmares</option>
+              <option>Work AI Woes</option>
+              <option>General AI Grief</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label for="angerLevel" class="form-label fw-bold">Anger Level (1-10)</label>
+            <input type="range" class="form-range" id="angerLevel" min="1" max="10" value="5">
+            <div class="text-center mt-2">
+              <span id="angerText">Mildly Annoyed</span>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <button type="submit" class="btn btn-primary btn-lg">Submit Complaint</button>
+          <button type="button" class="btn btn-outline-secondary btn-lg ms-2" onclick="generateRandomComplaint()">Generate Random</button>
+        </div>
+      </form>
+    </div>
+
     <!-- Stats Section -->
     <div class="row stats-row">
       <div class="col-md-4">
@@ -561,40 +596,6 @@
       </div>
     </div>
 
-    <!-- Complaint Form -->
-    <div class="complaint-card mt-5">
-      <h2 class="text-center mb-4">Share Your AI Horror Story</h2>
-      <form id="complaintForm">
-        <div class="mb-3">
-          <label for="complaint" class="form-label fw-bold">What did AI mess up this time?</label>
-          <textarea class="form-control" id="complaint" rows="4" placeholder="Tell us about your AI disaster. Did Siri order 50 pizzas? Did your smart car try to drive to Mars? We want to hear it all!"></textarea>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <label for="category" class="form-label fw-bold">Category of Catastrophe</label>
-            <select class="form-select" id="category">
-              <option>Smart Home Fails</option>
-              <option>Chatbot Chaos</option>
-              <option>Autocorrect Anarchy</option>
-              <option>Navigation Nightmares</option>
-              <option>Work AI Woes</option>
-              <option>General AI Grief</option>
-            </select>
-          </div>
-          <div class="col-md-6">
-            <label for="angerLevel" class="form-label fw-bold">Anger Level (1-10)</label>
-            <input type="range" class="form-range" id="angerLevel" min="1" max="10" value="5">
-            <div class="text-center mt-2">
-              <span id="angerText">Mildly Annoyed</span>
-            </div>
-          </div>
-        </div>
-        <div class="text-center mt-4">
-          <button type="submit" class="btn btn-primary btn-lg">Submit Complaint</button>
-          <button type="button" class="btn btn-outline-secondary btn-lg ms-2" onclick="generateRandomComplaint()">Generate Random</button>
-        </div>
-      </form>
-    </div>
 
     <!-- Recent Complaints -->
     <div class="mt-5">
