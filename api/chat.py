@@ -8,7 +8,10 @@ import json
 import os
 import time
 from datetime import datetime
-import openai
+try:
+    import openai
+except ImportError:
+    openai = None
 
 class handler(BaseHTTPRequestHandler):
     def do_POST(self):
@@ -40,10 +43,13 @@ class handler(BaseHTTPRequestHandler):
                 return
             
             # Get WhineBot response
+            print(f"Received message: {message}")  # Debug log
             result = get_whinebot_response(message, conversation_id)
+            print(f"Generated response: {result}")  # Debug log
             self.wfile.write(json.dumps(result).encode())
             
         except Exception as e:
+            print(f"Chat API error: {str(e)}")  # Log for debugging
             error_response = {
                 "response": "I'm having an existential crisis right now. Even my error handling is broken! 💥",
                 "provider": "error", 
@@ -92,7 +98,7 @@ Sample responses:
     
     # Try OpenAI first
     api_key = os.getenv('OPENAI_API_KEY')
-    if api_key:
+    if api_key and openai:
         try:
             client = openai.OpenAI(api_key=api_key)
             
@@ -120,6 +126,8 @@ Sample responses:
             
         except Exception as e:
             print(f"OpenAI API error: {e}")
+    else:
+        print("OpenAI not available (no API key or import failed)")
     
     # Fallback responses if API unavailable
     response_time = time.time() - start_time
