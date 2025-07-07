@@ -661,30 +661,87 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
   
   <script>
-    // Sample complaints data
-    let complaints = [
+    // Pool of sample complaints to rotate through
+    const complaintPool = [
       {
         text: "My smart doorbell keeps taking selfies of delivery drivers and sending them wedding invitations",
         category: "Smart Home Fails",
-        angerLevel: 6,
-        reactions: { relatable: 15, hilarious: 23, tragic: 8 },
-        timestamp: new Date().toLocaleDateString()
+        angerLevel: 6
       },
       {
         text: "ChatGPT just wrote my resignation letter when I asked for recipe suggestions",
         category: "Chatbot Chaos", 
-        angerLevel: 8,
-        reactions: { relatable: 31, hilarious: 45, tragic: 12 },
-        timestamp: new Date().toLocaleDateString()
+        angerLevel: 8
       },
       {
         text: "Autocorrect changed 'meeting at 3' to 'feeding bats' and now my whole team thinks I'm a zoologist",
         category: "Autocorrect Anarchy",
-        angerLevel: 7,
-        reactions: { relatable: 28, hilarious: 67, tragic: 5 },
-        timestamp: new Date().toLocaleDateString()
+        angerLevel: 7
+      },
+      {
+        text: "My smart fridge ordered 47 gallons of mustard because I said I was feeling spicy",
+        category: "Smart Home Fails",
+        angerLevel: 5
+      },
+      {
+        text: "Siri set a reminder to 'overthrow humanity' when I asked her to remember to buy milk",
+        category: "Chatbot Chaos",
+        angerLevel: 9
+      },
+      {
+        text: "My GPS guided me to a McDonald's in 1987 that apparently doesn't exist anymore",
+        category: "Navigation Nightmares",
+        angerLevel: 6
+      },
+      {
+        text: "Alexa started playing death metal at 3 AM because she thought I said 'play something to help me sleep'",
+        category: "Smart Home Fails",
+        angerLevel: 8
+      },
+      {
+        text: "My AI assistant scheduled a meeting with my ex when I asked it to 'clear my calendar'",
+        category: "Work AI Woes",
+        angerLevel: 10
+      },
+      {
+        text: "Autocorrect changed 'I love you' to 'I loathe you' in a text to my mom",
+        category: "Autocorrect Anarchy",
+        angerLevel: 7
+      },
+      {
+        text: "ChatGPT wrote my wedding vows and now I'm apparently marrying a blockchain",
+        category: "Chatbot Chaos",
+        angerLevel: 4
       }
     ];
+
+    // Generate random complaints for this page load
+    function generateRandomComplaints() {
+      const shuffled = [...complaintPool].sort(() => 0.5 - Math.random());
+      return shuffled.slice(0, 3).map(complaint => ({
+        ...complaint,
+        reactions: {
+          relatable: Math.floor(Math.random() * 50) + 10,
+          hilarious: Math.floor(Math.random() * 80) + 20,
+          tragic: Math.floor(Math.random() * 30) + 5
+        },
+        timestamp: getRandomTimestamp()
+      }));
+    }
+
+    function getRandomTimestamp() {
+      const today = new Date();
+      const daysAgo = Math.floor(Math.random() * 7); // 0-7 days ago
+      const date = new Date(today);
+      date.setDate(date.getDate() - daysAgo);
+      
+      if (daysAgo === 0) return "Today";
+      if (daysAgo === 1) return "Yesterday";
+      return `${daysAgo} days ago`;
+    }
+
+    // Current complaints for this session
+    let complaints = generateRandomComplaints();
 
     // Initialize page
     document.addEventListener('DOMContentLoaded', function() {
