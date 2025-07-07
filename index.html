@@ -189,6 +189,23 @@
       border: 2px solid #e0e0e0;
     }
     
+    /* WhineBot Callout Styles */
+    .whinebot-callout {
+      background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+      border: 2px solid #28a745;
+      border-radius: 15px;
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+    .whinebot-callout h3 {
+      color: #155724;
+      margin-bottom: 1rem;
+    }
+    .whinebot-callout p {
+      color: #155724;
+      font-size: 1.1rem;
+    }
+    
     /* Fake Ads Styles */
     .fake-ads-section {
       margin: 3rem 0;
@@ -279,23 +296,50 @@
       font-family: 'Roboto Slab', serif;
     }
     .chat-button {
-      width: 60px;
-      height: 60px;
+      width: 70px;
+      height: 70px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      border: none;
+      background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+      border: 3px solid white;
       color: white;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       cursor: pointer;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+      box-shadow: 0 6px 20px rgba(40,167,69,0.4);
       transition: all 0.3s ease;
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
     }
     .chat-button:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+      transform: scale(1.15);
+      box-shadow: 0 8px 25px rgba(40,167,69,0.6);
+    }
+    .chat-button::before {
+      content: '';
+      position: absolute;
+      top: -3px;
+      right: -3px;
+      width: 20px;
+      height: 20px;
+      background: #dc3545;
+      border-radius: 50%;
+      border: 2px solid white;
+      animation: pulse 2s infinite;
+    }
+    .chat-button.highlighted {
+      animation: bounce 1s ease-in-out 3;
+      box-shadow: 0 0 30px rgba(40,167,69,0.8);
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.2); opacity: 0.7; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0) scale(1); }
+      40% { transform: translateY(-10px) scale(1.2); }
+      60% { transform: translateY(-5px) scale(1.1); }
     }
     .chat-window {
       position: absolute;
@@ -454,6 +498,25 @@
       <div class="text-center">
         <a href="/ai-tools.html" class="btn btn-primary btn-lg me-3">Try Our AI Tools</a>
         <small class="text-muted">Enhance complaints • Predict failures • Generate comebacks • Create memes • Battle arena</small>
+      </div>
+    </div>
+
+    <!-- WhineBot Feature Callout -->
+    <div class="whinebot-callout">
+      <div class="row align-items-center">
+        <div class="col-md-8">
+          <h3>💬 Meet WhineBot: Your Sarcastic AI Therapist</h3>
+          <p class="mb-2">Need someone to validate your AI-induced suffering? WhineBot is here to listen to your complaints and respond with appropriate levels of sarcasm and digital empathy.</p>
+          <small class="text-muted">Available 24/7 in the chat widget (bottom-right corner) • Free therapy sessions • Powered by irony</small>
+        </div>
+        <div class="col-md-4 text-center">
+          <button class="btn btn-success btn-lg" onclick="highlightChatWidget()">
+            💬 Chat with WhineBot
+          </button>
+          <div class="mt-2">
+            <small class="text-muted">Click to open chat →</small>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1007,6 +1070,43 @@
         }, 8000);
       }, 4000); // Start second ad 4 seconds later
     }
+
+    // WhineBot highlighting function
+    function highlightChatWidget() {
+      const chatButton = document.getElementById('chatToggle');
+      const chatWindow = document.getElementById('chatWindow');
+      
+      // Add highlight animation
+      chatButton.classList.add('highlighted');
+      
+      // Open chat window
+      chatWindow.style.display = 'flex';
+      
+      // Remove highlight after animation
+      setTimeout(() => {
+        chatButton.classList.remove('highlighted');
+      }, 3000);
+      
+      // Scroll chat widget into view
+      chatButton.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    // Auto-highlight chat button periodically to draw attention
+    function autoHighlightChat() {
+      const chatButton = document.getElementById('chatToggle');
+      const chatWindow = document.getElementById('chatWindow');
+      
+      // Only highlight if chat is not already open
+      if (chatWindow.style.display !== 'flex') {
+        chatButton.classList.add('highlighted');
+        setTimeout(() => {
+          chatButton.classList.remove('highlighted');
+        }, 3000);
+      }
+    }
+
+    // Highlight chat button every 45 seconds (subtle reminder)
+    setInterval(autoHighlightChat, 45000);
   </script>
 </body>
 </html>
