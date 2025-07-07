@@ -1,51 +1,43 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "*.html",
-      "use": "@vercel/static"
+  "functions": {
+    "api/chat.py": {
+      "runtime": "python3.9"
     },
-    {
-      "src": "*.ico",
-      "use": "@vercel/static"
+    "api/contact.py": {
+      "runtime": "python3.9"
     },
-    {
-      "src": "*.txt",
-      "use": "@vercel/static"
+    "api/enhance-complaint.py": {
+      "runtime": "python3.9"
     },
-    {
-      "src": "*.xml",
-      "use": "@vercel/static"
+    "api/predict-fail.py": {
+      "runtime": "python3.9"
     },
-    {
-      "src": "*.jpg",
-      "use": "@vercel/static"
+    "api/generate-comeback.py": {
+      "runtime": "python3.9"
     },
-    {
-      "src": "api/*.py",
-      "use": "@vercel/python"
+    "api/create-meme.py": {
+      "runtime": "python3.9"
+    },
+    "api/battle-commentary.py": {
+      "runtime": "python3.9"
     }
-  ],
-  "routes": [
+  },
+  "rewrites": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
+      "source": "/privacy-policy",
+      "destination": "/privacy-policy.html"
     },
     {
-      "src": "/privacy-policy",
-      "dest": "/privacy-policy.html"
+      "source": "/terms-of-service", 
+      "destination": "/terms-of-service.html"
     },
     {
-      "src": "/terms-of-service", 
-      "dest": "/terms-of-service.html"
+      "source": "/contact",
+      "destination": "/contact.html"
     },
     {
-      "src": "/contact",
-      "dest": "/contact.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "source": "/ai-tools",
+      "destination": "/ai-tools.html"
     }
   ]
 }
