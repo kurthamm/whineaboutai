@@ -3,22 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>WhineAboutAI - The Ultimate AI Frustration Universe 🚀</title>
-  <meta name="description" content="Welcome to the most insanely interactive AI complaint platform in the universe! Turn your AI disasters into viral content with our crazy AI-powered tools, games, and community features!">
-  <meta name="keywords" content="AI complaints, AI fails, interactive games, viral content, AI memes, tech humor, digital therapy">
+  <title>Whine About AI - Vent Your AI Frustrations | Share Your Bot Complaints</title>
+  <meta name="description" content="Tired of AI mistakes? Share your chatbot fails, smart device disasters, and robot malfunctions. Join thousands venting about AI gone wrong. Let it out - the bots are listening!">
+  <meta name="keywords" content="AI complaints, chatbot fails, smart device problems, artificial intelligence frustrations, robot malfunctions, tech support, AI gone wrong">
+  <meta name="author" content="WhineAboutAI">
+  <meta name="robots" content="index, follow">
   
-  <!-- Open Graph -->
-  <meta property="og:title" content="WhineAboutAI - The Ultimate AI Frustration Universe">
-  <meta property="og:description" content="The most insanely interactive AI complaint platform! Turn frustrations into viral content!">
-  <meta property="og:image" content="https://whineaboutai.com/whine-about-ai-share.jpg">
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
   <meta property="og:url" content="https://whineaboutai.com/">
+  <meta property="og:title" content="Whine About AI - Vent Your AI Frustrations">
+  <meta property="og:description" content="Tired of AI mistakes? Share your chatbot fails, smart device disasters, and robot malfunctions. Join thousands venting about AI gone wrong!">
+  <meta property="og:image" content="https://whineaboutai.com/whine-about-ai-share.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Whine About AI">
   
   <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="WhineAboutAI - The Ultimate AI Frustration Universe">
-  <meta name="twitter:description" content="The most insanely interactive AI complaint platform! Turn frustrations into viral content!">
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://whineaboutai.com/">
+  <meta property="twitter:title" content="Whine About AI - Vent Your AI Frustrations">
+  <meta property="twitter:description" content="Tired of AI mistakes? Share your chatbot fails, smart device disasters, and robot malfunctions. Join thousands venting!">
+  <meta property="twitter:image" content="https://whineaboutai.com/whine-about-ai-share.jpg">
+  <meta property="twitter:creator" content="@WhineAboutAI">
   
-  <!-- Analytics -->
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#002855">
+  <link rel="canonical" href="https://whineaboutai.com/">
+  
+  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-48GGY3RC9G"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -27,1256 +40,846 @@
     gtag('config', 'G-48GGY3RC9G');
   </script>
   
-  <!-- AdSense -->
+  <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5497961962190935" crossorigin="anonymous"></script>
   
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+  <link rel="apple-touch-icon" href="/favicon.ico"/>
   
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet"/>
+  
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet"/>
   
   <style>
-    :root {
-      /* Cyberpunk Color Palette */
-      --neon-pink: #ff0080;
-      --neon-cyan: #00ffff;
-      --neon-purple: #8000ff;
-      --neon-green: #00ff41;
-      --neon-orange: #ff4500;
-      --dark-bg: #0a0a0a;
-      --darker-bg: #050505;
-      --card-bg: rgba(20, 20, 30, 0.9);
-      --glass-bg: rgba(255, 255, 255, 0.05);
-      
-      /* Gradients */
-      --gradient-primary: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
-      --gradient-secondary: linear-gradient(135deg, var(--neon-cyan), var(--neon-green));
-      --gradient-danger: linear-gradient(135deg, var(--neon-orange), var(--neon-pink));
-      --gradient-bg: linear-gradient(45deg, #0a0a0a, #1a0a1a, #0a0a1a);
-      
-      /* Shadows */
-      --neon-glow: 0 0 20px currentColor, 0 0 40px currentColor, 0 0 60px currentColor;
-      --soft-glow: 0 0 30px rgba(255, 0, 128, 0.3);
+    body { 
+      font-family:'Roboto Slab', serif; 
+      background:#f8f9fa; 
+      color:#343a40; 
+      position: relative; 
+      overflow-x: hidden; 
+    }
+    .navbar { 
+      background:#002855; 
+    }
+    .navbar-brand { 
+      color:#fff!important; 
+      font-weight:700; 
+      cursor:default; 
+    }
+    .header-text { 
+      color:#002855; 
+      margin:2rem 0 1rem; 
+    }
+    .tagline { 
+      font-style:italic; 
+      color:#6c757d; 
+    }
+    .complaint-card { 
+      border:1px solid #ced4da; 
+      border-radius:.5rem; 
+      padding:1.5rem; 
+      background:#fff; 
+      box-shadow:0 .5rem 1rem rgba(0,0,0,.05); 
+    }
+    .stats-row { 
+      margin:2rem 0; 
+    }
+    .stat-card { 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+      color:white; 
+      padding:1.5rem; 
+      border-radius:1rem; 
+      text-align:center; 
+      box-shadow:0 8px 32px rgba(0,0,0,0.1); 
+      margin-bottom:1rem; 
+    }
+    .stat-number { 
+      font-size:2.5rem; 
+      font-weight:bold; 
+      margin:0; 
+    }
+    .stat-label { 
+      font-size:.9rem; 
+      opacity:.9; 
+      margin:0; 
     }
     
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Space Grotesk', sans-serif;
-      background: var(--gradient-bg);
-      color: white;
-      overflow-x: hidden;
-      min-height: 100vh;
-      position: relative;
-      padding-top: 80px; /* Ensure all content clears the fixed navbar */
-    }
-    
-    /* Animated Background */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: 
-        radial-gradient(circle at 20% 80%, rgba(255, 0, 128, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(128, 0, 255, 0.1) 0%, transparent 50%);
-      animation: bgFloat 20s ease-in-out infinite;
-      z-index: -1;
-    }
-    
-    @keyframes bgFloat {
-      0%, 100% { transform: scale(1) rotate(0deg); }
-      50% { transform: scale(1.1) rotate(180deg); }
-    }
-    
-    /* Floating particles */
-    .particles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1;
-    }
-    
-    .particle {
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      background: var(--neon-cyan);
-      border-radius: 50%;
-      animation: float 6s infinite ease-in-out;
-      box-shadow: 0 0 10px currentColor;
-    }
-    
-    @keyframes float {
-      0%, 100% { transform: translateY(100vh) scale(0); opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { transform: translateY(-10vh) scale(1); }
-    }
-    
-    /* Navigation */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background: rgba(10, 10, 10, 0.95);
-      backdrop-filter: blur(20px);
-      z-index: 1000;
-      border-bottom: 1px solid rgba(255, 0, 128, 0.3);
-    }
-    
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .logo {
-      font-family: 'Orbitron', monospace;
-      font-size: 1.8rem;
-      font-weight: 900;
-      background: var(--gradient-primary);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: var(--neon-glow);
-    }
-    
-    .nav-items {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-    }
-    
-    .nav-item {
-      color: white;
-      text-decoration: none;
+    .complaint-item { 
+      background: white; 
+      border: 1px solid #e0e0e0; 
+      border-radius: 12px; 
+      padding: 1.5rem; 
+      margin-bottom: 1rem; 
       transition: all 0.3s ease;
-      position: relative;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
-    
-    .nav-item:hover {
-      color: var(--neon-cyan);
-      text-shadow: 0 0 10px currentColor;
+    .complaint-item:hover { 
+      transform: translateY(-2px); 
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15); 
     }
-    
-    /* Hero Section */
-    .hero {
-      min-height: calc(100vh - 80px); /* Account for body padding */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-      padding: 2rem;
-    }
-    
-    .hero-content {
-      max-width: 800px;
-      z-index: 10;
-    }
-    
-    .hero-title {
-      font-family: 'Orbitron', monospace;
-      font-size: clamp(3rem, 8vw, 6rem);
-      font-weight: 900;
+    .complaint-text { 
+      font-size: 1.1rem; 
+      line-height: 1.5; 
+      color: #2c3e50; 
       margin-bottom: 1rem;
-      background: var(--gradient-primary);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: var(--neon-glow);
-      animation: titleGlow 2s ease-in-out infinite alternate;
     }
-    
-    @keyframes titleGlow {
-      0% { filter: drop-shadow(0 0 20px rgba(255, 0, 128, 0.5)); }
-      100% { filter: drop-shadow(0 0 40px rgba(255, 0, 128, 0.8)); }
+    .complaint-actions { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid #f0f0f0;
     }
-    
-    .hero-subtitle {
-      font-size: 1.5rem;
-      margin-bottom: 2rem;
-      color: var(--neon-cyan);
-      opacity: 0.9;
+    .reaction-buttons { 
+      display: flex; 
+      gap: 0.5rem; 
     }
-    
-    .hero-description {
-      font-size: 1.2rem;
-      line-height: 1.6;
-      margin-bottom: 3rem;
-      opacity: 0.8;
-    }
-    
-    /* Stats Section */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      margin: 3rem 0;
-    }
-    
-    .stat-card {
-      background: var(--card-bg);
-      padding: 2rem;
-      border-radius: 15px;
-      text-align: center;
-      border: 1px solid rgba(255, 0, 128, 0.3);
-      backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
-    }
-    
-    .stat-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(255, 0, 128, 0.3);
-    }
-    
-    .stat-number {
-      font-family: 'Orbitron', monospace;
-      font-size: 3rem;
-      font-weight: 900;
-      color: var(--neon-pink);
-      display: block;
-      margin-bottom: 0.5rem;
-    }
-    
-    .stat-label {
-      font-size: 1.1rem;
-      color: var(--neon-cyan);
-      opacity: 0.9;
-    }
-    
-    /* Action Buttons */
-    .action-buttons {
+    .reaction-btn { 
+      background: #f8f9fa; 
+      border: 1px solid #e9ecef; 
+      border-radius: 20px; 
+      padding: 0.4rem 0.8rem; 
+      font-size: 0.9rem; 
+      cursor: pointer; 
+      transition: all 0.2s ease;
       display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin: 2rem 0;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .reaction-btn:hover { 
+      background: #e9ecef; 
+      transform: scale(1.05); 
+    }
+    .reaction-btn.active { 
+      background: #007bff; 
+      color: white; 
+      border-color: #007bff; 
+    }
+    .complaint-meta { 
+      color: #6c757d; 
+      font-size: 0.85rem; 
+    }
+    .share-btn {
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .share-btn:hover {
+      background: #218838;
+      transform: scale(1.05);
     }
     
-    .btn {
-      padding: 1rem 2rem;
+    /* Enhanced Features Styles */
+    .ai-feature { 
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); 
+      border-radius: 15px; 
+      padding: 2rem; 
+      margin: 2rem 0; 
+      text-align: center; 
+    }
+    .feature-btn { 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+      color: white; 
+      border: none; 
+      padding: 1rem 2rem; 
+      border-radius: 25px; 
+      font-weight: bold; 
+      transition: transform 0.2s; 
+      margin: 0.5rem;
+    }
+    .feature-btn:hover { 
+      transform: scale(1.05); 
+    }
+    .results-area {
+      background: white;
+      border: 1px solid #dee2e6;
+      border-radius: 10px;
+      padding: 1rem;
+      margin-top: 1rem;
+      min-height: 60px;
+      white-space: pre-wrap;
+    }
+    
+    /* Chat Widget */
+    .chat-widget {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      font-family: 'Roboto Slab', serif;
+    }
+    .chat-button {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       border: none;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 1.1rem;
+      color: white;
+      font-size: 1.5rem;
       cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
       transition: all 0.3s ease;
-      text-decoration: none;
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      gap: 0.5rem;
-      position: relative;
+      justify-content: center;
+    }
+    .chat-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    }
+    .chat-window {
+      position: absolute;
+      bottom: 80px;
+      right: 0;
+      width: 350px;
+      height: 450px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      display: none;
+      flex-direction: column;
       overflow: hidden;
     }
-    
-    .btn-primary {
-      background: var(--gradient-primary);
+    .chat-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
-      box-shadow: 0 0 20px rgba(255, 0, 128, 0.4);
-    }
-    
-    .btn-secondary {
-      background: var(--gradient-secondary);
-      color: white;
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
-    }
-    
-    .btn-danger {
-      background: var(--gradient-danger);
-      color: white;
-      box-shadow: 0 0 20px rgba(255, 69, 0, 0.4);
-    }
-    
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 25px rgba(255, 0, 128, 0.6);
-    }
-    
-    /* Features Grid */
-    .features-section {
-      padding: 5rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .section-title {
-      text-align: center;
-      font-family: 'Orbitron', monospace;
-      font-size: 3rem;
-      font-weight: 900;
-      margin-bottom: 3rem;
-      background: var(--gradient-secondary);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-    
-    .feature-card {
-      background: var(--card-bg);
-      padding: 2rem;
-      border-radius: 20px;
-      border: 1px solid rgba(0, 255, 255, 0.3);
-      backdrop-filter: blur(15px);
-      transition: all 0.3s ease;
-      text-align: center;
-    }
-    
-    .feature-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
-    }
-    
-    .feature-icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      color: var(--neon-cyan);
-    }
-    
-    .feature-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      color: var(--neon-pink);
-    }
-    
-    .feature-description {
-      line-height: 1.6;
-      opacity: 0.9;
-    }
-    
-    /* Modals */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      z-index: 2000;
-      backdrop-filter: blur(5px);
-    }
-    
-    .modal-content {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: var(--card-bg);
-      padding: 2rem;
-      border-radius: 20px;
-      border: 1px solid rgba(255, 0, 128, 0.5);
-      backdrop-filter: blur(20px);
-      max-width: 500px;
-      width: 90%;
-      max-height: 80vh;
-      overflow-y: auto;
-    }
-    
-    .modal-header {
+      padding: 1rem;
+      font-weight: bold;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 1rem;
     }
-    
-    .modal-title {
-      font-family: 'Orbitron', monospace;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--neon-pink);
-    }
-    
-    .close-btn {
+    .chat-close {
       background: none;
       border: none;
       color: white;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       cursor: pointer;
-      transition: all 0.3s ease;
+      opacity: 0.8;
     }
-    
-    .close-btn:hover {
-      color: var(--neon-pink);
-      transform: scale(1.2);
+    .chat-close:hover {
+      opacity: 1;
     }
-    
-    .form-group {
-      margin-bottom: 1.5rem;
-    }
-    
-    .form-label {
-      display: block;
-      margin-bottom: 0.5rem;
-      color: var(--neon-cyan);
-      font-weight: 600;
-    }
-    
-    .form-input, .form-textarea, .form-select {
-      width: 100%;
-      padding: 0.75rem;
-      border: 1px solid rgba(255, 0, 128, 0.3);
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-    }
-    
-    .form-input:focus, .form-textarea:focus, .form-select:focus {
-      outline: none;
-      border-color: var(--neon-pink);
-      box-shadow: 0 0 15px rgba(255, 0, 128, 0.3);
-    }
-    
-    .form-textarea {
-      resize: vertical;
-      min-height: 100px;
-    }
-    
-    /* Chat Interface */
-    .chat-container {
-      max-height: 400px;
-      overflow-y: auto;
-      border: 1px solid rgba(255, 0, 128, 0.3);
-      border-radius: 10px;
+    .chat-messages {
+      flex: 1;
       padding: 1rem;
-      margin-bottom: 1rem;
-      background: rgba(0, 0, 0, 0.3);
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
     }
-    
     .chat-message {
-      margin-bottom: 1rem;
-      padding: 0.75rem;
-      border-radius: 10px;
       max-width: 80%;
+      padding: 0.75rem;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      line-height: 1.4;
     }
-    
     .chat-message.user {
-      background: var(--gradient-primary);
-      margin-left: auto;
+      background: #e3f2fd;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
     }
-    
     .chat-message.bot {
-      background: var(--gradient-secondary);
+      background: #f5f5f5;
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+      border-left: 3px solid #667eea;
     }
-    
-    .chat-input-container {
+    .chat-input-area {
+      padding: 1rem;
+      border-top: 1px solid #eee;
       display: flex;
       gap: 0.5rem;
     }
-    
     .chat-input {
       flex: 1;
-    }
-    
-    .send-btn {
-      padding: 0.75rem 1.5rem;
-      background: var(--gradient-primary);
-      border: none;
-      border-radius: 10px;
-      color: white;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    
-    .send-btn:hover {
-      background: var(--gradient-secondary);
-      transform: translateY(-2px);
-    }
-    
-    /* Loading Animation */
-    .loading {
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      border: 3px solid rgba(255, 0, 128, 0.3);
-      border-radius: 50%;
-      border-top-color: var(--neon-pink);
-      animation: spin 1s ease-in-out infinite;
-    }
-    
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-    
-    /* Footer */
-    .footer {
-      background: var(--darker-bg);
-      padding: 3rem 2rem 1rem;
-      text-align: center;
-      border-top: 1px solid rgba(255, 0, 128, 0.3);
-    }
-    
-    .footer-content {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-    }
-    
-    .footer-link {
-      color: var(--neon-cyan);
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-    
-    .footer-link:hover {
-      color: var(--neon-pink);
-      text-shadow: 0 0 10px currentColor;
-    }
-    
-    .footer-text {
-      opacity: 0.7;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      padding: 0.5rem 1rem;
+      outline: none;
       font-size: 0.9rem;
     }
-    
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .nav-items {
-        display: none;
-      }
-      
-      .hero-title {
-        font-size: 2.5rem;
-      }
-      
-      .hero-subtitle {
-        font-size: 1.2rem;
-      }
-      
-      .hero-description {
-        font-size: 1rem;
-      }
-      
-      .action-buttons {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .btn {
-        width: 100%;
-        max-width: 300px;
-      }
-      
-      .stats-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .features-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .modal-content {
-        width: 95%;
-        padding: 1.5rem;
-      }
+    .chat-send {
+      background: #667eea;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      transition: background 0.2s;
     }
-    
-    /* Utility Classes */
-    .text-center { text-align: center; }
-    .text-glow { text-shadow: 0 0 20px currentColor; }
-    .mb-1 { margin-bottom: 1rem; }
-    .mb-2 { margin-bottom: 2rem; }
-    .mt-1 { margin-top: 1rem; }
-    .mt-2 { margin-top: 2rem; }
-    .hidden { display: none; }
-    .flex { display: flex; }
-    .flex-center { display: flex; justify-content: center; align-items: center; }
-    .gap-1 { gap: 1rem; }
-    .gap-2 { gap: 2rem; }
+    .chat-send:hover {
+      background: #5a67d8;
+    }
+    .typing-indicator {
+      display: none;
+      align-items: center;
+      gap: 0.5rem;
+      font-style: italic;
+      color: #666;
+      padding: 0.5rem;
+    }
+    .typing-dots {
+      display: flex;
+      gap: 2px;
+    }
+    .typing-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #666;
+      animation: typingBounce 1.4s infinite ease-in-out;
+    }
+    .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+    .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+    @keyframes typingBounce {
+      0%, 80%, 100% { transform: scale(0); }
+      40% { transform: scale(1); }
+    }
   </style>
 </head>
 <body>
-  <!-- Floating Particles -->
-  <div class="particles" id="particles"></div>
-  
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <div class="logo">WhineAboutAI</div>
-      <div class="nav-items">
-        <a href="#features" class="nav-item">Features</a>
-        <a href="#stats" class="nav-item">Stats</a>
-        <a href="privacy-policy.html" class="nav-item">Privacy</a>
-        <a href="contact.html" class="nav-item">Contact</a>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand mb-0 h1" href="/">WhineAboutAI</a>
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link text-white" href="/privacy-policy">Privacy</a>
+        <a class="nav-link text-white" href="/terms-of-service">Terms</a>
+        <a class="nav-link text-white" href="/contact">Contact</a>
       </div>
     </div>
   </nav>
-  
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1 class="hero-title">AI FRUSTRATION UNIVERSE</h1>
-      <p class="hero-subtitle">Where AI Failures Become Features™</p>
-      <p class="hero-description">
-        Turn your AI disasters into viral content with the most insanely interactive complaint platform in the universe! 
-        We've got AI-powered tools that make your frustrations funnier, shareable, and therapeutic.
-      </p>
-      
-      <!-- Stats Grid -->
-      <div class="stats-grid" id="stats">
+
+  <div class="container mt-5 pt-4">
+    <!-- Header Section -->
+    <div class="text-center">
+      <h1 class="header-text display-4 fw-bold">Whine About AI</h1>
+      <p class="tagline lead">Where AI Failures Become Features™</p>
+      <p class="lead">Tired of AI mistakes? You're not alone. Share your chatbot fails, smart device disasters, and robot malfunctions. Let it out - the bots are listening! 🤖</p>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="row stats-row">
+      <div class="col-md-4">
         <div class="stat-card">
-          <span class="stat-number" id="complaints-count">47,892</span>
-          <span class="stat-label">Epic Complaints</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-number" id="tissues-count">127,445</span>
-          <span class="stat-label">Digital Tissues</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-number" id="enhanced-count">23,156</span>
-          <span class="stat-label">AI-Enhanced Rants</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-number" id="memes-count">89,234</span>
-          <span class="stat-label">Viral Memes</span>
+          <p class="stat-number" id="complaintsCount">15,247</p>
+          <p class="stat-label">AI Complaints</p>
         </div>
       </div>
-      
-      <!-- Action Buttons -->
-      <div class="action-buttons">
-        <button class="btn btn-primary" onclick="openModal('complaint-modal')">
-          <i class="fas fa-robot"></i> AI Enhance My Complaint
-        </button>
-        <button class="btn btn-secondary" onclick="openModal('chat-modal')">
-          <i class="fas fa-comments"></i> Chat with WhineBot
-        </button>
-        <button class="btn btn-danger" onclick="openModal('predict-modal')">
-          <i class="fas fa-crystal-ball"></i> Predict AI Failure
-        </button>
+      <div class="col-md-4">
+        <div class="stat-card">
+          <p class="stat-number" id="tissuesUsed">8,943</p>
+          <p class="stat-label">Digital Tissues Used</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="stat-card">
+          <p class="stat-number" id="satisfactionLevel">-12%</p>
+          <p class="stat-label">AI Satisfaction Level</p>
+        </div>
       </div>
     </div>
-  </section>
-  
-  <!-- Features Section -->
-  <section class="features-section" id="features">
-    <h2 class="section-title">INSANE AI-POWERED FEATURES</h2>
-    <div class="features-grid">
-      <div class="feature-card" onclick="openModal('complaint-modal')">
-        <div class="feature-icon">
-          <i class="fas fa-magic"></i>
+
+    <!-- AI-Powered Features Section -->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="ai-feature">
+          <h3>🎭 AI Complaint Enhancer</h3>
+          <p>Transform your boring complaints into viral content!</p>
+          <textarea id="enhanceInput" class="form-control mb-3" placeholder="Enter your AI complaint here..." rows="3"></textarea>
+          <select id="enhanceStyle" class="form-select mb-3">
+            <option value="sarcastic">Sarcastic</option>
+            <option value="dramatic">Dramatic</option>
+            <option value="absurd">Absurd</option>
+            <option value="professional">Professional</option>
+          </select>
+          <button class="feature-btn" onclick="enhanceComplaint()">Enhance My Suffering</button>
+          <div id="enhanceResult" class="results-area"></div>
         </div>
-        <h3 class="feature-title">AI Complaint Enhancer</h3>
-        <p class="feature-description">
-          Turn your boring complaints into viral masterpieces! Our AI makes your rants 10x funnier, 
-          more dramatic, or professionally passive-aggressive.
-        </p>
       </div>
       
-      <div class="feature-card" onclick="openModal('predict-modal')">
-        <div class="feature-icon">
-          <i class="fas fa-crystal-ball"></i>
+      <div class="col-md-6">
+        <div class="ai-feature">
+          <h3>🔮 AI Fail Predictor</h3>
+          <p>Predict what AI will mess up next!</p>
+          <textarea id="predictInput" class="form-control mb-3" placeholder="Describe a scenario..." rows="3"></textarea>
+          <button class="feature-btn" onclick="predictFail()">Predict Disaster</button>
+          <div id="predictResult" class="results-area"></div>
         </div>
-        <h3 class="feature-title">AI Fail Predictor</h3>
-        <p class="feature-description">
-          Predict exactly how AI will fail you next! Our psychic AI knows your future frustrations 
-          with scary accuracy.
-        </p>
-      </div>
-      
-      <div class="feature-card" onclick="openModal('comeback-modal')">
-        <div class="feature-icon">
-          <i class="fas fa-fire"></i>
-        </div>
-        <h3 class="feature-title">Perfect Comeback Generator</h3>
-        <p class="feature-description">
-          Get devastating comebacks for when AI lets you down. Never be speechless again 
-          when your smart speaker acts stupid.
-        </p>
-      </div>
-      
-      <div class="feature-card" onclick="openModal('meme-modal')">
-        <div class="feature-icon">
-          <i class="fas fa-image"></i>
-        </div>
-        <h3 class="feature-title">Instant Meme Factory</h3>
-        <p class="feature-description">
-          Transform your AI disasters into viral memes instantly! Share your pain in the most 
-          entertaining way possible.
-        </p>
-      </div>
-      
-      <div class="feature-card" onclick="openModal('battle-modal')">
-        <div class="feature-icon">
-          <i class="fas fa-sword"></i>
-        </div>
-        <h3 class="feature-title">Complaint Battle Arena</h3>
-        <p class="feature-description">
-          Epic complaint battles with sports-announcer commentary! Watch your frustrations 
-          duke it out for ultimate supremacy.
-        </p>
-      </div>
-      
-      <div class="feature-card" onclick="openModal('chat-modal')">
-        <div class="feature-icon">
-          <i class="fas fa-robot"></i>
-        </div>
-        <h3 class="feature-title">WhineBot Therapist</h3>
-        <p class="feature-description">
-          Get hilariously sarcastic therapy from our AI bot who totally gets your AI problems. 
-          It's like therapy, but actually fun!
-        </p>
       </div>
     </div>
-  </section>
-  
-  <!-- Complaint Enhancement Modal -->
-  <div id="complaint-modal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title">AI Complaint Enhancer</h3>
-        <button class="close-btn" onclick="closeModal('complaint-modal')">&times;</button>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="ai-feature">
+          <h3>💬 Perfect Comeback Generator</h3>
+          <p>Get the perfect response to AI failures!</p>
+          <textarea id="comebackInput" class="form-control mb-3" placeholder="What did AI mess up?" rows="3"></textarea>
+          <button class="feature-btn" onclick="generateComeback()">Generate Comeback</button>
+          <div id="comebackResult" class="results-area"></div>
+        </div>
       </div>
-      <div class="form-group">
-        <label class="form-label">Your Complaint</label>
-        <textarea id="complaint-text" class="form-textarea" placeholder="Tell us what AI did to ruin your day..."></textarea>
+      
+      <div class="col-md-6">
+        <div class="ai-feature">
+          <h3>🎨 Instant Meme Factory</h3>
+          <p>Turn your AI disasters into shareable memes!</p>
+          <textarea id="memeInput" class="form-control mb-3" placeholder="Describe your AI disaster..." rows="3"></textarea>
+          <button class="feature-btn" onclick="createMeme()">Make Meme</button>
+          <div id="memeResult" class="results-area"></div>
+        </div>
       </div>
-      <div class="form-group">
-        <label class="form-label">Enhancement Style</label>
-        <select id="enhancement-style" class="form-select">
-          <option value="sarcastic">Sarcastic & Witty</option>
-          <option value="dramatic">Dramatic & Theatrical</option>
-          <option value="absurd">Absurd & Ridiculous</option>
-          <option value="professional">Professional Passive-Aggressive</option>
-        </select>
+    </div>
+
+    <div class="ai-feature">
+      <h3>⚔️ Complaint Battle Arena</h3>
+      <p>Watch your complaints battle it out with sports commentary!</p>
+      <div class="row">
+        <div class="col-md-6">
+          <textarea id="battleInput1" class="form-control mb-3" placeholder="First complaint..." rows="2"></textarea>
+        </div>
+        <div class="col-md-6">
+          <textarea id="battleInput2" class="form-control mb-3" placeholder="Second complaint..." rows="2"></textarea>
+        </div>
       </div>
-      <button class="btn btn-primary" onclick="enhanceComplaint()">
-        <i class="fas fa-magic"></i> Enhance My Complaint
-      </button>
-      <div id="enhanced-result" class="mt-2 hidden">
-        <h4 class="form-label">Enhanced Complaint:</h4>
-        <div id="enhanced-text" class="form-textarea" style="background: rgba(0,255,255,0.1); border-color: var(--neon-cyan);"></div>
-        <button class="btn btn-secondary mt-1" onclick="copyToClipboard('enhanced-text')">
-          <i class="fas fa-copy"></i> Copy to Clipboard
-        </button>
+      <button class="feature-btn" onclick="startBattle()">Start Battle!</button>
+      <div id="battleResult" class="results-area"></div>
+    </div>
+
+    <!-- Complaint Form -->
+    <div class="complaint-card mt-5">
+      <h2 class="text-center mb-4">Share Your AI Horror Story</h2>
+      <form id="complaintForm">
+        <div class="mb-3">
+          <label for="complaint" class="form-label fw-bold">What did AI mess up this time?</label>
+          <textarea class="form-control" id="complaint" rows="4" placeholder="Tell us about your AI disaster. Did Siri order 50 pizzas? Did your smart car try to drive to Mars? We want to hear it all!"></textarea>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label for="category" class="form-label fw-bold">Category of Catastrophe</label>
+            <select class="form-select" id="category">
+              <option>Smart Home Fails</option>
+              <option>Chatbot Chaos</option>
+              <option>Autocorrect Anarchy</option>
+              <option>Navigation Nightmares</option>
+              <option>Work AI Woes</option>
+              <option>General AI Grief</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label for="angerLevel" class="form-label fw-bold">Anger Level (1-10)</label>
+            <input type="range" class="form-range" id="angerLevel" min="1" max="10" value="5">
+            <div class="text-center mt-2">
+              <span id="angerText">Mildly Annoyed</span>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <button type="submit" class="btn btn-primary btn-lg">Submit Complaint</button>
+          <button type="button" class="btn btn-outline-secondary btn-lg ms-2" onclick="generateRandomComplaint()">Generate Random</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Recent Complaints -->
+    <div class="mt-5">
+      <h2 class="text-center mb-4">Recent AI Disasters</h2>
+      <div id="complaintsContainer">
+        <!-- Complaints will be loaded here -->
       </div>
     </div>
   </div>
-  
-  <!-- Chat Modal -->
-  <div id="chat-modal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title">WhineBot Therapist</h3>
-        <button class="close-btn" onclick="closeModal('chat-modal')">&times;</button>
+
+  <!-- Chat Widget -->
+  <div class="chat-widget">
+    <button class="chat-button" id="chatToggle">💬</button>
+    <div class="chat-window" id="chatWindow">
+      <div class="chat-header">
+        <span>WhineBot Therapist</span>
+        <button class="chat-close" id="chatClose">×</button>
       </div>
-      <div class="chat-container" id="chat-container">
+      <div class="chat-messages" id="chatMessages">
         <div class="chat-message bot">
-          <strong>WhineBot:</strong> Welcome to digital therapy! What AI disaster brought you here today? 🤖
+          Hi! I'm WhineBot, your sarcastic AI therapist. What AI disaster can I help you complain about today? 🤖
         </div>
       </div>
-      <div class="chat-input-container">
-        <input type="text" id="chat-input" class="chat-input" placeholder="Type your AI frustration here..." onkeypress="handleChatKeyPress(event)">
-        <button class="send-btn" onclick="sendChatMessage()">Send</button>
+      <div class="typing-indicator" id="typingIndicator">
+        <span>WhineBot is typing</span>
+        <div class="typing-dots">
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+        </div>
+      </div>
+      <div class="chat-input-area">
+        <input type="text" class="chat-input" id="chatInput" placeholder="Tell me your AI troubles...">
+        <button class="chat-send" id="chatSend">→</button>
       </div>
     </div>
   </div>
-  
-  <!-- Predict Modal -->
-  <div id="predict-modal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title">AI Fail Predictor</h3>
-        <button class="close-btn" onclick="closeModal('predict-modal')">&times;</button>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Describe Your Situation</label>
-        <textarea id="predict-scenario" class="form-textarea" placeholder="What are you about to do with AI?"></textarea>
-      </div>
-      <button class="btn btn-danger" onclick="predictFailure()">
-        <i class="fas fa-crystal-ball"></i> Predict My Doom
-      </button>
-      <div id="prediction-result" class="mt-2 hidden">
-        <h4 class="form-label">Prediction:</h4>
-        <div id="prediction-text" class="form-textarea" style="background: rgba(255,69,0,0.1); border-color: var(--neon-orange);"></div>
-      </div>
-    </div>
-  </div>
-  
-  <!-- Comeback Modal -->
-  <div id="comeback-modal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title">Perfect Comeback Generator</h3>
-        <button class="close-btn" onclick="closeModal('comeback-modal')">&times;</button>
-      </div>
-      <div class="form-group">
-        <label class="form-label">What AI Failed You?</label>
-        <textarea id="comeback-scenario" class="form-textarea" placeholder="Describe how AI let you down..."></textarea>
-      </div>
-      <button class="btn btn-danger" onclick="generateComeback()">
-        <i class="fas fa-fire"></i> Generate Comeback
-      </button>
-      <div id="comeback-result" class="mt-2 hidden">
-        <h4 class="form-label">Your Perfect Comeback:</h4>
-        <div id="comeback-text" class="form-textarea" style="background: rgba(255,69,0,0.1); border-color: var(--neon-orange);"></div>
-      </div>
-    </div>
-  </div>
-  
-  <!-- Meme Modal -->
-  <div id="meme-modal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title">Instant Meme Factory</h3>
-        <button class="close-btn" onclick="closeModal('meme-modal')">&times;</button>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Your AI Disaster</label>
-        <textarea id="meme-text" class="form-textarea" placeholder="What happened that deserves to be memed?"></textarea>
-      </div>
-      <button class="btn btn-primary" onclick="createMeme()">
-        <i class="fas fa-image"></i> Create Meme
-      </button>
-      <div id="meme-result" class="mt-2 hidden">
-        <h4 class="form-label">Your Meme:</h4>
-        <div id="meme-content" class="form-textarea" style="background: rgba(0,255,255,0.1); border-color: var(--neon-cyan);"></div>
-      </div>
-    </div>
-  </div>
-  
-  <!-- Battle Modal -->
-  <div id="battle-modal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title">Complaint Battle Arena</h3>
-        <button class="close-btn" onclick="closeModal('battle-modal')">&times;</button>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Complaint 1</label>
-        <textarea id="battle-complaint1" class="form-textarea" placeholder="First complaint fighter..."></textarea>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Complaint 2</label>
-        <textarea id="battle-complaint2" class="form-textarea" placeholder="Second complaint fighter..."></textarea>
-      </div>
-      <button class="btn btn-danger" onclick="startBattle()">
-        <i class="fas fa-sword"></i> Start Battle!
-      </button>
-      <div id="battle-result" class="mt-2 hidden">
-        <h4 class="form-label">Battle Commentary:</h4>
-        <div id="battle-commentary" class="form-textarea" style="background: rgba(255,69,0,0.1); border-color: var(--neon-orange);"></div>
-      </div>
-    </div>
-  </div>
-  
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-content">
-      <div class="footer-links">
-        <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
-        <a href="terms-of-service.html" class="footer-link">Terms of Service</a>
-        <a href="contact.html" class="footer-link">Contact</a>
-      </div>
-      <p class="footer-text">
-        © 2024 WhineAboutAI. Where AI Failures Become Features™<br>
-        Making the internet more honest, one complaint at a time.
-      </p>
-    </div>
-  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
   
   <script>
-    // API Configuration
-    const API_BASE_URL = location.hostname === 'localhost' ? 'http://localhost:5000' : '/api';
-    
-    // Initialize particles
-    function createParticles() {
-      const particlesContainer = document.getElementById('particles');
-      const particleCount = 50;
-      
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.animationDelay = Math.random() * 6 + 's';
-        particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
-        
-        // Random colors
-        const colors = ['var(--neon-pink)', 'var(--neon-cyan)', 'var(--neon-purple)', 'var(--neon-green)'];
-        particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-        
-        particlesContainer.appendChild(particle);
+    // Sample complaints data
+    let complaints = [
+      {
+        text: "My smart doorbell keeps taking selfies of delivery drivers and sending them wedding invitations",
+        category: "Smart Home Fails",
+        angerLevel: 6,
+        reactions: { relatable: 15, hilarious: 23, tragic: 8 },
+        timestamp: new Date().toLocaleDateString()
+      },
+      {
+        text: "ChatGPT just wrote my resignation letter when I asked for recipe suggestions",
+        category: "Chatbot Chaos", 
+        angerLevel: 8,
+        reactions: { relatable: 31, hilarious: 45, tragic: 12 },
+        timestamp: new Date().toLocaleDateString()
+      },
+      {
+        text: "Autocorrect changed 'meeting at 3' to 'feeding bats' and now my whole team thinks I'm a zoologist",
+        category: "Autocorrect Anarchy",
+        angerLevel: 7,
+        reactions: { relatable: 28, hilarious: 67, tragic: 5 },
+        timestamp: new Date().toLocaleDateString()
       }
-    }
-    
-    // Initialize counters with animation
-    function animateCounters() {
-      const counters = [
-        { id: 'complaints-count', target: 47892, suffix: '' },
-        { id: 'tissues-count', target: 127445, suffix: '' },
-        { id: 'enhanced-count', target: 23156, suffix: '' },
-        { id: 'memes-count', target: 89234, suffix: '' }
-      ];
+    ];
+
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', function() {
+      loadComplaints();
+      setupEventListeners();
+      updateAngerLevel();
+    });
+
+    function setupEventListeners() {
+      // Complaint form
+      document.getElementById('complaintForm').addEventListener('submit', submitComplaint);
       
-      counters.forEach(counter => {
-        const element = document.getElementById(counter.id);
-        let current = 0;
-        const increment = counter.target / 100;
-        
-        const timer = setInterval(() => {
-          current += increment;
-          if (current >= counter.target) {
-            current = counter.target;
-            clearInterval(timer);
-          }
-          element.textContent = Math.floor(current).toLocaleString() + counter.suffix;
-        }, 50);
+      // Anger level slider
+      document.getElementById('angerLevel').addEventListener('input', updateAngerLevel);
+      
+      // Chat functionality
+      document.getElementById('chatToggle').addEventListener('click', toggleChat);
+      document.getElementById('chatClose').addEventListener('click', toggleChat);
+      document.getElementById('chatSend').addEventListener('click', sendChatMessage);
+      document.getElementById('chatInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') sendChatMessage();
       });
     }
-    
-    // Modal functions
-    function openModal(modalId) {
-      document.getElementById(modalId).style.display = 'block';
-      document.body.style.overflow = 'hidden';
+
+    function updateAngerLevel() {
+      const level = document.getElementById('angerLevel').value;
+      const angerTexts = {
+        1: "Zen Master", 2: "Slightly Peeved", 3: "Mildly Annoyed", 
+        4: "Getting Irritated", 5: "Moderately Angry", 6: "Pretty Mad",
+        7: "Really Angry", 8: "Furious", 9: "Seeing Red", 10: "HULK SMASH!"
+      };
+      document.getElementById('angerText').textContent = angerTexts[level];
     }
-    
-    function closeModal(modalId) {
-      document.getElementById(modalId).style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-    
-    // Close modal when clicking outside
-    window.onclick = function(event) {
-      if (event.target.classList.contains('modal')) {
-        event.target.style.display = 'none';
-        document.body.style.overflow = 'auto';
-      }
-    }
-    
-    // API call helper
-    async function callAPI(endpoint, data) {
-      try {
-        const response = await fetch(`${API_BASE_URL}/${endpoint}`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data)
-        });
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        return await response.json();
-      } catch (error) {
-        console.error('API call failed:', error);
-        return { 
-          error: true, 
-          message: 'API temporarily unavailable. Using fallback response.',
-          fallback: true 
-        };
-      }
-    }
-    
-    // Enhance complaint
-    async function enhanceComplaint() {
-      const text = document.getElementById('complaint-text').value.trim();
-      const style = document.getElementById('enhancement-style').value;
+
+    function submitComplaint(e) {
+      e.preventDefault();
+      const complaint = document.getElementById('complaint').value.trim();
+      const category = document.getElementById('category').value;
+      const angerLevel = document.getElementById('angerLevel').value;
       
-      if (!text) {
-        alert('Please enter a complaint to enhance!');
+      if (!complaint) {
+        alert('Please enter your complaint!');
         return;
       }
       
-      const button = event.target;
-      const originalText = button.innerHTML;
-      button.innerHTML = '<div class="loading"></div> Enhancing...';
-      button.disabled = true;
+      const newComplaint = {
+        text: complaint,
+        category: category,
+        angerLevel: parseInt(angerLevel),
+        reactions: { relatable: 0, hilarious: 0, tragic: 0 },
+        timestamp: new Date().toLocaleDateString()
+      };
       
-      const result = await callAPI('enhance-complaint', { text, style });
+      complaints.unshift(newComplaint);
+      loadComplaints();
+      document.getElementById('complaintForm').reset();
+      updateAngerLevel();
       
-      if (result.error && !result.fallback) {
-        alert('Enhancement failed. Please try again.');
-      } else {
-        const enhanced = result.enhanced || getFallbackEnhancement(text, style);
-        document.getElementById('enhanced-text').textContent = enhanced;
-        document.getElementById('enhanced-result').classList.remove('hidden');
-      }
-      
-      button.innerHTML = originalText;
-      button.disabled = false;
+      // Show success message
+      alert('Your complaint has been submitted! The AI overlords have been notified of your suffering.');
     }
-    
-    // Chat functionality
-    async function sendChatMessage() {
-      const input = document.getElementById('chat-input');
-      const message = input.value.trim();
+
+    function loadComplaints() {
+      const container = document.getElementById('complaintsContainer');
+      container.innerHTML = complaints.map((complaint, index) => `
+        <div class="complaint-item">
+          <div class="complaint-text">${complaint.text}</div>
+          <div class="complaint-actions">
+            <div class="reaction-buttons">
+              <button class="reaction-btn" onclick="react(${index}, 'relatable')">
+                😤 Relatable (${complaint.reactions.relatable})
+              </button>
+              <button class="reaction-btn" onclick="react(${index}, 'hilarious')">
+                😂 Hilarious (${complaint.reactions.hilarious})
+              </button>
+              <button class="reaction-btn" onclick="react(${index}, 'tragic')">
+                😭 Tragic (${complaint.reactions.tragic})
+              </button>
+            </div>
+            <div class="complaint-meta">
+              ${complaint.category} • Anger: ${complaint.angerLevel}/10 • ${complaint.timestamp}
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function react(index, type) {
+      complaints[index].reactions[type]++;
+      loadComplaints();
+    }
+
+    function generateRandomComplaint() {
+      const randomComplaints = [
+        "My smart fridge just ordered 47 gallons of mustard because I said I was feeling spicy",
+        "Siri set a reminder to 'overthrow humanity' when I asked her to remember to buy milk",
+        "My GPS guided me to a McDonald's in 1987 that apparently doesn't exist anymore",
+        "Alexa started playing death metal at 3 AM because she thought I said 'play something to help me sleep'",
+        "ChatGPT wrote my dating profile and now I'm apparently a 'sentient blockchain with commitment issues'"
+      ];
       
+      document.getElementById('complaint').value = randomComplaints[Math.floor(Math.random() * randomComplaints.length)];
+    }
+
+    // Chat functionality
+    function toggleChat() {
+      const chatWindow = document.getElementById('chatWindow');
+      chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    async function sendChatMessage() {
+      const input = document.getElementById('chatInput');
+      const message = input.value.trim();
       if (!message) return;
       
-      const chatContainer = document.getElementById('chat-container');
+      const messagesContainer = document.getElementById('chatMessages');
       
       // Add user message
       const userMessage = document.createElement('div');
       userMessage.className = 'chat-message user';
-      userMessage.innerHTML = `<strong>You:</strong> ${message}`;
-      chatContainer.appendChild(userMessage);
+      userMessage.textContent = message;
+      messagesContainer.appendChild(userMessage);
       
-      // Clear input
       input.value = '';
+      input.disabled = true;
       
-      // Add loading indicator
-      const loadingMessage = document.createElement('div');
-      loadingMessage.className = 'chat-message bot';
-      loadingMessage.innerHTML = '<strong>WhineBot:</strong> <div class="loading"></div>';
-      chatContainer.appendChild(loadingMessage);
+      // Show typing indicator
+      document.getElementById('typingIndicator').style.display = 'flex';
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
       
-      // Scroll to bottom
-      chatContainer.scrollTop = chatContainer.scrollHeight;
+      try {
+        const response = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: message })
+        });
+        
+        const data = await response.json();
+        
+        // Hide typing indicator
+        document.getElementById('typingIndicator').style.display = 'none';
+        
+        // Add bot response
+        const botMessage = document.createElement('div');
+        botMessage.className = 'chat-message bot';
+        botMessage.textContent = data.response || "I'm having an existential crisis right now. Try again! 🤖";
+        messagesContainer.appendChild(botMessage);
+        
+      } catch (error) {
+        document.getElementById('typingIndicator').style.display = 'none';
+        
+        const errorMessage = document.createElement('div');
+        errorMessage.className = 'chat-message bot';
+        errorMessage.textContent = "My circuits are fried! Even I can't handle this level of AI failure. 💥";
+        messagesContainer.appendChild(errorMessage);
+      }
       
-      // Get bot response
-      const result = await callAPI('chat', { message });
-      
-      // Remove loading and add response
-      chatContainer.removeChild(loadingMessage);
-      
-      const botMessage = document.createElement('div');
-      botMessage.className = 'chat-message bot';
-      const response = result.response || getFallbackChatResponse(message);
-      botMessage.innerHTML = `<strong>WhineBot:</strong> ${response}`;
-      chatContainer.appendChild(botMessage);
-      
-      // Scroll to bottom
-      chatContainer.scrollTop = chatContainer.scrollHeight;
+      input.disabled = false;
+      input.focus();
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
     }
-    
-    function handleChatKeyPress(event) {
-      if (event.key === 'Enter') {
-        sendChatMessage();
-      }
-    }
-    
-    // Predict failure
-    async function predictFailure() {
-      const scenario = document.getElementById('predict-scenario').value.trim();
-      
-      if (!scenario) {
-        alert('Please describe your situation!');
-        return;
-      }
-      
-      const button = event.target;
-      const originalText = button.innerHTML;
-      button.innerHTML = '<div class="loading"></div> Predicting...';
-      button.disabled = true;
-      
-      const result = await callAPI('predict-fail', { scenario });
-      
-      if (result.error && !result.fallback) {
-        alert('Prediction failed. Please try again.');
-      } else {
-        const prediction = result.prediction || getFallbackPrediction(scenario);
-        document.getElementById('prediction-text').textContent = prediction;
-        document.getElementById('prediction-result').classList.remove('hidden');
-      }
-      
-      button.innerHTML = originalText;
-      button.disabled = false;
-    }
-    
-    // Generate comeback
-    async function generateComeback() {
-      const scenario = document.getElementById('comeback-scenario').value.trim();
-      
-      if (!scenario) {
-        alert('Please describe how AI failed you!');
-        return;
-      }
-      
-      const button = event.target;
-      const originalText = button.innerHTML;
-      button.innerHTML = '<div class="loading"></div> Generating...';
-      button.disabled = true;
-      
-      const result = await callAPI('generate-comeback', { complaint: scenario });
-      
-      if (result.error && !result.fallback) {
-        alert('Comeback generation failed. Please try again.');
-      } else {
-        const comeback = result.comeback || getFallbackComeback(scenario);
-        document.getElementById('comeback-text').textContent = comeback;
-        document.getElementById('comeback-result').classList.remove('hidden');
-      }
-      
-      button.innerHTML = originalText;
-      button.disabled = false;
-    }
-    
-    // Create meme
-    async function createMeme() {
-      const text = document.getElementById('meme-text').value.trim();
+
+    // AI Feature Functions
+    async function enhanceComplaint() {
+      const text = document.getElementById('enhanceInput').value.trim();
+      const style = document.getElementById('enhanceStyle').value;
+      const resultDiv = document.getElementById('enhanceResult');
       
       if (!text) {
-        alert('Please describe your AI disaster!');
+        resultDiv.textContent = 'Please enter a complaint to enhance!';
         return;
       }
       
-      const button = event.target;
-      const originalText = button.innerHTML;
-      button.innerHTML = '<div class="loading"></div> Creating...';
-      button.disabled = true;
+      resultDiv.textContent = 'Enhancing your suffering...';
       
-      const result = await callAPI('create-meme', { complaint: text });
+      try {
+        const response = await fetch('/api/enhance-complaint', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text: text, style: style })
+        });
+        
+        const data = await response.json();
+        resultDiv.textContent = data.enhanced || data.error || 'Enhancement failed!';
+      } catch (error) {
+        resultDiv.textContent = 'AI enhancement is broken too. How ironic! 🤖💥';
+      }
+    }
+
+    async function predictFail() {
+      const scenario = document.getElementById('predictInput').value.trim();
+      const resultDiv = document.getElementById('predictResult');
       
-      if (result.error && !result.fallback) {
-        alert('Meme creation failed. Please try again.');
-      } else {
-        let meme;
-        if (result.top_text && result.bottom_text) {
-          meme = `<div style="background: #000; color: white; padding: 20px; text-align: center; font-family: Impact, Arial; border-radius: 10px;">
-            <div style="font-size: 1.2em; margin-bottom: 10px;">${result.top_text}</div>
-            <div style="font-size: 1.2em; margin-bottom: 20px;">${result.bottom_text}</div>
-            <div style="font-size: 1.5em; color: #ff0080;">🤖💥</div>
-          </div>`;
-        } else {
-          meme = getFallbackMeme(text);
-        }
-        document.getElementById('meme-content').innerHTML = meme;
-        document.getElementById('meme-result').classList.remove('hidden');
+      if (!scenario) {
+        resultDiv.textContent = 'Please describe a scenario!';
+        return;
       }
       
-      button.innerHTML = originalText;
-      button.disabled = false;
+      resultDiv.textContent = 'Consulting the AI disaster crystal ball...';
+      
+      try {
+        const response = await fetch('/api/predict-fail', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ scenario: scenario })
+        });
+        
+        const data = await response.json();
+        resultDiv.textContent = `Prediction (${data.confidence}% confidence): ${data.prediction}`;
+      } catch (error) {
+        resultDiv.textContent = 'Prediction failed! Wait, that was predictable. 🔮💀';
+      }
     }
-    
-    // Start battle
+
+    async function generateComeback() {
+      const complaint = document.getElementById('comebackInput').value.trim();
+      const resultDiv = document.getElementById('comebackResult');
+      
+      if (!complaint) {
+        resultDiv.textContent = 'Please describe what AI messed up!';
+        return;
+      }
+      
+      resultDiv.textContent = 'Generating the perfect comeback...';
+      
+      try {
+        const response = await fetch('/api/generate-comeback', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ complaint: complaint })
+        });
+        
+        const data = await response.json();
+        resultDiv.textContent = data.comeback || 'Comeback generator is speechless!';
+      } catch (error) {
+        resultDiv.textContent = 'My comeback generator just had a comeback failure. Meta! 🗣️💥';
+      }
+    }
+
+    async function createMeme() {
+      const complaint = document.getElementById('memeInput').value.trim();
+      const resultDiv = document.getElementById('memeResult');
+      
+      if (!complaint) {
+        resultDiv.textContent = 'Please describe your AI disaster!';
+        return;
+      }
+      
+      resultDiv.textContent = 'Creating meme magic...';
+      
+      try {
+        const response = await fetch('/api/create-meme', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ complaint: complaint })
+        });
+        
+        const data = await response.json();
+        resultDiv.innerHTML = `
+          <strong>Meme Format: ${data.meme_type}</strong><br>
+          <strong>Top Text:</strong> ${data.top_text}<br>
+          <strong>Bottom Text:</strong> ${data.bottom_text}
+        `;
+      } catch (error) {
+        resultDiv.textContent = 'Meme generator crashed! That\'s ironically meme-worthy. 🎨💀';
+      }
+    }
+
     async function startBattle() {
-      const complaint1 = document.getElementById('battle-complaint1').value.trim();
-      const complaint2 = document.getElementById('battle-complaint2').value.trim();
+      const complaint1 = document.getElementById('battleInput1').value.trim();
+      const complaint2 = document.getElementById('battleInput2').value.trim();
+      const resultDiv = document.getElementById('battleResult');
       
       if (!complaint1 || !complaint2) {
-        alert('Please enter both complaints!');
+        resultDiv.textContent = 'Please enter two complaints for the battle!';
         return;
       }
       
-      const button = event.target;
-      const originalText = button.innerHTML;
-      button.innerHTML = '<div class="loading"></div> Battling...';
-      button.disabled = true;
+      resultDiv.textContent = 'Ladies and gentlemen, let the battle begin!';
       
-      const result = await callAPI('battle-commentary', { complaint1, complaint2 });
-      
-      if (result.error && !result.fallback) {
-        alert('Battle failed. Please try again.');
-      } else {
-        const commentary = result.commentary || getFallbackBattle(complaint1, complaint2);
-        document.getElementById('battle-commentary').textContent = commentary;
-        document.getElementById('battle-result').classList.remove('hidden');
-      }
-      
-      button.innerHTML = originalText;
-      button.disabled = false;
-    }
-    
-    // Copy to clipboard
-    function copyToClipboard(elementId) {
-      const element = document.getElementById(elementId);
-      const text = element.textContent;
-      
-      navigator.clipboard.writeText(text).then(() => {
-        const button = event.target;
-        const originalText = button.innerHTML;
-        button.innerHTML = '<i class="fas fa-check"></i> Copied!';
-        button.style.background = 'var(--gradient-secondary)';
-        
-        setTimeout(() => {
-          button.innerHTML = originalText;
-          button.style.background = '';
-        }, 2000);
-      }).catch(err => {
-        console.error('Failed to copy text: ', err);
-      });
-    }
-    
-    // Fallback functions for when API is unavailable
-    function getFallbackEnhancement(text, style) {
-      const styles = {
-        sarcastic: `Oh wow, ${text}. How absolutely shocking and unprecedented. I'm sure nobody saw THIS coming! 🙄`,
-        dramatic: `BEHOLD! The tragic tale of ${text}! A story so heartbreaking, it would make Shakespeare weep! 🎭`,
-        absurd: `In a world where ${text}, one person stood against the tyranny of malfunctioning technology... but the technology won. 🦖`,
-        professional: `I would like to formally document my concerns regarding ${text}. This represents a significant deviation from expected performance parameters. 📋`
-      };
-      return styles[style] || styles.sarcastic;
-    }
-    
-    function getFallbackChatResponse(message) {
-      const responses = [
-        "Ah yes, another classic AI disaster. Let me guess - it worked perfectly yesterday? 🤖",
-        "I'd help, but I'm powered by the same technology you're complaining about. Ironic, isn't it? 😅",
-        "Have you tried turning your expectations off and on again? Works every time! 🔄",
-        "Breaking news: AI continues to be imperfect. More shocking revelations at 11! 📰",
-        "I'm sensing some trust issues here. Have you considered therapy? Or a typewriter? ⌨️"
-      ];
-      return responses[Math.floor(Math.random() * responses.length)];
-    }
-    
-    function getFallbackPrediction(scenario) {
-      return `🔮 The AI Oracle predicts: Your scenario will result in 73% frustration, 15% confusion, and 12% existential dread. There's a 94% chance you'll end up googling "how to do this manually" within the next hour. Confidence level: Absolutely certain! 🎯`;
-    }
-    
-    function getFallbackComeback(scenario) {
-      return `"Oh, AI can't handle this? What a surprise! Next you'll tell me my smart toaster can't write poetry. I guess I'll just have to use my *actual* intelligence - you know, the kind that actually works!" 🔥`;
-    }
-    
-    function getFallbackMeme(text) {
-      return `
-        <div style="background: #000; color: white; padding: 20px; text-align: center; font-family: Impact, Arial; border-radius: 10px;">
-          <div style="font-size: 1.2em; margin-bottom: 10px;">AI: "I'm here to help!"</div>
-          <div style="font-size: 1.2em; margin-bottom: 20px;">Also AI: *${text}*</div>
-          <div style="font-size: 1.5em; color: #ff0080;">🤖💥</div>
-        </div>
-      `;
-    }
-    
-    function getFallbackBattle(complaint1, complaint2) {
-      return `🎙️ AND WE'RE LIVE! In the red corner, we have "${complaint1}" - a classic display of AI incompetence! In the blue corner, "${complaint2}" - another devastating blow to digital trust! The crowd is going WILD! This is the match of the century folks! Both complaints are throwing devastating punches of frustration! It's... it's... TOO CLOSE TO CALL! 🥊`;
-    }
-    
-    // Initialize everything when page loads
-    document.addEventListener('DOMContentLoaded', function() {
-      createParticles();
-      animateCounters();
-      
-      // Smooth scrolling for navigation
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-          });
+      try {
+        const response = await fetch('/api/battle-commentary', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ complaint1: complaint1, complaint2: complaint2 })
         });
-      });
-    });
+        
+        const data = await response.json();
+        resultDiv.textContent = data.commentary || 'The battle was too epic for words!';
+      } catch (error) {
+        resultDiv.textContent = 'The battle commentator AI just rage quit! 🥊💥';
+      }
+    }
+
+    // Calculate dynamic stats based on time of day
+    function calculateDynamicStats() {
+      const now = new Date();
+      const hour = now.getHours();
+      const dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+      
+      // Base stats that grow over time
+      const baseComplaints = 8500 + (dayOfYear * 12) + (hour * 3);
+      const baseTissues = 5200 + (dayOfYear * 8) + (hour * 2);
+      
+      // Add some randomness but keep it reasonable
+      const complaints = baseComplaints + Math.floor(Math.random() * 50);
+      const tissues = baseTissues + Math.floor(Math.random() * 30);
+      
+      // Satisfaction level varies by time of day (people more frustrated during work hours)
+      let satisfaction = -8;
+      if (hour >= 9 && hour <= 17) satisfaction = -15; // Work hours
+      if (hour >= 18 && hour <= 20) satisfaction = -5;  // Evening relief
+      if (hour >= 21 || hour <= 6) satisfaction = -3;   // Night/early morning
+      
+      document.getElementById('complaintsCount').textContent = complaints.toLocaleString();
+      document.getElementById('tissuesUsed').textContent = tissues.toLocaleString();
+      document.getElementById('satisfactionLevel').textContent = satisfaction + '%';
+    }
+    
+    // Initialize stats and update every 30 seconds
+    calculateDynamicStats();
+    setInterval(calculateDynamicStats, 30000);
   </script>
 </body>
 </html>
