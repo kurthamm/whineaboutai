@@ -8,7 +8,10 @@ import json
 import os
 import random
 from datetime import datetime
-import openai
+try:
+    import openai
+except ImportError:
+    openai = None
 
 class handler(BaseHTTPRequestHandler):
     def do_POST(self):
@@ -40,6 +43,7 @@ class handler(BaseHTTPRequestHandler):
             # Generate battle commentary
             result = generate_battle_commentary(complaint1, complaint2)
             self.wfile.write(json.dumps(result).encode())
+            return
             
         except Exception as e:
             error_response = {
@@ -50,6 +54,7 @@ class handler(BaseHTTPRequestHandler):
                 "error": str(e)
             }
             self.wfile.write(json.dumps(error_response).encode())
+            return
     
     def do_OPTIONS(self):
         # Handle CORS preflight
@@ -58,13 +63,14 @@ class handler(BaseHTTPRequestHandler):
         self.send_header('Access-Control-Allow-Methods', 'POST, OPTIONS')
         self.send_header('Access-Control-Allow-Headers', 'Content-Type')
         self.end_headers()
+        return
 
 def generate_battle_commentary(complaint1: str, complaint2: str) -> dict:
     """Generate sports announcer style commentary for complaint battles"""
     
     # Try OpenAI first
     api_key = os.getenv('OPENAI_API_KEY')
-    if api_key:
+    if api_key and openai:
         try:
             client = openai.OpenAI(api_key=api_key)
             
