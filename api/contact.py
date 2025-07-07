@@ -96,8 +96,37 @@ The irony levels are off the charts! 📊
             print(f"Message: {message}")
             print(f"Forwarding to: {recipient_email}")
             
-            # TODO: Add actual email sending when SMTP is configured
-            # For now, we're just logging it with our funny email address
+            # Send actual email
+            try:
+                smtp_host = os.getenv('SMTP_HOST')
+                smtp_port = int(os.getenv('SMTP_PORT', '587'))
+                smtp_user = os.getenv('SMTP_USER')
+                smtp_password = os.getenv('SMTP_PASSWORD')
+                
+                if all([smtp_host, smtp_user, smtp_password]):
+                    # Create message
+                    msg = MIMEMultipart()
+                    msg['From'] = smtp_user
+                    msg['To'] = recipient_email
+                    msg['Subject'] = email_subject
+                    msg['Reply-To'] = email
+                    
+                    # Attach body
+                    msg.attach(MIMEText(email_body, 'plain', 'utf-8'))
+                    
+                    # Send email
+                    with smtplib.SMTP(smtp_host, smtp_port) as server:
+                        server.starttls()
+                        server.login(smtp_user, smtp_password)
+                        server.send_message(msg)
+                    
+                    print(f"✅ Email sent successfully to {recipient_email}")
+                else:
+                    print("⚠️ SMTP not configured - submission logged only")
+                    
+            except Exception as email_error:
+                print(f"❌ Email sending failed: {str(email_error)}")
+                # Don't fail the whole request if email fails
             
             # Generate a witty response based on the subject
             responses = {
