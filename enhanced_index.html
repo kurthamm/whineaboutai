@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Whine About AI - Enhanced AI-Powered Complaint Platform</title>
+  <meta name="description" content="Tired of AI mistakes? Our AI-powered platform makes your complaints funnier and more shareable. Get comebacks, predictions, and memes for every AI failure!">
+  <meta name="keywords" content="AI complaints, chatbot fails, smart device problems, AI-powered content, complaint enhancement, meme generator">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://whineaboutai.com/">
+  <meta property="og:title" content="Whine About AI - Enhanced AI-Powered Complaint Platform">
+  <meta property="og:description" content="Turn your AI frustrations into viral content! Get AI-enhanced complaints, comebacks, and predictions.">
+  <meta property="og:image" content="https://whineaboutai.com/whine-about-ai-share.jpg">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="Whine About AI - AI-Powered Complaint Platform">
+  <meta property="twitter:description" content="Turn your AI frustrations into viral content with our AI-powered enhancement tools!">
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-48GGY3RC9G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-48GGY3RC9G');
+  </script>
+  
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5497961962190935" crossorigin="anonymous"></script>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet"/>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --primary-color: #FF6B6B;
+      --secondary-color: #4ECDC4;
+      --accent-color: #FFE66D;
+      --dark-color: #2D3436;
+      --light-color: #F8F9FA;
+      --gradient-primary: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+      --gradient-secondary: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+      --gradient-success: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);
+    }
+    
+    body { 
+      font-family: 'Poppins', sans-serif; 
+      background: var(--light-color); 
+      color: var(--dark-color); 
+      position: relative; 
+      overflow-x: hidden; 
+    }
+    
+    .navbar { 
+      background: var(--gradient-primary); 
+      box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    }
+    .navbar-brand { 
+      color: white !important; 
+      font-weight: 700; 
+      font-size: 1.5rem;
+    }
+    
+    .hero-section {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 4rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="white" opacity="0.1"/><circle cx="80" cy="40" r="1" fill="white" opacity="0.15"/><circle cx="40" cy="80" r="1.5" fill="white" opacity="0.1"/></svg>');
+      animation: float 20s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      33% { transform: translateY(-20px) rotate(120deg); }
+      66% { transform: translateY(10px) rotate(240deg); }
+    }
+    
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .hero-subtitle {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+    
+    .feature-badge {
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 50px;
+      padding: 0.5rem 1rem;
+      margin: 0.25rem;
+      display: inline-block;
+      backdrop-filter: blur(10px);
+    }
+    
+    .complaint-section {
+      padding: 3rem 0;
+    }
+    
+    .complaint-card {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      border: 1px solid #e9ecef;
+      transition: all 0.3s ease;
+    }
+    
+    .complaint-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    
+    .complaint-textarea {
+      border: 2px solid #e9ecef;
+      border-radius: 15px;
+      padding: 1rem;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      min-height: 120px;
+      resize: vertical;
+    }
+    
+    .complaint-textarea:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.2rem rgba(255, 107, 107, 0.25);
+      outline: none;
+    }
+    
+    .enhancement-section {
+      background: rgba(255, 107, 107, 0.05);
+      border-radius: 15px;
+      padding: 1.5rem;
+      margin-top: 1rem;
+      border: 1px solid rgba(255, 107, 107, 0.1);
+    }
+    
+    .enhanced-text {
+      background: white;
+      border-radius: 10px;
+      padding: 1rem;
+      border-left: 4px solid var(--primary-color);
+      font-style: italic;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    
+    .style-buttons {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin: 1rem 0;
+    }
+    
+    .style-btn {
+      background: white;
+      border: 2px solid var(--primary-color);
+      color: var(--primary-color);
+      border-radius: 25px;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    
+    .style-btn:hover, .style-btn.active {
+      background: var(--primary-color);
+      color: white;
+    }
+    
+    .feature-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .feature-card {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      border: 1px solid #e9ecef;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+    }
+    
+    .feature-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--dark-color);
+    }
+    
+    .feature-description {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+    
+    .btn-primary-custom {
+      background: var(--gradient-primary);
+      border: none;
+      border-radius: 25px;
+      padding: 0.75rem 2rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary-custom:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+    }
+    
+    .btn-secondary-custom {
+      background: var(--gradient-secondary);
+      border: none;
+      border-radius: 25px;
+      padding: 0.75rem 2rem;
+      font-weight: 600;
+      color: white;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-secondary-custom:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+      color: white;
+    }
+    
+    .stats-section {
+      background: var(--gradient-secondary);
+      color: white;
+      padding: 3rem 0;
+      margin: 3rem 0;
+    }
+    
+    .stat-card {
+      text-align: center;
+      padding: 2rem;
+    }
+    
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    
+    .complaint-feed {
+      max-height: 600px;
+      overflow-y: auto;
+      padding: 1rem;
+      border-radius: 15px;
+      background: #f8f9fa;
+    }
+    
+    .complaint-item {
+      background: white;
+      border-radius: 15px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .complaint-item:hover {
+      transform: translateX(10px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    
+    .complaint-text {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      color: var(--dark-color);
+    }
+    
+    .complaint-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .reaction-buttons {
+      display: flex;
+      gap: 0.5rem;
+    }
+    
+    .reaction-btn {
+      background: #f8f9fa;
+      border: 1px solid #e9ecef;
+      border-radius: 20px;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .reaction-btn:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: scale(1.05);
+    }
+    
+    .action-buttons {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .action-btn {
+      background: var(--secondary-color);
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+    
+    .action-btn:hover {
+      background: #44A08D;
+      transform: scale(1.05);
+    }
+    
+    /* Enhanced Chat Widget */
+    .chat-widget {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+    
+    .chat-window {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      width: 350px;
+      height: 500px;
+      display: none;
+      flex-direction: column;
+      border: 1px solid #e9ecef;
+    }
+    
+    .chat-header {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 1rem;
+      border-radius: 20px 20px 0 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .chat-messages {
+      flex: 1;
+      padding: 1rem;
+      overflow-y: auto;
+      max-height: 350px;
+    }
+    
+    .chat-message {
+      margin-bottom: 1rem;
+      padding: 0.75rem 1rem;
+      border-radius: 15px;
+      max-width: 80%;
+      line-height: 1.4;
+    }
+    
+    .chat-message.user {
+      background: var(--primary-color);
+      color: white;
+      margin-left: auto;
+      border-bottom-right-radius: 5px;
+    }
+    
+    .chat-message.bot {
+      background: #f8f9fa;
+      border: 1px solid #e9ecef;
+      border-bottom-left-radius: 5px;
+    }
+    
+    .chat-input-area {
+      padding: 1rem;
+      border-top: 1px solid #e9ecef;
+      display: flex;
+      gap: 0.5rem;
+    }
+    
+    .chat-input {
+      flex: 1;
+      border: 1px solid #e9ecef;
+      border-radius: 25px;
+      padding: 0.75rem 1rem;
+      outline: none;
+    }
+    
+    .chat-input:focus {
+      border-color: var(--primary-color);
+    }
+    
+    .chat-send {
+      background: var(--primary-color);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .chat-send:hover {
+      background: #FF5252;
+      transform: scale(1.1);
+    }
+    
+    .chat-button {
+      background: var(--gradient-primary);
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+      transition: all 0.3s ease;
+    }
+    
+    .chat-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 15px 40px rgba(255, 107, 107, 0.6);
+    }
+    
+    /* Loading animations */
+    .loading {
+      opacity: 0.7;
+      pointer-events: none;
+    }
+    
+    .spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s ease-in-out infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    /* Modal styles */
+    .modal-content {
+      border-radius: 20px;
+      border: none;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    
+    .modal-header {
+      background: var(--gradient-primary);
+      color: white;
+      border-radius: 20px 20px 0 0;
+      border-bottom: none;
+    }
+    
+    /* Utility classes */
+    .fade-in {
+      animation: fadeIn 0.5s ease-in;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2.5rem; }
+      .hero-subtitle { font-size: 1.1rem; }
+      .feature-cards { grid-template-columns: 1fr; }
+      .chat-window { width: 300px; height: 450px; }
+      .chat-widget { right: 10px; bottom: 10px; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#"><i class="fas fa-robot me-2"></i>Whine About AI</a>
+      <div class="ms-auto">
+        <span class="text-white">Where AI Failures Become Features™</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container text-center">
+      <h1 class="hero-title">AI-Powered Complaint Platform</h1>
+      <p class="hero-subtitle">Turn your AI frustrations into viral content with our enhanced complaint tools!</p>
+      <div class="mt-4">
+        <span class="feature-badge"><i class="fas fa-magic me-2"></i>AI Enhancement</span>
+        <span class="feature-badge"><i class="fas fa-comment-dots me-2"></i>Smart WhineBot</span>
+        <span class="feature-badge"><i class="fas fa-crystal-ball me-2"></i>Fail Predictions</span>
+        <span class="feature-badge"><i class="fas fa-share-alt me-2"></i>Viral Content</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Complaint Section -->
+  <section class="complaint-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <div class="complaint-card">
+            <h2 class="text-center mb-4"><i class="fas fa-exclamation-triangle text-warning me-2"></i>Share Your AI Disaster</h2>
+            
+            <form id="complaintForm">
+              <div class="mb-3">
+                <label for="complaintText" class="form-label fw-bold">What did AI mess up today?</label>
+                <textarea 
+                  class="form-control complaint-textarea" 
+                  id="complaintText" 
+                  placeholder="Tell us about your AI disaster... we'll make it funnier!"
+                  maxlength="500"
+                ></textarea>
+                <div class="form-text">
+                  <span id="charCount">0</span>/500 characters
+                </div>
+              </div>
+
+              <!-- Enhancement Section -->
+              <div class="enhancement-section" id="enhancementSection" style="display: none;">
+                <h5><i class="fas fa-wand-magic-sparkles me-2"></i>AI-Enhanced Version</h5>
+                <div class="enhanced-text" id="enhancedText"></div>
+                
+                <div class="style-buttons">
+                  <button type="button" class="btn style-btn" data-style="sarcastic">😏 Sarcastic</button>
+                  <button type="button" class="btn style-btn" data-style="dramatic">🎭 Dramatic</button>
+                  <button type="button" class="btn style-btn" data-style="absurd">🤪 Absurd</button>
+                  <button type="button" class="btn style-btn" data-style="professional">💼 Professional</button>
+                </div>
+
+                <div class="d-flex gap-2 flex-wrap">
+                  <button type="button" class="btn btn-sm btn-outline-primary" id="useEnhancedBtn">
+                    <i class="fas fa-check me-2"></i>Use Enhanced
+                  </button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" id="useOriginalBtn">
+                    <i class="fas fa-undo me-2"></i>Use Original
+                  </button>
+                </div>
+              </div>
+
+              <div class="d-flex gap-2 mt-3 flex-wrap">
+                <button type="button" class="btn btn-primary-custom" id="enhanceBtn">
+                  <i class="fas fa-magic me-2"></i>Enhance with AI
+                </button>
+                <button type="submit" class="btn btn-secondary-custom">
+                  <i class="fas fa-paper-plane me-2"></i>Submit Complaint
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="stat-card">
+            <div class="stat-number" id="dailyComplaints">0</div>
+            <div class="stat-label">Complaints Today</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="stat-card">
+            <div class="stat-number" id="enhancementsCount">0</div>
+            <div class="stat-label">AI Enhancements</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="stat-card">
+            <div class="stat-number" id="tissuesDelivered">0</div>
+            <div class="stat-label">Tissues Delivered</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="stat-card">
+            <div class="stat-number" id="laughsGenerated">0</div>
+            <div class="stat-label">Laughs Generated</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Cards -->
+  <section class="container">
+    <div class="feature-cards">
+      <!-- AI Fail Predictor -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-crystal-ball"></i>
+        </div>
+        <h3 class="feature-title">AI Fail Predictor</h3>
+        <p class="feature-description">Tell us your situation and we'll predict exactly how AI will mess it up!</p>
+        <button class="btn btn-primary-custom" onclick="openPredictorModal()">
+          <i class="fas fa-search me-2"></i>Predict Disaster
+        </button>
+      </div>
+
+      <!-- Comeback Generator -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-reply"></i>
+        </div>
+        <h3 class="feature-title">Perfect Comebacks</h3>
+        <p class="feature-description">Get the perfect response you wish you had said to that malfunctioning AI!</p>
+        <button class="btn btn-primary-custom" onclick="openComebackModal()">
+          <i class="fas fa-comments me-2"></i>Get Comeback
+        </button>
+      </div>
+
+      <!-- Meme Generator -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-image"></i>
+        </div>
+        <h3 class="feature-title">Instant Memes</h3>
+        <p class="feature-description">Turn any complaint into a shareable meme that will go viral!</p>
+        <button class="btn btn-primary-custom" onclick="openMemeModal()">
+          <i class="fas fa-magic me-2"></i>Create Meme
+        </button>
+      </div>
+
+      <!-- Complaint Battle -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-fist-raised"></i>
+        </div>
+        <h3 class="feature-title">Complaint Battle</h3>
+        <p class="feature-description">Watch AI failures face off in epic battles with hilarious commentary!</p>
+        <button class="btn btn-primary-custom" onclick="startComplaintBattle()">
+          <i class="fas fa-play me-2"></i>Start Battle
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Complaint Feed -->
+  <section class="container mt-5">
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        <h2 class="text-center mb-4"><i class="fas fa-stream me-2"></i>Latest AI Disasters</h2>
+        <div class="complaint-feed" id="complaintFeed">
+          <!-- Complaints will be populated here -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modals -->
+  
+  <!-- AI Fail Predictor Modal -->
+  <div class="modal fade" id="predictorModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><i class="fas fa-crystal-ball me-2"></i>AI Fail Predictor</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="scenarioInput" class="form-label">Describe your situation:</label>
+            <textarea class="form-control" id="scenarioInput" rows="3" placeholder="e.g., Going to an important job interview..."></textarea>
+          </div>
+          <button class="btn btn-primary-custom" onclick="predictFail()">
+            <i class="fas fa-magic me-2"></i>Predict What Will Go Wrong
+          </button>
+          <div id="predictionResult" class="mt-3" style="display: none;">
+            <div class="alert alert-warning">
+              <h6><i class="fas fa-exclamation-triangle me-2"></i>Prediction:</h6>
+              <p id="predictionText"></p>
+              <small class="text-muted">Confidence: <span id="confidenceLevel"></span>%</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comeback Generator Modal -->
+  <div class="modal fade" id="comebackModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><i class="fas fa-reply me-2"></i>Perfect Comeback Generator</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="comebackInput" class="form-label">What AI failure needs a comeback?</label>
+            <textarea class="form-control" id="comebackInput" rows="3" placeholder="e.g., Autocorrect changed 'meeting' to 'mating' in my work email..."></textarea>
+          </div>
+          <button class="btn btn-primary-custom" onclick="generateComeback()">
+            <i class="fas fa-comments me-2"></i>Generate Comeback
+          </button>
+          <div id="comebackResult" class="mt-3" style="display: none;">
+            <div class="alert alert-success">
+              <h6><i class="fas fa-quote-left me-2"></i>Perfect Comeback:</h6>
+              <p id="comebackText"></p>
+              <button class="btn btn-sm btn-outline-primary" onclick="copyToClipboard('comebackText')">
+                <i class="fas fa-copy me-2"></i>Copy
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Meme Generator Modal -->
+  <div class="modal fade" id="memeModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><i class="fas fa-image me-2"></i>Meme Generator</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="memeInput" class="form-label">Your complaint:</label>
+            <textarea class="form-control" id="memeInput" rows="3" placeholder="Enter your AI complaint to turn into a meme..."></textarea>
+          </div>
+          <button class="btn btn-primary-custom" onclick="generateMeme()">
+            <i class="fas fa-magic me-2"></i>Create Meme
+          </button>
+          <div id="memeResult" class="mt-3" style="display: none;">
+            <div class="text-center">
+              <div class="meme-preview bg-dark text-white p-4 rounded">
+                <div class="meme-top-text" id="memeTopText"></div>
+                <div class="meme-image-placeholder bg-secondary rounded my-3" style="height: 200px; display: flex; align-items: center; justify-content: center;">
+                  <i class="fas fa-robot fa-5x text-white-50"></i>
+                </div>
+                <div class="meme-bottom-text" id="memeBottomText"></div>
+              </div>
+              <button class="btn btn-success mt-3" onclick="downloadMeme()">
+                <i class="fas fa-download me-2"></i>Download Meme
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Enhanced Chat Widget -->
+  <div class="chat-widget">
+    <div class="chat-window" id="chatWindow">
+      <div class="chat-header">
+        <span><i class="fas fa-robot me-2"></i>WhineBot AI Therapist</span>
+        <button class="btn btn-sm text-white" onclick="toggleChat()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="chat-message bot">
+          🎭 Welcome to AI Therapy! I'm WhineBot, your sarcastic AI therapist who specializes in AI failures. What digital disaster shall we discuss today?
+        </div>
+      </div>
+      <div class="chat-input-area">
+        <input type="text" class="chat-input" id="chatInput" placeholder="Tell me about your AI trauma..." maxlength="300">
+        <button class="chat-send" onclick="sendMessage()">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+    </div>
+    <button class="chat-button pulse" onclick="toggleChat()">
+      <i class="fas fa-robot"></i>
+    </button>
+  </div>
+
+  <!-- Footer -->
+  <footer class="mt-5 py-4 bg-light text-center">
+    <div class="container">
+      <p class="mb-2">&copy; 2025 Whine About AI. All rights reserved.</p>
+      <p class="text-muted small mb-0">
+        <a href="/privacy-policy" class="text-decoration-none me-3">Privacy Policy</a>
+        <a href="/terms-of-service" class="text-decoration-none me-3">Terms of Service</a>
+        <a href="/contact" class="text-decoration-none">Contact Us</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Configuration
+    const API_BASE_URL = 'http://localhost:5000';
+    let complaints = [];
+    let conversationId = 'session_' + Date.now();
+    let currentComplaintText = '';
+
+    // Sample complaints for initial feed
+    const sampleComplaints = [
+      "My smart toaster achieved sentience and now judges my breakfast choices",
+      "ChatGPT wrote my resignation letter when I asked for a grocery list",
+      "Alexa started playing death metal during my meditation session",
+      "My GPS rerouted me through three different time zones to buy coffee",
+      "AI autocorrect changed 'I love you' to 'I leave you' in my anniversary text"
+    ];
+
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', function() {
+      initializeStats();
+      populateComplaintFeed();
+      setupEventListeners();
+      animateCounters();
+    });
+
+    function setupEventListeners() {
+      // Character counter
+      document.getElementById('complaintText').addEventListener('input', function() {
+        const text = this.value;
+        document.getElementById('charCount').textContent = text.length;
+        
+        // Show enhance button when text is entered
+        const enhanceBtn = document.getElementById('enhanceBtn');
+        if (text.trim().length > 10) {
+          enhanceBtn.style.display = 'block';
+          enhanceBtn.classList.add('pulse');
+        } else {
+          enhanceBtn.style.display = 'none';
+          enhanceBtn.classList.remove('pulse');
+        }
+      });
+
+      // Complaint form submission
+      document.getElementById('complaintForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        submitComplaint();
+      });
+
+      // Style button clicks
+      document.querySelectorAll('.style-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.style-btn').forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          
+          const style = this.dataset.style;
+          const originalText = document.getElementById('complaintText').value;
+          if (originalText.trim()) {
+            enhanceComplaint(originalText, style);
+          }
+        });
+      });
+
+      // Enhancement buttons
+      document.getElementById('useEnhancedBtn').addEventListener('click', function() {
+        const enhancedText = document.getElementById('enhancedText').textContent;
+        document.getElementById('complaintText').value = enhancedText;
+        currentComplaintText = enhancedText;
+        hideEnhancementSection();
+      });
+
+      document.getElementById('useOriginalBtn').addEventListener('click', function() {
+        hideEnhancementSection();
+      });
+
+      // Chat input enter key
+      document.getElementById('chatInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          sendMessage();
+        }
+      });
+    }
+
+    // API Functions
+    async function enhanceComplaint(text, style = 'sarcastic') {
+      const enhanceBtn = document.getElementById('enhanceBtn');
+      const originalText = enhanceBtn.innerHTML;
+      
+      try {
+        enhanceBtn.innerHTML = '<span class="spinner"></span> Enhancing...';
+        enhanceBtn.disabled = true;
+
+        const response = await fetch(`${API_BASE_URL}/enhance-complaint`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            text: text,
+            style: style
+          })
+        });
+
+        const data = await response.json();
+        
+        if (data.success) {
+          showEnhancedComplaint(data.enhanced, data.original);
+          updateStats('enhancements');
+        } else {
+          showToast('Enhancement failed. Please try again!', 'error');
+        }
+      } catch (error) {
+        console.error('Enhancement error:', error);
+        showToast('Network error. Please check your connection!', 'error');
+      } finally {
+        enhanceBtn.innerHTML = originalText;
+        enhanceBtn.disabled = false;
+      }
+    }
+
+    function showEnhancedComplaint(enhanced, original) {
+      document.getElementById('enhancedText').textContent = enhanced;
+      document.getElementById('enhancementSection').style.display = 'block';
+      document.getElementById('enhancementSection').classList.add('fade-in');
+      currentComplaintText = enhanced;
+    }
+
+    function hideEnhancementSection() {
+      document.getElementById('enhancementSection').style.display = 'none';
+    }
+
+    async function sendMessage() {
+      const input = document.getElementById('chatInput');
+      const message = input.value.trim();
+      
+      if (!message) return;
+
+      // Add user message to chat
+      addChatMessage(message, 'user');
+      input.value = '';
+
+      // Show typing indicator
+      showTypingIndicator();
+
+      try {
+        const response = await fetch(`${API_BASE_URL}/chat`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            message: message,
+            conversation_id: conversationId
+          })
+        });
+
+        const data = await response.json();
+        
+        hideTypingIndicator();
+        
+        if (data.success) {
+          addChatMessage(data.response, 'bot');
+        } else {
+          addChatMessage("I'm having technical difficulties... which is ironic! 😅", 'bot');
+        }
+      } catch (error) {
+        hideTypingIndicator();
+        addChatMessage("Network error - even I can't escape AI failures! 🤖💔", 'bot');
+      }
+    }
+
+    function addChatMessage(message, sender) {
+      const messagesContainer = document.getElementById('chatMessages');
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `chat-message ${sender}`;
+      messageDiv.textContent = message;
+      messagesContainer.appendChild(messageDiv);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    function showTypingIndicator() {
+      const indicator = document.createElement('div');
+      indicator.className = 'chat-message bot typing-indicator';
+      indicator.id = 'typingIndicator';
+      indicator.innerHTML = '<i class="fas fa-ellipsis-h"></i> WhineBot is typing...';
+      document.getElementById('chatMessages').appendChild(indicator);
+      document.getElementById('chatMessages').scrollTop = document.getElementById('chatMessages').scrollHeight;
+    }
+
+    function hideTypingIndicator() {
+      const indicator = document.getElementById('typingIndicator');
+      if (indicator) {
+        indicator.remove();
+      }
+    }
+
+    function toggleChat() {
+      const chatWindow = document.getElementById('chatWindow');
+      const chatButton = document.querySelector('.chat-button');
+      
+      if (chatWindow.style.display === 'none' || !chatWindow.style.display) {
+        chatWindow.style.display = 'flex';
+        chatButton.style.display = 'none';
+      } else {
+        chatWindow.style.display = 'none';
+        chatButton.style.display = 'block';
+      }
+    }
+
+    // Modal Functions
+    async function predictFail() {
+      const scenario = document.getElementById('scenarioInput').value.trim();
+      if (!scenario) {
+        showToast('Please describe a scenario first!', 'warning');
+        return;
+      }
+
+      try {
+        const response = await fetch(`${API_BASE_URL}/predict-fail`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ scenario })
+        });
+
+        const data = await response.json();
+        
+        document.getElementById('predictionText').textContent = data.prediction;
+        document.getElementById('confidenceLevel').textContent = data.confidence;
+        document.getElementById('predictionResult').style.display = 'block';
+        document.getElementById('predictionResult').classList.add('fade-in');
+      } catch (error) {
+        showToast('Prediction failed. Even our AI predictor has AI problems!', 'error');
+      }
+    }
+
+    async function generateComeback() {
+      const complaint = document.getElementById('comebackInput').value.trim();
+      if (!complaint) {
+        showToast('Please enter a complaint first!', 'warning');
+        return;
+      }
+
+      try {
+        const response = await fetch(`${API_BASE_URL}/generate-comeback`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ complaint })
+        });
+
+        const data = await response.json();
+        
+        document.getElementById('comebackText').textContent = data.comeback;
+        document.getElementById('comebackResult').style.display = 'block';
+        document.getElementById('comebackResult').classList.add('fade-in');
+      } catch (error) {
+        showToast('Comeback generation failed. No witty response available!', 'error');
+      }
+    }
+
+    async function generateMeme() {
+      const complaint = document.getElementById('memeInput').value.trim();
+      if (!complaint) {
+        showToast('Please enter a complaint to meme-ify!', 'warning');
+        return;
+      }
+
+      try {
+        const response = await fetch(`${API_BASE_URL}/create-meme`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ complaint })
+        });
+
+        const data = await response.json();
+        
+        document.getElementById('memeTopText').textContent = data.top_text;
+        document.getElementById('memeBottomText').textContent = data.bottom_text;
+        document.getElementById('memeResult').style.display = 'block';
+        document.getElementById('memeResult').classList.add('fade-in');
+      } catch (error) {
+        showToast('Meme generation failed. Even memes have technical difficulties!', 'error');
+      }
+    }
+
+    function startComplaintBattle() {
+      // Select two random complaints for battle
+      const randomComplaints = sampleComplaints.sort(() => 0.5 - Math.random()).slice(0, 2);
+      showToast(`Battle starting: "${randomComplaints[0]}" vs "${randomComplaints[1]}"`, 'info');
+      
+      // This would trigger the battle commentary API
+      // For now, just show a fun message
+      setTimeout(() => {
+        showToast('🥊 Epic battle! The autocorrect complaint wins by knockout! 🏆', 'success');
+      }, 2000);
+    }
+
+    // Modal management
+    function openPredictorModal() {
+      new bootstrap.Modal(document.getElementById('predictorModal')).show();
+    }
+
+    function openComebackModal() {
+      new bootstrap.Modal(document.getElementById('comebackModal')).show();
+    }
+
+    function openMemeModal() {
+      new bootstrap.Modal(document.getElementById('memeModal')).show();
+    }
+
+    // Utility Functions
+    function submitComplaint() {
+      const text = currentComplaintText || document.getElementById('complaintText').value.trim();
+      
+      if (!text) {
+        showToast('Please enter a complaint first!', 'warning');
+        return;
+      }
+
+      // Add to complaints feed
+      addComplaintToFeed(text);
+      
+      // Clear form
+      document.getElementById('complaintText').value = '';
+      currentComplaintText = '';
+      hideEnhancementSection();
+      
+      // Update stats
+      updateStats('complaints');
+      updateStats('tissues');
+      updateStats('laughs');
+      
+      showToast('Complaint submitted! Thanks for sharing your AI disaster! 🎭', 'success');
+    }
+
+    function addComplaintToFeed(text) {
+      const feed = document.getElementById('complaintFeed');
+      const complaintDiv = document.createElement('div');
+      complaintDiv.className = 'complaint-item fade-in';
+      
+      complaintDiv.innerHTML = `
+        <div class="complaint-text">${text}</div>
+        <div class="complaint-actions">
+          <div class="reaction-buttons">
+            <button class="reaction-btn" onclick="reactToComplaint(this, 'relatable')">😭 Relatable</button>
+            <button class="reaction-btn" onclick="reactToComplaint(this, 'hilarious')">😂 Hilarious</button>
+            <button class="reaction-btn" onclick="reactToComplaint(this, 'tragic')">💀 Tragic</button>
+          </div>
+          <div class="action-buttons">
+            <button class="action-btn" onclick="shareComplaint('${text}')">
+              <i class="fas fa-share me-1"></i>Share
+            </button>
+            <button class="action-btn" onclick="generateMemeFromComplaint('${text}')">
+              <i class="fas fa-image me-1"></i>Meme It
+            </button>
+          </div>
+        </div>
+      `;
+      
+      feed.insertBefore(complaintDiv, feed.firstChild);
+      
+      // Limit feed to 20 complaints
+      while (feed.children.length > 20) {
+        feed.removeChild(feed.lastChild);
+      }
+    }
+
+    function populateComplaintFeed() {
+      const feed = document.getElementById('complaintFeed');
+      sampleComplaints.forEach((complaint, index) => {
+        setTimeout(() => {
+          addComplaintToFeed(complaint);
+        }, index * 200);
+      });
+    }
+
+    function reactToComplaint(button, reaction) {
+      button.classList.add('active');
+      button.style.background = 'var(--primary-color)';
+      button.style.color = 'white';
+      
+      // Disable other reaction buttons in the same group
+      const parent = button.parentNode;
+      Array.from(parent.children).forEach(btn => {
+        if (btn !== button) {
+          btn.disabled = true;
+          btn.style.opacity = '0.5';
+        }
+      });
+      
+      updateStats('laughs');
+    }
+
+    function shareComplaint(text) {
+      if (navigator.share) {
+        navigator.share({
+          title: 'AI Disaster',
+          text: text,
+          url: window.location.href
+        });
+      } else {
+        copyToClipboard(text);
+        showToast('Complaint copied to clipboard!', 'success');
+      }
+    }
+
+    function generateMemeFromComplaint(text) {
+      document.getElementById('memeInput').value = text;
+      openMemeModal();
+      generateMeme();
+    }
+
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('Copied to clipboard!', 'success');
+      });
+    }
+
+    function downloadMeme() {
+      // This is a placeholder - in a real implementation you'd generate an actual image
+      showToast('Meme download functionality coming soon!', 'info');
+    }
+
+    function initializeStats() {
+      const stats = {
+        complaints: Math.floor(Math.random() * 1000) + 500,
+        enhancements: Math.floor(Math.random() * 500) + 200,
+        tissues: Math.floor(Math.random() * 2000) + 1000,
+        laughs: Math.floor(Math.random() * 5000) + 2000
+      };
+      
+      localStorage.setItem('whineAboutAIStats', JSON.stringify(stats));
+    }
+
+    function updateStats(type) {
+      const stats = JSON.parse(localStorage.getItem('whineAboutAIStats')) || {};
+      stats[type] = (stats[type] || 0) + 1;
+      localStorage.setItem('whineAboutAIStats', JSON.stringify(stats));
+      
+      // Update display
+      const elementMap = {
+        complaints: 'dailyComplaints',
+        enhancements: 'enhancementsCount',
+        tissues: 'tissuesDelivered',
+        laughs: 'laughsGenerated'
+      };
+      
+      const element = document.getElementById(elementMap[type]);
+      if (element) {
+        element.textContent = stats[type];
+        element.parentNode.classList.add('pulse');
+        setTimeout(() => {
+          element.parentNode.classList.remove('pulse');
+        }, 1000);
+      }
+    }
+
+    function animateCounters() {
+      const stats = JSON.parse(localStorage.getItem('whineAboutAIStats')) || {};
+      
+      Object.entries(stats).forEach(([key, value]) => {
+        const elementMap = {
+          complaints: 'dailyComplaints',
+          enhancements: 'enhancementsCount',
+          tissues: 'tissuesDelivered',
+          laughs: 'laughsGenerated'
+        };
+        
+        const element = document.getElementById(elementMap[key]);
+        if (element) {
+          animateNumber(element, 0, value, 2000);
+        }
+      });
+    }
+
+    function animateNumber(element, start, end, duration) {
+      const startTime = performance.now();
+      
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const current = Math.floor(start + (end - start) * progress);
+        
+        element.textContent = current.toLocaleString();
+        
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        }
+      }
+      
+      requestAnimationFrame(update);
+    }
+
+    function showToast(message, type = 'info') {
+      // Create toast element
+      const toast = document.createElement('div');
+      toast.className = `alert alert-${type === 'error' ? 'danger' : type} position-fixed`;
+      toast.style.cssText = `
+        top: 20px;
+        right: 20px;
+        z-index: 9999;
+        min-width: 300px;
+        animation: slideIn 0.3s ease-out;
+      `;
+      toast.textContent = message;
+      
+      // Add close button
+      const closeBtn = document.createElement('button');
+      closeBtn.className = 'btn-close ms-2';
+      closeBtn.onclick = () => document.body.removeChild(toast);
+      toast.appendChild(closeBtn);
+      
+      document.body.appendChild(toast);
+      
+      // Auto remove after 5 seconds
+      setTimeout(() => {
+        if (document.body.contains(toast)) {
+          document.body.removeChild(toast);
+        }
+      }, 5000);
+    }
+
+    // Enhanced complaint button click handler
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('enhanceBtn').addEventListener('click', function() {
+        const text = document.getElementById('complaintText').value.trim();
+        if (text.length > 10) {
+          const activeStyle = document.querySelector('.style-btn.active');
+          const style = activeStyle ? activeStyle.dataset.style : 'sarcastic';
+          enhanceComplaint(text, style);
+        } else {
+          showToast('Please write at least 10 characters to enhance!', 'warning');
+        }
+      });
+    });
+
+    // Add CSS animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes slideIn {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
