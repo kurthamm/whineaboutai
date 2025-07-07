@@ -1088,16 +1088,7 @@
       displayRandomAd('fakeAd1');
       displayRandomAd('fakeAd2');
       
-      // Rotate ads every 8 seconds (staggered)
-      setInterval(() => {
-        displayRandomAd('fakeAd1');
-      }, 8000);
-      
-      setTimeout(() => {
-        setInterval(() => {
-          displayRandomAd('fakeAd2');
-        }, 8000);
-      }, 4000); // Start second ad 4 seconds later
+      // Ads now only change on page reload - no more distracting timers!
     }
 
     // WhineBot highlighting function
